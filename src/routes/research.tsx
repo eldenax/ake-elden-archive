@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { CONCEPTS } from "../data/concepts";
 
 const TITLE = "Research — Dr. Åke Elden";
 const DESCRIPTION =
@@ -16,32 +17,6 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
 });
 
-const CONCEPTS = [
-  {
-    name: "Subtractive Redescription",
-    body: "How AI systems reformulate human practices by removing the tacit conditions that gave them meaning.",
-  },
-  {
-    name: "Inferential License",
-    body: "The normative authority to draw conclusions — and how automated inference redistributes it.",
-  },
-  {
-    name: "Epistemic Infrastructure",
-    body: "The background scaffolding of concepts, institutions, and practices that make knowledge possible.",
-  },
-  {
-    name: "Artificial Answerability",
-    body: "Whether, and how, algorithmic systems can be held to account for what they mediate.",
-  },
-  {
-    name: "Institutional Answerability",
-    body: "How responsibility is distributed when institutions delegate judgment to predictive systems.",
-  },
-  {
-    name: "Predictive Mediation",
-    body: "The way forecasts reshape the situations they claim only to describe.",
-  },
-];
 
 const PROJECTS = [
   "AI and Judgment",
