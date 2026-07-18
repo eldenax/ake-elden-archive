@@ -51,7 +51,7 @@ function ConceptNotFound() {
 }
 
 function ConceptPage() {
-  const { concept } = Route.useLoaderData();
+  const { concept } = Route.useLoaderData() as { concept: (typeof CONCEPTS)[number] };
   const currentIndex = CONCEPTS.findIndex((c) => c.slug === concept.slug);
   const next = CONCEPTS[(currentIndex + 1) % CONCEPTS.length];
   const prev = CONCEPTS[(currentIndex - 1 + CONCEPTS.length) % CONCEPTS.length];
