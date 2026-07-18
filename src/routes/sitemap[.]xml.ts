@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { CONCEPTS } from "../data/concepts";
 
 const BASE_URL = "https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app";
 
