@@ -72,30 +72,22 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_TITLE = "Dr. Åke Elden — Philosophy & Theology of Artificial Intelligence";
+const SITE_DESCRIPTION =
+  "Dr. Åke Elden is a researcher at NLA University College investigating the philosophical and theological conditions of human judgment, responsibility, and formation in the age of AI.";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Åke Elden — Behavioral Scientist & Systems Designer" },
-      {
-        name: "description",
-        content:
-          "Åke Elden is a Norwegian behavioral scientist designing systems that shape human decisions across healthcare, life sciences, and institutional design.",
-      },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
       { name: "author", content: "Åke Elden" },
-      {
-        property: "og:title",
-        content: "Åke Elden — Behavioral Scientist & Systems Designer",
-      },
-      {
-        property: "og:description",
-        content:
-          "Åke Elden is a Norwegian behavioral scientist designing systems that shape human decisions across healthcare, life sciences, and institutional design.",
-      },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -104,10 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap",
       },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
@@ -131,35 +120,32 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const NAV = [
+  { to: "/", label: "Home" },
+  { to: "/research", label: "Research" },
+  { to: "/publications", label: "Publications" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
 function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" className="font-display text-lg tracking-tight text-foreground">
-          Åke Elden
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
+        <Link to="/" className="font-display text-base tracking-tight text-foreground">
+          Dr. Åke Elden
         </Link>
         <nav className="flex items-center gap-6 text-sm">
-          <Link
-            to="/"
-            activeProps={{ className: "font-semibold" }}
-            className="text-foreground/80 transition-colors hover:text-foreground"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            activeProps={{ className: "font-semibold" }}
-            className="text-foreground/80 transition-colors hover:text-foreground"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            activeProps={{ className: "font-semibold" }}
-            className="text-foreground/80 transition-colors hover:text-foreground"
-          >
-            Contact
-          </Link>
+          {NAV.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              activeProps={{ className: "font-semibold text-foreground" }}
+              activeOptions={{ exact: true }}
+              className="text-foreground/70 transition-colors hover:text-foreground"
+            >
+              {n.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
@@ -169,21 +155,27 @@ function Header() {
 function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 md:flex-row lg:px-8">
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Åke Elden. All rights reserved.
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center lg:px-8">
+        <div>
+          <p className="font-display text-sm text-foreground">Dr. Åke Elden</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Research Advisor · NLA University College · Oslo, Norway
+          </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            ORCID:{" "}
+            <a
+              href="https://orcid.org/0009-0003-0965-7666"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              0009-0003-0965-7666
+            </a>
+          </p>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Åke Elden
         </p>
-        <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-          <Link to="/" className="transition-colors hover:text-foreground">
-            Home
-          </Link>
-          <Link to="/about" className="transition-colors hover:text-foreground">
-            About
-          </Link>
-          <Link to="/contact" className="transition-colors hover:text-foreground">
-            Contact
-          </Link>
-        </nav>
       </div>
     </footer>
   );
