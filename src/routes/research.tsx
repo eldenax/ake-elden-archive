@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { CONCEPTS } from "../data/concepts";
 
 const TITLE = "Research — Dr. Åke Elden";
 const DESCRIPTION =
@@ -16,32 +17,6 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
 });
 
-const CONCEPTS = [
-  {
-    name: "Subtractive Redescription",
-    body: "How AI systems reformulate human practices by removing the tacit conditions that gave them meaning.",
-  },
-  {
-    name: "Inferential License",
-    body: "The normative authority to draw conclusions — and how automated inference redistributes it.",
-  },
-  {
-    name: "Epistemic Infrastructure",
-    body: "The background scaffolding of concepts, institutions, and practices that make knowledge possible.",
-  },
-  {
-    name: "Artificial Answerability",
-    body: "Whether, and how, algorithmic systems can be held to account for what they mediate.",
-  },
-  {
-    name: "Institutional Answerability",
-    body: "How responsibility is distributed when institutions delegate judgment to predictive systems.",
-  },
-  {
-    name: "Predictive Mediation",
-    body: "The way forecasts reshape the situations they claim only to describe.",
-  },
-];
 
 const PROJECTS = [
   "AI and Judgment",
@@ -108,15 +83,35 @@ function ResearchPage() {
               agency.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {CONCEPTS.map((c) => (
-              <article key={c.name} className="border-t border-border pt-5">
-                <h3 className="font-display text-lg text-foreground">{c.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {c.body}
-                </p>
-              </article>
+              <Link
+                key={c.slug}
+                to="/concepts/$slug"
+                params={{ slug: c.slug }}
+                className="group flex h-full flex-col justify-between gap-4 bg-background p-6 transition-colors hover:bg-muted/40"
+              >
+                <div>
+                  <h3 className="font-display text-lg text-foreground group-hover:underline decoration-dotted underline-offset-4">
+                    {c.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {c.tagline}
+                  </p>
+                </div>
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground">
+                  Read →
+                </span>
+              </Link>
             ))}
+          </div>
+          <div className="mt-10">
+            <Link
+              to="/concepts"
+              className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+            >
+              All concepts →
+            </Link>
           </div>
         </div>
       </section>

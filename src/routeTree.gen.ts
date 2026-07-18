@@ -14,6 +14,8 @@ import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -40,6 +42,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
+  id: '/concepts/',
+  path: '/concepts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
+  id: '/concepts/$slug',
+  path: '/concepts/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +59,8 @@ export interface FileRoutesByFullPath {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/concepts/$slug': typeof ConceptsSlugRoute
+  '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +68,8 @@ export interface FileRoutesByTo {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/concepts/$slug': typeof ConceptsSlugRoute
+  '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,12 +78,28 @@ export interface FileRoutesById {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/concepts/$slug': typeof ConceptsSlugRoute
+  '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/publications' | '/research' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/publications'
+    | '/research'
+    | '/sitemap.xml'
+    | '/concepts/$slug'
+    | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/publications' | '/research' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/contact'
+    | '/publications'
+    | '/research'
+    | '/sitemap.xml'
+    | '/concepts/$slug'
+    | '/concepts'
   id:
     | '__root__'
     | '/'
@@ -75,6 +107,8 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/concepts/$slug'
+    | '/concepts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -83,6 +117,8 @@ export interface RootRouteChildren {
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ConceptsSlugRoute: typeof ConceptsSlugRoute
+  ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -122,6 +158,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/concepts/': {
+      id: '/concepts/'
+      path: '/concepts'
+      fullPath: '/concepts/'
+      preLoaderRoute: typeof ConceptsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concepts/$slug': {
+      id: '/concepts/$slug'
+      path: '/concepts/$slug'
+      fullPath: '/concepts/$slug'
+      preLoaderRoute: typeof ConceptsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -131,6 +181,8 @@ const rootRouteChildren: RootRouteChildren = {
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ConceptsSlugRoute: ConceptsSlugRoute,
+  ConceptsIndexRoute: ConceptsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
