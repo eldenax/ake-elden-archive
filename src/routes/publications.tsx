@@ -36,11 +36,13 @@ const PROFILES: { name: string; href: string }[] = [
   },
   { name: "OpenAlex", href: "https://openalex.org/" },
   { name: "Semantic Scholar", href: "https://www.semanticscholar.org/" },
+  { name: "PhilPeople", href: "https://philpeople.org/profiles/ake-elden" },
   { name: "NVA (Nasjonalt vitenarkiv)", href: "https://nva.unit.no/" },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/",
   },
+
 ];
 
 function PublicationsPage() {
