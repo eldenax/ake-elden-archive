@@ -28,12 +28,16 @@ function ConceptsIndex() {
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             A developing conceptual framework
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-6 font-display text-lg italic leading-relaxed text-foreground/80">
+            These concepts constitute an evolving research programme on the
+            philosophical conditions of AI-mediated human agency.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             Each concept below is developed in its own dedicated page —
             outlining the underlying theory, key publications, and current
-            work. Together they contribute toward a broader theory of
-            AI-mediated human agency.
+            work.
           </p>
+
         </div>
       </section>
 

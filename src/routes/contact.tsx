@@ -29,7 +29,45 @@ function ContactPage() {
         Research Advisor · NLA University College · Oslo, Norway
       </p>
 
-      <div className="mt-12 grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-2">
+      <div className="mt-12 border-t border-border pt-10">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Academic correspondence
+        </p>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+          For research collaborations, invited lectures, editorial inquiries,
+          or media requests, please make contact by email.
+        </p>
+        <dl className="mt-8 space-y-6">
+          <div>
+            <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Primary (institutional)
+            </dt>
+            <dd className="mt-2">
+              <a
+                href="mailto:akeeld@nla.no"
+                className="font-display text-xl text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+              >
+                akeeld@nla.no
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Alternative
+            </dt>
+            <dd className="mt-2">
+              <a
+                href="mailto:aake.elden@gmail.com"
+                className="font-display text-base text-foreground/85 underline decoration-dotted underline-offset-4 hover:decoration-solid"
+              >
+                aake.elden@gmail.com
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div className="mt-10 grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-2">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Affiliation
@@ -38,6 +76,16 @@ function ContactPage() {
             NLA University College
             <br />
             Oslo, Norway
+          </p>
+          <p className="mt-3">
+            <a
+              href="https://www.nla.no/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              nla.no →
+            </a>
           </p>
         </div>
         <div>
@@ -55,35 +103,6 @@ function ContactPage() {
               0009-0003-0965-7666
             </a>
           </p>
-        </div>
-      </div>
-
-      <div className="mt-10 border-t border-border pt-10">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-          Correspondence
-        </p>
-        <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-          For academic correspondence, invited lectures, or research
-          collaborations, please make contact through LinkedIn or via the
-          institutional address at NLA University College.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://www.nla.no/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            NLA University College
-          </a>
         </div>
       </div>
     </div>

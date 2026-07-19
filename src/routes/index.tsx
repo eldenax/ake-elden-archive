@@ -122,6 +122,27 @@ function Index() {
         </div>
       </section>
 
+      {/* Research Areas */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Research areas
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 font-display text-base text-foreground md:text-lg">
+            <li>Philosophy of Artificial Intelligence</li>
+            <li className="text-muted-foreground">·</li>
+            <li>Philosophy of Technology</li>
+            <li className="text-muted-foreground">·</li>
+            <li>Theological Anthropology</li>
+            <li className="text-muted-foreground">·</li>
+            <li>Ethics</li>
+            <li className="text-muted-foreground">·</li>
+            <li>Epistemology</li>
+          </ul>
+        </div>
+      </section>
+
+
       {/* Themes */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
