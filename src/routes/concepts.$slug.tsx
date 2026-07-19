@@ -146,7 +146,8 @@ function ConceptPage() {
 
       <nav
         aria-label="Concept navigation"
-        className="mx-auto grid max-w-3xl grid-cols-1 gap-4 px-6 py-16 sm:grid-cols-2 lg:px-8"
+        className="no-print mx-auto grid max-w-3xl grid-cols-1 gap-4 px-6 py-16 sm:grid-cols-2 lg:px-8"
+
       >
         <Link
           to="/concepts/$slug"
