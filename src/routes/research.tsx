@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CONCEPTS } from "../data/concepts";
 
-const TITLE = "Research — Dr. Åke Elden";
+const TITLE = "Research Programme — Dr. Åke Elden";
 const DESCRIPTION =
-  "Research programme, themes, concepts, and current projects at the intersection of philosophy of AI, epistemology, and theological anthropology.";
+  "A coherent research programme on the philosophical and theological conditions of human judgment, responsibility, and formation under artificial intelligence.";
 
 export const Route = createFileRoute("/research")({
   head: () => ({
@@ -17,70 +17,155 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
 });
 
+const PROGRAMMES = [
+  {
+    title: "Human Judgment",
+    items: [
+      "answerability",
+      "responsibility",
+      "practical reasoning",
+      "institutional decision-making",
+    ],
+  },
+  {
+    title: "Human Formation",
+    items: [
+      "theological anthropology",
+      "moral formation",
+      "discernment",
+      "creaturehood",
+    ],
+  },
+  {
+    title: "Epistemic Conditions",
+    items: [
+      "inferential license",
+      "epistemic infrastructure",
+      "scientific methodology",
+      "explanation",
+    ],
+  },
+];
 
-const PROJECTS = [
-  "AI and Judgment",
-  "Institutional Responsibility",
-  "Human Formation under Optimization",
-  "Algorithmic Governance",
-  "Epistemic Automation",
-  "Theology of Technology",
+const EVOLUTION = [
+  {
+    year: "2024",
+    focus: ["Institutional AI"],
+  },
+  {
+    year: "2025",
+    focus: ["Responsibility", "Agency", "Judgment"],
+  },
+  {
+    year: "2026",
+    focus: ["Formation", "Theological Anthropology", "Epistemic Conditions"],
+  },
+];
+
+const QUESTIONS = [
+  "What does AI presuppose?",
+  "When does explanation become normative?",
+  "How can institutions remain answerable while delegating reasoning?",
+  "What distinguishes judgment from prediction?",
 ];
 
 function ResearchPage() {
   return (
     <div>
-      {/* Programme */}
+      {/* Research Question */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Research Programme
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            What AI presupposes
+            One question, three intersecting programmes
           </h1>
-          <div className="mt-8 space-y-6 text-base leading-relaxed text-foreground/85">
-            <p>
-              Artificial intelligence is transforming not only how decisions
-              are made but also the conditions under which knowledge,
-              responsibility, and human formation become possible.
+          <div className="mt-10 border-l-2 border-foreground/40 pl-6">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Research question
             </p>
-            <p>
-              My research investigates the philosophical and theological
-              implications of AI-mediated societies, with particular attention
-              to <em>judgment</em>, <em>answerability</em>, <em>epistemic
-              agency</em>, <em>institutional legitimacy</em>, and{" "}
-              <em>human formation</em>.
-            </p>
-            <p>
-              Rather than asking simply what AI can do, I examine the
-              background conditions that make distinctly human capacities
-              possible — and what happens when technological systems relocate,
-              conceal, or reshape those conditions.
-            </p>
-            <blockquote className="border-l-2 border-foreground/40 pl-6 font-display text-xl italic leading-snug text-foreground">
-              Which human capacities are presupposed, transformed, or concealed
-              when artificial intelligence becomes part of institutional and
-              personal decision-making?
+            <blockquote className="mt-3 font-display text-2xl italic leading-snug text-foreground md:text-3xl">
+              How does artificial intelligence transform the conditions that
+              make human judgment, responsibility, and moral formation
+              possible?
             </blockquote>
           </div>
+          <p className="mt-8 text-base leading-relaxed text-foreground/85">
+            The programme investigates the background conditions — epistemic,
+            institutional, and anthropological — that make distinctly human
+            capacities possible, and asks what happens when technological
+            systems relocate, conceal, or reshape those conditions.
+          </p>
         </div>
       </section>
 
-      {/* Selected concepts */}
+      {/* Programmes */}
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="mb-12 max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Selected concepts
+              Programmes
             </p>
             <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
-              A developing conceptual framework
+              Three lines, one architecture
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-3">
+            {PROGRAMMES.map((p) => (
+              <div key={p.title} className="border-t border-border pt-6">
+                <h3 className="font-display text-lg text-foreground">
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Research on
+                </p>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  {p.items.map((i) => (
+                    <li key={i}>— {i}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Research Map */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Research map
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+            The architecture at a glance
+          </h2>
+          <div className="mt-10 rounded-md border border-border bg-muted/30 p-8">
+            <pre className="whitespace-pre font-display text-sm leading-relaxed text-foreground md:text-base">{`             Human Formation
+                    ↑
+     Judgment  ←──→  Responsibility
+                    ↑
+            Epistemic Conditions
+                    ↑
+         Artificial Intelligence`}</pre>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Concepts */}
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="mb-12 max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Key concepts
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+              The conceptual framework
             </h2>
             <p className="mt-4 text-base text-muted-foreground">
-              Recent work has developed several interconnected concepts that
-              together contribute toward a broader theory of AI-mediated human
-              agency.
+              These concepts constitute an evolving research programme on the
+              philosophical conditions of AI-mediated human agency. Each has
+              its own dedicated page.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
@@ -89,7 +174,7 @@ function ResearchPage() {
                 key={c.slug}
                 to="/concepts/$slug"
                 params={{ slug: c.slug }}
-                className="group flex h-full flex-col justify-between gap-4 bg-background p-6 transition-colors hover:bg-muted/40"
+                className="group flex h-full flex-col justify-between gap-6 bg-background p-8 transition-colors hover:bg-muted/40"
               >
                 <div>
                   <h3 className="font-display text-lg text-foreground group-hover:underline decoration-dotted underline-offset-4">
@@ -105,40 +190,64 @@ function ResearchPage() {
               </Link>
             ))}
           </div>
-          <div className="mt-10">
-            <Link
-              to="/concepts"
-              className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
-            >
-              All concepts →
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Current projects */}
+      {/* Evolution */}
       <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Current projects
-              </p>
-              <h2 className="mt-3 font-display text-3xl text-foreground">
-                Lines of ongoing work
-              </h2>
-            </div>
-            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:col-span-2">
-              {PROJECTS.map((p) => (
-                <li
-                  key={p}
-                  className="border-t border-border pt-3 font-display text-base text-foreground"
-                >
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Evolution
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+            How the programme has developed
+          </h2>
+          <ol className="mt-10 space-y-8">
+            {EVOLUTION.map((e, i) => (
+              <li key={e.year} className="grid grid-cols-[4rem_1fr] gap-6">
+                <span className="font-display text-2xl text-foreground">
+                  {e.year}
+                </span>
+                <div>
+                  <ul className="space-y-1 font-display text-lg text-foreground/85">
+                    {e.focus.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
+                  {i < EVOLUTION.length - 1 && (
+                    <span
+                      aria-hidden
+                      className="mt-4 block text-muted-foreground"
+                    >
+                      ↓
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Current Questions */}
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Current questions
+          </p>
+          <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+            Open lines of inquiry
+          </h2>
+          <ul className="mt-10 space-y-6">
+            {QUESTIONS.map((q) => (
+              <li
+                key={q}
+                className="border-t border-border pt-4 font-display text-lg italic text-foreground/85 md:text-xl"
+              >
+                {q}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
