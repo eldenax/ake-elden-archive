@@ -57,15 +57,24 @@ function ConceptPage() {
   const prev = CONCEPTS[(currentIndex - 1 + CONCEPTS.length) % CONCEPTS.length];
 
   return (
-    <article>
+    <article className="print-article">
       <header className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-          <Link
-            to="/concepts"
-            className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
-          >
-            ← All concepts
-          </Link>
+          <div className="flex items-start justify-between gap-4">
+            <Link
+              to="/concepts"
+              className="no-print text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
+            >
+              ← All concepts
+            </Link>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="no-print inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+            >
+              Download as PDF
+            </button>
+          </div>
           <h1 className="mt-6 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             {concept.name}
           </h1>
@@ -74,6 +83,7 @@ function ConceptPage() {
           </p>
         </div>
       </header>
+
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
