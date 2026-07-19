@@ -65,12 +65,38 @@ function PublicationsPage() {
         </div>
       </section>
 
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Selected work
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            Recent work has examined
+          </h2>
+          <ul className="mt-8 space-y-4 text-base leading-relaxed text-foreground/85">
+            <li className="border-t border-border pt-4">AI-mediated judgment and the redistribution of inferential license.</li>
+            <li className="border-t border-border pt-4">Institutional answerability under conditions of algorithmic delegation.</li>
+            <li className="border-t border-border pt-4">Theological anthropology and human formation under technological mediation.</li>
+            <li className="border-t border-border pt-4">Epistemic infrastructure as a condition for responsible AI evaluation.</li>
+            <li className="border-t border-border pt-4">Subtractive redescription in clinical and administrative decision support.</li>
+            <li className="border-t border-border pt-4">Predictive mediation and the ethics of forecast-shaped situations.</li>
+          </ul>
+        </div>
+      </section>
+
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-          <div className="mb-10">
-            <h2 className="font-display text-2xl text-foreground md:text-3xl">
+          <div className="mb-10 max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Complete publication list
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
               Journals featuring recent work
             </h2>
+            <p className="mt-4 text-sm text-muted-foreground">
+              The full record is maintained through the scholarly profiles
+              below. Recent contributions have appeared in:
+            </p>
           </div>
           <ul className="grid grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
             {JOURNALS.map((j) => (
@@ -84,6 +110,7 @@ function PublicationsPage() {
           </ul>
         </div>
       </section>
+
 
       <section>
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
