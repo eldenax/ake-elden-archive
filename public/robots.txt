@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app/sitemap.xml
+Sitemap: https://ake-elden-archive.lovable.app/sitemap.xml
