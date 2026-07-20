@@ -4,6 +4,8 @@ const TITLE = "Contact — Dr. Åke Elden";
 const DESCRIPTION =
   "Contact Dr. Åke Elden, Research Advisor at NLA University College, Oslo — for academic correspondence, invited lectures, and research collaborations.";
 
+const URL_SELF = "https://ake-elden-archive.lovable.app/contact";
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
@@ -11,6 +13,30 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: URL_SELF },
+    ],
+    links: [{ rel: "canonical", href: URL_SELF }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          url: URL_SELF,
+          name: TITLE,
+          description: DESCRIPTION,
+          mainEntity: {
+            "@type": "Person",
+            name: "Åke Elden",
+            email: "akeeld@nla.no",
+            identifier: "https://orcid.org/0009-0003-0965-7666",
+            affiliation: {
+              "@type": "CollegeOrUniversity",
+              name: "NLA University College",
+            },
+          },
+        }),
+      },
     ],
   }),
   component: ContactPage,
