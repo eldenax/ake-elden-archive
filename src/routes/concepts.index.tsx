@@ -5,6 +5,8 @@ const TITLE = "Concepts — Dr. Åke Elden";
 const DESCRIPTION =
   "A developing conceptual framework for AI-mediated human agency: subtractive redescription, inferential license, epistemic infrastructure, artificial and institutional answerability, and predictive mediation.";
 
+const URL_SELF = "https://ake-elden-archive.lovable.app/concepts";
+
 export const Route = createFileRoute("/concepts/")({
   head: () => ({
     meta: [
@@ -12,6 +14,21 @@ export const Route = createFileRoute("/concepts/")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: URL_SELF },
+    ],
+    links: [{ rel: "canonical", href: URL_SELF }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          url: URL_SELF,
+          name: TITLE,
+          description: DESCRIPTION,
+          about: { "@type": "Person", name: "Åke Elden" },
+        }),
+      },
     ],
   }),
   component: ConceptsIndex,
