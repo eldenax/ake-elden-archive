@@ -7,6 +7,8 @@ const DESCRIPTION =
 const OG_IMAGE =
   "https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app/ake-elden-hero.jpg";
 
+const URL_SELF = "https://ake-elden-archive.lovable.app/";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -14,8 +16,27 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: URL_SELF },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: URL_SELF }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          url: URL_SELF,
+          name: TITLE,
+          description: DESCRIPTION,
+          mainEntity: {
+            "@type": "Person",
+            name: "Åke Elden",
+            identifier: "https://orcid.org/0009-0003-0965-7666",
+          },
+        }),
+      },
     ],
   }),
   component: Index,

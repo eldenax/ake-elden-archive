@@ -7,7 +7,8 @@ export const Route = createFileRoute("/concepts/$slug")({
     if (!concept) throw notFound();
     return { concept };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
+    const url = `https://ake-elden-archive.lovable.app/concepts/${params.slug}`;
     if (!loaderData) {
       return {
         meta: [
@@ -24,6 +25,32 @@ export const Route = createFileRoute("/concepts/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: loaderData.concept.name,
+            description,
+            url,
+            author: {
+              "@type": "Person",
+              name: "Åke Elden",
+              identifier: "https://orcid.org/0009-0003-0965-7666",
+            },
+            about: loaderData.concept.name,
+            isPartOf: {
+              "@type": "CollectionPage",
+              name: "Concepts — Dr. Åke Elden",
+              url: "https://ake-elden-archive.lovable.app/concepts",
+            },
+          }),
+        },
       ],
     };
   },

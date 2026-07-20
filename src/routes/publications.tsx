@@ -4,6 +4,8 @@ const TITLE = "Publications — Dr. Åke Elden";
 const DESCRIPTION =
   "Peer-reviewed publications and scholarly profiles of Dr. Åke Elden, including ORCID, Google Scholar, OpenAlex, and Semantic Scholar.";
 
+const URL_SELF = "https://ake-elden-archive.lovable.app/publications";
+
 export const Route = createFileRoute("/publications")({
   head: () => ({
     meta: [
@@ -11,6 +13,21 @@ export const Route = createFileRoute("/publications")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: URL_SELF },
+    ],
+    links: [{ rel: "canonical", href: URL_SELF }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          url: URL_SELF,
+          name: TITLE,
+          description: DESCRIPTION,
+          about: { "@type": "Person", name: "Åke Elden" },
+        }),
+      },
     ],
   }),
   component: PublicationsPage,

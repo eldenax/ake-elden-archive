@@ -5,6 +5,8 @@ const TITLE = "Research Programme — Dr. Åke Elden";
 const DESCRIPTION =
   "A coherent research programme on the philosophical and theological conditions of human judgment, responsibility, and formation under artificial intelligence.";
 
+const URL_SELF = "https://ake-elden-archive.lovable.app/research";
+
 export const Route = createFileRoute("/research")({
   head: () => ({
     meta: [
@@ -12,6 +14,21 @@ export const Route = createFileRoute("/research")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: URL_SELF },
+    ],
+    links: [{ rel: "canonical", href: URL_SELF }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          url: URL_SELF,
+          name: TITLE,
+          description: DESCRIPTION,
+          about: { "@type": "Person", name: "Åke Elden" },
+        }),
+      },
     ],
   }),
   component: ResearchPage,

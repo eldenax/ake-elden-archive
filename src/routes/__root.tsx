@@ -72,9 +72,52 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://ake-elden-archive.lovable.app";
 const SITE_TITLE = "Dr. Åke Elden — Philosophy & Theology of Artificial Intelligence";
 const SITE_DESCRIPTION =
   "Dr. Åke Elden is a researcher at NLA University College investigating the philosophical and theological conditions of human judgment, responsibility, and formation in the age of AI.";
+
+const PERSON_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Åke Elden",
+  honorificPrefix: "Dr.",
+  jobTitle: "Research Advisor",
+  description:
+    "Researcher in artificial intelligence, philosophy of technology, and theological anthropology.",
+  url: SITE_URL,
+  identifier: "https://orcid.org/0009-0003-0965-7666",
+  sameAs: [
+    "https://orcid.org/0009-0003-0965-7666",
+    "https://philpeople.org/profiles/ake-elden",
+  ],
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: "NLA University College",
+    url: "https://www.nla.no/",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Oslo",
+      addressCountry: "NO",
+    },
+  },
+  knowsAbout: [
+    "Philosophy of Artificial Intelligence",
+    "Philosophy of Technology",
+    "Theological Anthropology",
+    "Ethics",
+    "Epistemology",
+  ],
+};
+
+const WEBSITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_TITLE,
+  url: SITE_URL,
+  inLanguage: "en",
+  author: { "@type": "Person", name: "Åke Elden" },
+};
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -84,10 +127,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: SITE_TITLE },
       { name: "description", content: SITE_DESCRIPTION },
       { name: "author", content: "Åke Elden" },
+      { property: "og:site_name", content: "Dr. Åke Elden" },
       { property: "og:title", content: SITE_TITLE },
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -98,6 +145,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(PERSON_JSONLD) },
+      { type: "application/ld+json", children: JSON.stringify(WEBSITE_JSONLD) },
     ],
   }),
   shellComponent: RootShell,
