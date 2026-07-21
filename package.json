@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "check:sitemap": "node scripts/check-sitemap.mjs",
-    "check:robots": "node scripts/check-robots.mjs"
+    "check:robots": "node scripts/check-robots.mjs",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
