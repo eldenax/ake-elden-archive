@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "check:sitemap": "node scripts/check-sitemap.mjs"
+    "check:sitemap": "node scripts/check-sitemap.mjs",
+    "check:robots": "node scripts/check-robots.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,4 +1,4 @@
-name: Check sitemap
+name: Check sitemap and robots
 
 on:
   push:
@@ -42,6 +42,11 @@ jobs:
         env:
           BASE_URL: http://127.0.0.1:8080
         run: bun run check:sitemap
+
+      - name: Check robots.txt
+        env:
+          EXPECTED_SITEMAP: http://127.0.0.1:8080/sitemap.xml
+        run: bun run check:robots
 
       - name: Stop preview server
         if: always()
