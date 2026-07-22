@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkingPapersRouteImport } from './routes/working-papers'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PublicationsRouteImport } from './routes/publications'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 
+const WorkingPapersRoute = WorkingPapersRouteImport.update({
+  id: '/working-papers',
+  path: '/working-papers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/working-papers': typeof WorkingPapersRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/working-papers': typeof WorkingPapersRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/concepts': typeof ConceptsIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/working-papers': typeof WorkingPapersRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/working-papers'
     | '/concepts/$slug'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/working-papers'
     | '/concepts/$slug'
     | '/concepts'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research'
     | '/sitemap.xml'
+    | '/working-papers'
     | '/concepts/$slug'
     | '/concepts/'
   fileRoutesById: FileRoutesById
@@ -117,12 +129,20 @@ export interface RootRouteChildren {
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WorkingPapersRoute: typeof WorkingPapersRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/working-papers': {
+      id: '/working-papers'
+      path: '/working-papers'
+      fullPath: '/working-papers'
+      preLoaderRoute: typeof WorkingPapersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -181,19 +201,10 @@ const rootRouteChildren: RootRouteChildren = {
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WorkingPapersRoute: WorkingPapersRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

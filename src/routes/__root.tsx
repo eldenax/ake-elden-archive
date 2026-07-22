@@ -175,6 +175,7 @@ const NAV = [
   { to: "/", label: "Home" },
   { to: "/research", label: "Research Programme" },
   { to: "/concepts", label: "Concepts" },
+  { to: "/working-papers", label: "Working Papers" },
   { to: "/publications", label: "Publications" },
   { to: "/contact", label: "Contact" },
 ] as const;
