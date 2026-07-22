@@ -53,7 +53,8 @@ const PROFILES: { name: string; href: string }[] = [
   },
   { name: "OpenAlex", href: "https://openalex.org/" },
   { name: "Semantic Scholar", href: "https://www.semanticscholar.org/" },
-  { name: "PhilPeople", href: "https://philpeople.org/profiles/ake-elden" },
+  { name: "PhilPeople", href: "https://philpeople.org/profiles/aake-elden" },
+  { name: "PhilPapers", href: "https://philpapers.org/s/Aake%20Elden" },
   { name: "NVA (Nasjonalt vitenarkiv)", href: "https://nva.unit.no/" },
   {
     name: "LinkedIn",

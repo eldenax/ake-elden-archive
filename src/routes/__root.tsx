@@ -89,7 +89,8 @@ const PERSON_JSONLD = {
   identifier: "https://orcid.org/0009-0003-0965-7666",
   sameAs: [
     "https://orcid.org/0009-0003-0965-7666",
-    "https://philpeople.org/profiles/ake-elden",
+    "https://philpeople.org/profiles/aake-elden",
+    "https://philpapers.org/s/Aake%20Elden",
   ],
   affiliation: {
     "@type": "CollegeOrUniversity",
