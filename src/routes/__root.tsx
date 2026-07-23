@@ -278,6 +278,16 @@ function Footer() {
                   PhilPeople
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://nva.sikt.no/research-profile/57416"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  NVA Filter — Nasjonalt vitenarkiv
+                </a>
+              </li>
             </ul>
           </div>
 
