@@ -91,6 +91,7 @@ const PERSON_JSONLD = {
     "https://orcid.org/0009-0003-0965-7666",
     "https://philpeople.org/profiles/aake-elden",
     "https://philpapers.org/s/Aake%20Elden",
+    "https://nva.sikt.no/research-profile/57416",
   ],
   affiliation: {
     "@type": "CollegeOrUniversity",
