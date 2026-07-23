@@ -55,12 +55,14 @@ const PROFILES: { name: string; href: string }[] = [
   { name: "Semantic Scholar", href: "https://www.semanticscholar.org/" },
   { name: "PhilPeople", href: "https://philpeople.org/profiles/aake-elden" },
   { name: "PhilPapers", href: "https://philpapers.org/s/Aake%20Elden" },
-  { name: "NVA (Nasjonalt vitenarkiv)", href: "https://nva.unit.no/" },
+  {
+    name: "NVA Filter — Nasjonalt vitenarkiv",
+    href: "https://nva.sikt.no/research-profile/57416",
+  },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/",
   },
-
 ];
 
 function PublicationsPage() {
