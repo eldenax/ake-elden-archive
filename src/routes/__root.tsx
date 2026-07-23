@@ -209,27 +209,117 @@ function Header() {
 function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center lg:px-8">
-        <div>
-          <p className="font-display text-sm text-foreground">Dr. Åke Elden</p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Research Advisor · NLA University College · Oslo, Norway
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            ORCID:{" "}
-            <a
-              href="https://orcid.org/0009-0003-0965-7666"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
-            >
-              0009-0003-0965-7666
-            </a>
-          </p>
+      <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Affiliation & contact */}
+          <div className="space-y-4">
+            <div>
+              <p className="font-display text-sm text-foreground">Dr. Åke Elden</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Research Advisor · NLA University College · Oslo, Norway
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Email:{" "}
+              <a
+                href="mailto:akeeld@nla.no"
+                className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+              >
+                akeeld@nla.no
+              </a>
+            </p>
+            <p className="text-xs text-muted-foreground">
+              ORCID:{" "}
+              <a
+                href="https://orcid.org/0009-0003-0965-7666"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+              >
+                0009-0003-0965-7666
+              </a>
+            </p>
+          </div>
+
+          {/* Scholarly profiles */}
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Scholarly profiles
+            </p>
+            <ul className="mt-4 space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://scholar.google.com/citations?user="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Google Scholar
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://philpapers.org/s/Aake%20Elden"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  PhilPapers
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://philpeople.org/profiles/aake-elden"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  PhilPeople
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Professional */}
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Professional
+            </p>
+            <ul className="mt-4 space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/cv"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Download CV
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Copyright & last updated */}
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Site
+            </p>
+            <p className="mt-4 text-xs text-muted-foreground">
+              © {new Date().getFullYear()} Åke Elden
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Last updated: July 2026
+            </p>
+          </div>
         </div>
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Åke Elden
-        </p>
       </div>
     </footer>
   );
