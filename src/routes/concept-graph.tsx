@@ -994,6 +994,36 @@ function TracePanel({
           End trace
         </button>
       </div>
+
+      {capacities.length > 0 ? (
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-2">
+            <svg width="28" height="10" viewBox="0 0 28 10" aria-hidden="true">
+              <line x1="1" y1="5" x2="27" y2="5" stroke="currentColor" strokeWidth={2} strokeLinecap="round" className="text-foreground" />
+            </svg>
+            <span>Path 1 — solid</span>
+          </span>
+          {capacities.length > 1 ? (
+            <span className="inline-flex items-center gap-2">
+              <svg width="28" height="10" viewBox="0 0 28 10" aria-hidden="true">
+                <line x1="1" y1="5" x2="27" y2="5" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeDasharray="5 4" className="text-foreground" />
+              </svg>
+              <span>Path 2 — dashed</span>
+            </span>
+          ) : null}
+          {overlap.length > 0 ? (
+            <span className="inline-flex items-center gap-2">
+              <svg width="28" height="12" viewBox="0 0 28 12" aria-hidden="true">
+                <line x1="1" y1="6" x2="27" y2="6" stroke="currentColor" strokeWidth={7} strokeLinecap="round" className="text-foreground/40" />
+                <line x1="1" y1="6" x2="27" y2="6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" className="text-foreground" />
+                <line x1="1" y1="6" x2="27" y2="6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeDasharray="5 4" className="text-foreground" />
+              </svg>
+              <span>Overlap — halo behind both strokes; edge cited by works from both capacities.</span>
+            </span>
+          ) : null}
+        </div>
+      ) : null}
+
       <p className="mt-3 text-sm text-muted-foreground">
         {steps.length === 0
           ? "No connections cite works tagged with the selected capacities yet."
@@ -1001,6 +1031,7 @@ function TracePanel({
             ? `Full paths revealed — ${steps.length} step${steps.length === 1 ? "" : "s"} across ${capacities.length} ${capacities.length === 1 ? "capacity" : "capacities"}.`
             : `Revealing step ${Math.min(step, steps.length)} of ${steps.length}.`}
       </p>
+
 
       {overlap.length > 0 ? (
         <div className="mt-6 border border-foreground/60 bg-secondary/40 p-4">
