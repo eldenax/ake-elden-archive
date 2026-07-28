@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
+import { zodValidator } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { THEMES, getTheme } from "../data/themes";
@@ -27,7 +27,7 @@ const CAPACITY_DESCRIPTION: Record<Capacity, string> = {
 };
 
 const publicationsSearchSchema = z.object({
-  capacity: fallback(z.string(), "").default(""),
+  capacity: z.string().optional(),
 });
 
 export const Route = createFileRoute("/publications")({
