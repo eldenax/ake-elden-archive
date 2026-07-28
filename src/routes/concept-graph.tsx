@@ -500,32 +500,81 @@ function ConceptGraph() {
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
-                let cls: string;
-                let sw = 1;
                 if (tracingActive) {
+                  const caps = edgeReveal.get(i) ?? [];
                   const isCurrent = currentTraceEdge === i;
-                  const isRevealed = revealedEdges.has(i);
-                  if (isCurrent) {
-                    cls = "edge-active text-foreground";
-                    sw = 2.5;
-                  } else if (isRevealed) {
-                    cls = "text-foreground transition-all";
-                    sw = 2;
-                  } else {
-                    cls = "text-border transition-all";
+                  if (caps.length === 0 && !isCurrent) {
+                    return (
+                      <line
+                        key={`edge-${i}`}
+                        x1={p1.x}
+                        y1={p1.y}
+                        x2={p2.x}
+                        y2={p2.y}
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        strokeLinecap="round"
+                        className="text-border transition-all"
+                      />
+                    );
                   }
-                } else {
-                  const isActive = active === i;
-                  const isDim = active !== null && !isActive;
-                  cls = `cursor-pointer transition-all ${
-                    isActive
-                      ? "edge-active text-foreground"
-                      : isDim
-                        ? "text-border"
-                        : "text-muted-foreground/50 hover:text-foreground"
-                  }`;
-                  sw = isActive ? 2.5 : 1;
+                  const isOverlap = caps.length >= 2;
+                  const showSolid = caps.includes(traceCapacities[0]);
+                  const showDashed =
+                    traceCapacities.length > 1 &&
+                    caps.includes(traceCapacities[1]);
+                  return (
+                    <g key={`edge-${i}`} className="transition-all">
+                      {showSolid ? (
+                        <line
+                          x1={p1.x}
+                          y1={p1.y}
+                          x2={p2.x}
+                          y2={p2.y}
+                          stroke="currentColor"
+                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          strokeLinecap="round"
+                          className={`text-foreground ${isCurrent && !showDashed ? "edge-active" : ""}`}
+                        />
+                      ) : null}
+                      {showDashed ? (
+                        <line
+                          x1={p1.x}
+                          y1={p1.y}
+                          x2={p2.x}
+                          y2={p2.y}
+                          stroke="currentColor"
+                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          strokeLinecap="round"
+                          strokeDasharray="5 4"
+                          className={`text-foreground ${isCurrent && !showSolid ? "edge-active" : ""}`}
+                        />
+                      ) : null}
+                      {isOverlap ? (
+                        <line
+                          x1={p1.x}
+                          y1={p1.y}
+                          x2={p2.x}
+                          y2={p2.y}
+                          stroke="currentColor"
+                          strokeWidth={7}
+                          strokeLinecap="round"
+                          className={`edge-halo pointer-events-none text-foreground/40 ${isCurrent ? "edge-active" : ""}`}
+                        />
+                      ) : null}
+                    </g>
+                  );
                 }
+                const isActive = active === i;
+                const isDim = active !== null && !isActive;
+                const cls = `cursor-pointer transition-all ${
+                  isActive
+                    ? "edge-active text-foreground"
+                    : isDim
+                      ? "text-border"
+                      : "text-muted-foreground/50 hover:text-foreground"
+                }`;
+                const sw = isActive ? 2.5 : 1;
                 return (
                   <line
                     key={`edge-${i}`}
@@ -537,14 +586,11 @@ function ConceptGraph() {
                     strokeWidth={sw}
                     strokeLinecap="round"
                     className={cls}
-                    onClick={
-                      tracingActive
-                        ? undefined
-                        : () => setActive(active === i ? null : i)
-                    }
+                    onClick={() => setActive(active === i ? null : i)}
                   />
                 );
               })}
+
 
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
