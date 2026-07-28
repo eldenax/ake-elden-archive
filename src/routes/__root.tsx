@@ -175,21 +175,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/research", label: "Research Programme" },
+  { to: "/research", label: "Programme" },
+  { to: "/themes", label: "Themes" },
   { to: "/concepts", label: "Concepts" },
-  { to: "/working-papers", label: "Working Papers" },
   { to: "/publications", label: "Publications" },
+  { to: "/projects", label: "Projects" },
+  { to: "/academic-profile", label: "Profile" },
+  { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" className="font-display text-base tracking-tight text-foreground">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
+        <Link to="/" className="shrink-0 font-display text-base tracking-tight text-foreground">
           Dr. Åke Elden
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
+        <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
           {NAV.map((n) => (
             <Link
               key={n.to}

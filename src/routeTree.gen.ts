@@ -9,19 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorkingPapersRouteImport } from './routes/working-papers'
+import { Route as ThemesRouteImport } from './routes/themes'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PublicationsRouteImport } from './routes/publications'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as ThemesSlugRouteImport } from './routes/themes.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 
-const WorkingPapersRoute = WorkingPapersRouteImport.update({
-  id: '/working-papers',
-  path: '/working-papers',
+const ThemesRoute = ThemesRouteImport.update({
+  id: '/themes',
+  path: '/themes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -39,6 +43,16 @@ const PublicationsRoute = PublicationsRouteImport.update({
   path: '/publications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CvRoute = CvRouteImport.update({
   id: '/cv',
   path: '/cv',
@@ -47,6 +61,11 @@ const CvRoute = CvRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicProfileRoute = AcademicProfileRouteImport.update({
+  id: '/academic-profile',
+  path: '/academic-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -59,6 +78,11 @@ const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
   path: '/concepts/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThemesSlugRoute = ThemesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ThemesRoute,
+} as any)
 const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
   id: '/concepts/$slug',
   path: '/concepts/$slug',
@@ -67,93 +91,120 @@ const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academic-profile': typeof AcademicProfileRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/working-papers': typeof WorkingPapersRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
+  '/themes/$slug': typeof ThemesSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/academic-profile': typeof AcademicProfileRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/working-papers': typeof WorkingPapersRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
+  '/themes/$slug': typeof ThemesSlugRoute
   '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academic-profile': typeof AcademicProfileRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
+  '/news': typeof NewsRoute
+  '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/working-papers': typeof WorkingPapersRoute
+  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
+  '/themes/$slug': typeof ThemesSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/academic-profile'
     | '/contact'
     | '/cv'
+    | '/news'
+    | '/projects'
     | '/publications'
     | '/research'
     | '/sitemap.xml'
-    | '/working-papers'
+    | '/themes'
     | '/concepts/$slug'
+    | '/themes/$slug'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/academic-profile'
     | '/contact'
     | '/cv'
+    | '/news'
+    | '/projects'
     | '/publications'
     | '/research'
     | '/sitemap.xml'
-    | '/working-papers'
+    | '/themes'
     | '/concepts/$slug'
+    | '/themes/$slug'
     | '/concepts'
   id:
     | '__root__'
     | '/'
+    | '/academic-profile'
     | '/contact'
     | '/cv'
+    | '/news'
+    | '/projects'
     | '/publications'
     | '/research'
     | '/sitemap.xml'
-    | '/working-papers'
+    | '/themes'
     | '/concepts/$slug'
+    | '/themes/$slug'
     | '/concepts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademicProfileRoute: typeof AcademicProfileRoute
   ContactRoute: typeof ContactRoute
   CvRoute: typeof CvRoute
+  NewsRoute: typeof NewsRoute
+  ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  WorkingPapersRoute: typeof WorkingPapersRoute
+  ThemesRoute: typeof ThemesRouteWithChildren
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/working-papers': {
-      id: '/working-papers'
-      path: '/working-papers'
-      fullPath: '/working-papers'
-      preLoaderRoute: typeof WorkingPapersRouteImport
+    '/themes': {
+      id: '/themes'
+      path: '/themes'
+      fullPath: '/themes'
+      preLoaderRoute: typeof ThemesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -177,6 +228,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv': {
       id: '/cv'
       path: '/cv'
@@ -189,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academic-profile': {
+      id: '/academic-profile'
+      path: '/academic-profile'
+      fullPath: '/academic-profile'
+      preLoaderRoute: typeof AcademicProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -205,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceptsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/themes/$slug': {
+      id: '/themes/$slug'
+      path: '/$slug'
+      fullPath: '/themes/$slug'
+      preLoaderRoute: typeof ThemesSlugRouteImport
+      parentRoute: typeof ThemesRoute
+    }
     '/concepts/$slug': {
       id: '/concepts/$slug'
       path: '/concepts/$slug'
@@ -215,14 +294,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ThemesRouteChildren {
+  ThemesSlugRoute: typeof ThemesSlugRoute
+}
+
+const ThemesRouteChildren: ThemesRouteChildren = {
+  ThemesSlugRoute: ThemesSlugRoute,
+}
+
+const ThemesRouteWithChildren =
+  ThemesRoute._addFileChildren(ThemesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademicProfileRoute: AcademicProfileRoute,
   ContactRoute: ContactRoute,
   CvRoute: CvRoute,
+  NewsRoute: NewsRoute,
+  ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  WorkingPapersRoute: WorkingPapersRoute,
+  ThemesRoute: ThemesRouteWithChildren,
   ConceptsSlugRoute: ConceptsSlugRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }

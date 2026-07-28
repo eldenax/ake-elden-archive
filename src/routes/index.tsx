@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "../assets/ake-elden-hero.jpg";
+import { THEMES } from "../data/themes";
 
-const TITLE = "Dr. Åke Elden — Philosophy & Theology of Artificial Intelligence";
+const TITLE = "Dr. Åke Elden — Philosopher of Judgment, Responsibility and Formation";
 const DESCRIPTION =
-  "A researcher investigating the philosophical and theological conditions of human judgment, responsibility, and formation in the age of AI.";
+  "A research programme on the philosophical conditions of judgment, responsibility, explanation, institutional reason, normativity, and human formation — with AI as one diagnostic context among several.";
 const OG_IMAGE =
   "https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app/ake-elden-hero.jpg";
 
@@ -42,44 +43,9 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const THEMES = [
-  {
-    title: "Philosophy of Artificial Intelligence",
-    items: [
-      "Judgment and answerability",
-      "Institutional agency",
-      "Human–AI responsibility",
-      "Normative legitimacy",
-    ],
-  },
-  {
-    title: "Epistemology & Philosophy of Science",
-    items: [
-      "Epistemic infrastructure",
-      "Inferential license",
-      "Scientific methodology for AI",
-      "Explanation and justification",
-    ],
-  },
-  {
-    title: "Theological Anthropology",
-    items: ["Human formation", "Creaturehood", "Discernment", "Kenosis"],
-  },
-  {
-    title: "Digital Society",
-    items: [
-      "Algorithmic governance",
-      "Predictive systems",
-      "Moral agency",
-      "Institutional trust",
-    ],
-  },
-];
-
 function Index() {
   return (
     <>
-      {/* Hero — split screen */}
       <section className="flex min-h-[calc(100vh-4rem)] flex-col lg:flex-row">
         <div className="flex flex-col justify-center px-6 py-20 lg:w-1/2 lg:px-16 xl:px-24">
           <div className="max-w-xl">
@@ -90,27 +56,36 @@ function Index() {
               Dr. Åke Elden
             </h1>
             <p className="mt-5 font-display text-lg italic leading-relaxed text-foreground/80 md:text-xl">
-              Investigating the philosophical and theological conditions of
-              human judgment, responsibility, and formation in the age of AI.
+              I study the background conditions that make judgment,
+              responsibility, explanation, and moral agency possible — and how
+              technological and institutional systems reorganize or remove
+              those conditions.
             </p>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Rather than asking what artificial intelligence can do, my
-              research examines the background conditions that make distinctly
-              human capacities possible — and what happens when technological
-              systems relocate, conceal, or reshape those conditions.
+              My research is organized around a coherent set of philosophical
+              problems: judgment, responsibility, explanation, institutional
+              reason, normativity, and human formation. Different disciplines
+              and technologies provide contexts in which these problems become
+              visible and can be studied.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Artificial intelligence is one important diagnostic context
+              within that programme. It reveals transformations in judgment,
+              responsibility, explanation, institutional authority, and
+              formation that are also relevant beyond AI.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/research"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                Explore research
+                Research Programme
               </Link>
               <Link
-                to="/publications"
+                to="/themes"
                 className="inline-flex items-center justify-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
               >
-                Publications
+                Research Themes
               </Link>
             </div>
           </div>
@@ -129,42 +104,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Guiding question */}
-      <section className="border-t border-border bg-muted/30">
-        <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Guiding question
-          </p>
-          <blockquote className="mt-6 font-display text-2xl leading-snug text-foreground md:text-3xl">
-            “Which human capacities are presupposed, transformed, or concealed
-            when artificial intelligence becomes part of institutional and
-            personal decision-making?”
-          </blockquote>
-        </div>
-      </section>
-
-      {/* Research Areas */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Research areas
-          </p>
-          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 font-display text-base text-foreground md:text-lg">
-            <li>Philosophy of Artificial Intelligence</li>
-            <li className="text-muted-foreground">·</li>
-            <li>Philosophy of Technology</li>
-            <li className="text-muted-foreground">·</li>
-            <li>Theological Anthropology</li>
-            <li className="text-muted-foreground">·</li>
-            <li>Ethics</li>
-            <li className="text-muted-foreground">·</li>
-            <li>Epistemology</li>
-          </ul>
-        </div>
-      </section>
-
-
-      {/* Themes */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="mb-12 max-w-2xl">
@@ -172,27 +111,52 @@ function Index() {
               Research themes
             </p>
             <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
-              Four intersecting lines of inquiry
+              Six problem areas, one programme
             </h2>
           </div>
-          <div className="grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
             {THEMES.map((t) => (
-              <div key={t.title} className="border-t border-border pt-6">
-                <h3 className="font-display text-lg text-foreground">{t.title}</h3>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  {t.items.map((i) => (
-                    <li key={i}>— {i}</li>
-                  ))}
-                </ul>
-              </div>
+              <Link
+                key={t.slug}
+                to="/themes/$slug"
+                params={{ slug: t.slug }}
+                className="group flex h-full flex-col justify-between gap-4 bg-background p-8 transition-colors hover:bg-muted/40"
+              >
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    Theme {t.number.toString().padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-3 font-display text-lg leading-snug text-foreground group-hover:underline decoration-dotted underline-offset-4">
+                    {t.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {t.tagline}
+                  </p>
+                </div>
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground">
+                  Enter theme →
+                </span>
+              </Link>
             ))}
           </div>
-          <div className="mt-12">
+          <div className="mt-12 flex flex-wrap gap-6 text-sm">
             <Link
               to="/research"
-              className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+              className="font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
             >
-              Read the full research programme →
+              Read the research programme →
+            </Link>
+            <Link
+              to="/publications"
+              className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              See publications →
+            </Link>
+            <Link
+              to="/concepts"
+              className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              Browse concepts →
             </Link>
           </div>
         </div>

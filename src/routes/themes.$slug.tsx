@@ -1,0 +1,259 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { THEMES, getTheme } from "../data/themes";
+import { CONCEPTS, getConcept } from "../data/concepts";
+import { PUBLICATIONS } from "../data/publications";
+
+const BASE = "https://ake-elden-archive.lovable.app";
+
+export const Route = createFileRoute("/themes/$slug")({
+  loader: ({ params }) => {
+    const theme = getTheme(params.slug);
+    if (!theme) throw notFound();
+    return { theme };
+  },
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [
+          { title: "Theme not found — Dr. Åke Elden" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
+    const t = loaderData.theme;
+    const title = `${t.name} — Research Themes — Dr. Åke Elden`;
+    const url = `${BASE}/themes/${t.slug}`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: t.tagline },
+        { property: "og:title", content: title },
+        { property: "og:description", content: t.tagline },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            url,
+            name: title,
+            description: t.tagline,
+            about: { "@type": "Person", name: "Åke Elden" },
+          }),
+        },
+      ],
+    };
+  },
+  component: ThemePage,
+});
+
+function ThemePage() {
+  const { theme } = Route.useLoaderData() as { theme: (typeof THEMES)[number] };
+  const pubs = PUBLICATIONS.filter((p) => p.themeSlug === theme.slug);
+  const concepts = theme.conceptSlugs
+    .map((s) => getConcept(s))
+    .filter((c): c is NonNullable<ReturnType<typeof getConcept>> => Boolean(c));
+
+  const idx = THEMES.findIndex((t) => t.slug === theme.slug);
+  const prev = idx > 0 ? THEMES[idx - 1] : null;
+  const next = idx < THEMES.length - 1 ? THEMES[idx + 1] : null;
+
+  return (
+    <div>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <Link
+            to="/themes"
+            className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
+          >
+            ← Research themes
+          </Link>
+          <p className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Theme {theme.number.toString().padStart(2, "0")}
+          </p>
+          <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
+            {theme.name}
+          </h1>
+          <p className="mt-6 font-display text-lg italic leading-relaxed text-foreground/85 md:text-xl">
+            {theme.tagline}
+          </p>
+          <div className="mt-8 space-y-5">
+            {theme.description.map((p) => (
+              <p key={p} className="text-base leading-relaxed text-foreground/85">
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Works in this theme
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            Papers, projects, and manuscripts
+          </h2>
+          <ul className="mt-10 space-y-6">
+            {theme.works.map((w) => (
+              <li key={w.title} className="border-t border-border pt-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-3">
+                  <h3 className="font-display text-lg leading-snug text-foreground md:text-xl">
+                    {w.title}
+                  </h3>
+                  {w.status && (
+                    <span className="inline-flex items-center rounded-sm border border-border bg-background px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                      {w.status}
+                    </span>
+                  )}
+                  {w.note && (
+                    <span className="text-xs italic text-muted-foreground">
+                      {w.note}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {(concepts.length > 0 || (theme.conceptNotes?.length ?? 0) > 0) && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Concepts
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              Concepts developed here
+            </h2>
+            {concepts.length > 0 && (
+              <ul className="mt-8 space-y-3">
+                {concepts.map((c) => (
+                  <li key={c.slug} className="border-t border-border pt-3">
+                    <Link
+                      to="/concepts/$slug"
+                      params={{ slug: c.slug }}
+                      className="font-display text-base text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                    >
+                      {c.name}
+                    </Link>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {c.tagline}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {theme.conceptNotes && theme.conceptNotes.length > 0 && (
+              <>
+                <p className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  In development
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-display text-base text-foreground/85">
+                  {theme.conceptNotes.map((n) => (
+                    <li key={n}>· {n}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </section>
+      )}
+
+      {pubs.length > 0 && (
+        <section className="border-b border-border bg-muted/30">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Publications
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              Publications under this theme
+            </h2>
+            <ul className="mt-8 space-y-6">
+              {pubs.map((p) => (
+                <li key={p.title} className="border-t border-border pt-5">
+                  <h3 className="font-display text-lg leading-snug text-foreground">
+                    {p.title}
+                  </h3>
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    {p.status}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                    {p.contribution}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10">
+              <Link
+                to="/publications"
+                className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+              >
+                See all publications →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {theme.projects && theme.projects.length > 0 && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Diagnostic contexts
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              Applied projects related to this theme
+            </h2>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-display text-base text-foreground/85">
+              {theme.projects.map((p) => (
+                <li key={p}>· {p}</li>
+              ))}
+            </ul>
+            <div className="mt-6">
+              <Link
+                to="/projects"
+                className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+              >
+                See all projects →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section>
+        <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
+          <div className="flex items-center justify-between gap-6 border-t border-border pt-6 text-sm">
+            {prev ? (
+              <Link
+                to="/themes/$slug"
+                params={{ slug: prev.slug }}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                ← {prev.short}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {next && (
+              <Link
+                to="/themes/$slug"
+                params={{ slug: next.slug }}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {next.short} →
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
