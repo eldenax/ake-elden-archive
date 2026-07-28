@@ -686,7 +686,9 @@ function ConceptGraph() {
                 { kind: "overlap" as PathKind, label: "Overlap", hint: "halo behind both" },
               ]).map(({ kind, label, hint }) => {
                 const style = pathStyles[kind];
-                const swatchStroke = style.color || "currentColor";
+                const effective = strokeFor(kind);
+                const swatchStroke = effective.stroke;
+                const swatchOpacity = effective.strokeOpacity;
                 return (
                   <div key={kind} className="border border-border bg-background p-3">
                     <div className="flex items-center justify-between">
