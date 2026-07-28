@@ -141,8 +141,46 @@ function ConceptGraph() {
 
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
-          <div className="mb-4 flex justify-end">
-            <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+          <div className="mb-6 grid gap-6 border border-border bg-secondary/30 p-5 md:grid-cols-[1fr_auto] md:items-start">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                How to read this diagram
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/80">
+                <li className="flex items-start gap-3">
+                  <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="mt-0.5 shrink-0">
+                    <circle cx="11" cy="11" r="6" className="fill-background stroke-foreground" strokeWidth={1.5} />
+                  </svg>
+                  <span>
+                    <strong className="font-medium text-foreground">Nodes</strong> are the load-bearing concepts of the programme. Hover a node to see its tagline; click through for the full concept page.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="mt-0.5 shrink-0">
+                    <line x1="2" y1="11" x2="20" y2="11" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" className="text-muted-foreground" />
+                  </svg>
+                  <span>
+                    <strong className="font-medium text-foreground">Edges</strong> mark supporting relationships between two concepts. Hover an edge for its one-line note; click it to reveal the works that develop that connection.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="mt-0.5 shrink-0">
+                    <circle cx="11" cy="11" r="6" className="fill-foreground" />
+                  </svg>
+                  <span>
+                    A <strong className="font-medium text-foreground">selected edge</strong> highlights its two endpoints and dims the rest — a way to trace a single relationship in isolation.
+                  </span>
+                </li>
+              </ul>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Tracing a capacity? Open{" "}
+                <Link to="/publications" search={{ capacity: "presupposed" }} className="text-foreground underline decoration-dotted underline-offset-4 hover:no-underline">presupposed</Link>,{" "}
+                <Link to="/publications" search={{ capacity: "transformed" }} className="text-foreground underline decoration-dotted underline-offset-4 hover:no-underline">transformed</Link>, or{" "}
+                <Link to="/publications" search={{ capacity: "concealed" }} className="text-foreground underline decoration-dotted underline-offset-4 hover:no-underline">concealed</Link>{" "}
+                in the archive, then return here and follow the edges cited by those works.
+              </p>
+            </div>
+            <label className="inline-flex cursor-pointer items-center gap-2 self-start text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground md:justify-self-end">
               <input
                 type="checkbox"
                 checked={reduceMotion}
@@ -153,6 +191,7 @@ function ConceptGraph() {
               Reduce motion
             </label>
           </div>
+
           <div className="overflow-x-auto">
             <svg
               viewBox="0 0 800 680"
@@ -209,6 +248,8 @@ function ConceptGraph() {
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
+                const nameA = positions.get(e.a)!.name;
+                const nameB = positions.get(e.b)!.name;
                 return (
                   <line
                     key={`hit-${i}`}
@@ -220,9 +261,12 @@ function ConceptGraph() {
                     strokeWidth={14}
                     className="cursor-pointer"
                     onClick={() => setActive(active === i ? null : i)}
-                  />
+                  >
+                    <title>{`${nameA} × ${nameB} — ${e.note} (click to see supporting works)`}</title>
+                  </line>
                 );
               })}
+
 
               {layout.map((p) => {
                 const isConnected =
@@ -241,8 +285,13 @@ function ConceptGraph() {
                   }
                 }
                 if (current) lines.push(current);
+                const concept = CONCEPTS.find((c) => c.slug === p.slug);
+                const tip = concept
+                  ? `${concept.name} — ${concept.tagline}`
+                  : p.name;
                 return (
                   <g key={p.slug} className={isDim ? "opacity-40" : ""}>
+                    <title>{tip}</title>
                     <circle
                       cx={p.x}
                       cy={p.y}
@@ -267,8 +316,16 @@ function ConceptGraph() {
                         </tspan>
                       ))}
                     </text>
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={16}
+                      fill="transparent"
+                      className="cursor-help"
+                    />
                   </g>
                 );
+
               })}
 
               {/* Floating label at midpoint of the active edge */}
