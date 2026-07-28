@@ -16,6 +16,7 @@ import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as CurrentResearchRouteImport } from './routes/current-research'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
@@ -59,6 +60,11 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CurrentResearchRoute = CurrentResearchRouteImport.update({
+  id: '/current-research',
+  path: '/current-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/academic-profile': typeof AcademicProfileRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
+  '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/academic-profile': typeof AcademicProfileRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
+  '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/academic-profile': typeof AcademicProfileRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
+  '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/academic-profile'
     | '/concept-graph'
     | '/contact'
+    | '/current-research'
     | '/cv'
     | '/news'
     | '/projects'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/academic-profile'
     | '/concept-graph'
     | '/contact'
+    | '/current-research'
     | '/cv'
     | '/news'
     | '/projects'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/academic-profile'
     | '/concept-graph'
     | '/contact'
+    | '/current-research'
     | '/cv'
     | '/news'
     | '/projects'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   AcademicProfileRoute: typeof AcademicProfileRoute
   ConceptGraphRoute: typeof ConceptGraphRoute
   ContactRoute: typeof ContactRoute
+  CurrentResearchRoute: typeof CurrentResearchRoute
   CvRoute: typeof CvRoute
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -260,6 +273,13 @@ declare module '@tanstack/react-router' {
       path: '/cv'
       fullPath: '/cv'
       preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/current-research': {
+      id: '/current-research'
+      path: '/current-research'
+      fullPath: '/current-research'
+      preLoaderRoute: typeof CurrentResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -330,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   AcademicProfileRoute: AcademicProfileRoute,
   ConceptGraphRoute: ConceptGraphRoute,
   ContactRoute: ContactRoute,
+  CurrentResearchRoute: CurrentResearchRoute,
   CvRoute: CvRoute,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
@@ -343,3 +364,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
