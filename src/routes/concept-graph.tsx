@@ -631,8 +631,34 @@ function ConceptGraph() {
                   </span>
                 ) : null}
               </label>
+              <label
+                className="mt-1 inline-flex cursor-pointer items-start gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
+                title="Use a Wong palette tuned for deuteranopia and protanopia."
+              >
+                <input
+                  type="checkbox"
+                  checked={cbPalette !== "off"}
+                  onChange={() => updateCbPalette(cbPalette === "off" ? "wong" : "off")}
+                  className="mt-0.5 h-3.5 w-3.5 accent-foreground"
+                  aria-label="Use color-blind friendly palette for path highlights"
+                />
+                <span className="flex flex-col">
+                  <span>
+                    Color-blind palette
+                    {cbPalette !== "off" ? (
+                      <span className="ml-1 rounded-sm border border-border px-1 py-px text-[0.6rem] normal-case tracking-normal text-foreground">
+                        on
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="mt-0.5 text-[0.65rem] normal-case tracking-normal text-muted-foreground">
+                    Wong palette · deuteranopia-safe
+                  </span>
+                </span>
+              </label>
             </div>
           </div>
+
 
           <details className="mb-6 border border-border bg-secondary/20 p-5">
             <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground">
