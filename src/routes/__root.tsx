@@ -179,6 +179,7 @@ const NAV = [
   { to: "/themes", label: "Themes" },
   { to: "/concepts", label: "Concepts" },
   { to: "/concept-graph", label: "Concept Graph" },
+  { to: "/current-research", label: "Current Research" },
   { to: "/publications", label: "Publications" },
   { to: "/projects", label: "Projects" },
   { to: "/academic-profile", label: "Profile" },

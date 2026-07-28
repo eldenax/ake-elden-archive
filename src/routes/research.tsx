@@ -50,11 +50,9 @@ function ResearchProgrammePage() {
               Programme statement
             </p>
             <blockquote className="mt-3 font-display text-xl italic leading-snug text-foreground md:text-2xl">
-              My research is organized around a coherent set of philosophical
-              problems concerning judgment, responsibility, explanation,
-              institutional reason, normativity, and human formation.
-              Different disciplines and technologies provide contexts in which
-              these problems become visible and can be studied.
+              I study the conditions under which judgment, responsibility, and
+              explanation become possible — and how technological and
+              institutional systems reorganize those conditions.
             </blockquote>
           </div>
           <p className="mt-8 text-base leading-relaxed text-foreground/85">
@@ -65,10 +63,11 @@ function ResearchProgrammePage() {
             technological and institutional systems reorganize or remove them.
           </p>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            Artificial intelligence is one important diagnostic context. It
-            reveals transformations in judgment, responsibility, explanation,
-            institutional authority, and formation that are also relevant
-            beyond AI.
+            Judgment, responsibility, and normativity are the primary objects.
+            Artificial intelligence enters as one revealing context among
+            several: the setting in which the reorganisation of those
+            conditions becomes measurable, and in which the philosophical
+            stakes stop being hypothetical.
           </p>
         </div>
       </section>
