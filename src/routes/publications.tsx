@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PUBLICATIONS } from "../data/publications";
 import { THEMES, getTheme } from "../data/themes";
 import { getConcept } from "../data/concepts";
+import { edgesForPublication, pairKey } from "../data/concept-edges";
 
 const TITLE = "Publications — Dr. Åke Elden";
 const DESCRIPTION =
@@ -39,6 +40,7 @@ export const Route = createFileRoute("/publications")({
 function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
   const theme = getTheme(p.themeSlug);
   const concept = p.conceptSlug ? getConcept(p.conceptSlug) : undefined;
+  const edges = edgesForPublication(p.title);
   return (
     <article className="border-t border-border pt-6">
       {/* Title */}
@@ -119,6 +121,39 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
               >
                 {theme.short}
               </Link>
+            </dd>
+          </>
+        )}
+
+        {/* Supporting connections in the concept graph */}
+        {edges.length > 0 && (
+          <>
+            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Supporting connections
+            </dt>
+            <dd>
+              <ul className="space-y-1.5">
+                {edges.map((e) => {
+                  const a = getConcept(e.a);
+                  const b = getConcept(e.b);
+                  if (!a || !b) return null;
+                  const key = pairKey(e.a, e.b);
+                  return (
+                    <li key={key} className="leading-snug">
+                      <Link
+                        to="/concept-graph"
+                        search={{ pair: key }}
+                        hash={`pair-${key}`}
+                        className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
+                      >
+                        {a.name}
+                        <span className="mx-1.5 text-muted-foreground">×</span>
+                        {b.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             </dd>
           </>
         )}
