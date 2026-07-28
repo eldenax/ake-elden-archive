@@ -1,8 +1,27 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
-import { PUBLICATIONS } from "../data/publications";
+import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
+
+const CAPACITIES: { slug: Capacity; label: string; blurb: string }[] = [
+  {
+    slug: "presupposed",
+    label: "Presupposed",
+    blurb: "Capacities the programme assumes must already be in place.",
+  },
+  {
+    slug: "transformed",
+    label: "Transformed",
+    blurb: "Capacities reshaped by the infrastructures under study.",
+  },
+  {
+    slug: "concealed",
+    label: "Concealed",
+    blurb: "Capacities that automated systems tend to hide from view.",
+  },
+];
+
 
 const TITLE = "Concept Relationship Graph — Dr. Åke Elden";
 const DESCRIPTION =
