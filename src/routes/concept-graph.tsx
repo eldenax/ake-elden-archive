@@ -194,20 +194,58 @@ function ConceptGraph() {
     };
   }, []);
 
+  // Color-blind friendly palette (Wong, deuteranopia/protanopia-safe).
+  // When active, Path 1 / Path 2 / Overlap swatches use these fixed colors
+  // regardless of the user's color preset selection.
+  type CbPaletteId = "off" | "wong";
+  const CB_PALETTES: Record<
+    Exclude<CbPaletteId, "off">,
+    { label: string; note: string; colors: Record<PathKind, string> }
+  > = {
+    wong: {
+      label: "Deuteranopia-safe (Wong)",
+      note: "Blue / Vermillion / Yellow — distinguishable under red-green color blindness.",
+      colors: {
+        path1: "#0072B2", // blue
+        path2: "#D55E00", // vermillion
+        overlap: "#F0E442", // yellow (halo)
+      },
+    },
+  };
+  const [cbPalette, setCbPalette] = useState<CbPaletteId>("off");
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:cb-palette");
+    if (stored === "wong" || stored === "off") setCbPalette(stored);
+  }, []);
+  const updateCbPalette = (next: CbPaletteId) => {
+    setCbPalette(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("concept-graph:cb-palette", next);
+    }
+  };
+
   const darkAdjustActive = autoDarkAdjust && isDark;
   const strokeFor = (kind: PathKind) => {
     const s = pathStyles[kind];
     let color = s.color;
     let opacity = s.opacity;
+    // Color-blind palette overrides any user preset color.
+    if (cbPalette !== "off") {
+      color = CB_PALETTES[cbPalette].colors[kind];
+    }
     if (darkAdjustActive) {
       // Lift dark preset colors to lighter variants for legibility on dark bg.
-      const lift: Record<string, string> = {
-        "#4f46e5": "#a5b4fc", // indigo → indigo-300
-        "#b91c1c": "#fca5a5", // crimson → red-300
-        "#0d9488": "#5eead4", // teal → teal-300
-        "#b45309": "#fcd34d", // amber → amber-300
-      };
-      if (color && lift[color]) color = lift[color];
+      // Skip when a CB palette is active — those colors are already tuned.
+      if (cbPalette === "off") {
+        const lift: Record<string, string> = {
+          "#4f46e5": "#a5b4fc", // indigo → indigo-300
+          "#b91c1c": "#fca5a5", // crimson → red-300
+          "#0d9488": "#5eead4", // teal → teal-300
+          "#b45309": "#fcd34d", // amber → amber-300
+        };
+        if (color && lift[color]) color = lift[color];
+      }
       // Boost intensity: strokes to at least 0.9, overlap halo to at least 0.6.
       const floor = kind === "overlap" ? 0.6 : 0.9;
       opacity = Math.max(opacity, floor);
@@ -593,8 +631,34 @@ function ConceptGraph() {
                   </span>
                 ) : null}
               </label>
+              <label
+                className="mt-1 inline-flex cursor-pointer items-start gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
+                title="Use a Wong palette tuned for deuteranopia and protanopia."
+              >
+                <input
+                  type="checkbox"
+                  checked={cbPalette !== "off"}
+                  onChange={() => updateCbPalette(cbPalette === "off" ? "wong" : "off")}
+                  className="mt-0.5 h-3.5 w-3.5 accent-foreground"
+                  aria-label="Use color-blind friendly palette for path highlights"
+                />
+                <span className="flex flex-col">
+                  <span>
+                    Color-blind palette
+                    {cbPalette !== "off" ? (
+                      <span className="ml-1 rounded-sm border border-border px-1 py-px text-[0.6rem] normal-case tracking-normal text-foreground">
+                        on
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="mt-0.5 text-[0.65rem] normal-case tracking-normal text-muted-foreground">
+                    Wong palette · deuteranopia-safe
+                  </span>
+                </span>
+              </label>
             </div>
           </div>
+
 
           <details className="mb-6 border border-border bg-secondary/20 p-5">
             <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground">
@@ -609,6 +673,11 @@ function ConceptGraph() {
             </summary>
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
               Adjust the color and intensity used by Path 1, Path 2, and the Overlap halo so the graph stays readable with your display preferences. Changes apply live and persist on this device.
+              {cbPalette !== "off" ? (
+                <span className="mt-1 block text-foreground">
+                  Color-blind palette is on — path colors are locked to the {CB_PALETTES[cbPalette].label} set. Turn it off to use your own presets.
+                </span>
+              ) : null}
             </p>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
               {([
@@ -617,7 +686,9 @@ function ConceptGraph() {
                 { kind: "overlap" as PathKind, label: "Overlap", hint: "halo behind both" },
               ]).map(({ kind, label, hint }) => {
                 const style = pathStyles[kind];
-                const swatchStroke = style.color || "currentColor";
+                const effective = strokeFor(kind);
+                const swatchStroke = effective.stroke;
+                const swatchOpacity = effective.strokeOpacity;
                 return (
                   <div key={kind} className="border border-border bg-background p-3">
                     <div className="flex items-center justify-between">
@@ -627,12 +698,12 @@ function ConceptGraph() {
                       </p>
                       <svg width="46" height="14" viewBox="0 0 46 14" aria-hidden="true" className="text-foreground">
                         {kind === "overlap" ? (
-                          <line x1="2" y1="7" x2="44" y2="7" stroke={swatchStroke} strokeOpacity={style.opacity} strokeWidth={8} strokeLinecap="round" />
+                          <line x1="2" y1="7" x2="44" y2="7" stroke={swatchStroke} strokeOpacity={swatchOpacity} strokeWidth={8} strokeLinecap="round" />
                         ) : (
                           <line
                             x1="2" y1="7" x2="44" y2="7"
                             stroke={swatchStroke}
-                            strokeOpacity={style.opacity}
+                            strokeOpacity={swatchOpacity}
                             strokeWidth={2.5}
                             strokeLinecap="round"
                             strokeDasharray={kind === "path2" ? "5 4" : undefined}
@@ -653,7 +724,8 @@ function ConceptGraph() {
                               title={p.label}
                               aria-label={`${label} color: ${p.label}`}
                               aria-pressed={selected}
-                              className={`h-6 w-6 border ${selected ? "border-foreground ring-1 ring-foreground" : "border-border hover:border-foreground/60"}`}
+                              disabled={cbPalette !== "off"}
+                              className={`h-6 w-6 border ${selected ? "border-foreground ring-1 ring-foreground" : "border-border hover:border-foreground/60"} disabled:cursor-not-allowed disabled:opacity-40`}
                               style={{
                                 background: p.value || "transparent",
                                 color: p.value ? undefined : "currentColor",
