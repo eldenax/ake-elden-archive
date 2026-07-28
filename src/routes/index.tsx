@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "../assets/ake-elden-hero.jpg";
 import { THEMES } from "../data/themes";
+import { PUBLICATIONS } from "../data/publications";
 
 const TITLE = "Dr. Åke Elden — Philosopher of Judgment, Responsibility and Formation";
 const DESCRIPTION =
