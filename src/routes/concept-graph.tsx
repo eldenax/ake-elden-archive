@@ -123,6 +123,25 @@ function ConceptGraph() {
               role="img"
               aria-label="Concept relationship diagram"
             >
+              {/* Halo behind the active edge */}
+              {active !== null && (() => {
+                const e = EDGES[active];
+                const p1 = positions.get(e.a)!;
+                const p2 = positions.get(e.b)!;
+                return (
+                  <line
+                    key="active-halo"
+                    x1={p1.x}
+                    y1={p1.y}
+                    x2={p2.x}
+                    y2={p2.y}
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    className="edge-halo pointer-events-none text-foreground"
+                  />
+                );
+              })()}
+
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
@@ -137,9 +156,10 @@ function ConceptGraph() {
                     y2={p2.y}
                     stroke="currentColor"
                     strokeWidth={isActive ? 2.5 : 1}
+                    strokeLinecap="round"
                     className={`cursor-pointer transition-all ${
                       isActive
-                        ? "text-foreground"
+                        ? "edge-active text-foreground"
                         : isDim
                           ? "text-border"
                           : "text-muted-foreground/50 hover:text-foreground"
@@ -213,6 +233,50 @@ function ConceptGraph() {
                   </g>
                 );
               })}
+
+              {/* Floating label at midpoint of the active edge */}
+              {activeEdge && (() => {
+                const p1 = positions.get(activeEdge.a)!;
+                const p2 = positions.get(activeEdge.b)!;
+                const mx = (p1.x + p2.x) / 2;
+                const my = (p1.y + p2.y) / 2;
+                const label = "Supporting relationship";
+                const padX = 12;
+                const padY = 6;
+                const charW = 6.2;
+                const w = Math.round(label.length * charW) + padX * 2;
+                const h = 26;
+                return (
+                  <g
+                    key={`label-${active}`}
+                    className="edge-label pointer-events-none"
+                  >
+                    <rect
+                      x={mx - w / 2}
+                      y={my - h / 2}
+                      width={w}
+                      height={h}
+                      rx={4}
+                      className="fill-background stroke-foreground"
+                      strokeWidth={1}
+                    />
+                    <text
+                      x={mx}
+                      y={my + 4}
+                      textAnchor="middle"
+                      className="fill-foreground"
+                      style={{
+                        fontSize: 11,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {label}
+                    </text>
+                  </g>
+                );
+              })()}
             </svg>
           </div>
 
