@@ -698,12 +698,12 @@ function ConceptGraph() {
                       </p>
                       <svg width="46" height="14" viewBox="0 0 46 14" aria-hidden="true" className="text-foreground">
                         {kind === "overlap" ? (
-                          <line x1="2" y1="7" x2="44" y2="7" stroke={swatchStroke} strokeOpacity={style.opacity} strokeWidth={8} strokeLinecap="round" />
+                          <line x1="2" y1="7" x2="44" y2="7" stroke={swatchStroke} strokeOpacity={swatchOpacity} strokeWidth={8} strokeLinecap="round" />
                         ) : (
                           <line
                             x1="2" y1="7" x2="44" y2="7"
                             stroke={swatchStroke}
-                            strokeOpacity={style.opacity}
+                            strokeOpacity={swatchOpacity}
                             strokeWidth={2.5}
                             strokeLinecap="round"
                             strokeDasharray={kind === "path2" ? "5 4" : undefined}
