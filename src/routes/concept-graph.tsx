@@ -194,20 +194,58 @@ function ConceptGraph() {
     };
   }, []);
 
+  // Color-blind friendly palette (Wong, deuteranopia/protanopia-safe).
+  // When active, Path 1 / Path 2 / Overlap swatches use these fixed colors
+  // regardless of the user's color preset selection.
+  type CbPaletteId = "off" | "wong";
+  const CB_PALETTES: Record<
+    Exclude<CbPaletteId, "off">,
+    { label: string; note: string; colors: Record<PathKind, string> }
+  > = {
+    wong: {
+      label: "Deuteranopia-safe (Wong)",
+      note: "Blue / Vermillion / Yellow — distinguishable under red-green color blindness.",
+      colors: {
+        path1: "#0072B2", // blue
+        path2: "#D55E00", // vermillion
+        overlap: "#F0E442", // yellow (halo)
+      },
+    },
+  };
+  const [cbPalette, setCbPalette] = useState<CbPaletteId>("off");
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:cb-palette");
+    if (stored === "wong" || stored === "off") setCbPalette(stored);
+  }, []);
+  const updateCbPalette = (next: CbPaletteId) => {
+    setCbPalette(next);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("concept-graph:cb-palette", next);
+    }
+  };
+
   const darkAdjustActive = autoDarkAdjust && isDark;
   const strokeFor = (kind: PathKind) => {
     const s = pathStyles[kind];
     let color = s.color;
     let opacity = s.opacity;
+    // Color-blind palette overrides any user preset color.
+    if (cbPalette !== "off") {
+      color = CB_PALETTES[cbPalette].colors[kind];
+    }
     if (darkAdjustActive) {
       // Lift dark preset colors to lighter variants for legibility on dark bg.
-      const lift: Record<string, string> = {
-        "#4f46e5": "#a5b4fc", // indigo → indigo-300
-        "#b91c1c": "#fca5a5", // crimson → red-300
-        "#0d9488": "#5eead4", // teal → teal-300
-        "#b45309": "#fcd34d", // amber → amber-300
-      };
-      if (color && lift[color]) color = lift[color];
+      // Skip when a CB palette is active — those colors are already tuned.
+      if (cbPalette === "off") {
+        const lift: Record<string, string> = {
+          "#4f46e5": "#a5b4fc", // indigo → indigo-300
+          "#b91c1c": "#fca5a5", // crimson → red-300
+          "#0d9488": "#5eead4", // teal → teal-300
+          "#b45309": "#fcd34d", // amber → amber-300
+        };
+        if (color && lift[color]) color = lift[color];
+      }
       // Boost intensity: strokes to at least 0.9, overlap halo to at least 0.6.
       const floor = kind === "overlap" ? 0.6 : 0.9;
       opacity = Math.max(opacity, floor);
