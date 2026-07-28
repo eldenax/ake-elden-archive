@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PUBLICATIONS } from "../data/publications";
+import { zodValidator, fallback } from "@tanstack/zod-adapter";
+import { z } from "zod";
+import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { THEMES, getTheme } from "../data/themes";
 import { getConcept } from "../data/concepts";
 import { edgesForPublication, pairKey } from "../data/concept-edges";
@@ -9,7 +11,27 @@ const DESCRIPTION =
   "Selected and complete publications, organised by theme rather than discipline. Each entry names the theme, the contribution, and — where relevant — the concept it develops.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/publications";
 
+const CAPACITY_LABEL: Record<Capacity, string> = {
+  presupposed: "Presupposed",
+  transformed: "Transformed",
+  concealed: "Concealed",
+};
+
+const CAPACITY_DESCRIPTION: Record<Capacity, string> = {
+  presupposed:
+    "Capacities that must already be in place for institutions and technologies to function: judgment, moral standing, responsibility, object constitution, answerability.",
+  transformed:
+    "Capacities that are reshaped when delegated to technological and institutional systems: practical wisdom, desire, creaturehood, friction, infrastructure.",
+  concealed:
+    "Capacities that are obscured, evacuated, or rendered unaddressable by automated systems: agency, exclusion, epistemic lag, invisible missions.",
+};
+
+const publicationsSearchSchema = z.object({
+  capacity: fallback(z.string(), "").default(""),
+});
+
 export const Route = createFileRoute("/publications")({
+  validateSearch: zodValidator(publicationsSearchSchema),
   head: () => ({
     meta: [
       { title: TITLE },
@@ -125,6 +147,30 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
           </>
         )}
 
+        {/* Capacities */}
+        {p.capacities && p.capacities.length > 0 && (
+          <>
+            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Capacities
+            </dt>
+            <dd>
+              <ul className="flex flex-wrap gap-2">
+                {p.capacities.map((c) => (
+                  <li key={c}>
+                    <Link
+                      to="/publications"
+                      search={{ capacity: c }}
+                      className="inline-flex items-center rounded-sm border border-border bg-background px-2 py-0.5 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground hover:bg-accent hover:text-foreground"
+                    >
+                      {CAPACITY_LABEL[c]}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </>
+        )}
+
         {/* Supporting connections in the concept graph */}
         {edges.length > 0 && (
           <>
@@ -163,7 +209,16 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
 }
 
 function PublicationsPage() {
-  const selected = PUBLICATIONS.filter((p) => p.selected);
+  const { capacity } = Route.useSearch();
+  const activeCapacity = (
+    ["presupposed", "transformed", "concealed"] as Capacity[]
+  ).includes(capacity as Capacity)
+    ? (capacity as Capacity)
+    : undefined;
+
+  const filtered = activeCapacity
+    ? PUBLICATIONS.filter((p) => p.capacities?.includes(activeCapacity))
+    : undefined;
 
   return (
     <div>
@@ -193,98 +248,134 @@ function PublicationsPage() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-muted/30">
-        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Selected publications
-          </p>
-          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-            Six papers to read first
-          </h2>
-          <div className="mt-10 space-y-10">
-            {selected.map((p) => (
-              <PublicationCard key={p.title} p={p} />
-            ))}
+      {activeCapacity ? (
+        <section className="border-b border-border bg-muted/30">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Filtered archive
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              {CAPACITY_LABEL[activeCapacity]} capacities
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/85">
+              {CAPACITY_DESCRIPTION[activeCapacity]}
+            </p>
+            <div className="mt-6">
+              <Link
+                to="/publications"
+                search={{}}
+                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                Clear filter
+              </Link>
+            </div>
+            <div className="mt-10 space-y-10">
+              {filtered && filtered.length > 0 ? (
+                filtered.map((p) => <PublicationCard key={p.title} p={p} />)
+              ) : (
+                <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
+                  No publications are currently tagged with this capacity.
+                </p>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <>
+          <section className="border-b border-border bg-muted/30">
+            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Selected publications
+              </p>
+              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                Six papers to read first
+              </h2>
+              <div className="mt-10 space-y-10">
+                {PUBLICATIONS.filter((p) => p.selected).map((p) => (
+                  <PublicationCard key={p.title} p={p} />
+                ))}
+              </div>
+            </div>
+          </section>
 
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Published
-          </p>
-          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-            Published papers
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Peer-reviewed articles that have appeared in print or been formally
-            accepted for publication.
-          </p>
-          <div className="mt-10 space-y-10">
-            {(() => {
-              const published = PUBLICATIONS.filter((p) =>
-                p.status.toLowerCase().startsWith("published"),
-              );
-              if (published.length === 0) {
-                return (
-                  <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
-                    No entries currently marked as published. Papers listed
-                    below are under review, in preparation, or circulating as
-                    working papers; those accepted for publication will move
-                    into this section.
-                  </p>
-                );
-              }
-              return published.map((p) => (
-                <PublicationCard key={p.title} p={p} />
-              ));
-            })()}
-          </div>
-        </div>
-      </section>
+          <section className="border-b border-border">
+            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Published
+              </p>
+              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                Published papers
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Peer-reviewed articles that have appeared in print or been
+                formally accepted for publication.
+              </p>
+              <div className="mt-10 space-y-10">
+                {(() => {
+                  const published = PUBLICATIONS.filter((p) =>
+                    p.status.toLowerCase().startsWith("published"),
+                  );
+                  if (published.length === 0) {
+                    return (
+                      <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
+                        No entries currently marked as published. Papers listed
+                        below are under review, in preparation, or circulating
+                        as working papers; those accepted for publication will
+                        move into this section.
+                      </p>
+                    );
+                  }
+                  return published.map((p) => (
+                    <PublicationCard key={p.title} p={p} />
+                  ));
+                })()}
+              </div>
+            </div>
+          </section>
 
-      <section>
-        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Complete list
-          </p>
-          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-            All publications by theme
-          </h2>
-          <div className="mt-12 space-y-16">
-            {THEMES.map((t) => {
-              const pubs = PUBLICATIONS.filter(
-                (p) =>
-                  p.themeSlug === t.slug &&
-                  !p.status.toLowerCase().startsWith("published"),
-              );
-              if (pubs.length === 0) return null;
-              return (
-                <div key={t.slug}>
-                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                    Theme {t.number.toString().padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-2 font-display text-xl text-foreground md:text-2xl">
-                    <Link
-                      to="/themes/$slug"
-                      params={{ slug: t.slug }}
-                      className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
-                    >
-                      {t.name}
-                    </Link>
-                  </h3>
-                  <div className="mt-8 space-y-10">
-                    {pubs.map((p) => (
-                      <PublicationCard key={p.title} p={p} />
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+          <section>
+            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Complete list
+              </p>
+              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                All publications by theme
+              </h2>
+              <div className="mt-12 space-y-16">
+                {THEMES.map((t) => {
+                  const pubs = PUBLICATIONS.filter(
+                    (p) =>
+                      p.themeSlug === t.slug &&
+                      !p.status.toLowerCase().startsWith("published"),
+                  );
+                  if (pubs.length === 0) return null;
+                  return (
+                    <div key={t.slug}>
+                      <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                        Theme {t.number.toString().padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-2 font-display text-xl text-foreground md:text-2xl">
+                        <Link
+                          to="/themes/$slug"
+                          params={{ slug: t.slug }}
+                          className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                        >
+                          {t.name}
+                        </Link>
+                      </h3>
+                      <div className="mt-8 space-y-10">
+                        {pubs.map((p) => (
+                          <PublicationCard key={p.title} p={p} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }
