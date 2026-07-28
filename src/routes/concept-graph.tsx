@@ -361,21 +361,22 @@ function ConceptGraph() {
                   Path tracing
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/80">
-                  Pick a capacity. The graph will highlight the concepts and
-                  connections it runs through, one step at a time.
+                  Pick one or two capacities. The graph highlights each path
+                  one step at a time — and marks the connections where the two
+                  overlap.
                 </p>
               </div>
               {tracingActive ? (
                 <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.15em]">
                   <span className="text-muted-foreground">
-                    Step {Math.min(traceStep, traceOrder.length)} /{" "}
-                    {traceOrder.length}
+                    Step {Math.min(traceStep, traceSteps.length)} /{" "}
+                    {traceSteps.length}
                   </span>
                   <button
                     type="button"
                     onClick={() =>
                       setTracePlaying((p) => {
-                        if (traceStep >= traceOrder.length) {
+                        if (traceStep >= traceSteps.length) {
                           setTraceStep(0);
                           return true;
                         }
@@ -384,7 +385,7 @@ function ConceptGraph() {
                     }
                     className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground"
                   >
-                    {traceStep >= traceOrder.length
+                    {traceStep >= traceSteps.length
                       ? "Replay"
                       : tracePlaying
                         ? "Pause"
@@ -395,10 +396,10 @@ function ConceptGraph() {
                     onClick={() => {
                       setTracePlaying(false);
                       setTraceStep((s) =>
-                        Math.min(s + 1, traceOrder.length),
+                        Math.min(s + 1, traceSteps.length),
                       );
                     }}
-                    disabled={traceStep >= traceOrder.length}
+                    disabled={traceStep >= traceSteps.length}
                     className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground disabled:opacity-40"
                   >
                     Step
@@ -415,32 +416,56 @@ function ConceptGraph() {
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {CAPACITIES.map((c) => {
-                const isOn = traceCapacity === c.slug;
+                const pos = traceCapacities.indexOf(c.slug);
+                const isOn = pos >= 0;
+                const style =
+                  pos === 0
+                    ? "border-foreground bg-foreground text-background"
+                    : pos === 1
+                      ? "border-foreground bg-background text-foreground [background-image:repeating-linear-gradient(135deg,transparent_0_6px,currentColor_6px_7px)]"
+                      : "border-border bg-background text-foreground hover:border-foreground";
                 return (
                   <button
                     key={c.slug}
                     type="button"
-                    onClick={() =>
-                      isOn ? clearTrace() : startTrace(c.slug)
-                    }
-                    className={`rounded-sm border px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
-                      isOn
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-border bg-background text-foreground hover:border-foreground"
-                    }`}
+                    onClick={() => toggleCapacity(c.slug)}
+                    className={`rounded-sm border px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${style}`}
                     aria-pressed={isOn}
                   >
-                    Trace {c.label}
+                    {isOn ? `Path ${pos + 1}: ${c.label}` : `Trace ${c.label}`}
                   </button>
                 );
               })}
             </div>
             {tracingActive ? (
-              <p className="mt-3 text-xs italic text-muted-foreground">
-                {CAPACITIES.find((c) => c.slug === traceCapacity)?.blurb}
-              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+                <span className="inline-flex items-center gap-2">
+                  <svg width="28" height="6" aria-hidden="true">
+                    <line x1="0" y1="3" x2="28" y2="3" stroke="currentColor" strokeWidth={2.5} className="text-foreground" />
+                  </svg>
+                  Path 1 — solid
+                </span>
+                {traceCapacities.length > 1 ? (
+                  <>
+                    <span className="inline-flex items-center gap-2">
+                      <svg width="28" height="6" aria-hidden="true">
+                        <line x1="0" y1="3" x2="28" y2="3" stroke="currentColor" strokeWidth={2.5} strokeDasharray="4 3" className="text-foreground" />
+                      </svg>
+                      Path 2 — dashed
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <svg width="28" height="10" aria-hidden="true">
+                        <line x1="0" y1="3" x2="28" y2="3" stroke="currentColor" strokeWidth={2} className="text-foreground" />
+                        <line x1="0" y1="7" x2="28" y2="7" stroke="currentColor" strokeWidth={2} strokeDasharray="4 3" className="text-foreground" />
+                      </svg>
+                      Overlap — double
+                    </span>
+                  </>
+                ) : null}
+              </div>
             ) : null}
           </div>
+
 
           <div className="overflow-x-auto">
 
