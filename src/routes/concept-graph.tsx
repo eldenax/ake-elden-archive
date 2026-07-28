@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
 import { PUBLICATIONS } from "../data/publications";
@@ -8,7 +8,13 @@ const DESCRIPTION =
   "An interactive map of the research programme's core concepts and the publications that support each connection between them.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/concept-graph";
 
+type GraphSearch = { pair?: string };
+
 export const Route = createFileRoute("/concept-graph")({
+  validateSearch: (search: Record<string, unknown>): GraphSearch => {
+    const raw = search.pair;
+    return typeof raw === "string" && raw.length > 0 ? { pair: raw } : {};
+  },
   head: () => ({
     meta: [
       { title: TITLE },
@@ -24,9 +30,6 @@ export const Route = createFileRoute("/concept-graph")({
   component: ConceptGraph,
 });
 
-// Edges: pairs of concept slugs with the working papers / articles that
-// substantiate the connection. Publication titles here match entries in
-// src/data/publications.ts so we can render live cross-links.
 type Edge = { a: string; b: string; publications: string[]; note: string };
 
 const EDGES: Edge[] = [
@@ -54,10 +57,7 @@ const EDGES: Edge[] = [
     a: "second-order-provenance",
     b: "epistemic-infrastructure",
     note: "Normative orderings are sustained by — and inherited from — epistemic infrastructure.",
-    publications: [
-      "Second-Order Provenance",
-      "AI as epistemic infrastructure",
-    ],
+    publications: ["Second-Order Provenance", "AI as epistemic infrastructure"],
   },
   {
     a: "inferential-license",
@@ -82,19 +82,13 @@ const EDGES: Edge[] = [
     a: "ethical-disclosure",
     b: "judgment-gap",
     note: "Where disclosure is foreclosed, no judgment can arise — the gap is total.",
-    publications: [
-      "The Diffuse Void",
-      "When Responsibility Fails to Arise",
-    ],
+    publications: ["The Diffuse Void", "When Responsibility Fails to Arise"],
   },
   {
     a: "partition-thesis",
     b: "second-order-provenance",
     note: "Ordering disputes are second-order disputes; standing does not settle them.",
-    publications: [
-      "Standing Is Not an Ordering",
-      "Second-Order Provenance",
-    ],
+    publications: ["Standing Is Not an Ordering", "Second-Order Provenance"],
   },
   {
     a: "comparative-entitlement-formation",
@@ -109,10 +103,7 @@ const EDGES: Edge[] = [
     a: "post-mimetic-relationality",
     b: "epistemic-infrastructure",
     note: "Post-mimetic relations are held in place by the same infrastructures that constitute knowledge.",
-    publications: [
-      "The Platforming of Desire",
-      "Media as infrastructure",
-    ],
+    publications: ["The Platforming of Desire", "Media as infrastructure"],
   },
   {
     a: "comparative-entitlement-formation",
@@ -127,24 +118,43 @@ const EDGES: Edge[] = [
     a: "systemic-friction",
     b: "judgment-gap",
     note: "Removing friction removes the temporal room in which judgment could be exercised.",
-    publications: [
-      "Systemic friction",
-      "Institutional inversion",
-    ],
+    publications: ["Systemic friction", "Institutional inversion"],
   },
   {
     a: "systemic-friction",
     b: "epistemic-infrastructure",
     note: "Friction is a load-bearing feature of epistemic infrastructure, not an inefficiency.",
-    publications: [
-      "Systemic friction",
-      "Administrative expertise as epistemic lag",
-    ],
+    publications: ["Systemic friction", "Administrative expertise as epistemic lag"],
   },
 ];
 
+// Deterministic pair key: alphabetically sorted slugs joined by "--"
+function pairKey(a: string, b: string): string {
+  return [a, b].sort().join("--");
+}
+
+function findEdgeIndexByPair(pair: string | undefined): number | null {
+  if (!pair) return null;
+  const idx = EDGES.findIndex((e) => pairKey(e.a, e.b) === pair);
+  return idx === -1 ? null : idx;
+}
+
 function ConceptGraph() {
-  const [active, setActive] = useState<number | null>(null);
+  const search = Route.useSearch();
+  const navigate = useNavigate({ from: Route.fullPath });
+  const [copied, setCopied] = useState(false);
+
+  const active = findEdgeIndexByPair(search.pair);
+
+  const setActive = (i: number | null) => {
+    setCopied(false);
+    if (i === null) {
+      navigate({ search: {}, replace: false });
+      return;
+    }
+    const e = EDGES[i];
+    navigate({ search: { pair: pairKey(e.a, e.b) }, replace: false });
+  };
 
   const layout = useMemo(() => {
     const n = CONCEPTS.length;
@@ -170,6 +180,17 @@ function ConceptGraph() {
 
   const activeEdge = active !== null ? EDGES[active] : null;
 
+  const handleCopyLink = async () => {
+    if (typeof window === "undefined") return;
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // ignore
+    }
+  };
+
   return (
     <div>
       <section className="border-b border-border">
@@ -187,7 +208,8 @@ function ConceptGraph() {
             publications.
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
-            Click a connection to see the works that develop it.
+            Click a connection to see the works that develop it. Each
+            connection has a shareable link you can copy or bookmark.
           </p>
         </div>
       </section>
@@ -201,7 +223,6 @@ function ConceptGraph() {
               role="img"
               aria-label="Concept relationship diagram"
             >
-              {/* edges */}
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
@@ -228,7 +249,6 @@ function ConceptGraph() {
                 );
               })}
 
-              {/* invisible thicker hit-areas for easier clicking */}
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
@@ -247,7 +267,6 @@ function ConceptGraph() {
                 );
               })}
 
-              {/* nodes */}
               {layout.map((p) => {
                 const isConnected =
                   activeEdge &&
@@ -299,11 +318,16 @@ function ConceptGraph() {
 
           <div className="mt-10 border-t border-border pt-8">
             {activeEdge ? (
-              <ActiveEdgePanel edge={activeEdge} />
+              <ActiveEdgePanel
+                edge={activeEdge}
+                onCopyLink={handleCopyLink}
+                copied={copied}
+                onClear={() => setActive(null)}
+              />
             ) : (
               <div className="text-center text-sm text-muted-foreground">
-                Select a line in the diagram to reveal the connection and its
-                supporting publications.
+                Select a line in the diagram — or a connection below — to reveal
+                its supporting publications and a shareable link.
               </div>
             )}
           </div>
@@ -315,17 +339,29 @@ function ConceptGraph() {
           <h2 className="font-display text-2xl text-foreground">
             All connections
           </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Each entry links directly to that pair — copy the URL to share a
+            specific connection.
+          </p>
           <ol className="mt-8 space-y-6">
             {EDGES.map((e, i) => {
               const a = positions.get(e.a)!;
               const b = positions.get(e.b)!;
+              const key = pairKey(e.a, e.b);
+              const isActive = active === i;
               return (
                 <li
                   key={i}
-                  className="border-l-2 border-border pl-5 transition-colors hover:border-foreground"
+                  id={`pair-${key}`}
+                  className={`border-l-2 pl-5 transition-colors ${
+                    isActive
+                      ? "border-foreground"
+                      : "border-border hover:border-foreground"
+                  }`}
                 >
-                  <button
-                    onClick={() => setActive(i)}
+                  <Link
+                    to="/concept-graph"
+                    search={{ pair: key }}
                     className="text-left"
                   >
                     <p className="font-display text-lg text-foreground">
@@ -333,7 +369,7 @@ function ConceptGraph() {
                       <span className="mx-2 text-muted-foreground">×</span>
                       {b.name}
                     </p>
-                  </button>
+                  </Link>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {e.note}
                   </p>
@@ -351,7 +387,17 @@ function ConceptGraph() {
   );
 }
 
-function ActiveEdgePanel({ edge }: { edge: Edge }) {
+function ActiveEdgePanel({
+  edge,
+  onCopyLink,
+  copied,
+  onClear,
+}: {
+  edge: Edge;
+  onCopyLink: () => void;
+  copied: boolean;
+  onClear: () => void;
+}) {
   const conceptA = CONCEPTS.find((c) => c.slug === edge.a)!;
   const conceptB = CONCEPTS.find((c) => c.slug === edge.b)!;
   const pubs = edge.publications.map((title) => ({
@@ -381,6 +427,24 @@ function ActiveEdgePanel({ edge }: { edge: Edge }) {
       <p className="mt-4 font-display text-base italic leading-relaxed text-foreground/80">
         {edge.note}
       </p>
+
+      <div className="mt-5 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={onCopyLink}
+          className="inline-flex items-center rounded-sm border border-border bg-background px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] text-foreground hover:border-foreground"
+        >
+          {copied ? "Link copied" : "Copy link to this connection"}
+        </button>
+        <button
+          type="button"
+          onClick={onClear}
+          className="text-xs uppercase tracking-[0.15em] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        >
+          Clear selection
+        </button>
+      </div>
+
       <div className="mt-6">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Supporting publications
