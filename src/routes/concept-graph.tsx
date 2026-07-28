@@ -805,6 +805,8 @@ function ConceptGraph() {
                   setTraceStep(i);
                 }}
                 onClear={clearTrace}
+                onRemoveCapacity={removeCapacity}
+
               />
 
             ) : activeEdge ? (
