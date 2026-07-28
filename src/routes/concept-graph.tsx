@@ -88,101 +88,147 @@ function ConceptGraph() {
     });
   };
 
-  const [traceCapacity, setTraceCapacity] = useState<Capacity | null>(null);
+  const [traceCapacities, setTraceCapacities] = useState<Capacity[]>([]);
   const [traceStep, setTraceStep] = useState(0);
   const [tracePlaying, setTracePlaying] = useState(false);
 
-  const traceOrder = useMemo(() => {
-    if (!traceCapacity) return [] as number[];
-    const titles = new Set(
-      PUBLICATIONS.filter((p) => p.capacities?.includes(traceCapacity)).map(
-        (p) => p.title,
-      ),
-    );
-    const matching = EDGES.map((e, i) => ({ e, i })).filter(({ e }) =>
-      e.publications.some((t) => titles.has(t)),
-    );
-    if (matching.length === 0) return [];
-    const adj = new Map<string, { idx: number; other: string }[]>();
-    for (const { e, i } of matching) {
-      if (!adj.has(e.a)) adj.set(e.a, []);
-      if (!adj.has(e.b)) adj.set(e.b, []);
-      adj.get(e.a)!.push({ idx: i, other: e.b });
-      adj.get(e.b)!.push({ idx: i, other: e.a });
-    }
-    const order: number[] = [];
-    const usedEdges = new Set<number>();
-    const seen = new Set<string>();
-    const start = [...adj.entries()].sort(
-      (a, b) => b[1].length - a[1].length,
-    )[0][0];
-    const queue: string[] = [start];
-    seen.add(start);
-    while (usedEdges.size < matching.length) {
-      if (queue.length === 0) {
-        const next = matching.find(({ i }) => !usedEdges.has(i));
-        if (!next) break;
-        queue.push(next.e.a);
-        seen.add(next.e.a);
+  const traceOrders = useMemo(() => {
+    const result = new Map<Capacity, number[]>();
+    for (const cap of traceCapacities) {
+      const titles = new Set(
+        PUBLICATIONS.filter((p) => p.capacities?.includes(cap)).map(
+          (p) => p.title,
+        ),
+      );
+      const matching = EDGES.map((e, i) => ({ e, i })).filter(({ e }) =>
+        e.publications.some((t) => titles.has(t)),
+      );
+      if (matching.length === 0) {
+        result.set(cap, []);
+        continue;
       }
-      const node = queue.shift()!;
-      for (const { idx, other } of adj.get(node) ?? []) {
-        if (usedEdges.has(idx)) continue;
-        usedEdges.add(idx);
-        order.push(idx);
-        if (!seen.has(other)) {
-          seen.add(other);
-          queue.push(other);
+      const adj = new Map<string, { idx: number; other: string }[]>();
+      for (const { e, i } of matching) {
+        if (!adj.has(e.a)) adj.set(e.a, []);
+        if (!adj.has(e.b)) adj.set(e.b, []);
+        adj.get(e.a)!.push({ idx: i, other: e.b });
+        adj.get(e.b)!.push({ idx: i, other: e.a });
+      }
+      const order: number[] = [];
+      const usedEdges = new Set<number>();
+      const seen = new Set<string>();
+      const start = [...adj.entries()].sort(
+        (a, b) => b[1].length - a[1].length,
+      )[0][0];
+      const queue: string[] = [start];
+      seen.add(start);
+      while (usedEdges.size < matching.length) {
+        if (queue.length === 0) {
+          const next = matching.find(({ i }) => !usedEdges.has(i));
+          if (!next) break;
+          queue.push(next.e.a);
+          seen.add(next.e.a);
+        }
+        const node = queue.shift()!;
+        for (const { idx, other } of adj.get(node) ?? []) {
+          if (usedEdges.has(idx)) continue;
+          usedEdges.add(idx);
+          order.push(idx);
+          if (!seen.has(other)) {
+            seen.add(other);
+            queue.push(other);
+          }
+        }
+      }
+      result.set(cap, order);
+    }
+    return result;
+  }, [traceCapacities]);
+
+  // Interleave capacity orders so both traces advance in parallel.
+  const traceSteps = useMemo(() => {
+    const steps: { cap: Capacity; idx: number }[] = [];
+    const lists = traceCapacities.map((c) => traceOrders.get(c) ?? []);
+    const maxLen = Math.max(0, ...lists.map((l) => l.length));
+    for (let i = 0; i < maxLen; i++) {
+      for (let c = 0; c < traceCapacities.length; c++) {
+        if (i < lists[c].length) {
+          steps.push({ cap: traceCapacities[c], idx: lists[c][i] });
         }
       }
     }
-    return order;
-  }, [traceCapacity]);
+    return steps;
+  }, [traceCapacities, traceOrders]);
 
-  const startTrace = (cap: Capacity) => {
+  const toggleCapacity = (cap: Capacity) => {
     setCopied(false);
     if (search.pair) navigate({ search: {}, replace: true });
-    setTraceCapacity(cap);
+    setTraceCapacities((prev) => {
+      if (prev.includes(cap)) return prev.filter((c) => c !== cap);
+      if (prev.length >= 2) return [prev[1], cap];
+      return [...prev, cap];
+    });
     setTraceStep(0);
     setTracePlaying(true);
   };
 
   const clearTrace = () => {
-    setTraceCapacity(null);
+    setTraceCapacities([]);
     setTraceStep(0);
     setTracePlaying(false);
   };
 
   useEffect(() => {
     if (!tracePlaying) return;
-    if (traceStep >= traceOrder.length) {
+    if (traceStep >= traceSteps.length) {
       setTracePlaying(false);
       return;
     }
-    const delay = reduceMotion ? 350 : 850;
+    const delay = reduceMotion ? 350 : 700;
     const t = setTimeout(() => setTraceStep((s) => s + 1), delay);
     return () => clearTimeout(t);
-  }, [tracePlaying, traceStep, traceOrder.length, reduceMotion]);
+  }, [tracePlaying, traceStep, traceSteps.length, reduceMotion]);
 
-  const revealedEdges = useMemo(
-    () => new Set(traceOrder.slice(0, traceStep)),
-    [traceOrder, traceStep],
-  );
+  const revealedByCap = useMemo(() => {
+    const map = new Map<Capacity, Set<number>>();
+    for (const cap of traceCapacities) map.set(cap, new Set());
+    for (let s = 0; s < Math.min(traceStep, traceSteps.length); s++) {
+      const { cap, idx } = traceSteps[s];
+      map.get(cap)?.add(idx);
+    }
+    return map;
+  }, [traceCapacities, traceSteps, traceStep]);
+
+  const edgeReveal = useMemo(() => {
+    // For each edge, which of the selected capacities have revealed it so far.
+    const map = new Map<number, Capacity[]>();
+    for (const [cap, set] of revealedByCap.entries()) {
+      for (const idx of set) {
+        if (!map.has(idx)) map.set(idx, []);
+        map.get(idx)!.push(cap);
+      }
+    }
+    return map;
+  }, [revealedByCap]);
+
   const revealedNodes = useMemo(() => {
     const s = new Set<string>();
-    revealedEdges.forEach((i) => {
+    edgeReveal.forEach((_caps, i) => {
       s.add(EDGES[i].a);
       s.add(EDGES[i].b);
     });
     return s;
-  }, [revealedEdges]);
-  const currentTraceEdge =
-    traceStep > 0 && traceStep <= traceOrder.length
-      ? traceOrder[traceStep - 1]
+  }, [edgeReveal]);
+
+  const currentTraceStep =
+    traceStep > 0 && traceStep <= traceSteps.length
+      ? traceSteps[traceStep - 1]
       : null;
-  const tracingActive = traceCapacity !== null;
+  const currentTraceEdge = currentTraceStep?.idx ?? null;
+  const tracingActive = traceCapacities.length > 0;
 
   const active = findEdgeIndexByPair(search.pair);
+
 
 
   const setActive = (i: number | null) => {
