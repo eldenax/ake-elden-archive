@@ -308,7 +308,96 @@ function ConceptGraph() {
             </label>
           </div>
 
+          <div className="mb-6 border border-border bg-background p-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Path tracing
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                  Pick a capacity. The graph will highlight the concepts and
+                  connections it runs through, one step at a time.
+                </p>
+              </div>
+              {tracingActive ? (
+                <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.15em]">
+                  <span className="text-muted-foreground">
+                    Step {Math.min(traceStep, traceOrder.length)} /{" "}
+                    {traceOrder.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setTracePlaying((p) => {
+                        if (traceStep >= traceOrder.length) {
+                          setTraceStep(0);
+                          return true;
+                        }
+                        return !p;
+                      })
+                    }
+                    className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground"
+                  >
+                    {traceStep >= traceOrder.length
+                      ? "Replay"
+                      : tracePlaying
+                        ? "Pause"
+                        : "Play"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTracePlaying(false);
+                      setTraceStep((s) =>
+                        Math.min(s + 1, traceOrder.length),
+                      );
+                    }}
+                    disabled={traceStep >= traceOrder.length}
+                    className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground disabled:opacity-40"
+                  >
+                    Step
+                  </button>
+                  <button
+                    type="button"
+                    onClick={clearTrace}
+                    className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                  >
+                    Clear
+                  </button>
+                </div>
+              ) : null}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {CAPACITIES.map((c) => {
+                const isOn = traceCapacity === c.slug;
+                return (
+                  <button
+                    key={c.slug}
+                    type="button"
+                    onClick={() =>
+                      isOn ? clearTrace() : startTrace(c.slug)
+                    }
+                    className={`rounded-sm border px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+                      isOn
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border bg-background text-foreground hover:border-foreground"
+                    }`}
+                    aria-pressed={isOn}
+                  >
+                    Trace {c.label}
+                  </button>
+                );
+              })}
+            </div>
+            {tracingActive ? (
+              <p className="mt-3 text-xs italic text-muted-foreground">
+                {CAPACITIES.find((c) => c.slug === traceCapacity)?.blurb}
+              </p>
+            ) : null}
+          </div>
+
           <div className="overflow-x-auto">
+
             <svg
               viewBox="0 0 800 680"
               className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
