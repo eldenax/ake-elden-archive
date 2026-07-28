@@ -334,6 +334,39 @@ function ConceptGraph() {
                   </span>
                 </li>
               </ul>
+
+              <p className="mt-5 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Path styles
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-foreground/80">
+                <li className="flex items-start gap-3">
+                  <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true" className="mt-1 shrink-0">
+                    <line x1="2" y1="7" x2="32" y2="7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" className="text-foreground" />
+                  </svg>
+                  <span>
+                    <strong className="font-medium text-foreground">Path 1</strong> — solid line. The first capacity you pick lights up edges cited by its works.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true" className="mt-1 shrink-0">
+                    <line x1="2" y1="7" x2="32" y2="7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeDasharray="5 4" className="text-foreground" />
+                  </svg>
+                  <span>
+                    <strong className="font-medium text-foreground">Path 2</strong> — dashed line. Add a second capacity to run it alongside Path 1; both advance step by step.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true" className="mt-1 shrink-0">
+                    <line x1="2" y1="7" x2="32" y2="7" stroke="currentColor" strokeWidth={7} strokeLinecap="round" className="text-foreground/40" />
+                    <line x1="2" y1="7" x2="32" y2="7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" className="text-foreground" />
+                    <line x1="2" y1="7" x2="32" y2="7" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeDasharray="5 4" className="text-foreground" />
+                  </svg>
+                  <span>
+                    <strong className="font-medium text-foreground">Overlap</strong> — a soft halo behind the solid and dashed strokes. It marks edges cited by works from <em>both</em> capacities: the places where the two paths meet on the same connection.
+                  </span>
+                </li>
+              </ul>
+
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Tracing a capacity? Open{" "}
                 <Link to="/publications" search={{ capacity: "presupposed" }} className="text-foreground underline decoration-dotted underline-offset-4 hover:no-underline">presupposed</Link>,{" "}
@@ -341,6 +374,7 @@ function ConceptGraph() {
                 <Link to="/publications" search={{ capacity: "concealed" }} className="text-foreground underline decoration-dotted underline-offset-4 hover:no-underline">concealed</Link>{" "}
                 in the archive, then return here and follow the edges cited by those works.
               </p>
+
             </div>
             <label className="inline-flex cursor-pointer items-center gap-2 self-start text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground md:justify-self-end">
               <input
