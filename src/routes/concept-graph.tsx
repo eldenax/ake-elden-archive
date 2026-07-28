@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
 import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
@@ -87,6 +87,28 @@ function ConceptGraph() {
       return next;
     });
   };
+
+  const [focusMode, setFocusMode] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:focus-mode");
+    if (stored !== null) setFocusMode(stored === "1");
+  }, []);
+  const toggleFocusMode = () => {
+    setFocusMode((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:focus-mode",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
+
+  const svgRef = useRef<SVGSVGElement | null>(null);
+
 
   const [traceCapacities, setTraceCapacities] = useState<Capacity[]>([]);
   const [traceStep, setTraceStep] = useState(0);
@@ -280,6 +302,38 @@ function ConceptGraph() {
 
   const activeEdge = active !== null ? EDGES[active] : null;
 
+  // Compute a target transform that zooms into the current traced edge.
+  const focusTransform = useMemo(() => {
+    if (!focusMode || !tracingActive || currentTraceEdge === null) return null;
+    const e = EDGES[currentTraceEdge];
+    const p1 = positions.get(e.a);
+    const p2 = positions.get(e.b);
+    if (!p1 || !p2) return null;
+    const cx = (p1.x + p2.x) / 2;
+    const cy = (p1.y + p2.y) / 2;
+    const dx = Math.abs(p1.x - p2.x);
+    const dy = Math.abs(p1.y - p2.y);
+    // Target frame size in viewBox units (viewBox is 800x680).
+    const frameW = Math.max(dx + 260, 340);
+    const frameH = Math.max(dy + 200, 260);
+    const scale = Math.min(800 / frameW, 680 / frameH, 2.4);
+    const tx = 400 - cx * scale;
+    const ty = 340 - cy * scale;
+    return { scale, tx, ty };
+  }, [focusMode, tracingActive, currentTraceEdge, positions]);
+
+  // Scroll the graph into view when the focused step changes.
+  useEffect(() => {
+    if (!focusMode || !tracingActive || currentTraceEdge === null) return;
+    if (!svgRef.current) return;
+    svgRef.current.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+  }, [focusMode, tracingActive, currentTraceEdge, reduceMotion]);
+
+
+
   const handleCopyLink = async () => {
     if (typeof window === "undefined") return;
     try {
@@ -389,16 +443,29 @@ function ConceptGraph() {
               </p>
 
             </div>
-            <label className="inline-flex cursor-pointer items-center gap-2 self-start text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground md:justify-self-end">
-              <input
-                type="checkbox"
-                checked={reduceMotion}
-                onChange={toggleReduceMotion}
-                className="h-3.5 w-3.5 accent-foreground"
-                aria-label="Reduce motion in the concept graph"
-              />
-              Reduce motion
-            </label>
+            <div className="flex flex-col gap-2 self-start md:justify-self-end">
+              <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+                <input
+                  type="checkbox"
+                  checked={focusMode}
+                  onChange={toggleFocusMode}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Auto-focus the graph on the current trace step"
+                />
+                Focus current step
+              </label>
+              <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+                <input
+                  type="checkbox"
+                  checked={reduceMotion}
+                  onChange={toggleReduceMotion}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Reduce motion in the concept graph"
+                />
+                Reduce motion
+              </label>
+            </div>
+
           </div>
 
           <div className="mb-6 border border-border bg-background p-5">
@@ -517,11 +584,24 @@ function ConceptGraph() {
           <div className="overflow-x-auto">
 
             <svg
+              ref={svgRef}
               viewBox="0 0 800 680"
               className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
               role="img"
               aria-label="Concept relationship diagram"
             >
+              <g
+                style={{
+                  transform: focusTransform
+                    ? `translate(${focusTransform.tx}px, ${focusTransform.ty}px) scale(${focusTransform.scale})`
+                    : "translate(0px, 0px) scale(1)",
+                  transformOrigin: "0 0",
+                  transition: reduceMotion
+                    ? "none"
+                    : "transform 600ms cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+              >
+
               {/* Halo behind the active or currently-traced edge */}
               {(() => {
                 const haloIdx =
@@ -789,8 +869,9 @@ function ConceptGraph() {
                   </g>
                 );
               })()}
-
+              </g>
             </svg>
+
           </div>
 
           <div className="mt-10 border-t border-border pt-8">
