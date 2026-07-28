@@ -15,14 +15,23 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const { THEMES } = await import("../data/themes");
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/research", changefreq: "monthly", priority: "0.9" },
+          { path: "/themes", changefreq: "monthly", priority: "0.9" },
           { path: "/concepts", changefreq: "monthly", priority: "0.8" },
           { path: "/publications", changefreq: "monthly", priority: "0.8" },
-          { path: "/working-papers", changefreq: "monthly", priority: "0.8" },
+          { path: "/projects", changefreq: "monthly", priority: "0.7" },
+          { path: "/academic-profile", changefreq: "monthly", priority: "0.7" },
+          { path: "/news", changefreq: "weekly", priority: "0.7" },
           { path: "/cv", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
+          ...THEMES.map((t) => ({
+            path: `/themes/${t.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.6",
+          })),
           ...CONCEPTS.map((c) => ({
             path: `/concepts/${c.slug}`,
             changefreq: "monthly" as const,
