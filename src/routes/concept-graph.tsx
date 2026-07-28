@@ -968,6 +968,7 @@ function TracePanel({
   step,
   onJump,
   onClear,
+  onRemoveCapacity,
 }: {
   capacities: Capacity[];
   orders: Map<Capacity, number[]>;
@@ -975,6 +976,7 @@ function TracePanel({
   step: number;
   onJump: (i: number) => void;
   onClear: () => void;
+  onRemoveCapacity: (cap: Capacity) => void;
 }) {
   const done = step >= steps.length;
   // Compute overlap edges: appear in every selected capacity's order.
@@ -992,14 +994,35 @@ function TracePanel({
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Tracing {capacities.length > 1 ? "capacities" : "capacity"}
           </p>
-          <h3 className="mt-2 font-display text-xl text-foreground">
-            {capacities
-              .map(
-                (c, i) =>
-                  `Path ${i + 1}: ${CAPACITIES.find((cc) => cc.slug === c)?.label ?? c}`,
-              )
-              .join("   ·   ")}
-          </h3>
+          <ul className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+            {capacities.map((c, i) => {
+              const label = CAPACITIES.find((cc) => cc.slug === c)?.label ?? c;
+              return (
+                <li
+                  key={c}
+                  className="inline-flex items-center gap-2 border border-border bg-secondary/40 py-1 pl-3 pr-1"
+                >
+                  <span className="font-display text-base text-foreground">
+                    Path {i + 1}
+                    <span className="mx-2 text-muted-foreground">·</span>
+                    {label}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onRemoveCapacity(c)}
+                    aria-label={`Remove Path ${i + 1} (${label})`}
+                    className="ml-1 flex h-6 w-6 items-center justify-center text-muted-foreground hover:bg-foreground hover:text-background"
+                    title={`Remove Path ${i + 1}`}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                      <line x1="1" y1="1" x2="9" y2="9" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+                      <line x1="9" y1="1" x2="1" y2="9" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" />
+                    </svg>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <button
           type="button"
@@ -1009,6 +1032,7 @@ function TracePanel({
           End trace
         </button>
       </div>
+
 
       {capacities.length > 0 ? (
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
