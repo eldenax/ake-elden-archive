@@ -160,6 +160,55 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-t border-border bg-secondary/30">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <div className="mb-12 max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Explore by capacity
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+              Human capacities in the archive
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              The guiding question sorts the programme into three stances
+              toward human capacity: what institutions and technologies must
+              already assume, what they reshape, and what they render invisible.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-3">
+            <CapacityCard
+              slug="presupposed"
+              title="Presupposed"
+              description="Capacities that must already be in place for judgment, responsibility, and explanation to function at all."
+              count={
+                PUBLICATIONS.filter((p) =>
+                  p.capacities?.includes("presupposed"),
+                ).length
+              }
+            />
+            <CapacityCard
+              slug="transformed"
+              title="Transformed"
+              description="Capacities that are reshaped when reasoning, desire, or formation is delegated to systems."
+              count={
+                PUBLICATIONS.filter((p) =>
+                  p.capacities?.includes("transformed"),
+                ).length
+              }
+            />
+            <CapacityCard
+              slug="concealed"
+              title="Concealed"
+              description="Capacities that are obscured, evacuated, or rendered unaddressable by automated procedures."
+              count={
+                PUBLICATIONS.filter((p) =>
+                  p.capacities?.includes("concealed"),
+                ).length
+              }
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
