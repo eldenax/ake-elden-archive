@@ -41,6 +41,7 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
   const concept = p.conceptSlug ? getConcept(p.conceptSlug) : undefined;
   return (
     <article className="border-t border-border pt-6">
+      {/* Title */}
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h3 className="font-display text-lg leading-snug text-foreground md:text-xl">
           {p.title}
@@ -49,14 +50,9 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
           {p.status}
         </span>
       </div>
-      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-        {p.venue}
-        {p.year ? ` · ${p.year}` : ""}
-      </p>
+
+      {/* Contribution — placed immediately after the title, answering "why read this?" */}
       <p className="mt-4 text-base leading-relaxed text-foreground/85">
-        <span className="font-medium uppercase tracking-[0.18em] text-xs text-muted-foreground">
-          Contribution ·{" "}
-        </span>
         {p.contribution}
       </p>
       {p.caseNote && (
@@ -67,26 +63,66 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
           {p.caseNote}
         </p>
       )}
-      <div className="mt-4 flex flex-wrap gap-3 text-xs">
-        {theme && (
-          <Link
-            to="/themes/$slug"
-            params={{ slug: theme.slug }}
-            className="rounded-sm border border-border bg-background px-2 py-1 text-foreground/80 hover:border-foreground"
-          >
-            Theme · {theme.short} →
-          </Link>
-        )}
+
+      {/* Journal / venue */}
+      <dl className="mt-5 grid grid-cols-1 gap-y-2 text-sm sm:grid-cols-[8rem_1fr]">
+        <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+          Journal
+        </dt>
+        <dd className="text-foreground/85">
+          {p.venue}
+          {p.year ? ` · ${p.year}` : ""}
+          {p.doi ? (
+            <>
+              {" · "}
+              <a
+                href={`https://doi.org/${p.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+              >
+                DOI
+              </a>
+            </>
+          ) : null}
+        </dd>
+
+        {/* Concepts introduced */}
         {concept && (
-          <Link
-            to="/concepts/$slug"
-            params={{ slug: concept.slug }}
-            className="rounded-sm border border-border bg-background px-2 py-1 text-foreground/80 hover:border-foreground"
-          >
-            Concept · {concept.name} →
-          </Link>
+          <>
+            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Concepts introduced
+            </dt>
+            <dd>
+              <Link
+                to="/concepts/$slug"
+                params={{ slug: concept.slug }}
+                className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
+              >
+                {concept.name}
+              </Link>
+            </dd>
+          </>
         )}
-      </div>
+
+        {/* Related theme */}
+        {theme && (
+          <>
+            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Related theme
+            </dt>
+            <dd>
+              <Link
+                to="/themes/$slug"
+                params={{ slug: theme.slug }}
+                className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
+              >
+                {theme.short}
+              </Link>
+            </dd>
+          </>
+        )}
+      </dl>
     </article>
   );
 }
