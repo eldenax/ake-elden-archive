@@ -702,8 +702,11 @@ function ConceptGraph() {
                 const mx = (p1.x + p2.x) / 2;
                 const my = (p1.y + p2.y) / 2;
                 const label = tracingActive
-                  ? `Tracing ${traceCapacity}`
+                  ? currentTraceStep
+                    ? `Path ${traceCapacities.indexOf(currentTraceStep.cap) + 1} · ${currentTraceStep.cap}`
+                    : "Tracing"
                   : "Supporting relationship";
+
                 const padX = 12;
                 const charW = 6.2;
                 const w = Math.round(label.length * charW) + padX * 2;
