@@ -575,6 +575,24 @@ function ConceptGraph() {
                 />
                 Reduce motion
               </label>
+              <label
+                className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
+                title="Boost stroke intensity and lift dark preset colors when the site is in dark mode."
+              >
+                <input
+                  type="checkbox"
+                  checked={autoDarkAdjust}
+                  onChange={toggleAutoDarkAdjust}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Auto-adjust path intensity for dark mode"
+                />
+                Auto-adjust for dark mode
+                {darkAdjustActive ? (
+                  <span className="ml-1 rounded-sm border border-border px-1 py-px text-[0.6rem] normal-case tracking-normal text-foreground">
+                    active
+                  </span>
+                ) : null}
+              </label>
             </div>
           </div>
 
