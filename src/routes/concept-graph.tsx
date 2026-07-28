@@ -724,7 +724,8 @@ function ConceptGraph() {
                               title={p.label}
                               aria-label={`${label} color: ${p.label}`}
                               aria-pressed={selected}
-                              className={`h-6 w-6 border ${selected ? "border-foreground ring-1 ring-foreground" : "border-border hover:border-foreground/60"}`}
+                              disabled={cbPalette !== "off"}
+                              className={`h-6 w-6 border ${selected ? "border-foreground ring-1 ring-foreground" : "border-border hover:border-foreground/60"} disabled:cursor-not-allowed disabled:opacity-40`}
                               style={{
                                 background: p.value || "transparent",
                                 color: p.value ? undefined : "currentColor",
