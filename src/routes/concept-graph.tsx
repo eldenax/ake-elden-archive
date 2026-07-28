@@ -302,6 +302,38 @@ function ConceptGraph() {
 
   const activeEdge = active !== null ? EDGES[active] : null;
 
+  // Compute a target transform that zooms into the current traced edge.
+  const focusTransform = useMemo(() => {
+    if (!focusMode || !tracingActive || currentTraceEdge === null) return null;
+    const e = EDGES[currentTraceEdge];
+    const p1 = positions.get(e.a);
+    const p2 = positions.get(e.b);
+    if (!p1 || !p2) return null;
+    const cx = (p1.x + p2.x) / 2;
+    const cy = (p1.y + p2.y) / 2;
+    const dx = Math.abs(p1.x - p2.x);
+    const dy = Math.abs(p1.y - p2.y);
+    // Target frame size in viewBox units (viewBox is 800x680).
+    const frameW = Math.max(dx + 260, 340);
+    const frameH = Math.max(dy + 200, 260);
+    const scale = Math.min(800 / frameW, 680 / frameH, 2.4);
+    const tx = 400 - cx * scale;
+    const ty = 340 - cy * scale;
+    return { scale, tx, ty };
+  }, [focusMode, tracingActive, currentTraceEdge, positions]);
+
+  // Scroll the graph into view when the focused step changes.
+  useEffect(() => {
+    if (!focusMode || !tracingActive || currentTraceEdge === null) return;
+    if (!svgRef.current) return;
+    svgRef.current.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+  }, [focusMode, tracingActive, currentTraceEdge, reduceMotion]);
+
+
+
   const handleCopyLink = async () => {
     if (typeof window === "undefined") return;
     try {
