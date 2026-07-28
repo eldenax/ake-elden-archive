@@ -172,6 +172,19 @@ function ConceptGraph() {
     setTracePlaying(true);
   };
 
+  const removeCapacity = (cap: Capacity) => {
+    if (search.pair) navigate({ search: {}, replace: true });
+    setTraceCapacities((prev) => {
+      const next = prev.filter((c) => c !== cap);
+      if (next.length === 0) {
+        setTraceStep(0);
+        setTracePlaying(false);
+      }
+      return next;
+    });
+  };
+
+
   const clearTrace = () => {
     setTraceCapacities([]);
     setTraceStep(0);
