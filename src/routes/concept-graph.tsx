@@ -248,6 +248,8 @@ function ConceptGraph() {
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
+                const nameA = positions.get(e.a)!.name;
+                const nameB = positions.get(e.b)!.name;
                 return (
                   <line
                     key={`hit-${i}`}
@@ -259,9 +261,12 @@ function ConceptGraph() {
                     strokeWidth={14}
                     className="cursor-pointer"
                     onClick={() => setActive(active === i ? null : i)}
-                  />
+                  >
+                    <title>{`${nameA} × ${nameB} — ${e.note} (click to see supporting works)`}</title>
+                  </line>
                 );
               })}
+
 
               {layout.map((p) => {
                 const isConnected =
