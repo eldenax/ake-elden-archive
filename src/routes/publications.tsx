@@ -40,6 +40,7 @@ export const Route = createFileRoute("/publications")({
 function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
   const theme = getTheme(p.themeSlug);
   const concept = p.conceptSlug ? getConcept(p.conceptSlug) : undefined;
+  const edges = edgesForPublication(p.title);
   return (
     <article className="border-t border-border pt-6">
       {/* Title */}
