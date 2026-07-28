@@ -43,6 +43,31 @@ function ConceptGraph() {
   const search = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
   const [copied, setCopied] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:reduce-motion");
+    if (stored !== null) {
+      setReduceMotion(stored === "1");
+      return;
+    }
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+  }, []);
+
+  const toggleReduceMotion = () => {
+    setReduceMotion((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:reduce-motion",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
 
   const active = findEdgeIndexByPair(search.pair);
 
