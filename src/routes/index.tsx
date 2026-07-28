@@ -55,24 +55,24 @@ function Index() {
             <h1 className="font-display text-4xl leading-[1.1] text-foreground md:text-5xl xl:text-[3.75rem]">
               Dr. Åke Elden
             </h1>
-            <p className="mt-5 font-display text-lg italic leading-relaxed text-foreground/80 md:text-xl">
-              I study the background conditions that make judgment,
-              responsibility, explanation, and moral agency possible — and how
-              technological and institutional systems reorganize or remove
-              those conditions.
+            <p className="mt-8 font-display text-xl leading-snug text-foreground md:text-2xl xl:text-[1.7rem]">
+              I study the conditions under which judgment, responsibility, and
+              explanation become possible — and how technological and
+              institutional systems reorganize those conditions.
             </p>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              My research is organized around a coherent set of philosophical
-              problems: judgment, responsibility, explanation, institutional
-              reason, normativity, and human formation. Different disciplines
-              and technologies provide contexts in which these problems become
-              visible and can be studied.
+            <p className="mt-8 text-base leading-relaxed text-muted-foreground">
+              The programme is organised around philosophical problems, not
+              domains: judgment and answerability; normativity and moral
+              standing; explanation and object constitution; formation and
+              agency; desire and social relations; institutions and
+              infrastructure. Different disciplines and technologies provide
+              contexts in which these problems become visible.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Artificial intelligence is one important diagnostic context
-              within that programme. It reveals transformations in judgment,
-              responsibility, explanation, institutional authority, and
-              formation that are also relevant beyond AI.
+              Artificial intelligence enters the programme as one revealing
+              context — the setting in which transformations of judgment,
+              responsibility, and institutional reason show up under load.
+              The questions themselves precede it and outlast it.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
