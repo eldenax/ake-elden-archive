@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PUBLICATIONS } from "../data/publications";
 import { THEMES, getTheme } from "../data/themes";
 import { getConcept } from "../data/concepts";
+import { edgesForPublication, pairKey } from "../data/concept-edges";
 
 const TITLE = "Publications — Dr. Åke Elden";
 const DESCRIPTION =
