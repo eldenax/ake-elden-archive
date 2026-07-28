@@ -1,8 +1,27 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
-import { PUBLICATIONS } from "../data/publications";
+import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
+
+const CAPACITIES: { slug: Capacity; label: string; blurb: string }[] = [
+  {
+    slug: "presupposed",
+    label: "Presupposed",
+    blurb: "Capacities the programme assumes must already be in place.",
+  },
+  {
+    slug: "transformed",
+    label: "Transformed",
+    blurb: "Capacities reshaped by the infrastructures under study.",
+  },
+  {
+    slug: "concealed",
+    label: "Concealed",
+    blurb: "Capacities that automated systems tend to hide from view.",
+  },
+];
+
 
 const TITLE = "Concept Relationship Graph — Dr. Åke Elden";
 const DESCRIPTION =
@@ -69,10 +88,106 @@ function ConceptGraph() {
     });
   };
 
+  const [traceCapacity, setTraceCapacity] = useState<Capacity | null>(null);
+  const [traceStep, setTraceStep] = useState(0);
+  const [tracePlaying, setTracePlaying] = useState(false);
+
+  const traceOrder = useMemo(() => {
+    if (!traceCapacity) return [] as number[];
+    const titles = new Set(
+      PUBLICATIONS.filter((p) => p.capacities?.includes(traceCapacity)).map(
+        (p) => p.title,
+      ),
+    );
+    const matching = EDGES.map((e, i) => ({ e, i })).filter(({ e }) =>
+      e.publications.some((t) => titles.has(t)),
+    );
+    if (matching.length === 0) return [];
+    const adj = new Map<string, { idx: number; other: string }[]>();
+    for (const { e, i } of matching) {
+      if (!adj.has(e.a)) adj.set(e.a, []);
+      if (!adj.has(e.b)) adj.set(e.b, []);
+      adj.get(e.a)!.push({ idx: i, other: e.b });
+      adj.get(e.b)!.push({ idx: i, other: e.a });
+    }
+    const order: number[] = [];
+    const usedEdges = new Set<number>();
+    const seen = new Set<string>();
+    const start = [...adj.entries()].sort(
+      (a, b) => b[1].length - a[1].length,
+    )[0][0];
+    const queue: string[] = [start];
+    seen.add(start);
+    while (usedEdges.size < matching.length) {
+      if (queue.length === 0) {
+        const next = matching.find(({ i }) => !usedEdges.has(i));
+        if (!next) break;
+        queue.push(next.e.a);
+        seen.add(next.e.a);
+      }
+      const node = queue.shift()!;
+      for (const { idx, other } of adj.get(node) ?? []) {
+        if (usedEdges.has(idx)) continue;
+        usedEdges.add(idx);
+        order.push(idx);
+        if (!seen.has(other)) {
+          seen.add(other);
+          queue.push(other);
+        }
+      }
+    }
+    return order;
+  }, [traceCapacity]);
+
+  const startTrace = (cap: Capacity) => {
+    setCopied(false);
+    if (search.pair) navigate({ search: {}, replace: true });
+    setTraceCapacity(cap);
+    setTraceStep(0);
+    setTracePlaying(true);
+  };
+
+  const clearTrace = () => {
+    setTraceCapacity(null);
+    setTraceStep(0);
+    setTracePlaying(false);
+  };
+
+  useEffect(() => {
+    if (!tracePlaying) return;
+    if (traceStep >= traceOrder.length) {
+      setTracePlaying(false);
+      return;
+    }
+    const delay = reduceMotion ? 350 : 850;
+    const t = setTimeout(() => setTraceStep((s) => s + 1), delay);
+    return () => clearTimeout(t);
+  }, [tracePlaying, traceStep, traceOrder.length, reduceMotion]);
+
+  const revealedEdges = useMemo(
+    () => new Set(traceOrder.slice(0, traceStep)),
+    [traceOrder, traceStep],
+  );
+  const revealedNodes = useMemo(() => {
+    const s = new Set<string>();
+    revealedEdges.forEach((i) => {
+      s.add(EDGES[i].a);
+      s.add(EDGES[i].b);
+    });
+    return s;
+  }, [revealedEdges]);
+  const currentTraceEdge =
+    traceStep > 0 && traceStep <= traceOrder.length
+      ? traceOrder[traceStep - 1]
+      : null;
+  const tracingActive = traceCapacity !== null;
+
   const active = findEdgeIndexByPair(search.pair);
+
 
   const setActive = (i: number | null) => {
     setCopied(false);
+    if (traceCapacity) clearTrace();
     if (i === null) {
       navigate({ search: {}, replace: false });
       return;
@@ -80,6 +195,7 @@ function ConceptGraph() {
     const e = EDGES[i];
     navigate({ search: { pair: pairKey(e.a, e.b) }, replace: false });
   };
+
 
   const layout = useMemo(() => {
     const n = CONCEPTS.length;
@@ -192,16 +308,108 @@ function ConceptGraph() {
             </label>
           </div>
 
+          <div className="mb-6 border border-border bg-background p-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Path tracing
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                  Pick a capacity. The graph will highlight the concepts and
+                  connections it runs through, one step at a time.
+                </p>
+              </div>
+              {tracingActive ? (
+                <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.15em]">
+                  <span className="text-muted-foreground">
+                    Step {Math.min(traceStep, traceOrder.length)} /{" "}
+                    {traceOrder.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setTracePlaying((p) => {
+                        if (traceStep >= traceOrder.length) {
+                          setTraceStep(0);
+                          return true;
+                        }
+                        return !p;
+                      })
+                    }
+                    className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground"
+                  >
+                    {traceStep >= traceOrder.length
+                      ? "Replay"
+                      : tracePlaying
+                        ? "Pause"
+                        : "Play"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setTracePlaying(false);
+                      setTraceStep((s) =>
+                        Math.min(s + 1, traceOrder.length),
+                      );
+                    }}
+                    disabled={traceStep >= traceOrder.length}
+                    className="rounded-sm border border-border bg-background px-3 py-1.5 font-medium text-foreground hover:border-foreground disabled:opacity-40"
+                  >
+                    Step
+                  </button>
+                  <button
+                    type="button"
+                    onClick={clearTrace}
+                    className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                  >
+                    Clear
+                  </button>
+                </div>
+              ) : null}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {CAPACITIES.map((c) => {
+                const isOn = traceCapacity === c.slug;
+                return (
+                  <button
+                    key={c.slug}
+                    type="button"
+                    onClick={() =>
+                      isOn ? clearTrace() : startTrace(c.slug)
+                    }
+                    className={`rounded-sm border px-3 py-1.5 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+                      isOn
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border bg-background text-foreground hover:border-foreground"
+                    }`}
+                    aria-pressed={isOn}
+                  >
+                    Trace {c.label}
+                  </button>
+                );
+              })}
+            </div>
+            {tracingActive ? (
+              <p className="mt-3 text-xs italic text-muted-foreground">
+                {CAPACITIES.find((c) => c.slug === traceCapacity)?.blurb}
+              </p>
+            ) : null}
+          </div>
+
           <div className="overflow-x-auto">
+
             <svg
               viewBox="0 0 800 680"
               className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
               role="img"
               aria-label="Concept relationship diagram"
             >
-              {/* Halo behind the active edge */}
-              {active !== null && (() => {
-                const e = EDGES[active];
+              {/* Halo behind the active or currently-traced edge */}
+              {(() => {
+                const haloIdx =
+                  tracingActive ? currentTraceEdge : active;
+                if (haloIdx === null || haloIdx === undefined) return null;
+                const e = EDGES[haloIdx];
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
                 return (
@@ -221,8 +429,32 @@ function ConceptGraph() {
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
-                const isActive = active === i;
-                const isDim = active !== null && !isActive;
+                let cls: string;
+                let sw = 1;
+                if (tracingActive) {
+                  const isCurrent = currentTraceEdge === i;
+                  const isRevealed = revealedEdges.has(i);
+                  if (isCurrent) {
+                    cls = "edge-active text-foreground";
+                    sw = 2.5;
+                  } else if (isRevealed) {
+                    cls = "text-foreground transition-all";
+                    sw = 2;
+                  } else {
+                    cls = "text-border transition-all";
+                  }
+                } else {
+                  const isActive = active === i;
+                  const isDim = active !== null && !isActive;
+                  cls = `cursor-pointer transition-all ${
+                    isActive
+                      ? "edge-active text-foreground"
+                      : isDim
+                        ? "text-border"
+                        : "text-muted-foreground/50 hover:text-foreground"
+                  }`;
+                  sw = isActive ? 2.5 : 1;
+                }
                 return (
                   <line
                     key={`edge-${i}`}
@@ -231,16 +463,14 @@ function ConceptGraph() {
                     x2={p2.x}
                     y2={p2.y}
                     stroke="currentColor"
-                    strokeWidth={isActive ? 2.5 : 1}
+                    strokeWidth={sw}
                     strokeLinecap="round"
-                    className={`cursor-pointer transition-all ${
-                      isActive
-                        ? "edge-active text-foreground"
-                        : isDim
-                          ? "text-border"
-                          : "text-muted-foreground/50 hover:text-foreground"
-                    }`}
-                    onClick={() => setActive(isActive ? null : i)}
+                    className={cls}
+                    onClick={
+                      tracingActive
+                        ? undefined
+                        : () => setActive(active === i ? null : i)
+                    }
                   />
                 );
               })}
@@ -259,8 +489,12 @@ function ConceptGraph() {
                     y2={p2.y}
                     stroke="transparent"
                     strokeWidth={14}
-                    className="cursor-pointer"
-                    onClick={() => setActive(active === i ? null : i)}
+                    className={tracingActive ? "" : "cursor-pointer"}
+                    onClick={
+                      tracingActive
+                        ? undefined
+                        : () => setActive(active === i ? null : i)
+                    }
                   >
                     <title>{`${nameA} × ${nameB} — ${e.note} (click to see supporting works)`}</title>
                   </line>
@@ -269,10 +503,19 @@ function ConceptGraph() {
 
 
               {layout.map((p) => {
-                const isConnected =
-                  activeEdge &&
-                  (activeEdge.a === p.slug || activeEdge.b === p.slug);
-                const isDim = active !== null && !isConnected;
+                let filled = false;
+                let dimmed = false;
+                if (tracingActive) {
+                  filled = revealedNodes.has(p.slug);
+                  dimmed = !filled;
+                } else {
+                  const isConnected = !!(
+                    activeEdge &&
+                    (activeEdge.a === p.slug || activeEdge.b === p.slug)
+                  );
+                  filled = isConnected;
+                  dimmed = active !== null && !isConnected;
+                }
                 const words = p.name.split(" ");
                 const lines: string[] = [];
                 let current = "";
@@ -290,14 +533,17 @@ function ConceptGraph() {
                   ? `${concept.name} — ${concept.tagline}`
                   : p.name;
                 return (
-                  <g key={p.slug} className={isDim ? "opacity-40" : ""}>
+                  <g
+                    key={p.slug}
+                    className={`transition-opacity ${dimmed ? "opacity-40" : ""}`}
+                  >
                     <title>{tip}</title>
                     <circle
                       cx={p.x}
                       cy={p.y}
                       r={9}
                       className={
-                        isConnected
+                        filled
                           ? "fill-foreground"
                           : "fill-background stroke-foreground"
                       }
@@ -328,21 +574,26 @@ function ConceptGraph() {
 
               })}
 
-              {/* Floating label at midpoint of the active edge */}
-              {activeEdge && (() => {
-                const p1 = positions.get(activeEdge.a)!;
-                const p2 = positions.get(activeEdge.b)!;
+              {/* Floating label at midpoint of the active or traced edge */}
+              {(() => {
+                const idx =
+                  tracingActive ? currentTraceEdge : active;
+                if (idx === null || idx === undefined) return null;
+                const edge = EDGES[idx];
+                const p1 = positions.get(edge.a)!;
+                const p2 = positions.get(edge.b)!;
                 const mx = (p1.x + p2.x) / 2;
                 const my = (p1.y + p2.y) / 2;
-                const label = "Supporting relationship";
+                const label = tracingActive
+                  ? `Tracing ${traceCapacity}`
+                  : "Supporting relationship";
                 const padX = 12;
-                const padY = 6;
                 const charW = 6.2;
                 const w = Math.round(label.length * charW) + padX * 2;
                 const h = 26;
                 return (
                   <g
-                    key={`label-${active}`}
+                    key={`label-${idx}-${tracingActive ? "t" : "a"}`}
                     className="edge-label pointer-events-none"
                   >
                     <rect
@@ -371,11 +622,23 @@ function ConceptGraph() {
                   </g>
                 );
               })()}
+
             </svg>
           </div>
 
           <div className="mt-10 border-t border-border pt-8">
-            {activeEdge ? (
+            {tracingActive ? (
+              <TracePanel
+                capacity={traceCapacity!}
+                order={traceOrder}
+                step={traceStep}
+                onJump={(i) => {
+                  setTracePlaying(false);
+                  setTraceStep(i);
+                }}
+                onClear={clearTrace}
+              />
+            ) : activeEdge ? (
               <ActiveEdgePanel
                 edge={activeEdge}
                 onCopyLink={handleCopyLink}
@@ -385,10 +648,12 @@ function ConceptGraph() {
             ) : (
               <div className="text-center text-sm text-muted-foreground">
                 Select a line in the diagram — or a connection below — to reveal
-                its supporting publications and a shareable link.
+                its supporting publications and a shareable link. Or trace a
+                capacity to watch its path unfold.
               </div>
             )}
           </div>
+
         </div>
       </section>
 
@@ -524,3 +789,87 @@ function ActiveEdgePanel({
     </div>
   );
 }
+
+function TracePanel({
+  capacity,
+  order,
+  step,
+  onJump,
+  onClear,
+}: {
+  capacity: Capacity;
+  order: number[];
+  step: number;
+  onJump: (i: number) => void;
+  onClear: () => void;
+}) {
+  const capLabel = CAPACITIES.find((c) => c.slug === capacity)?.label ?? capacity;
+  const done = step >= order.length;
+  return (
+    <div>
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Tracing capacity
+          </p>
+          <h3 className="mt-2 font-display text-xl text-foreground">
+            {capLabel}
+          </h3>
+        </div>
+        <button
+          type="button"
+          onClick={onClear}
+          className="text-xs uppercase tracking-[0.15em] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        >
+          End trace
+        </button>
+      </div>
+      <p className="mt-3 text-sm text-muted-foreground">
+        {order.length === 0
+          ? "No connections cite works tagged with this capacity yet."
+          : done
+            ? `Full path revealed — ${order.length} connection${order.length === 1 ? "" : "s"}.`
+            : `Revealing step ${Math.min(step, order.length)} of ${order.length}.`}
+      </p>
+      {order.length > 0 ? (
+        <ol className="mt-6 space-y-3">
+          {order.map((edgeIdx, pos) => {
+            const e = EDGES[edgeIdx];
+            const a = CONCEPTS.find((c) => c.slug === e.a)?.name ?? e.a;
+            const b = CONCEPTS.find((c) => c.slug === e.b)?.name ?? e.b;
+            const revealed = pos < step;
+            const current = pos === step - 1;
+            return (
+              <li key={edgeIdx}>
+                <button
+                  type="button"
+                  onClick={() => onJump(pos + 1)}
+                  className={`w-full border-l-2 pl-4 text-left transition-colors ${
+                    current
+                      ? "border-foreground"
+                      : revealed
+                        ? "border-foreground/40 hover:border-foreground"
+                        : "border-border opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Step {pos + 1}
+                  </p>
+                  <p className="mt-1 font-display text-base text-foreground">
+                    {a}
+                    <span className="mx-2 text-muted-foreground">×</span>
+                    {b}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {e.note}
+                  </p>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      ) : null}
+    </div>
+  );
+}
+
