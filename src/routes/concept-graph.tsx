@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
 import { PUBLICATIONS } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
@@ -43,6 +43,31 @@ function ConceptGraph() {
   const search = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
   const [copied, setCopied] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:reduce-motion");
+    if (stored !== null) {
+      setReduceMotion(stored === "1");
+      return;
+    }
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mq.matches);
+  }, []);
+
+  const toggleReduceMotion = () => {
+    setReduceMotion((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:reduce-motion",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
 
   const active = findEdgeIndexByPair(search.pair);
 
@@ -116,10 +141,22 @@ function ConceptGraph() {
 
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+          <div className="mb-4 flex justify-end">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+              <input
+                type="checkbox"
+                checked={reduceMotion}
+                onChange={toggleReduceMotion}
+                className="h-3.5 w-3.5 accent-foreground"
+                aria-label="Reduce motion in the concept graph"
+              />
+              Reduce motion
+            </label>
+          </div>
           <div className="overflow-x-auto">
             <svg
               viewBox="0 0 800 680"
-              className="mx-auto block h-auto w-full max-w-4xl"
+              className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
               role="img"
               aria-label="Concept relationship diagram"
             >

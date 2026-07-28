@@ -172,9 +172,16 @@
   transform-box: fill-box;
   transform-origin: center;
 }
+.motion-reduced .edge-active,
+.motion-reduced .edge-halo { animation: none; }
+.motion-reduced .edge-active { stroke-width: 3.5; }
+.motion-reduced .edge-halo { stroke-opacity: 0.18; stroke-width: 14; }
+.motion-reduced .edge-label { animation: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .edge-active, .edge-halo { animation: none; }
   .edge-active { stroke-width: 3.5; }
+  .edge-halo { stroke-opacity: 0.18; stroke-width: 14; }
   .edge-label { animation: none; }
 }
 
