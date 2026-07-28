@@ -913,29 +913,43 @@ function ActiveEdgePanel({
 }
 
 function TracePanel({
-  capacity,
-  order,
+  capacities,
+  orders,
+  steps,
   step,
   onJump,
   onClear,
 }: {
-  capacity: Capacity;
-  order: number[];
+  capacities: Capacity[];
+  orders: Map<Capacity, number[]>;
+  steps: { cap: Capacity; idx: number }[];
   step: number;
   onJump: (i: number) => void;
   onClear: () => void;
 }) {
-  const capLabel = CAPACITIES.find((c) => c.slug === capacity)?.label ?? capacity;
-  const done = step >= order.length;
+  const done = step >= steps.length;
+  // Compute overlap edges: appear in every selected capacity's order.
+  const overlap =
+    capacities.length > 1
+      ? (orders.get(capacities[0]) ?? []).filter((idx) =>
+          capacities.slice(1).every((c) => (orders.get(c) ?? []).includes(idx)),
+        )
+      : [];
+
   return (
     <div>
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Tracing capacity
+            Tracing {capacities.length > 1 ? "capacities" : "capacity"}
           </p>
           <h3 className="mt-2 font-display text-xl text-foreground">
-            {capLabel}
+            {capacities
+              .map(
+                (c, i) =>
+                  `Path ${i + 1}: ${CAPACITIES.find((cc) => cc.slug === c)?.label ?? c}`,
+              )
+              .join("   ·   ")}
           </h3>
         </div>
         <button
@@ -947,22 +961,49 @@ function TracePanel({
         </button>
       </div>
       <p className="mt-3 text-sm text-muted-foreground">
-        {order.length === 0
-          ? "No connections cite works tagged with this capacity yet."
+        {steps.length === 0
+          ? "No connections cite works tagged with the selected capacities yet."
           : done
-            ? `Full path revealed — ${order.length} connection${order.length === 1 ? "" : "s"}.`
-            : `Revealing step ${Math.min(step, order.length)} of ${order.length}.`}
+            ? `Full paths revealed — ${steps.length} step${steps.length === 1 ? "" : "s"} across ${capacities.length} ${capacities.length === 1 ? "capacity" : "capacities"}.`
+            : `Revealing step ${Math.min(step, steps.length)} of ${steps.length}.`}
       </p>
-      {order.length > 0 ? (
+
+      {overlap.length > 0 ? (
+        <div className="mt-6 border border-foreground/60 bg-secondary/40 p-4">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-foreground">
+            Overlap — {overlap.length} shared{" "}
+            {overlap.length === 1 ? "connection" : "connections"}
+          </p>
+          <ul className="mt-3 space-y-2">
+            {overlap.map((edgeIdx) => {
+              const e = EDGES[edgeIdx];
+              const a = CONCEPTS.find((c) => c.slug === e.a)?.name ?? e.a;
+              const b = CONCEPTS.find((c) => c.slug === e.b)?.name ?? e.b;
+              return (
+                <li key={edgeIdx} className="text-sm">
+                  <span className="font-display text-foreground">
+                    {a} × {b}
+                  </span>
+                  <span className="text-muted-foreground"> — {e.note}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+
+      {steps.length > 0 ? (
         <ol className="mt-6 space-y-3">
-          {order.map((edgeIdx, pos) => {
+          {steps.map(({ cap, idx: edgeIdx }, pos) => {
             const e = EDGES[edgeIdx];
             const a = CONCEPTS.find((c) => c.slug === e.a)?.name ?? e.a;
             const b = CONCEPTS.find((c) => c.slug === e.b)?.name ?? e.b;
             const revealed = pos < step;
             const current = pos === step - 1;
+            const pathIndex = capacities.indexOf(cap);
+            const isOverlap = overlap.includes(edgeIdx);
             return (
-              <li key={edgeIdx}>
+              <li key={`${pos}-${edgeIdx}`}>
                 <button
                   type="button"
                   onClick={() => onJump(pos + 1)}
@@ -975,7 +1016,13 @@ function TracePanel({
                   }`}
                 >
                   <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                    Step {pos + 1}
+                    Step {pos + 1} · Path {pathIndex + 1} —{" "}
+                    {CAPACITIES.find((c) => c.slug === cap)?.label ?? cap}
+                    {isOverlap ? (
+                      <span className="ml-2 rounded-sm border border-foreground/60 bg-background px-1.5 py-0.5 text-[10px] tracking-[0.15em] text-foreground">
+                        Overlap
+                      </span>
+                    ) : null}
                   </p>
                   <p className="mt-1 font-display text-base text-foreground">
                     {a}
@@ -992,6 +1039,7 @@ function TracePanel({
         </ol>
       ) : null}
     </div>
+
   );
 }
 
