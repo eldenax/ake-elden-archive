@@ -107,6 +107,46 @@ function ConceptGraph() {
     });
   };
 
+  // Per-path style controls (color preset + intensity)
+  const [pathStyles, setPathStyles] = useState<Record<PathKind, PathStyle>>(DEFAULT_PATH_STYLES);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem("concept-graph:path-styles");
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as Partial<Record<PathKind, PathStyle>>;
+      setPathStyles((prev) => ({
+        path1: { ...prev.path1, ...(parsed.path1 ?? {}) },
+        path2: { ...prev.path2, ...(parsed.path2 ?? {}) },
+        overlap: { ...prev.overlap, ...(parsed.overlap ?? {}) },
+      }));
+    } catch {
+      /* ignore */
+    }
+  }, []);
+  const updatePathStyle = (kind: PathKind, patch: Partial<PathStyle>) => {
+    setPathStyles((prev) => {
+      const next = { ...prev, [kind]: { ...prev[kind], ...patch } };
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("concept-graph:path-styles", JSON.stringify(next));
+      }
+      return next;
+    });
+  };
+  const resetPathStyles = () => {
+    setPathStyles(DEFAULT_PATH_STYLES);
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("concept-graph:path-styles");
+    }
+  };
+  const strokeFor = (kind: PathKind) => {
+    const s = pathStyles[kind];
+    return {
+      stroke: s.color || "currentColor",
+      strokeOpacity: s.opacity,
+    };
+  };
+
   const svgRef = useRef<SVGSVGElement | null>(null);
 
 
