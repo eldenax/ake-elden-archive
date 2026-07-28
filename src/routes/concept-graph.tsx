@@ -673,6 +673,11 @@ function ConceptGraph() {
             </summary>
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
               Adjust the color and intensity used by Path 1, Path 2, and the Overlap halo so the graph stays readable with your display preferences. Changes apply live and persist on this device.
+              {cbPalette !== "off" ? (
+                <span className="mt-1 block text-foreground">
+                  Color-blind palette is on — path colors are locked to the {CB_PALETTES[cbPalette].label} set. Turn it off to use your own presets.
+                </span>
+              ) : null}
             </p>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
               {([
