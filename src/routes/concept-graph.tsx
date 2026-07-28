@@ -88,6 +88,28 @@ function ConceptGraph() {
     });
   };
 
+  const [focusMode, setFocusMode] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:focus-mode");
+    if (stored !== null) setFocusMode(stored === "1");
+  }, []);
+  const toggleFocusMode = () => {
+    setFocusMode((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:focus-mode",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
+
+  const svgRef = useRef<SVGSVGElement | null>(null);
+
+
   const [traceCapacities, setTraceCapacities] = useState<Capacity[]>([]);
   const [traceStep, setTraceStep] = useState(0);
   const [tracePlaying, setTracePlaying] = useState(false);
