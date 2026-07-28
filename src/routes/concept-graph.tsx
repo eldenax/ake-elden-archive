@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
 import { PUBLICATIONS, type Capacity } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
