@@ -233,7 +233,7 @@ function ConceptGraph() {
 
   const setActive = (i: number | null) => {
     setCopied(false);
-    if (traceCapacity) clearTrace();
+    if (tracingActive) clearTrace();
     if (i === null) {
       navigate({ search: {}, replace: false });
       return;
