@@ -52,6 +52,23 @@ export const Route = createFileRoute("/concept-graph")({
 
 type Edge = ConceptEdge;
 
+type PathKind = "path1" | "path2" | "overlap";
+type PathStyle = { color: string; opacity: number };
+
+const COLOR_PRESETS: { id: string; label: string; value: string }[] = [
+  { id: "ink", label: "Ink", value: "" }, // "" = inherit from text-foreground
+  { id: "indigo", label: "Indigo", value: "#4f46e5" },
+  { id: "crimson", label: "Crimson", value: "#b91c1c" },
+  { id: "teal", label: "Teal", value: "#0d9488" },
+  { id: "amber", label: "Amber", value: "#b45309" },
+];
+
+const DEFAULT_PATH_STYLES: Record<PathKind, PathStyle> = {
+  path1: { color: "", opacity: 1 },
+  path2: { color: "", opacity: 1 },
+  overlap: { color: "", opacity: 0.4 },
+};
+
 function findEdgeIndexByPair(pair: string | undefined): number | null {
   if (!pair) return null;
   const idx = EDGES.findIndex((e) => pairKey(e.a, e.b) === pair);
