@@ -104,6 +104,20 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-t border-border bg-secondary/30">
+        <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Guiding question
+          </p>
+          <blockquote className="mt-6 border-l-2 border-foreground pl-6 font-display text-2xl italic leading-snug text-foreground md:text-3xl">
+            “Which human capacities are presupposed, transformed, or concealed
+            when artificial intelligence becomes part of institutional and
+            personal decision-making?”
+          </blockquote>
+        </div>
+      </section>
+
+
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="mb-12 max-w-2xl">
