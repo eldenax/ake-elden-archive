@@ -114,6 +114,13 @@ function Index() {
             when artificial intelligence becomes part of institutional and
             personal decision-making?”
           </blockquote>
+          <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground">
+            As you explore the site, look for how each project, publication, and
+            concept traces one part of that question: the forms of judgment we
+            still require, the responsibilities we distribute, the explanations
+            we trust, and the human capacities that must be cultivated if
+            institutions and technologies are to remain answerable to us.
+          </p>
         </div>
       </section>
 
