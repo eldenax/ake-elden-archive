@@ -17,6 +17,7 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
@@ -63,6 +64,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConceptGraphRoute = ConceptGraphRouteImport.update({
+  id: '/concept-graph',
+  path: '/concept-graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademicProfileRoute = AcademicProfileRouteImport.update({
   id: '/academic-profile',
   path: '/academic-profile',
@@ -92,6 +98,7 @@ const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academic-profile': typeof AcademicProfileRoute
+  '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academic-profile': typeof AcademicProfileRoute
+  '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/academic-profile': typeof AcademicProfileRoute
+  '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/cv': typeof CvRoute
   '/news': typeof NewsRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/academic-profile'
+    | '/concept-graph'
     | '/contact'
     | '/cv'
     | '/news'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/academic-profile'
+    | '/concept-graph'
     | '/contact'
     | '/cv'
     | '/news'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/academic-profile'
+    | '/concept-graph'
     | '/contact'
     | '/cv'
     | '/news'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademicProfileRoute: typeof AcademicProfileRoute
+  ConceptGraphRoute: typeof ConceptGraphRoute
   ContactRoute: typeof ContactRoute
   CvRoute: typeof CvRoute
   NewsRoute: typeof NewsRoute
@@ -256,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/concept-graph': {
+      id: '/concept-graph'
+      path: '/concept-graph'
+      fullPath: '/concept-graph'
+      preLoaderRoute: typeof ConceptGraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academic-profile': {
       id: '/academic-profile'
       path: '/academic-profile'
@@ -308,6 +328,7 @@ const ThemesRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicProfileRoute: AcademicProfileRoute,
+  ConceptGraphRoute: ConceptGraphRoute,
   ContactRoute: ContactRoute,
   CvRoute: CvRoute,
   NewsRoute: NewsRoute,
