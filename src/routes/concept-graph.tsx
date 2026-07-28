@@ -571,11 +571,24 @@ function ConceptGraph() {
           <div className="overflow-x-auto">
 
             <svg
+              ref={svgRef}
               viewBox="0 0 800 680"
               className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
               role="img"
               aria-label="Concept relationship diagram"
             >
+              <g
+                style={{
+                  transform: focusTransform
+                    ? `translate(${focusTransform.tx}px, ${focusTransform.ty}px) scale(${focusTransform.scale})`
+                    : "translate(0px, 0px) scale(1)",
+                  transformOrigin: "0 0",
+                  transition: reduceMotion
+                    ? "none"
+                    : "transform 600ms cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+              >
+
               {/* Halo behind the active or currently-traced edge */}
               {(() => {
                 const haloIdx =
