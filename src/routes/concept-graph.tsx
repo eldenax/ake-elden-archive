@@ -187,6 +187,7 @@ function ConceptGraph() {
 
   const setActive = (i: number | null) => {
     setCopied(false);
+    if (traceCapacity) clearTrace();
     if (i === null) {
       navigate({ search: {}, replace: false });
       return;
@@ -194,6 +195,7 @@ function ConceptGraph() {
     const e = EDGES[i];
     navigate({ search: { pair: pairKey(e.a, e.b) }, replace: false });
   };
+
 
   const layout = useMemo(() => {
     const n = CONCEPTS.length;
