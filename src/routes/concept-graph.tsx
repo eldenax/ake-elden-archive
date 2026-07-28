@@ -141,10 +141,22 @@ function ConceptGraph() {
 
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-5xl px-6 py-12 lg:px-8">
+          <div className="mb-4 flex justify-end">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+              <input
+                type="checkbox"
+                checked={reduceMotion}
+                onChange={toggleReduceMotion}
+                className="h-3.5 w-3.5 accent-foreground"
+                aria-label="Reduce motion in the concept graph"
+              />
+              Reduce motion
+            </label>
+          </div>
           <div className="overflow-x-auto">
             <svg
               viewBox="0 0 800 680"
-              className="mx-auto block h-auto w-full max-w-4xl"
+              className={`mx-auto block h-auto w-full max-w-4xl ${reduceMotion ? "motion-reduced" : ""}`}
               role="img"
               aria-label="Concept relationship diagram"
             >
