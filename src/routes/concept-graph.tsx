@@ -789,3 +789,87 @@ function ActiveEdgePanel({
     </div>
   );
 }
+
+function TracePanel({
+  capacity,
+  order,
+  step,
+  onJump,
+  onClear,
+}: {
+  capacity: Capacity;
+  order: number[];
+  step: number;
+  onJump: (i: number) => void;
+  onClear: () => void;
+}) {
+  const capLabel = CAPACITIES.find((c) => c.slug === capacity)?.label ?? capacity;
+  const done = step >= order.length;
+  return (
+    <div>
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Tracing capacity
+          </p>
+          <h3 className="mt-2 font-display text-xl text-foreground">
+            {capLabel}
+          </h3>
+        </div>
+        <button
+          type="button"
+          onClick={onClear}
+          className="text-xs uppercase tracking-[0.15em] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        >
+          End trace
+        </button>
+      </div>
+      <p className="mt-3 text-sm text-muted-foreground">
+        {order.length === 0
+          ? "No connections cite works tagged with this capacity yet."
+          : done
+            ? `Full path revealed — ${order.length} connection${order.length === 1 ? "" : "s"}.`
+            : `Revealing step ${Math.min(step, order.length)} of ${order.length}.`}
+      </p>
+      {order.length > 0 ? (
+        <ol className="mt-6 space-y-3">
+          {order.map((edgeIdx, pos) => {
+            const e = EDGES[edgeIdx];
+            const a = CONCEPTS.find((c) => c.slug === e.a)?.name ?? e.a;
+            const b = CONCEPTS.find((c) => c.slug === e.b)?.name ?? e.b;
+            const revealed = pos < step;
+            const current = pos === step - 1;
+            return (
+              <li key={edgeIdx}>
+                <button
+                  type="button"
+                  onClick={() => onJump(pos + 1)}
+                  className={`w-full border-l-2 pl-4 text-left transition-colors ${
+                    current
+                      ? "border-foreground"
+                      : revealed
+                        ? "border-foreground/40 hover:border-foreground"
+                        : "border-border opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Step {pos + 1}
+                  </p>
+                  <p className="mt-1 font-display text-base text-foreground">
+                    {a}
+                    <span className="mx-2 text-muted-foreground">×</span>
+                    {b}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {e.note}
+                  </p>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      ) : null}
+    </div>
+  );
+}
+
