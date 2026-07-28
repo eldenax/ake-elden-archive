@@ -44,6 +44,41 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function CapacityCard({
+  slug,
+  title,
+  description,
+  count,
+}: {
+  slug: string;
+  title: string;
+  description: string;
+  count: number;
+}) {
+  return (
+    <Link
+      to="/publications"
+      search={{ capacity: slug }}
+      className="group flex h-full flex-col justify-between gap-6 bg-background p-8 transition-colors hover:bg-muted/40"
+    >
+      <div>
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          {count} contribution{count === 1 ? "" : "s"}
+        </p>
+        <h3 className="mt-3 font-display text-xl leading-snug text-foreground group-hover:underline decoration-dotted underline-offset-4">
+          {title}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      </div>
+      <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground">
+        Filter archive →
+      </span>
+    </Link>
+  );
+}
+
 function Index() {
   return (
     <>
