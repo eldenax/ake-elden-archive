@@ -443,16 +443,29 @@ function ConceptGraph() {
               </p>
 
             </div>
-            <label className="inline-flex cursor-pointer items-center gap-2 self-start text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground md:justify-self-end">
-              <input
-                type="checkbox"
-                checked={reduceMotion}
-                onChange={toggleReduceMotion}
-                className="h-3.5 w-3.5 accent-foreground"
-                aria-label="Reduce motion in the concept graph"
-              />
-              Reduce motion
-            </label>
+            <div className="flex flex-col gap-2 self-start md:justify-self-end">
+              <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+                <input
+                  type="checkbox"
+                  checked={focusMode}
+                  onChange={toggleFocusMode}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Auto-focus the graph on the current trace step"
+                />
+                Focus current step
+              </label>
+              <label className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground">
+                <input
+                  type="checkbox"
+                  checked={reduceMotion}
+                  onChange={toggleReduceMotion}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Reduce motion in the concept graph"
+                />
+                Reduce motion
+              </label>
+            </div>
+
           </div>
 
           <div className="mb-6 border border-border bg-background p-5">
