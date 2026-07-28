@@ -209,6 +209,41 @@ function PublicationsPage() {
         </div>
       </section>
 
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Published
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            Published papers
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Peer-reviewed articles that have appeared in print or been formally
+            accepted for publication.
+          </p>
+          <div className="mt-10 space-y-10">
+            {(() => {
+              const published = PUBLICATIONS.filter((p) =>
+                p.status.toLowerCase().startsWith("published"),
+              );
+              if (published.length === 0) {
+                return (
+                  <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
+                    No entries currently marked as published. Papers listed
+                    below are under review, in preparation, or circulating as
+                    working papers; those accepted for publication will move
+                    into this section.
+                  </p>
+                );
+              }
+              return published.map((p) => (
+                <PublicationCard key={p.title} p={p} />
+              ));
+            })()}
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
@@ -219,7 +254,11 @@ function PublicationsPage() {
           </h2>
           <div className="mt-12 space-y-16">
             {THEMES.map((t) => {
-              const pubs = PUBLICATIONS.filter((p) => p.themeSlug === t.slug);
+              const pubs = PUBLICATIONS.filter(
+                (p) =>
+                  p.themeSlug === t.slug &&
+                  !p.status.toLowerCase().startsWith("published"),
+              );
               if (pubs.length === 0) return null;
               return (
                 <div key={t.slug}>
