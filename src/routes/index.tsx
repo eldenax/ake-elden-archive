@@ -157,6 +157,49 @@ function Index() {
             we trust, and the human capacities that must be cultivated if
             institutions and technologies are to remain answerable to us.
           </p>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
+            <span className="font-medium text-foreground">Try this:</span> pick
+            one capacity —{" "}
+            <Link
+              to="/publications"
+              search={{ capacity: "presupposed" }}
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              presupposed
+            </Link>
+            ,{" "}
+            <Link
+              to="/publications"
+              search={{ capacity: "transformed" }}
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              transformed
+            </Link>
+            , or{" "}
+            <Link
+              to="/publications"
+              search={{ capacity: "concealed" }}
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              concealed
+            </Link>{" "}
+            — and trace it through the archive. Each contribution names the{" "}
+            <Link
+              to="/concepts"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              concepts
+            </Link>{" "}
+            it works with; from there you can open the{" "}
+            <Link
+              to="/concept-graph"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              concept graph
+            </Link>{" "}
+            to see how those concepts connect to others, and which publications
+            support each connection.
+          </p>
         </div>
       </section>
 
