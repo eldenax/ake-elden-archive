@@ -715,7 +715,7 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("path1")}
                           strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
                           strokeLinecap="round"
                           className={`text-foreground ${isCurrent && !showDashed ? "edge-active" : ""}`}
@@ -727,7 +727,7 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("path2")}
                           strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
                           strokeLinecap="round"
                           strokeDasharray="5 4"
@@ -740,10 +740,10 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("overlap")}
                           strokeWidth={7}
                           strokeLinecap="round"
-                          className={`edge-halo pointer-events-none text-foreground/40 ${isCurrent ? "edge-active" : ""}`}
+                          className={`edge-halo pointer-events-none text-foreground ${isCurrent ? "edge-active" : ""}`}
                         />
                       ) : null}
                     </g>
