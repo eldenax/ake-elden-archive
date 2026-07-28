@@ -624,7 +624,6 @@ function ConceptGraph() {
           </details>
 
 
-          </div>
 
           <div className="mb-6 border border-border bg-background p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
