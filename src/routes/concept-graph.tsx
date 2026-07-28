@@ -856,8 +856,9 @@ function ConceptGraph() {
                   </g>
                 );
               })()}
-
+              </g>
             </svg>
+
           </div>
 
           <div className="mt-10 border-t border-border pt-8">
