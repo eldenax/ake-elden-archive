@@ -285,8 +285,13 @@ function ConceptGraph() {
                   }
                 }
                 if (current) lines.push(current);
+                const concept = CONCEPTS.find((c) => c.slug === p.slug);
+                const tip = concept
+                  ? `${concept.name} — ${concept.tagline}`
+                  : p.name;
                 return (
                   <g key={p.slug} className={isDim ? "opacity-40" : ""}>
+                    <title>{tip}</title>
                     <circle
                       cx={p.x}
                       cy={p.y}
@@ -311,8 +316,16 @@ function ConceptGraph() {
                         </tspan>
                       ))}
                     </text>
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={16}
+                      fill="transparent"
+                      className="cursor-help"
+                    />
                   </g>
                 );
+
               })}
 
               {/* Floating label at midpoint of the active edge */}
