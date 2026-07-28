@@ -1,0 +1,588 @@
+[
+  {
+    "title": "Standing Is Not an Ordering",
+    "current": {
+      "venue": "Under review",
+      "status": "Under review",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 0.2,
+      "matchedTitle": "Membrane Thickness and Molecular Ordering in Acholeplasma laidlawii Strain A Studied by 2H NMR Spectroscopy",
+      "doi": "10.1021/bi00249a004",
+      "url": "https://doi.org/10.1021/bi00249a004",
+      "venue": "Biochemistry",
+      "year": "1994",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Robin L. Thurmond; Alf R. Niemi; Goeran Lindblom; Aake Wieslander; Leif Rilfors"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "The Locus of Answerability",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 1.25,
+      "matchedTitle": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability (Preprint)",
+      "doi": "10.2196/preprints.105907",
+      "url": "https://doi.org/10.2196/preprints.105907",
+      "venue": "JMIR Publications Inc.",
+      "year": "2026",
+      "status": "Preprint",
+      "type": "posted-content",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Second-Order Provenance",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 0.667,
+      "matchedTitle": "Second-order perturbation theory with a CASSCF reference function",
+      "doi": "10.1021/j100377a012",
+      "url": "https://doi.org/10.1021/j100377a012",
+      "venue": "The Journal of Physical Chemistry",
+      "year": "1990",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Kerstin. Andersson; Per Aake. Malmqvist; Bjoern O. Roos; Andrzej J. Sadlej; Krzysztof. Wolinski"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Creaturehood Under Conditions of Optimization",
+    "current": {
+      "venue": "In preparation",
+      "status": "In preparation",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "Creaturehood Under Conditions of Optimization: AI and the Externalization of Moral Formation",
+      "doi": "10.1177/09539468261467326",
+      "url": "https://doi.org/10.1177/09539468261467326",
+      "venue": "Studies in Christian Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Comparative Desire and Social Violence",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 0.4,
+      "matchedTitle": "Foucault at Buffalo in 1970 and 1972: The Desire for Knowledge, The Criminal in Literature, and The History of Truth",
+      "doi": "10.1353/fou.00018",
+      "url": "https://doi.org/10.1353/fou.00018",
+      "venue": "Foucault Studies",
+      "year": "2025",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Stuart Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Conceptual Inflation and Explanatory Entitlement",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper",
+      "year": "2026"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "Conceptual Inflation and Explanatory Entitlement: On the Limits of Construct Extension in Science",
+      "doi": "10.3390/philosophies11040105",
+      "url": "https://doi.org/10.3390/philosophies11040105",
+      "venue": "Philosophies",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "When Responsibility Fails to Arise",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "When responsibility fails to arise: institutional conditions of action in algorithmic governance",
+      "doi": "10.1007/s43681-026-01204-1",
+      "url": "https://doi.org/10.1007/s43681-026-01204-1",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "The Diffuse Void",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "The diffuse void: algorithmic safety and the disappearance of judgment",
+      "doi": "10.1007/s43681-026-01095-2",
+      "url": "https://doi.org/10.1007/s43681-026-01095-2",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Aake Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "The Ontological Organization of Normativity",
+    "current": {
+      "venue": "In preparation",
+      "status": "In preparation"
+    },
+    "suggestion": {
+      "matchScore": 0.6,
+      "matchedTitle": "Political Efficacy at Work: The Connection between More Autonomous Forms of Workplace Organization and a More Participatory Politics",
+      "doi": "10.2307/1962158",
+      "url": "https://doi.org/10.2307/1962158",
+      "venue": "American Political Science Review",
+      "year": "1981",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "J. Maxwell Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Predictive AI and Second-Personal Exclusion",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.833,
+      "matchedTitle": "Sanctification and the Ordo Extractionis: Formative Sovereignty and Predictive Habituation",
+      "doi": "10.3390/rel17030392",
+      "url": "https://doi.org/10.3390/rel17030392",
+      "venue": "Religions",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Answerability on the Record",
+    "current": {
+      "venue": "In preparation",
+      "status": "In preparation"
+    },
+    "suggestion": {
+      "matchScore": 1,
+      "matchedTitle": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability (Preprint)",
+      "doi": "10.2196/preprints.105907",
+      "url": "https://doi.org/10.2196/preprints.105907",
+      "venue": "JMIR Publications Inc.",
+      "year": "2026",
+      "status": "Preprint",
+      "type": "posted-content",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "From Phronesis to Pronoia",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "From Phronesis to Pronoia: Algorithmic Mediation and the Theological Displacement of Practical Wisdom",
+      "doi": "10.1177/09539468261463719",
+      "url": "https://doi.org/10.1177/09539468261463719",
+      "venue": "Studies in Christian Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "The Gifted Subject",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "The Gifted Subject: Kenosis, Phenomenology, and the Constitution of Responsive Agency",
+      "doi": "10.1080/0039338x.2026.2691693",
+      "url": "https://doi.org/10.1080/0039338x.2026.2691693",
+      "venue": "Studia Theologica - Nordic Journal of Theology",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Action Without Acts",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.833,
+      "matchedTitle": "When responsibility fails to arise: institutional conditions of action in algorithmic governance",
+      "doi": "10.1007/s43681-026-01204-1",
+      "url": "https://doi.org/10.1007/s43681-026-01204-1",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Algorithmic Habitus and the Invisible Mission",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1,
+      "matchedTitle": "The diffuse void: algorithmic safety and the disappearance of judgment",
+      "doi": "10.1007/s43681-026-01095-2",
+      "url": "https://doi.org/10.1007/s43681-026-01095-2",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Aake Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Algorithmic Formation and the Mimetic Self",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1,
+      "matchedTitle": "The diffuse void: algorithmic safety and the disappearance of judgment",
+      "doi": "10.1007/s43681-026-01095-2",
+      "url": "https://doi.org/10.1007/s43681-026-01095-2",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Aake Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Epistemic Automation and the Deformation of the Human",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1.5,
+      "matchedTitle": "Epistemic Automation and the Deformation of the Human: Artificial Intelligence and the Reconfiguration of Theological Anthropology",
+      "doi": "10.3390/rel17050515",
+      "url": "https://doi.org/10.3390/rel17050515",
+      "venue": "Religions",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "The Platforming of Desire",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.75,
+      "matchedTitle": "Foucault at Buffalo in 1970 and 1972: The Desire for Knowledge, The Criminal in Literature, and The History of Truth",
+      "doi": "10.1353/fou.00018",
+      "url": "https://doi.org/10.1353/fou.00018",
+      "venue": "Foucault Studies",
+      "year": "2025",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Stuart Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Mapping Epistemic Instability",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.833,
+      "matchedTitle": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability (Preprint)",
+      "doi": "10.2196/preprints.105907",
+      "url": "https://doi.org/10.2196/preprints.105907",
+      "venue": "JMIR Publications Inc.",
+      "year": "2026",
+      "status": "Preprint",
+      "type": "posted-content",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Design–Inference Alignment",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.333,
+      "matchedTitle": "IMPROVING THE DESIGN QUALITY OF HOUSING BUILDINGS",
+      "doi": "10.54729/2789-8547.1042",
+      "url": "https://doi.org/10.54729/2789-8547.1042",
+      "venue": "Architecture and Planning Journal (APJ)",
+      "year": "2020",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Ehab Nasr Elden Ahmed"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Object constitution and scientific inference",
+    "current": {
+      "venue": "In preparation",
+      "status": "In preparation"
+    },
+    "suggestion": {
+      "matchScore": 0.9,
+      "matchedTitle": "The Gifted Subject: Kenosis, Phenomenology, and the Constitution of Responsive Agency",
+      "doi": "10.1080/0039338x.2026.2691693",
+      "url": "https://doi.org/10.1080/0039338x.2026.2691693",
+      "venue": "Studia Theologica - Nordic Journal of Theology",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Markov models and the ontology of state",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.571,
+      "matchedTitle": "Transition-state structure and the temperature dependence of the kinetic isotope effect",
+      "doi": "10.1021/ja00336a061",
+      "url": "https://doi.org/10.1021/ja00336a061",
+      "venue": "Journal of the American Chemical Society",
+      "year": "1984",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Bo Anhede; Nils Aake Bergman"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "LLM experiments and inferential license",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.2,
+      "matchedTitle": "Isnad AI at IslamicEval 2025: A Rule-Based System for Identifying Religious Texts in LLM Outputs",
+      "doi": "10.18653/v1/2025.arabicnlp-sharedtasks.74",
+      "url": "https://doi.org/10.18653/v1/2025.arabicnlp-sharedtasks.74",
+      "venue": "Proceedings of The Third Arabic Natural Language Processing Conference: Shared Tasks",
+      "year": "2025",
+      "status": "Published",
+      "type": "proceedings-article",
+      "authors": "Fatimah Mohamed Emad Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "AI as epistemic infrastructure",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1,
+      "matchedTitle": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability (Preprint)",
+      "doi": "10.2196/preprints.105907",
+      "url": "https://doi.org/10.2196/preprints.105907",
+      "venue": "JMIR Publications Inc.",
+      "year": "2026",
+      "status": "Preprint",
+      "type": "posted-content",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Institutional inversion",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 1,
+      "matchedTitle": "When responsibility fails to arise: institutional conditions of action in algorithmic governance",
+      "doi": "10.1007/s43681-026-01204-1",
+      "url": "https://doi.org/10.1007/s43681-026-01204-1",
+      "venue": "AI and Ethics",
+      "year": "2026",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "High confidence — flip `confirmed: true` to apply."
+  },
+  {
+    "title": "Systemic friction",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.5,
+      "matchedTitle": "Is the Systemic Immune-Inflammation Index Associated with the Prognosis and Severity of Bell’s Palsy?",
+      "doi": "10.26453/otjhs.1576219",
+      "url": "https://doi.org/10.26453/otjhs.1576219",
+      "venue": "Online Türk Sağlık Bilimleri Dergisi",
+      "year": "2024",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Ahmet Kara; Halil Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Organic API theory",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.333,
+      "matchedTitle": "The Impact of Microwave‐Assisted Organic Synthesis in Drug Discovery",
+      "doi": "10.1002/chin.200708256",
+      "url": "https://doi.org/10.1002/chin.200708256",
+      "venue": "ChemInform",
+      "year": "2007",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Farah Mavandadi; Aake Pilotti"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Administrative expertise as epistemic lag",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.7,
+      "matchedTitle": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability (Preprint)",
+      "doi": "10.2196/preprints.105907",
+      "url": "https://doi.org/10.2196/preprints.105907",
+      "venue": "JMIR Publications Inc.",
+      "year": "2026",
+      "status": "Preprint",
+      "type": "posted-content",
+      "authors": "Åke Elden"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  },
+  {
+    "title": "Media as infrastructure",
+    "current": {
+      "venue": "Working paper",
+      "status": "Working paper"
+    },
+    "suggestion": {
+      "matchScore": 0.333,
+      "matchedTitle": "The new Infrastructure and Space - ICT and the four transport systems shape different accessibilty spaces",
+      "doi": "10.3406/netco.1998.1381",
+      "url": "https://doi.org/10.3406/netco.1998.1381",
+      "venue": "Netcom",
+      "year": "1998",
+      "status": "Published",
+      "type": "journal-article",
+      "authors": "Aake Forsstroem"
+    },
+    "confirmed": false,
+    "note": "Low/medium confidence — verify manually before flipping `confirmed: true`."
+  }
+]

@@ -12,7 +12,9 @@
     "format": "prettier --write .",
     "check:sitemap": "node scripts/check-sitemap.mjs",
     "check:robots": "node scripts/check-robots.mjs",
-    "check:seo": "node scripts/check-seo.mjs"
+    "check:seo": "node scripts/check-seo.mjs",
+    "enrich:publications": "node scripts/enrich-publications.mjs",
+    "apply:publications": "node scripts/apply-publications.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

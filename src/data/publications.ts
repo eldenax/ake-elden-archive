@@ -8,6 +8,7 @@ export type Publication = {
   contribution: string;
   caseNote?: string;
   href?: string;
+  doi?: string;
   selected?: boolean;
 };
 
