@@ -88,7 +88,102 @@ function ConceptGraph() {
     });
   };
 
+  const [traceCapacity, setTraceCapacity] = useState<Capacity | null>(null);
+  const [traceStep, setTraceStep] = useState(0);
+  const [tracePlaying, setTracePlaying] = useState(false);
+
+  const traceOrder = useMemo(() => {
+    if (!traceCapacity) return [] as number[];
+    const titles = new Set(
+      PUBLICATIONS.filter((p) => p.capacities?.includes(traceCapacity)).map(
+        (p) => p.title,
+      ),
+    );
+    const matching = EDGES.map((e, i) => ({ e, i })).filter(({ e }) =>
+      e.publications.some((t) => titles.has(t)),
+    );
+    if (matching.length === 0) return [];
+    const adj = new Map<string, { idx: number; other: string }[]>();
+    for (const { e, i } of matching) {
+      if (!adj.has(e.a)) adj.set(e.a, []);
+      if (!adj.has(e.b)) adj.set(e.b, []);
+      adj.get(e.a)!.push({ idx: i, other: e.b });
+      adj.get(e.b)!.push({ idx: i, other: e.a });
+    }
+    const order: number[] = [];
+    const usedEdges = new Set<number>();
+    const seen = new Set<string>();
+    const start = [...adj.entries()].sort(
+      (a, b) => b[1].length - a[1].length,
+    )[0][0];
+    const queue: string[] = [start];
+    seen.add(start);
+    while (usedEdges.size < matching.length) {
+      if (queue.length === 0) {
+        const next = matching.find(({ i }) => !usedEdges.has(i));
+        if (!next) break;
+        queue.push(next.e.a);
+        seen.add(next.e.a);
+      }
+      const node = queue.shift()!;
+      for (const { idx, other } of adj.get(node) ?? []) {
+        if (usedEdges.has(idx)) continue;
+        usedEdges.add(idx);
+        order.push(idx);
+        if (!seen.has(other)) {
+          seen.add(other);
+          queue.push(other);
+        }
+      }
+    }
+    return order;
+  }, [traceCapacity]);
+
+  const startTrace = (cap: Capacity) => {
+    setCopied(false);
+    if (search.pair) navigate({ search: {}, replace: true });
+    setTraceCapacity(cap);
+    setTraceStep(0);
+    setTracePlaying(true);
+  };
+
+  const clearTrace = () => {
+    setTraceCapacity(null);
+    setTraceStep(0);
+    setTracePlaying(false);
+  };
+
+  useEffect(() => {
+    if (!tracePlaying) return;
+    if (traceStep >= traceOrder.length) {
+      setTracePlaying(false);
+      return;
+    }
+    const delay = reduceMotion ? 350 : 850;
+    const t = setTimeout(() => setTraceStep((s) => s + 1), delay);
+    return () => clearTimeout(t);
+  }, [tracePlaying, traceStep, traceOrder.length, reduceMotion]);
+
+  const revealedEdges = useMemo(
+    () => new Set(traceOrder.slice(0, traceStep)),
+    [traceOrder, traceStep],
+  );
+  const revealedNodes = useMemo(() => {
+    const s = new Set<string>();
+    revealedEdges.forEach((i) => {
+      s.add(EDGES[i].a);
+      s.add(EDGES[i].b);
+    });
+    return s;
+  }, [revealedEdges]);
+  const currentTraceEdge =
+    traceStep > 0 && traceStep <= traceOrder.length
+      ? traceOrder[traceStep - 1]
+      : null;
+  const tracingActive = traceCapacity !== null;
+
   const active = findEdgeIndexByPair(search.pair);
+
 
   const setActive = (i: number | null) => {
     setCopied(false);
