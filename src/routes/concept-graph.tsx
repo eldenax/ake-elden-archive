@@ -749,8 +749,9 @@ function ConceptGraph() {
           <div className="mt-10 border-t border-border pt-8">
             {tracingActive ? (
               <TracePanel
-                capacity={traceCapacity!}
-                order={traceOrder}
+                capacities={traceCapacities}
+                orders={traceOrders}
+                steps={traceSteps}
                 step={traceStep}
                 onJump={(i) => {
                   setTracePlaying(false);
@@ -758,6 +759,7 @@ function ConceptGraph() {
                 }}
                 onClear={clearTrace}
               />
+
             ) : activeEdge ? (
               <ActiveEdgePanel
                 edge={activeEdge}
