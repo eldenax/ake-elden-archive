@@ -627,7 +627,18 @@ function ConceptGraph() {
           </div>
 
           <div className="mt-10 border-t border-border pt-8">
-            {activeEdge ? (
+            {tracingActive ? (
+              <TracePanel
+                capacity={traceCapacity!}
+                order={traceOrder}
+                step={traceStep}
+                onJump={(i) => {
+                  setTracePlaying(false);
+                  setTraceStep(i);
+                }}
+                onClear={clearTrace}
+              />
+            ) : activeEdge ? (
               <ActiveEdgePanel
                 edge={activeEdge}
                 onCopyLink={handleCopyLink}
@@ -637,10 +648,12 @@ function ConceptGraph() {
             ) : (
               <div className="text-center text-sm text-muted-foreground">
                 Select a line in the diagram — or a connection below — to reveal
-                its supporting publications and a shareable link.
+                its supporting publications and a shareable link. Or trace a
+                capacity to watch its path unfold.
               </div>
             )}
           </div>
+
         </div>
       </section>
 
