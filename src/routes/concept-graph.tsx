@@ -52,6 +52,23 @@ export const Route = createFileRoute("/concept-graph")({
 
 type Edge = ConceptEdge;
 
+type PathKind = "path1" | "path2" | "overlap";
+type PathStyle = { color: string; opacity: number };
+
+const COLOR_PRESETS: { id: string; label: string; value: string }[] = [
+  { id: "ink", label: "Ink", value: "" }, // "" = inherit from text-foreground
+  { id: "indigo", label: "Indigo", value: "#4f46e5" },
+  { id: "crimson", label: "Crimson", value: "#b91c1c" },
+  { id: "teal", label: "Teal", value: "#0d9488" },
+  { id: "amber", label: "Amber", value: "#b45309" },
+];
+
+const DEFAULT_PATH_STYLES: Record<PathKind, PathStyle> = {
+  path1: { color: "", opacity: 1 },
+  path2: { color: "", opacity: 1 },
+  overlap: { color: "", opacity: 0.4 },
+};
+
 function findEdgeIndexByPair(pair: string | undefined): number | null {
   if (!pair) return null;
   const idx = EDGES.findIndex((e) => pairKey(e.a, e.b) === pair);
@@ -105,6 +122,46 @@ function ConceptGraph() {
       }
       return next;
     });
+  };
+
+  // Per-path style controls (color preset + intensity)
+  const [pathStyles, setPathStyles] = useState<Record<PathKind, PathStyle>>(DEFAULT_PATH_STYLES);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem("concept-graph:path-styles");
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as Partial<Record<PathKind, PathStyle>>;
+      setPathStyles((prev) => ({
+        path1: { ...prev.path1, ...(parsed.path1 ?? {}) },
+        path2: { ...prev.path2, ...(parsed.path2 ?? {}) },
+        overlap: { ...prev.overlap, ...(parsed.overlap ?? {}) },
+      }));
+    } catch {
+      /* ignore */
+    }
+  }, []);
+  const updatePathStyle = (kind: PathKind, patch: Partial<PathStyle>) => {
+    setPathStyles((prev) => {
+      const next = { ...prev, [kind]: { ...prev[kind], ...patch } };
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("concept-graph:path-styles", JSON.stringify(next));
+      }
+      return next;
+    });
+  };
+  const resetPathStyles = () => {
+    setPathStyles(DEFAULT_PATH_STYLES);
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("concept-graph:path-styles");
+    }
+  };
+  const strokeFor = (kind: PathKind) => {
+    const s = pathStyles[kind];
+    return {
+      stroke: s.color || "currentColor",
+      strokeOpacity: s.opacity,
+    };
   };
 
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -465,8 +522,108 @@ function ConceptGraph() {
                 Reduce motion
               </label>
             </div>
-
           </div>
+
+          <details className="mb-6 border border-border bg-secondary/20 p-5">
+            <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground">
+              <span>Path styles — color & intensity</span>
+              <button
+                type="button"
+                onClick={(ev) => { ev.preventDefault(); resetPathStyles(); }}
+                className="text-[0.65rem] normal-case tracking-normal text-muted-foreground underline underline-offset-4 hover:text-foreground"
+              >
+                Reset to defaults
+              </button>
+            </summary>
+            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+              Adjust the color and intensity used by Path 1, Path 2, and the Overlap halo so the graph stays readable with your display preferences. Changes apply live and persist on this device.
+            </p>
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
+              {([
+                { kind: "path1" as PathKind, label: "Path 1", hint: "solid stroke" },
+                { kind: "path2" as PathKind, label: "Path 2", hint: "dashed stroke" },
+                { kind: "overlap" as PathKind, label: "Overlap", hint: "halo behind both" },
+              ]).map(({ kind, label, hint }) => {
+                const style = pathStyles[kind];
+                const swatchStroke = style.color || "currentColor";
+                return (
+                  <div key={kind} className="border border-border bg-background p-3">
+                    <div className="flex items-center justify-between">
+                      <p className="font-display text-sm text-foreground">
+                        {label}
+                        <span className="ml-2 text-xs font-normal text-muted-foreground">{hint}</span>
+                      </p>
+                      <svg width="46" height="14" viewBox="0 0 46 14" aria-hidden="true" className="text-foreground">
+                        {kind === "overlap" ? (
+                          <line x1="2" y1="7" x2="44" y2="7" stroke={swatchStroke} strokeOpacity={style.opacity} strokeWidth={8} strokeLinecap="round" />
+                        ) : (
+                          <line
+                            x1="2" y1="7" x2="44" y2="7"
+                            stroke={swatchStroke}
+                            strokeOpacity={style.opacity}
+                            strokeWidth={2.5}
+                            strokeLinecap="round"
+                            strokeDasharray={kind === "path2" ? "5 4" : undefined}
+                          />
+                        )}
+                      </svg>
+                    </div>
+                    <div className="mt-3">
+                      <p className="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">Color</p>
+                      <div className="mt-1 flex flex-wrap gap-1.5">
+                        {COLOR_PRESETS.map((p) => {
+                          const selected = style.color === p.value;
+                          return (
+                            <button
+                              key={p.id}
+                              type="button"
+                              onClick={() => updatePathStyle(kind, { color: p.value })}
+                              title={p.label}
+                              aria-label={`${label} color: ${p.label}`}
+                              aria-pressed={selected}
+                              className={`h-6 w-6 border ${selected ? "border-foreground ring-1 ring-foreground" : "border-border hover:border-foreground/60"}`}
+                              style={{
+                                background: p.value || "transparent",
+                                color: p.value ? undefined : "currentColor",
+                              }}
+                            >
+                              {!p.value ? (
+                                <span className="block h-full w-full bg-foreground/80" />
+                              ) : null}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <div className="flex items-center justify-between">
+                        <label htmlFor={`intensity-${kind}`} className="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                          Intensity
+                        </label>
+                        <span className="text-[0.65rem] tabular-nums text-muted-foreground">
+                          {Math.round(style.opacity * 100)}%
+                        </span>
+                      </div>
+                      <input
+                        id={`intensity-${kind}`}
+                        type="range"
+                        min={20}
+                        max={100}
+                        step={5}
+                        value={Math.round(style.opacity * 100)}
+                        onChange={(ev) =>
+                          updatePathStyle(kind, { opacity: Number(ev.target.value) / 100 })
+                        }
+                        className="mt-1 w-full accent-foreground"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </details>
+
+
 
           <div className="mb-6 border border-border bg-background p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
@@ -617,7 +774,7 @@ function ConceptGraph() {
                     y1={p1.y}
                     x2={p2.x}
                     y2={p2.y}
-                    stroke="currentColor"
+                    {...strokeFor("overlap")}
                     strokeLinecap="round"
                     className="edge-halo pointer-events-none text-foreground"
                   />
@@ -658,7 +815,7 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("path1")}
                           strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
                           strokeLinecap="round"
                           className={`text-foreground ${isCurrent && !showDashed ? "edge-active" : ""}`}
@@ -670,7 +827,7 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("path2")}
                           strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
                           strokeLinecap="round"
                           strokeDasharray="5 4"
@@ -683,10 +840,10 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          stroke="currentColor"
+                          {...strokeFor("overlap")}
                           strokeWidth={7}
                           strokeLinecap="round"
-                          className={`edge-halo pointer-events-none text-foreground/40 ${isCurrent ? "edge-active" : ""}`}
+                          className={`edge-halo pointer-events-none text-foreground ${isCurrent ? "edge-active" : ""}`}
                         />
                       ) : null}
                     </g>
