@@ -404,9 +404,12 @@ function ConceptGraph() {
               role="img"
               aria-label="Concept relationship diagram"
             >
-              {/* Halo behind the active edge */}
-              {active !== null && (() => {
-                const e = EDGES[active];
+              {/* Halo behind the active or currently-traced edge */}
+              {(() => {
+                const haloIdx =
+                  tracingActive ? currentTraceEdge : active;
+                if (haloIdx === null || haloIdx === undefined) return null;
+                const e = EDGES[haloIdx];
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
                 return (
@@ -426,8 +429,32 @@ function ConceptGraph() {
               {EDGES.map((e, i) => {
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
-                const isActive = active === i;
-                const isDim = active !== null && !isActive;
+                let cls: string;
+                let sw = 1;
+                if (tracingActive) {
+                  const isCurrent = currentTraceEdge === i;
+                  const isRevealed = revealedEdges.has(i);
+                  if (isCurrent) {
+                    cls = "edge-active text-foreground";
+                    sw = 2.5;
+                  } else if (isRevealed) {
+                    cls = "text-foreground transition-all";
+                    sw = 2;
+                  } else {
+                    cls = "text-border transition-all";
+                  }
+                } else {
+                  const isActive = active === i;
+                  const isDim = active !== null && !isActive;
+                  cls = `cursor-pointer transition-all ${
+                    isActive
+                      ? "edge-active text-foreground"
+                      : isDim
+                        ? "text-border"
+                        : "text-muted-foreground/50 hover:text-foreground"
+                  }`;
+                  sw = isActive ? 2.5 : 1;
+                }
                 return (
                   <line
                     key={`edge-${i}`}
@@ -436,16 +463,14 @@ function ConceptGraph() {
                     x2={p2.x}
                     y2={p2.y}
                     stroke="currentColor"
-                    strokeWidth={isActive ? 2.5 : 1}
+                    strokeWidth={sw}
                     strokeLinecap="round"
-                    className={`cursor-pointer transition-all ${
-                      isActive
-                        ? "edge-active text-foreground"
-                        : isDim
-                          ? "text-border"
-                          : "text-muted-foreground/50 hover:text-foreground"
-                    }`}
-                    onClick={() => setActive(isActive ? null : i)}
+                    className={cls}
+                    onClick={
+                      tracingActive
+                        ? undefined
+                        : () => setActive(active === i ? null : i)
+                    }
                   />
                 );
               })}
@@ -464,8 +489,12 @@ function ConceptGraph() {
                     y2={p2.y}
                     stroke="transparent"
                     strokeWidth={14}
-                    className="cursor-pointer"
-                    onClick={() => setActive(active === i ? null : i)}
+                    className={tracingActive ? "" : "cursor-pointer"}
+                    onClick={
+                      tracingActive
+                        ? undefined
+                        : () => setActive(active === i ? null : i)
+                    }
                   >
                     <title>{`${nameA} × ${nameB} — ${e.note} (click to see supporting works)`}</title>
                   </line>
@@ -474,10 +503,19 @@ function ConceptGraph() {
 
 
               {layout.map((p) => {
-                const isConnected =
-                  activeEdge &&
-                  (activeEdge.a === p.slug || activeEdge.b === p.slug);
-                const isDim = active !== null && !isConnected;
+                let filled = false;
+                let dimmed = false;
+                if (tracingActive) {
+                  filled = revealedNodes.has(p.slug);
+                  dimmed = !filled;
+                } else {
+                  const isConnected = !!(
+                    activeEdge &&
+                    (activeEdge.a === p.slug || activeEdge.b === p.slug)
+                  );
+                  filled = isConnected;
+                  dimmed = active !== null && !isConnected;
+                }
                 const words = p.name.split(" ");
                 const lines: string[] = [];
                 let current = "";
@@ -495,14 +533,17 @@ function ConceptGraph() {
                   ? `${concept.name} — ${concept.tagline}`
                   : p.name;
                 return (
-                  <g key={p.slug} className={isDim ? "opacity-40" : ""}>
+                  <g
+                    key={p.slug}
+                    className={`transition-opacity ${dimmed ? "opacity-40" : ""}`}
+                  >
                     <title>{tip}</title>
                     <circle
                       cx={p.x}
                       cy={p.y}
                       r={9}
                       className={
-                        isConnected
+                        filled
                           ? "fill-foreground"
                           : "fill-background stroke-foreground"
                       }
@@ -533,21 +574,26 @@ function ConceptGraph() {
 
               })}
 
-              {/* Floating label at midpoint of the active edge */}
-              {activeEdge && (() => {
-                const p1 = positions.get(activeEdge.a)!;
-                const p2 = positions.get(activeEdge.b)!;
+              {/* Floating label at midpoint of the active or traced edge */}
+              {(() => {
+                const idx =
+                  tracingActive ? currentTraceEdge : active;
+                if (idx === null || idx === undefined) return null;
+                const edge = EDGES[idx];
+                const p1 = positions.get(edge.a)!;
+                const p2 = positions.get(edge.b)!;
                 const mx = (p1.x + p2.x) / 2;
                 const my = (p1.y + p2.y) / 2;
-                const label = "Supporting relationship";
+                const label = tracingActive
+                  ? `Tracing ${traceCapacity}`
+                  : "Supporting relationship";
                 const padX = 12;
-                const padY = 6;
                 const charW = 6.2;
                 const w = Math.round(label.length * charW) + padX * 2;
                 const h = 26;
                 return (
                   <g
-                    key={`label-${active}`}
+                    key={`label-${idx}-${tracingActive ? "t" : "a"}`}
                     className="edge-label pointer-events-none"
                   >
                     <rect
@@ -576,6 +622,7 @@ function ConceptGraph() {
                   </g>
                 );
               })()}
+
             </svg>
           </div>
 
