@@ -715,6 +715,24 @@ function ConceptGraph() {
                 ) : null}
               </label>
               <label
+                className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
+                title="Thicken strokes and halos when highlight contrast against the page background is low."
+              >
+                <input
+                  type="checkbox"
+                  checked={autoContrast}
+                  onChange={toggleAutoContrast}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Auto-adjust stroke width for low-contrast highlights"
+                />
+                Auto-contrast width
+                {autoContrast ? (
+                  <span className="ml-1 rounded-sm border border-border px-1 py-px text-[0.6rem] normal-case tracking-normal text-foreground">
+                    on
+                  </span>
+                ) : null}
+              </label>
+              <label
                 className="mt-1 inline-flex cursor-pointer items-start gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
                 title="Use a Wong palette tuned for deuteranopia and protanopia."
               >
