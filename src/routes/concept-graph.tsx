@@ -225,6 +225,86 @@ function ConceptGraph() {
     }
   };
 
+  // Auto-contrast: measure the page background and boost stroke/halo width
+  // when the effective highlight color has low WCAG contrast against it.
+  const [autoContrast, setAutoContrast] = useState(true);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:auto-contrast");
+    if (stored !== null) setAutoContrast(stored === "1");
+  }, []);
+  const toggleAutoContrast = () => {
+    setAutoContrast((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:auto-contrast",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
+
+  const [bgRgb, setBgRgb] = useState<[number, number, number]>([255, 255, 255]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const el = svgRef.current ?? document.body;
+    // Walk up to find a non-transparent background.
+    let node: Element | null = el;
+    let color = "";
+    while (node) {
+      const c = window.getComputedStyle(node).backgroundColor;
+      if (c && c !== "rgba(0, 0, 0, 0)" && c !== "transparent") { color = c; break; }
+      node = node.parentElement;
+    }
+    if (!color) color = isDark ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
+    const m = color.match(/rgba?\(([^)]+)\)/);
+    if (m) {
+      const parts = m[1].split(",").map((s) => parseFloat(s.trim()));
+      setBgRgb([parts[0] || 0, parts[1] || 0, parts[2] || 0]);
+    }
+  }, [isDark]);
+
+  const hexToRgb = (hex: string): [number, number, number] | null => {
+    const h = hex.replace("#", "");
+    if (h.length !== 6) return null;
+    const n = parseInt(h, 16);
+    if (Number.isNaN(n)) return null;
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  };
+  const relLum = ([r, g, b]: [number, number, number]) => {
+    const f = (c: number) => {
+      const s = c / 255;
+      return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  const contrastRatio = (fg: [number, number, number], bg: [number, number, number], alpha: number) => {
+    // Composite fg over bg at alpha.
+    const comp: [number, number, number] = [
+      fg[0] * alpha + bg[0] * (1 - alpha),
+      fg[1] * alpha + bg[1] * (1 - alpha),
+      fg[2] * alpha + bg[2] * (1 - alpha),
+    ];
+    const l1 = relLum(comp);
+    const l2 = relLum(bg);
+    const [a, b] = l1 > l2 ? [l1, l2] : [l2, l1];
+    return (a + 0.05) / (b + 0.05);
+  };
+  const contrastBoost = (color: string, opacity: number, kind: PathKind) => {
+    if (!autoContrast) return 0;
+    const rgb = hexToRgb(color);
+    if (!rgb) return 0;
+    const ratio = contrastRatio(rgb, bgRgb, opacity);
+    // Halo starts wide; scale its boost accordingly.
+    const scale = kind === "overlap" ? 3 : 1;
+    if (ratio < 2) return 2 * scale;
+    if (ratio < 3) return 1.25 * scale;
+    if (ratio < 4.5) return 0.6 * scale;
+    return 0;
+  };
+
   const darkAdjustActive = autoDarkAdjust && isDark;
   const strokeFor = (kind: PathKind) => {
     const s = pathStyles[kind];
@@ -250,11 +330,14 @@ function ConceptGraph() {
       const floor = kind === "overlap" ? 0.6 : 0.9;
       opacity = Math.max(opacity, floor);
     }
+    const widthBoost = contrastBoost(color || (isDark ? "#ffffff" : "#000000"), opacity, kind);
     return {
       stroke: color || "currentColor",
       strokeOpacity: opacity,
+      widthBoost,
     };
   };
+
 
   const svgRef = useRef<SVGSVGElement | null>(null);
 
