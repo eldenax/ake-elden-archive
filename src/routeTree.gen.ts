@@ -21,6 +21,7 @@ import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
 import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 
@@ -84,6 +85,11 @@ const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
   path: '/concepts/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PapersSlugRoute = PapersSlugRouteImport.update({
+  id: '/papers/$slug',
+  path: '/papers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InquirySlugRoute = InquirySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
+  '/papers/$slug': typeof PapersSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
+  '/papers/$slug': typeof PapersSlugRoute
   '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
+  '/papers/$slug': typeof PapersSlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/concepts/$slug'
     | '/inquiry/$slug'
+    | '/papers/$slug'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/concepts/$slug'
     | '/inquiry/$slug'
+    | '/papers/$slug'
     | '/concepts'
   id:
     | '__root__'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/concepts/$slug'
     | '/inquiry/$slug'
+    | '/papers/$slug'
     | '/concepts/'
   fileRoutesById: FileRoutesById
 }
@@ -208,6 +220,7 @@ export interface RootRouteChildren {
   PublicationsRoute: typeof PublicationsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
+  PapersSlugRoute: typeof PapersSlugRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceptsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/papers/$slug': {
+      id: '/papers/$slug'
+      path: '/papers/$slug'
+      fullPath: '/papers/$slug'
+      preLoaderRoute: typeof PapersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inquiry/$slug': {
       id: '/inquiry/$slug'
       path: '/$slug'
@@ -338,6 +358,7 @@ const rootRouteChildren: RootRouteChildren = {
   PublicationsRoute: PublicationsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
+  PapersSlugRoute: PapersSlugRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }
 export const routeTree = rootRouteImport
