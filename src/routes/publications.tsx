@@ -137,7 +137,7 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
             </dt>
             <dd>
               <Link
-                to="/themes/$slug"
+                to="/inquiry/$slug"
                 params={{ slug: theme.slug }}
                 className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
               >
@@ -356,7 +356,7 @@ function PublicationsPage() {
                       </p>
                       <h3 className="mt-2 font-display text-xl text-foreground md:text-2xl">
                         <Link
-                          to="/themes/$slug"
+                          to="/inquiry/$slug"
                           params={{ slug: t.slug }}
                           className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
                         >

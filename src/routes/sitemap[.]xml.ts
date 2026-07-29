@@ -18,8 +18,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const { THEMES } = await import("../data/themes");
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/research", changefreq: "monthly", priority: "0.9" },
-          { path: "/themes", changefreq: "monthly", priority: "0.9" },
+          { path: "/inquiry", changefreq: "monthly", priority: "0.9" },
           { path: "/concepts", changefreq: "monthly", priority: "0.8" },
           { path: "/concept-graph", changefreq: "monthly", priority: "0.7" },
           { path: "/publications", changefreq: "monthly", priority: "0.8" },
@@ -30,7 +29,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/cv", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
           ...THEMES.map((t) => ({
-            path: `/themes/${t.slug}`,
+            path: `/inquiry/${t.slug}`,
             changefreq: "monthly" as const,
             priority: "0.6",
           })),

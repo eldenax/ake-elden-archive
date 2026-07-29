@@ -169,7 +169,7 @@ function CurrentResearchPage() {
 
               <div className="mt-6 flex flex-wrap gap-3 text-xs">
                 <Link
-                  to="/themes/$slug"
+                  to="/inquiry/$slug"
                   params={{ slug: p.themeSlug }}
                   className="rounded-sm border border-border bg-background px-2 py-1 text-foreground/80 hover:border-foreground"
                 >
