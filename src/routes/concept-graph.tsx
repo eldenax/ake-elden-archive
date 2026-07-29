@@ -994,6 +994,7 @@ function ConceptGraph() {
                 const e = EDGES[haloIdx];
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
+                const s = strokeFor("overlap");
                 return (
                   <line
                     key="active-halo"
@@ -1001,7 +1002,9 @@ function ConceptGraph() {
                     y1={p1.y}
                     x2={p2.x}
                     y2={p2.y}
-                    {...strokeFor("overlap")}
+                    stroke={s.stroke}
+                    strokeOpacity={s.strokeOpacity}
+                    strokeWidth={12 + s.widthBoost}
                     strokeLinecap="round"
                     className="edge-halo pointer-events-none text-foreground"
                   />
