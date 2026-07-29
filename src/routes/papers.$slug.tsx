@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getPaper, PAPERS } from "../data/papers";
+import { getPaper } from "../data/papers";
+import type { Concept } from "../data/concepts";
+import type { Paper } from "../data/papers";
 import { CONCEPTS } from "../data/concepts";
 
 const BASE = "https://ake-elden-archive.lovable.app";
@@ -77,10 +79,10 @@ function PaperNotFound() {
 }
 
 function PaperPage() {
-  const { paper } = Route.useLoaderData();
+  const { paper } = Route.useLoaderData() as { paper: Paper };
   const concepts = paper.conceptSlugs
-    .map((slug) => CONCEPTS.find((c) => c.slug === slug))
-    .filter(Boolean) as (typeof CONCEPTS)[number][];
+    .map((slug: string) => CONCEPTS.find((c) => c.slug === slug))
+    .filter(Boolean) as Concept[];
 
   return (
     <div className="bg-background">
@@ -116,7 +118,7 @@ function PaperPage() {
               {paper.abstract}
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
-              {paper.keywords.map((k) => (
+              {paper.keywords.map((k: string) => (
                 <span
                   key={k}
                   className="rounded-sm border border-border px-2 py-1 text-xs text-foreground/70"
@@ -141,7 +143,7 @@ function PaperPage() {
               The four conditions
             </h2>
             <dl className="mt-6 space-y-6">
-              {paper.conditions.map((c) => (
+              {paper.conditions.map((c: Paper["conditions"][number]) => (
                 <div key={c.label}>
                   <dt className="font-display text-base text-foreground md:text-lg">
                     {c.label}
@@ -159,7 +161,7 @@ function PaperPage() {
               Formal results
             </h2>
             <ul className="mt-6 space-y-6">
-              {paper.results.map((r) => (
+              {paper.results.map((r: Paper["results"][number]) => (
                 <li key={r.label}>
                   <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                     {r.label}
@@ -177,7 +179,7 @@ function PaperPage() {
               Structure of the argument
             </h2>
             <ol className="mt-6 space-y-6">
-              {paper.sections.map((s) => (
+              {paper.sections.map((s: Paper["sections"][number]) => (
                 <li key={s.number} className="grid grid-cols-[3rem_1fr] gap-4">
                   <span className="font-display text-sm text-muted-foreground">
                     § {s.number}
@@ -223,7 +225,7 @@ function PaperPage() {
                   params={{ slug: c.slug }}
                   className="rounded-sm border border-border bg-background px-2 py-1 text-foreground/80 hover:border-foreground"
                 >
-                  Concept · {c.name ?? c.slug} →
+                  Concept · {c.name} →
                 </Link>
               ))}
               <Link
@@ -239,5 +241,3 @@ function PaperPage() {
     </div>
   );
 }
-
-export const ALL_PAPER_SLUGS = PAPERS.map((p) => p.slug);
