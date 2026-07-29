@@ -112,16 +112,16 @@ function Index() {
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                to="/research"
+                to="/inquiry"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                Research Programme
+                Enter the inquiry
               </Link>
               <Link
-                to="/themes"
+                to="/publications"
                 className="inline-flex items-center justify-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
               >
-                Research Themes
+                Read the publications
               </Link>
             </div>
           </div>
@@ -257,7 +257,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <div className="mb-12 max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Research themes
+              Problem areas
             </p>
             <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
               Six problem areas, one programme
@@ -267,13 +267,13 @@ function Index() {
             {THEMES.map((t) => (
               <Link
                 key={t.slug}
-                to="/themes/$slug"
+                to="/inquiry/$slug"
                 params={{ slug: t.slug }}
                 className="group flex h-full flex-col justify-between gap-4 bg-background p-8 transition-colors hover:bg-muted/40"
               >
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                    Theme {t.number.toString().padStart(2, "0")}
+                    Area {t.number.toString().padStart(2, "0")}
                   </p>
                   <h3 className="mt-3 font-display text-lg leading-snug text-foreground group-hover:underline decoration-dotted underline-offset-4">
                     {t.name}
@@ -283,17 +283,17 @@ function Index() {
                   </p>
                 </div>
                 <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground">
-                  Enter theme →
+                  Enter →
                 </span>
               </Link>
             ))}
           </div>
           <div className="mt-12 flex flex-wrap gap-6 text-sm">
             <Link
-              to="/research"
+              to="/inquiry"
               className="font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
             >
-              Read the research programme →
+              Read the full inquiry →
             </Link>
             <Link
               to="/publications"

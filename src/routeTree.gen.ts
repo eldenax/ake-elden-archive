@@ -9,12 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ThemesRouteImport } from './routes/themes'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ResearchRouteImport } from './routes/research'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as CurrentResearchRouteImport } from './routes/current-research'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -22,22 +21,12 @@ import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
-import { Route as ThemesSlugRouteImport } from './routes/themes.$slug'
+import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 
-const ThemesRoute = ThemesRouteImport.update({
-  id: '/themes',
-  path: '/themes',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicationsRoute = PublicationsRouteImport.update({
@@ -53,6 +42,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InquiryRoute = InquiryRouteImport.update({
+  id: '/inquiry',
+  path: '/inquiry',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CvRoute = CvRouteImport.update({
@@ -90,10 +84,10 @@ const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
   path: '/concepts/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ThemesSlugRoute = ThemesSlugRouteImport.update({
+const InquirySlugRoute = InquirySlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
-  getParentRoute: () => ThemesRoute,
+  getParentRoute: () => InquiryRoute,
 } as any)
 const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
   id: '/concepts/$slug',
@@ -108,14 +102,13 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/inquiry': typeof InquiryRouteWithChildren
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
-  '/themes/$slug': typeof ThemesSlugRoute
+  '/inquiry/$slug': typeof InquirySlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -125,14 +118,13 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/inquiry': typeof InquiryRouteWithChildren
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
-  '/themes/$slug': typeof ThemesSlugRoute
+  '/inquiry/$slug': typeof InquirySlugRoute
   '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
@@ -143,14 +135,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/inquiry': typeof InquiryRouteWithChildren
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
-  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/themes': typeof ThemesRouteWithChildren
   '/concepts/$slug': typeof ConceptsSlugRoute
-  '/themes/$slug': typeof ThemesSlugRoute
+  '/inquiry/$slug': typeof InquirySlugRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
@@ -162,14 +153,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/inquiry'
     | '/news'
     | '/projects'
     | '/publications'
-    | '/research'
     | '/sitemap.xml'
-    | '/themes'
     | '/concepts/$slug'
-    | '/themes/$slug'
+    | '/inquiry/$slug'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -179,14 +169,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/inquiry'
     | '/news'
     | '/projects'
     | '/publications'
-    | '/research'
     | '/sitemap.xml'
-    | '/themes'
     | '/concepts/$slug'
-    | '/themes/$slug'
+    | '/inquiry/$slug'
     | '/concepts'
   id:
     | '__root__'
@@ -196,14 +185,13 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/inquiry'
     | '/news'
     | '/projects'
     | '/publications'
-    | '/research'
     | '/sitemap.xml'
-    | '/themes'
     | '/concepts/$slug'
-    | '/themes/$slug'
+    | '/inquiry/$slug'
     | '/concepts/'
   fileRoutesById: FileRoutesById
 }
@@ -214,37 +202,22 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CurrentResearchRoute: typeof CurrentResearchRoute
   CvRoute: typeof CvRoute
+  InquiryRoute: typeof InquiryRouteWithChildren
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
-  ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ThemesRoute: typeof ThemesRouteWithChildren
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/themes': {
-      id: '/themes'
-      path: '/themes'
-      fullPath: '/themes'
-      preLoaderRoute: typeof ThemesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/publications': {
@@ -266,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inquiry': {
+      id: '/inquiry'
+      path: '/inquiry'
+      fullPath: '/inquiry'
+      preLoaderRoute: typeof InquiryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cv': {
@@ -317,12 +297,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceptsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/themes/$slug': {
-      id: '/themes/$slug'
+    '/inquiry/$slug': {
+      id: '/inquiry/$slug'
       path: '/$slug'
-      fullPath: '/themes/$slug'
-      preLoaderRoute: typeof ThemesSlugRouteImport
-      parentRoute: typeof ThemesRoute
+      fullPath: '/inquiry/$slug'
+      preLoaderRoute: typeof InquirySlugRouteImport
+      parentRoute: typeof InquiryRoute
     }
     '/concepts/$slug': {
       id: '/concepts/$slug'
@@ -334,16 +314,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface ThemesRouteChildren {
-  ThemesSlugRoute: typeof ThemesSlugRoute
+interface InquiryRouteChildren {
+  InquirySlugRoute: typeof InquirySlugRoute
 }
 
-const ThemesRouteChildren: ThemesRouteChildren = {
-  ThemesSlugRoute: ThemesSlugRoute,
+const InquiryRouteChildren: InquiryRouteChildren = {
+  InquirySlugRoute: InquirySlugRoute,
 }
 
-const ThemesRouteWithChildren =
-  ThemesRoute._addFileChildren(ThemesRouteChildren)
+const InquiryRouteWithChildren =
+  InquiryRoute._addFileChildren(InquiryRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -352,12 +332,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CurrentResearchRoute: CurrentResearchRoute,
   CvRoute: CvRoute,
+  InquiryRoute: InquiryRouteWithChildren,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
-  ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ThemesRoute: ThemesRouteWithChildren,
   ConceptsSlugRoute: ConceptsSlugRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }

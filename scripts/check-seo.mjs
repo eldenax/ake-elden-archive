@@ -45,9 +45,9 @@ const DYNAMIC_EXPANDERS = {
     const mod = await import(pathToFileURL(resolve(ROOT, "src/data/concepts.ts")).href);
     return mod.CONCEPTS.map((c) => `/concepts/${c.slug}`);
   },
-  "/themes/$slug": async () => {
+  "/inquiry/$slug": async () => {
     const mod = await import(pathToFileURL(resolve(ROOT, "src/data/themes.ts")).href);
-    return mod.THEMES.map((t) => `/themes/${t.slug}`);
+    return mod.THEMES.map((t) => `/inquiry/${t.slug}`);
   },
 };
 

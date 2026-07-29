@@ -94,7 +94,7 @@ function ProjectsPage() {
                 {p.themes.map((t) => (
                   <Link
                     key={t.slug}
-                    to="/themes/$slug"
+                    to="/inquiry/$slug"
                     params={{ slug: t.slug }}
                     className="rounded-sm border border-border bg-background px-3 py-1 text-xs text-foreground/80 hover:border-foreground"
                   >
