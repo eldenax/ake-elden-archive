@@ -326,6 +326,29 @@ function InquiryDetailPage() {
         </section>
       )}
 
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            FAQ
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            Questions about this area
+          </h2>
+          <Accordion type="single" collapsible className="mt-8">
+            {buildFaqItems(theme).map((item, i) => (
+              <AccordionItem key={item.q} value={`faq-${i}`}>
+                <AccordionTrigger className="text-left font-display text-base text-foreground md:text-lg">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-base leading-relaxed text-foreground/85">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       <section>
         <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
           <div className="flex items-center justify-between gap-6 border-t border-border pt-6 text-sm">
