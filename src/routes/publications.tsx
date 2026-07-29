@@ -88,6 +88,19 @@ function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
         </p>
       )}
 
+      {p.paperSlug && (
+        <p className="mt-4">
+          <Link
+            to="/papers/$slug"
+            params={{ slug: p.paperSlug }}
+            className="text-sm underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
+          >
+            Read the abstract & argument →
+          </Link>
+        </p>
+      )}
+
+
       {/* Journal / venue */}
       <dl className="mt-5 grid grid-cols-1 gap-y-2 text-sm sm:grid-cols-[8rem_1fr]">
         <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
