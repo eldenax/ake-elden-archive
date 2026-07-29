@@ -160,6 +160,26 @@ function InquiryDetailPage() {
   const prev = idx > 0 ? THEMES[idx - 1] : null;
   const next = idx < THEMES.length - 1 ? THEMES[idx + 1] : null;
 
+  // Related inquiries: score other themes by shared conceptSlugs, shared
+  // conceptNotes, and shared applied projects. Keep the top matches.
+  const currConcepts = new Set(theme.conceptSlugs);
+  const currNotes = new Set((theme.conceptNotes ?? []).map((n) => n.toLowerCase()));
+  const currProjects = new Set(theme.projects ?? []);
+  const related = THEMES.filter((t) => t.slug !== theme.slug)
+    .map((t) => {
+      const sharedConcepts = t.conceptSlugs.filter((s) => currConcepts.has(s));
+      const sharedNotes = (t.conceptNotes ?? []).filter((n) =>
+        currNotes.has(n.toLowerCase()),
+      );
+      const sharedProjects = (t.projects ?? []).filter((p) => currProjects.has(p));
+      const score =
+        sharedConcepts.length * 3 + sharedNotes.length + sharedProjects.length * 2;
+      return { theme: t, score, sharedConcepts, sharedNotes, sharedProjects };
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+
   return (
     <div>
       <section className="border-b border-border">
