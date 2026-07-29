@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { THEMES } from "../data/themes";
 
-const TITLE = "Research Programme — Dr. Åke Elden";
+const TITLE = "Inquiry — Dr. Åke Elden";
 const DESCRIPTION =
-  "A single research programme investigating the background conditions of judgment, responsibility, explanation, institutional reason, normativity, and human formation, with AI as one diagnostic context.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/research";
+  "One research programme, six problem areas: judgment and answerability, normativity and standing, formation and agency, desire and social relations, explanation and philosophy of science, institutions and infrastructure.";
+const URL_SELF = "https://ake-elden-archive.lovable.app/inquiry";
 
-export const Route = createFileRoute("/research")({
+export const Route = createFileRoute("/inquiry")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -15,6 +15,7 @@ export const Route = createFileRoute("/research")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/research")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "WebPage",
+          "@type": "CollectionPage",
           url: URL_SELF,
           name: TITLE,
           description: DESCRIPTION,
@@ -31,16 +32,16 @@ export const Route = createFileRoute("/research")({
       },
     ],
   }),
-  component: ResearchProgrammePage,
+  component: InquiryPage,
 });
 
-function ResearchProgrammePage() {
+function InquiryPage() {
   return (
     <div>
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Research programme
+            Inquiry
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             One programme, six problem areas
@@ -56,8 +57,8 @@ function ResearchProgrammePage() {
             </blockquote>
           </div>
           <p className="mt-8 text-base leading-relaxed text-foreground/85">
-            The programme is not organised by discipline. Its unifying object
-            is a set of background conditions — epistemic, institutional, and
+            The inquiry is not organised by discipline. Its unifying object is
+            a set of background conditions — epistemic, institutional, and
             anthropological — that make distinctly human capacities possible.
             Its unifying question is what happens to those conditions when
             technological and institutional systems reorganize or remove them.
@@ -75,7 +76,7 @@ function ResearchProgrammePage() {
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Research map
+            Map
           </p>
           <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
             The architecture at a glance
@@ -94,7 +95,7 @@ function ResearchProgrammePage() {
    Desire & Social Relations`}</pre>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            The six themes are not siloes. Each is a face of the same object:
+            The six areas are not siloes. Each is a face of the same object:
             the background conditions under which human acts remain human
             acts.
           </p>
@@ -104,7 +105,7 @@ function ResearchProgrammePage() {
       <section>
         <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Themes
+            Problem areas
           </p>
           <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
             The six problem areas
@@ -113,13 +114,13 @@ function ResearchProgrammePage() {
             {THEMES.map((t) => (
               <li key={t.slug} className="bg-background">
                 <Link
-                  to="/themes/$slug"
+                  to="/inquiry/$slug"
                   params={{ slug: t.slug }}
                   className="group flex h-full flex-col justify-between gap-4 p-8 transition-colors hover:bg-muted/40"
                 >
                   <div>
                     <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                      Theme {t.number.toString().padStart(2, "0")}
+                      Area {t.number.toString().padStart(2, "0")}
                     </p>
                     <h3 className="mt-3 font-display text-lg leading-snug text-foreground group-hover:underline decoration-dotted underline-offset-4">
                       {t.name}
@@ -129,7 +130,7 @@ function ResearchProgrammePage() {
                     </p>
                   </div>
                   <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground">
-                    Enter theme →
+                    Enter →
                   </span>
                 </Link>
               </li>

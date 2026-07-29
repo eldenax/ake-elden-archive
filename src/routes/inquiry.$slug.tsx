@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { THEMES, getTheme } from "../data/themes";
-import { CONCEPTS, getConcept } from "../data/concepts";
+import { getConcept } from "../data/concepts";
 import { PUBLICATIONS } from "../data/publications";
 
 const BASE = "https://ake-elden-archive.lovable.app";
 
-export const Route = createFileRoute("/themes/$slug")({
+export const Route = createFileRoute("/inquiry/$slug")({
   loader: ({ params }) => {
     const theme = getTheme(params.slug);
     if (!theme) throw notFound();
@@ -15,14 +15,14 @@ export const Route = createFileRoute("/themes/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Theme not found — Dr. Åke Elden" },
+          { title: "Problem area not found — Dr. Åke Elden" },
           { name: "robots", content: "noindex" },
         ],
       };
     }
     const t = loaderData.theme;
-    const title = `${t.name} — Research Themes — Dr. Åke Elden`;
-    const url = `${BASE}/themes/${t.slug}`;
+    const title = `${t.name} — Inquiry — Dr. Åke Elden`;
+    const url = `${BASE}/inquiry/${t.slug}`;
     return {
       meta: [
         { title },
@@ -31,6 +31,7 @@ export const Route = createFileRoute("/themes/$slug")({
         { property: "og:description", content: t.tagline },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -48,10 +49,10 @@ export const Route = createFileRoute("/themes/$slug")({
       ],
     };
   },
-  component: ThemePage,
+  component: InquiryDetailPage,
 });
 
-function ThemePage() {
+function InquiryDetailPage() {
   const { theme } = Route.useLoaderData() as { theme: (typeof THEMES)[number] };
   const pubs = PUBLICATIONS.filter((p) => p.themeSlug === theme.slug);
   const concepts = theme.conceptSlugs
@@ -67,13 +68,13 @@ function ThemePage() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <Link
-            to="/themes"
+            to="/inquiry"
             className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
           >
-            ← Research themes
+            ← Inquiry
           </Link>
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Theme {theme.number.toString().padStart(2, "0")}
+            Area {theme.number.toString().padStart(2, "0")}
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             {theme.name}
@@ -94,7 +95,7 @@ function ThemePage() {
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Works in this theme
+            Works in this area
           </p>
           <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
             Papers, projects, and manuscripts
@@ -173,7 +174,7 @@ function ThemePage() {
               Publications
             </p>
             <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-              Publications under this theme
+              Publications under this area
             </h2>
             <ul className="mt-8 space-y-6">
               {pubs.map((p) => (
@@ -209,7 +210,7 @@ function ThemePage() {
               Diagnostic contexts
             </p>
             <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-              Applied projects related to this theme
+              Applied projects related to this area
             </h2>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-display text-base text-foreground/85">
               {theme.projects.map((p) => (
@@ -233,7 +234,7 @@ function ThemePage() {
           <div className="flex items-center justify-between gap-6 border-t border-border pt-6 text-sm">
             {prev ? (
               <Link
-                to="/themes/$slug"
+                to="/inquiry/$slug"
                 params={{ slug: prev.slug }}
                 className="text-muted-foreground hover:text-foreground"
               >
@@ -244,7 +245,7 @@ function ThemePage() {
             )}
             {next && (
               <Link
-                to="/themes/$slug"
+                to="/inquiry/$slug"
                 params={{ slug: next.slug }}
                 className="text-muted-foreground hover:text-foreground"
               >
