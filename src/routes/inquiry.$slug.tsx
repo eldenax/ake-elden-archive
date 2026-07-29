@@ -463,6 +463,135 @@ function InquiryDetailPage() {
         </section>
       )}
 
+      {(relatedWorks.length > 0 || relatedProjects.length > 0) && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Related works & applied projects
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              Contributions and projects developing the same concepts
+            </h2>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Works and applied contexts from adjacent problem areas that develop
+              concepts also at stake in this one.
+            </p>
+
+            {relatedWorks.length > 0 && (
+              <>
+                <p className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Works
+                </p>
+                <ul className="mt-4 space-y-6">
+                  {relatedWorks.map(({ pub, sharedConcept }) => {
+                    const concept = getConcept(sharedConcept);
+                    const fromTheme = THEMES.find((t) => t.slug === pub.themeSlug);
+                    return (
+                      <li key={pub.title} className="border-t border-border pt-5">
+                        <h3 className="font-display text-lg leading-snug text-foreground">
+                          {pub.title}
+                        </h3>
+                        <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                          {pub.status}
+                          {fromTheme && (
+                            <>
+                              {" · "}
+                              <Link
+                                to="/inquiry/$slug"
+                                params={{ slug: fromTheme.slug }}
+                                className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                              >
+                                {fromTheme.short}
+                              </Link>
+                            </>
+                          )}
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                          {pub.contribution}
+                        </p>
+                        {concept && (
+                          <p className="mt-3 text-sm text-muted-foreground">
+                            <span className="uppercase tracking-[0.18em] text-[0.7rem]">
+                              Shared concept:
+                            </span>{" "}
+                            <Link
+                              to="/concepts/$slug"
+                              params={{ slug: concept.slug }}
+                              className="text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                            >
+                              {concept.name}
+                            </Link>
+                          </p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+
+            {relatedProjects.length > 0 && (
+              <>
+                <p className="mt-10 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                  Applied projects
+                </p>
+                <ul className="mt-4 space-y-5">
+                  {relatedProjects.map(({ project, fromTheme, sharedConcepts }) => {
+                    const concepts = sharedConcepts
+                      .map((s) => getConcept(s))
+                      .filter(
+                        (c): c is NonNullable<ReturnType<typeof getConcept>> => Boolean(c),
+                      );
+                    return (
+                      <li key={project} className="border-t border-border pt-4">
+                        <p className="font-display text-base text-foreground">· {project}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          Developed under{" "}
+                          <Link
+                            to="/inquiry/$slug"
+                            params={{ slug: fromTheme.slug }}
+                            className="text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                          >
+                            {fromTheme.short}
+                          </Link>
+                          {concepts.length > 0 && (
+                            <>
+                              {" · shared: "}
+                              {concepts.map((c, i) => (
+                                <span key={c.slug}>
+                                  {i > 0 && ", "}
+                                  <Link
+                                    to="/concepts/$slug"
+                                    params={{ slug: c.slug }}
+                                    className="text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                                  >
+                                    {c.name}
+                                  </Link>
+                                </span>
+                              ))}
+                            </>
+                          )}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="mt-8">
+                  <Link
+                    to="/projects"
+                    className="text-sm font-medium text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                  >
+                    See all projects →
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </section>
+      )}
+
+
+
       <section className="border-b border-border bg-muted/30">
 
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
