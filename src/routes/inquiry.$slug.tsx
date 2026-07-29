@@ -21,17 +21,37 @@ export const Route = createFileRoute("/inquiry/$slug")({
       };
     }
     const t = loaderData.theme;
-    const title = `${t.name} — Inquiry — Dr. Åke Elden`;
+    const title = `${t.short}: ${t.name} — Dr. Åke Elden`;
     const url = `${BASE}/inquiry/${t.slug}`;
+
+    // Compose a concrete, per-page description from the theme's own content.
+    const firstPara = t.description[0] ?? t.tagline;
+    const rawDesc = `${t.tagline} ${firstPara}`.replace(/\s+/g, " ").trim();
+    const description =
+      rawDesc.length > 158 ? rawDesc.slice(0, 155).replace(/[,;:.\s]+$/, "") + "…" : rawDesc;
+
+    // Keywords derived from concepts and concept notes actually developed in this area.
+    const keywords = [
+      ...t.conceptSlugs.map((s) => s.replace(/-/g, " ")),
+      ...(t.conceptNotes ?? []),
+      "Åke Elden",
+      "philosophy of AI",
+    ].join(", ");
+
     return {
       meta: [
         { title },
-        { name: "description", content: t.tagline },
+        { name: "description", content: description },
+        { name: "keywords", content: keywords },
         { property: "og:title", content: title },
-        { property: "og:description", content: t.tagline },
+        { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "article:author", content: "Åke Elden" },
+        { property: "article:section", content: "Inquiry" },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -39,11 +59,21 @@ export const Route = createFileRoute("/inquiry/$slug")({
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "ScholarlyArticle",
             url,
+            headline: t.name,
             name: title,
-            description: t.tagline,
-            about: { "@type": "Person", name: "Åke Elden" },
+            description,
+            inLanguage: "en",
+            isPartOf: {
+              "@type": "CreativeWorkSeries",
+              name: "Inquiry — Research Programme",
+              url: `${BASE}/inquiry`,
+            },
+            about: t.conceptNotes?.length
+              ? t.conceptNotes.map((n) => ({ "@type": "Thing", name: n }))
+              : undefined,
+            author: { "@type": "Person", name: "Åke Elden", url: `${BASE}/about` },
           }),
         },
       ],
