@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { CONCEPTS } from "../data/concepts";
+import { PAPERS } from "../data/papers";
 
 const BASE_URL = "https://ake-elden-archive.lovable.app";
 
@@ -30,6 +31,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
           ...THEMES.map((t) => ({
             path: `/inquiry/${t.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.6",
+          })),
+          ...PAPERS.map((p) => ({
+            path: `/papers/${p.slug}`,
             changefreq: "monthly" as const,
             priority: "0.6",
           })),
