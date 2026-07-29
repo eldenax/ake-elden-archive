@@ -76,6 +76,10 @@ export const Route = createFileRoute("/inquiry/$slug")({
             author: { "@type": "Person", name: "Åke Elden", url: `${BASE}/about` },
           }),
         },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(buildFaqSchema(t, url)),
+        },
       ],
     };
   },
