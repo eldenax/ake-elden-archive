@@ -5,6 +5,65 @@ import { PUBLICATIONS } from "../data/publications";
 
 const BASE = "https://ake-elden-archive.lovable.app";
 
+function truncate(s: string, max = 300) {
+  const clean = s.replace(/\s+/g, " ").trim();
+  return clean.length > max ? clean.slice(0, max - 1).replace(/[,;:.\s]+$/, "") + "…" : clean;
+}
+
+function buildFaqSchema(
+  t: (typeof THEMES)[number],
+  url: string,
+) {
+  const overview = truncate([t.tagline, ...t.description].join(" "), 500);
+  const concepts = [
+    ...t.conceptSlugs.map((s) => s.replace(/-/g, " ")),
+    ...(t.conceptNotes ?? []),
+  ];
+  const worksList = t.works
+    .map((w) => (w.status ? `${w.title} (${w.status})` : w.title))
+    .join("; ");
+
+  const qa: { q: string; a: string }[] = [
+    {
+      q: `What does the problem area "${t.name}" investigate?`,
+      a: overview,
+    },
+  ];
+  if (concepts.length) {
+    qa.push({
+      q: `Which concepts are developed in "${t.short}"?`,
+      a: `This area develops the following concepts: ${concepts.join(", ")}.`,
+    });
+  }
+  if (t.works.length) {
+    qa.push({
+      q: `Which works belong to "${t.short}"?`,
+      a: truncate(
+        `Works in this area include: ${worksList}.`,
+        700,
+      ),
+    });
+  }
+  if (t.projects?.length) {
+    qa.push({
+      q: `Which applied projects relate to "${t.short}"?`,
+      a: `Applied contexts for this area: ${t.projects.join(", ")}.`,
+    });
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    url,
+    mainEntity: qa.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
 export const Route = createFileRoute("/inquiry/$slug")({
   loader: ({ params }) => {
     const theme = getTheme(params.slug);
