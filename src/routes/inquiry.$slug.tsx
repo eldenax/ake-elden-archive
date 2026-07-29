@@ -180,6 +180,37 @@ function InquiryDetailPage() {
     .sort((a, b) => b.score - a.score)
     .slice(0, 3);
 
+  // Related works: publications from OTHER themes that share a concept with
+  // this theme. Score by concept overlap, then by "selected" status.
+  const relatedWorks = PUBLICATIONS.filter(
+    (p) => p.themeSlug !== theme.slug && p.conceptSlug && currConcepts.has(p.conceptSlug),
+  )
+    .map((p) => ({
+      pub: p,
+      sharedConcept: p.conceptSlug!,
+      score: (currConcepts.has(p.conceptSlug!) ? 2 : 0) + (p.selected ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+
+  // Related applied projects: projects from OTHER themes that share concepts
+  // (or notes) with this theme, excluding projects already listed here.
+  const ownProjects = new Set(theme.projects ?? []);
+  const relatedProjectsMap = new Map<
+    string,
+    { project: string; fromTheme: (typeof THEMES)[number]; sharedConcepts: string[] }
+  >();
+  for (const t of THEMES) {
+    if (t.slug === theme.slug) continue;
+    const sharedConcepts = t.conceptSlugs.filter((s) => currConcepts.has(s));
+    if (sharedConcepts.length === 0) continue;
+    for (const proj of t.projects ?? []) {
+      if (ownProjects.has(proj) || relatedProjectsMap.has(proj)) continue;
+      relatedProjectsMap.set(proj, { project: proj, fromTheme: t, sharedConcepts });
+    }
+  }
+  const relatedProjects = [...relatedProjectsMap.values()].slice(0, 5);
+
   return (
     <div>
       <section className="border-b border-border">
