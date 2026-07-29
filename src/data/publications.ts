@@ -10,6 +10,7 @@ export type Publication = {
   contribution: string;
   caseNote?: string;
   href?: string;
+  paperSlug?: string;
   doi?: string;
   selected?: boolean;
   capacities?: Capacity[];
