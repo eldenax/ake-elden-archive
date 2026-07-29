@@ -225,6 +225,86 @@ function ConceptGraph() {
     }
   };
 
+  // Auto-contrast: measure the page background and boost stroke/halo width
+  // when the effective highlight color has low WCAG contrast against it.
+  const [autoContrast, setAutoContrast] = useState(true);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const stored = window.localStorage.getItem("concept-graph:auto-contrast");
+    if (stored !== null) setAutoContrast(stored === "1");
+  }, []);
+  const toggleAutoContrast = () => {
+    setAutoContrast((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "concept-graph:auto-contrast",
+          next ? "1" : "0",
+        );
+      }
+      return next;
+    });
+  };
+
+  const [bgRgb, setBgRgb] = useState<[number, number, number]>([255, 255, 255]);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const el = svgRef.current ?? document.body;
+    // Walk up to find a non-transparent background.
+    let node: Element | null = el;
+    let color = "";
+    while (node) {
+      const c = window.getComputedStyle(node).backgroundColor;
+      if (c && c !== "rgba(0, 0, 0, 0)" && c !== "transparent") { color = c; break; }
+      node = node.parentElement;
+    }
+    if (!color) color = isDark ? "rgb(10, 10, 10)" : "rgb(255, 255, 255)";
+    const m = color.match(/rgba?\(([^)]+)\)/);
+    if (m) {
+      const parts = m[1].split(",").map((s) => parseFloat(s.trim()));
+      setBgRgb([parts[0] || 0, parts[1] || 0, parts[2] || 0]);
+    }
+  }, [isDark]);
+
+  const hexToRgb = (hex: string): [number, number, number] | null => {
+    const h = hex.replace("#", "");
+    if (h.length !== 6) return null;
+    const n = parseInt(h, 16);
+    if (Number.isNaN(n)) return null;
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  };
+  const relLum = ([r, g, b]: [number, number, number]) => {
+    const f = (c: number) => {
+      const s = c / 255;
+      return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    };
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  const contrastRatio = (fg: [number, number, number], bg: [number, number, number], alpha: number) => {
+    // Composite fg over bg at alpha.
+    const comp: [number, number, number] = [
+      fg[0] * alpha + bg[0] * (1 - alpha),
+      fg[1] * alpha + bg[1] * (1 - alpha),
+      fg[2] * alpha + bg[2] * (1 - alpha),
+    ];
+    const l1 = relLum(comp);
+    const l2 = relLum(bg);
+    const [a, b] = l1 > l2 ? [l1, l2] : [l2, l1];
+    return (a + 0.05) / (b + 0.05);
+  };
+  const contrastBoost = (color: string, opacity: number, kind: PathKind) => {
+    if (!autoContrast) return 0;
+    const rgb = hexToRgb(color);
+    if (!rgb) return 0;
+    const ratio = contrastRatio(rgb, bgRgb, opacity);
+    // Halo starts wide; scale its boost accordingly.
+    const scale = kind === "overlap" ? 3 : 1;
+    if (ratio < 2) return 2 * scale;
+    if (ratio < 3) return 1.25 * scale;
+    if (ratio < 4.5) return 0.6 * scale;
+    return 0;
+  };
+
   const darkAdjustActive = autoDarkAdjust && isDark;
   const strokeFor = (kind: PathKind) => {
     const s = pathStyles[kind];
@@ -250,11 +330,14 @@ function ConceptGraph() {
       const floor = kind === "overlap" ? 0.6 : 0.9;
       opacity = Math.max(opacity, floor);
     }
+    const widthBoost = contrastBoost(color || (isDark ? "#ffffff" : "#000000"), opacity, kind);
     return {
       stroke: color || "currentColor",
       strokeOpacity: opacity,
+      widthBoost,
     };
   };
+
 
   const svgRef = useRef<SVGSVGElement | null>(null);
 
@@ -632,6 +715,24 @@ function ConceptGraph() {
                 ) : null}
               </label>
               <label
+                className="inline-flex cursor-pointer items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
+                title="Thicken strokes and halos when highlight contrast against the page background is low."
+              >
+                <input
+                  type="checkbox"
+                  checked={autoContrast}
+                  onChange={toggleAutoContrast}
+                  className="h-3.5 w-3.5 accent-foreground"
+                  aria-label="Auto-adjust stroke width for low-contrast highlights"
+                />
+                Auto-contrast width
+                {autoContrast ? (
+                  <span className="ml-1 rounded-sm border border-border px-1 py-px text-[0.6rem] normal-case tracking-normal text-foreground">
+                    on
+                  </span>
+                ) : null}
+              </label>
+              <label
                 className="mt-1 inline-flex cursor-pointer items-start gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
                 title="Use a Wong palette tuned for deuteranopia and protanopia."
               >
@@ -911,6 +1012,7 @@ function ConceptGraph() {
                 const e = EDGES[haloIdx];
                 const p1 = positions.get(e.a)!;
                 const p2 = positions.get(e.b)!;
+                const s = strokeFor("overlap");
                 return (
                   <line
                     key="active-halo"
@@ -918,7 +1020,9 @@ function ConceptGraph() {
                     y1={p1.y}
                     x2={p2.x}
                     y2={p2.y}
-                    {...strokeFor("overlap")}
+                    stroke={s.stroke}
+                    strokeOpacity={s.strokeOpacity}
+                    strokeWidth={12 + s.widthBoost}
                     strokeLinecap="round"
                     className="edge-halo pointer-events-none text-foreground"
                   />
@@ -951,6 +1055,10 @@ function ConceptGraph() {
                   const showDashed =
                     traceCapacities.length > 1 &&
                     caps.includes(traceCapacities[1]);
+                  const s1 = strokeFor("path1");
+                  const s2 = strokeFor("path2");
+                  const so = strokeFor("overlap");
+                  const baseW = isOverlap ? 2 : isCurrent ? 2.5 : 2;
                   return (
                     <g key={`edge-${i}`} className="transition-all">
                       {showSolid ? (
@@ -959,8 +1067,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("path1")}
-                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          stroke={s1.stroke}
+                          strokeOpacity={s1.strokeOpacity}
+                          strokeWidth={baseW + s1.widthBoost}
                           strokeLinecap="round"
                           className={`text-foreground ${isCurrent && !showDashed ? "edge-active" : ""}`}
                         />
@@ -971,8 +1080,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("path2")}
-                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          stroke={s2.stroke}
+                          strokeOpacity={s2.strokeOpacity}
+                          strokeWidth={baseW + s2.widthBoost}
                           strokeLinecap="round"
                           strokeDasharray="5 4"
                           className={`text-foreground ${isCurrent && !showSolid ? "edge-active" : ""}`}
@@ -984,8 +1094,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("overlap")}
-                          strokeWidth={7}
+                          stroke={so.stroke}
+                          strokeOpacity={so.strokeOpacity}
+                          strokeWidth={7 + so.widthBoost}
                           strokeLinecap="round"
                           className={`edge-halo pointer-events-none text-foreground ${isCurrent ? "edge-active" : ""}`}
                         />
