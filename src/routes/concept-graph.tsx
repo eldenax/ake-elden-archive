@@ -1037,6 +1037,10 @@ function ConceptGraph() {
                   const showDashed =
                     traceCapacities.length > 1 &&
                     caps.includes(traceCapacities[1]);
+                  const s1 = strokeFor("path1");
+                  const s2 = strokeFor("path2");
+                  const so = strokeFor("overlap");
+                  const baseW = isOverlap ? 2 : isCurrent ? 2.5 : 2;
                   return (
                     <g key={`edge-${i}`} className="transition-all">
                       {showSolid ? (
@@ -1045,8 +1049,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("path1")}
-                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          stroke={s1.stroke}
+                          strokeOpacity={s1.strokeOpacity}
+                          strokeWidth={baseW + s1.widthBoost}
                           strokeLinecap="round"
                           className={`text-foreground ${isCurrent && !showDashed ? "edge-active" : ""}`}
                         />
@@ -1057,8 +1062,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("path2")}
-                          strokeWidth={isOverlap ? 2 : isCurrent ? 2.5 : 2}
+                          stroke={s2.stroke}
+                          strokeOpacity={s2.strokeOpacity}
+                          strokeWidth={baseW + s2.widthBoost}
                           strokeLinecap="round"
                           strokeDasharray="5 4"
                           className={`text-foreground ${isCurrent && !showSolid ? "edge-active" : ""}`}
@@ -1070,8 +1076,9 @@ function ConceptGraph() {
                           y1={p1.y}
                           x2={p2.x}
                           y2={p2.y}
-                          {...strokeFor("overlap")}
-                          strokeWidth={7}
+                          stroke={so.stroke}
+                          strokeOpacity={so.strokeOpacity}
+                          strokeWidth={7 + so.widthBoost}
                           strokeLinecap="round"
                           className={`edge-halo pointer-events-none text-foreground ${isCurrent ? "edge-active" : ""}`}
                         />
