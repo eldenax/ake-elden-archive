@@ -2,6 +2,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { THEMES, getTheme } from "../data/themes";
 import { getConcept } from "../data/concepts";
 import { PUBLICATIONS } from "../data/publications";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion";
 
 const BASE = "https://ake-elden-archive.lovable.app";
 
@@ -10,10 +16,7 @@ function truncate(s: string, max = 300) {
   return clean.length > max ? clean.slice(0, max - 1).replace(/[,;:.\s]+$/, "") + "…" : clean;
 }
 
-function buildFaqSchema(
-  t: (typeof THEMES)[number],
-  url: string,
-) {
+function buildFaqItems(t: (typeof THEMES)[number]) {
   const overview = truncate([t.tagline, ...t.description].join(" "), 500);
   const concepts = [
     ...t.conceptSlugs.map((s) => s.replace(/-/g, " ")),
@@ -38,10 +41,7 @@ function buildFaqSchema(
   if (t.works.length) {
     qa.push({
       q: `Which works belong to "${t.short}"?`,
-      a: truncate(
-        `Works in this area include: ${worksList}.`,
-        700,
-      ),
+      a: truncate(`Works in this area include: ${worksList}.`, 700),
     });
   }
   if (t.projects?.length) {
@@ -50,19 +50,23 @@ function buildFaqSchema(
       a: `Applied contexts for this area: ${t.projects.join(", ")}.`,
     });
   }
+  return qa;
+}
 
+function buildFaqSchema(t: (typeof THEMES)[number], url: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${url}#faq`,
     url,
-    mainEntity: qa.map(({ q, a }) => ({
+    mainEntity: buildFaqItems(t).map(({ q, a }) => ({
       "@type": "Question",
       name: q,
       acceptedAnswer: { "@type": "Answer", text: a },
     })),
   };
 }
+
 
 export const Route = createFileRoute("/inquiry/$slug")({
   loader: ({ params }) => {
