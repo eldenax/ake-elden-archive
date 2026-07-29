@@ -97,7 +97,30 @@ export const PAPERS: Paper[] = [
           "Answers to the MLOps, decision-theory, prescriptive-maintenance, and tacit-expertise objections; then a register in which the four conditions, their grounds, and their expiry are recorded and owned.",
       },
     ],
+    results: [
+      {
+        label: "Proposition 1",
+        statement:
+          "Accuracy improvement resolves only the component of the intervention contrast that the labelling scheme individuates. Where the binding constraint is constitutive, interventional, or institutional, better models have sharply limited licensing return.",
+      },
+      {
+        label: "Proposition 2–3",
+        statement:
+          "A license has a computable lifetime determined by process drift and the rate at which counterfactual evidence is regenerated — a lifetime independent of predictive accuracy. A programme can lose its entitlement to act while every monitored metric remains stable.",
+      },
+      {
+        label: "Proposition 4",
+        statement:
+          "Evidence accumulated by a reserved control population buys a post-withdrawal extension that scales with reserve intensity rather than duration. Reserve is a subscription, not an investment.",
+      },
+      {
+        label: "Corollary 2",
+        statement:
+          "Lowering the alarm threshold raises the evidence-generation cost of the license in proportion to the additional degradation range admitted. The threshold is not a free hyperparameter; it sets the evidential burden the programme must carry.",
+      },
+    ],
     conditions: [
+
       {
         label: "C1 — Constitutive adequacy",
         body: "The failure modes individuated by the labelling scheme must include the modes the intervention addresses, and the relation between the labelling threshold and the functional failure of concern must be documented and defensible.",
