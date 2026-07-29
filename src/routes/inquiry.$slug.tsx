@@ -160,6 +160,26 @@ function InquiryDetailPage() {
   const prev = idx > 0 ? THEMES[idx - 1] : null;
   const next = idx < THEMES.length - 1 ? THEMES[idx + 1] : null;
 
+  // Related inquiries: score other themes by shared conceptSlugs, shared
+  // conceptNotes, and shared applied projects. Keep the top matches.
+  const currConcepts = new Set(theme.conceptSlugs);
+  const currNotes = new Set((theme.conceptNotes ?? []).map((n) => n.toLowerCase()));
+  const currProjects = new Set(theme.projects ?? []);
+  const related = THEMES.filter((t) => t.slug !== theme.slug)
+    .map((t) => {
+      const sharedConcepts = t.conceptSlugs.filter((s) => currConcepts.has(s));
+      const sharedNotes = (t.conceptNotes ?? []).filter((n) =>
+        currNotes.has(n.toLowerCase()),
+      );
+      const sharedProjects = (t.projects ?? []).filter((p) => currProjects.has(p));
+      const score =
+        sharedConcepts.length * 3 + sharedNotes.length + sharedProjects.length * 2;
+      return { theme: t, score, sharedConcepts, sharedNotes, sharedProjects };
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+
   return (
     <div>
       <section className="border-b border-border">
@@ -326,7 +346,94 @@ function InquiryDetailPage() {
         </section>
       )}
 
+      {related.length > 0 && (
+        <section className="border-b border-border">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Related inquiries
+            </p>
+            <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+              Adjacent problem areas
+            </h2>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Other areas of the programme that share concepts, notes, or applied
+              contexts with this one.
+            </p>
+            <ul className="mt-8 space-y-8">
+              {related.map((r) => {
+                const relConcepts = r.sharedConcepts
+                  .map((s) => getConcept(s))
+                  .filter(
+                    (c): c is NonNullable<ReturnType<typeof getConcept>> => Boolean(c),
+                  );
+                return (
+                  <li key={r.theme.slug} className="border-t border-border pt-5">
+                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                      Area {r.theme.number.toString().padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-2 font-display text-xl leading-snug text-foreground md:text-2xl">
+                      <Link
+                        to="/inquiry/$slug"
+                        params={{ slug: r.theme.slug }}
+                        className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                      >
+                        {r.theme.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                      {r.theme.tagline}
+                    </p>
+                    {(relConcepts.length > 0 ||
+                      r.sharedNotes.length > 0 ||
+                      r.sharedProjects.length > 0) && (
+                      <div className="mt-4 space-y-2 text-sm">
+                        {relConcepts.length > 0 && (
+                          <p className="text-muted-foreground">
+                            <span className="uppercase tracking-[0.18em] text-[0.7rem]">
+                              Shared concepts:
+                            </span>{" "}
+                            {relConcepts.map((c, i) => (
+                              <span key={c.slug}>
+                                {i > 0 && ", "}
+                                <Link
+                                  to="/concepts/$slug"
+                                  params={{ slug: c.slug }}
+                                  className="text-foreground underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                                >
+                                  {c.name}
+                                </Link>
+                              </span>
+                            ))}
+                          </p>
+                        )}
+                        {r.sharedNotes.length > 0 && (
+                          <p className="text-muted-foreground">
+                            <span className="uppercase tracking-[0.18em] text-[0.7rem]">
+                              Shared notes:
+                            </span>{" "}
+                            {r.sharedNotes.join(", ")}
+                          </p>
+                        )}
+                        {r.sharedProjects.length > 0 && (
+                          <p className="text-muted-foreground">
+                            <span className="uppercase tracking-[0.18em] text-[0.7rem]">
+                              Shared applied contexts:
+                            </span>{" "}
+                            {r.sharedProjects.join(", ")}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <section className="border-b border-border bg-muted/30">
+
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             FAQ
