@@ -10,6 +10,7 @@ export type Publication = {
   contribution: string;
   caseNote?: string;
   href?: string;
+  paperSlug?: string;
   doi?: string;
   selected?: boolean;
   capacities?: Capacity[];
@@ -54,6 +55,23 @@ export const PUBLICATIONS: Publication[] = [
     selected: true,
     capacities: ["transformed"],
   },
+  {
+    title:
+      "The Licensing Problem in Predictive Maintenance: When Does a Prediction Become a Reason to Act?",
+    venue: "Working paper (draft v5)",
+    status: "Working paper",
+    year: "2026",
+    themeSlug: "judgment-answerability-institutional-reason",
+    conceptSlug: "inferential-license",
+    paperSlug: "licensing-problem-predictive-maintenance",
+    contribution:
+      "Specifies four conditions on a maintenance license — the entitlement to treat a predictive output as a ground for a given intervention — and shows that predictive accuracy does not by itself confer any of them.",
+    caseNote:
+      "AI-driven predictive maintenance in industrial asset management serves as the applied test case for the licensing framework.",
+    selected: true,
+    capacities: ["presupposed", "concealed"],
+  },
+
   {
     title: "Creaturehood Under Conditions of Optimization",
     venue: "In preparation",
