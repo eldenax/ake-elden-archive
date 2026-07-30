@@ -105,7 +105,8 @@ function Index() {
               infrastructure. Different disciplines and technologies provide
               contexts in which these problems become visible.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
+
               Artificial intelligence enters the programme as one revealing
               context — the setting in which transformations of judgment,
               responsibility, and institutional reason show up under load.
