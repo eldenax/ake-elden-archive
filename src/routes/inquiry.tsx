@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { THEMES } from "../data/themes";
 
-const TITLE = "Inquiry — Dr. Åke Elden";
+const TITLE = "Research Programme — Dr. Åke Elden";
 const DESCRIPTION =
   "One research programme, six problem areas: judgment and answerability, normativity and standing, formation and agency, desire and social relations, explanation and philosophy of science, institutions and infrastructure.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/inquiry";
@@ -41,7 +41,7 @@ function InquiryPage() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Inquiry
+            Research Programme
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             One programme, six problem areas

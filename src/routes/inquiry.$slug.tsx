@@ -219,7 +219,7 @@ function InquiryDetailPage() {
             to="/inquiry"
             className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
           >
-            ← Inquiry
+            ← Research Programme
           </Link>
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Area {theme.number.toString().padStart(2, "0")}

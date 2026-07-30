@@ -84,19 +84,20 @@ function Index() {
     <>
       <section className="flex min-h-[calc(100vh-4rem)] flex-col lg:flex-row">
         <div className="flex flex-col justify-center px-6 py-20 lg:w-1/2 lg:px-16 xl:px-24">
-          <div className="max-w-xl">
+          <div className="max-w-[34rem]">
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               NLA University College · Oslo
             </p>
             <h1 className="font-display text-4xl leading-[1.1] text-foreground md:text-5xl xl:text-[3.75rem]">
               Dr. Åke Elden
             </h1>
-            <p className="mt-8 font-display text-xl leading-snug text-foreground md:text-2xl xl:text-[1.7rem]">
+            <p className="mt-8 max-w-[30rem] font-display text-xl leading-snug text-foreground md:text-2xl xl:text-[1.7rem]">
               I study the conditions under which judgment, responsibility, and
               explanation become possible — and how technological and
               institutional systems reorganize those conditions.
             </p>
-            <p className="mt-8 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-14 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
+
               The programme is organised around philosophical problems, not
               domains: judgment and answerability; normativity and moral
               standing; explanation and object constitution; formation and
@@ -104,7 +105,8 @@ function Index() {
               infrastructure. Different disciplines and technologies provide
               contexts in which these problems become visible.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
+
               Artificial intelligence enters the programme as one revealing
               context — the setting in which transformations of judgment,
               responsibility, and institutional reason show up under load.
@@ -115,7 +117,7 @@ function Index() {
                 to="/inquiry"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                Enter the inquiry
+                Enter the research programme
               </Link>
               <Link
                 to="/publications"
