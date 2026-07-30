@@ -175,9 +175,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/inquiry", label: "Inquiry" },
+  { to: "/inquiry", label: "Research Programme" },
   { to: "/concepts", label: "Concepts" },
-  { to: "/concept-graph", label: "Concept Graph" },
+  { to: "/concept-graph", label: "Research Map" },
   { to: "/current-research", label: "Current Research" },
   { to: "/publications", label: "Publications" },
   { to: "/projects", label: "Projects" },
