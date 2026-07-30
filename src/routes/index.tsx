@@ -117,7 +117,7 @@ function Index() {
                 to="/inquiry"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                Enter the inquiry
+                Enter the research programme
               </Link>
               <Link
                 to="/publications"
