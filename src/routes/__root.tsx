@@ -14,23 +14,40 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="font-display text-7xl text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <section className="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
+      <div className="max-w-xl">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Error 404
         </p>
-        <div className="mt-6">
+        <h1 className="mt-4 font-display text-5xl leading-tight text-foreground sm:text-6xl">
+          Page not found
+        </h1>
+        <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+          The page you requested does not exist or has been moved. If you are looking for Dr. Elden’s research, try one of the paths below.
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            to="/inquiry"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Research Programme
+          </Link>
+          <Link
+            to="/concept-graph"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Research Map
           </Link>
         </div>
+        <div className="mt-8 text-sm text-muted-foreground">
+          Or return to the{" "}
+          <Link to="/" className="underline decoration-dotted underline-offset-4 hover:text-foreground">
+            homepage
+          </Link>
+          .
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
