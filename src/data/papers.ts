@@ -16,6 +16,8 @@ export type Paper = {
   affiliation: string;
   status: string;
   draftNote?: string;
+  doi?: string;
+  href?: string;
   themeSlug: string;
   themeLabel: string;
   conceptSlugs: string[];
@@ -29,6 +31,129 @@ export type Paper = {
 };
 
 export const PAPERS: Paper[] = [
+  {
+    slug: "action-without-acts",
+    title: "Action Without Acts",
+    subtitle:
+      "The Institutional Production of Action and the Doctrinal Conditions of Responsibility",
+    affiliation: "NLA University College, Oslo, Norway",
+    status: "Published · Neue Zeitschrift für Systematische Theologie und Religionsphilosophie (2026)",
+    doi: "10.1515/nzsth-2026-0021",
+    href: "https://doi.org/10.1515/nzsth-2026-0021",
+    draftNote:
+      "Open access. © 2026 the author, published by De Gruyter under CC BY 4.0.",
+    themeSlug: "institutions-infrastructure-technological-mediation",
+    themeLabel: "Institutions, Infrastructure and Technological Mediation",
+    conceptSlugs: ["judgment-gap", "epistemic-infrastructure", "systemic-friction"],
+    abstract:
+      "Christian theological responsibility is not merely act-based but institutionally conditioned, and the doctrines of sin, judgment, and moral agency may therefore benefit from explicit articulation in light of institutional forms that can decline to produce action. The tradition's resources for indirect agency — cooperation, omission, vicarious responsibility, structural sin — are, on inspection, act-derivative without exception, while certain contemporary infrastructural configurations decline, at the operating level, to produce the act on which those resources depend. Three institutional cases — robotic debt recovery in Australia, the Dutch childcare-benefits scandal, and platform content moderation — introduce the problem and are returned to throughout. The argument develops through classical accounts of the act-grammar (Augustine, Aquinas, Barth, O'Donovan), the social ontology of action (Anscombe, Searle), the political phenomenology of action and judgment (Arendt), and the reconstruction of responsibility under structural conditions (Bonhoeffer).",
+    keywords: [
+      "systematic theology",
+      "moral responsibility",
+      "action theory",
+      "institutional agency",
+      "sin",
+      "judgment",
+      "moral agency",
+      "social ontology",
+      "political theology",
+      "theological anthropology",
+    ],
+    claim:
+      "The question \u201cwho answers for this?\u201d, asked at the operating level of such a configuration, has no answerer at that level — not because someone is hiding, but because no one has done anything, at that level, in the sense the question requires.",
+    sections: [
+      {
+        number: "1",
+        heading: "The sufficiency problem",
+        summary:
+          "The starting claim is the inverse of novelty: the tradition already holds substantial categories for indirect, mediated, and structural agency. The wrong at issue — treating persons as objects of management rather than addressees — is old; what may be new is the means by which it is accomplished without anyone occupying the position of the one who so regards them.",
+      },
+      {
+        number: "2",
+        heading: "Three configurations",
+        summary:
+          "Robodebt (judgment without a judge), the Dutch toeslagenaffaire (accusation without an accuser), and automated content moderation (removal without a remover). Each is returned to throughout as a test of the diagnosis.",
+      },
+      {
+        number: "3–4",
+        heading: "The act-structure of responsibility",
+        summary:
+          "Discreteness, authorship, and publicness are conditions of intelligibility, not of metaphysical perfection: something must have been done, by someone, at a determinate time, in a manner that can be seen. Action so understood is institutionally produced, not simply given.",
+      },
+      {
+        number: "5",
+        heading: "The operating level",
+        summary:
+          "The operating level is the layer at which a system delivers determinations to those it affects; the upstream level comprises authorization, design, specification, and oversight. What is novel is the configuration in which the upstream level is populated by acts and agents while the operating level is populated by neither.",
+      },
+      {
+        number: "6",
+        heading: "Four mechanisms of withdrawal",
+        summary:
+          "Infrastructural mediation dissolves discreteness; metric substitution dissolves authorship; procedural diffusion dissolves authorship and publicness; continuous operation dissolves the temporal economy on which judgment depends. Each alone weakens the act; convergence withdraws it.",
+      },
+      {
+        number: "7–8",
+        heading: "The act-derivative structure of the tradition's resources",
+        summary:
+          "Cooperation presupposes another's deed; omission presupposes the structure of the action it negates; vicarious responsibility presupposes an act of those for whom one answers; structural sin extends imputation across acts. Applied back to the three configurations, each resource finds upstream agents but no operating-level act.",
+      },
+      {
+        number: "9",
+        heading: "The post-agential as a category in theological anthropology",
+        summary:
+          "The post-agential is neither a metaphysical thesis nor a phenomenology but a name for a configuration: outcomes produced at the operating level without generating acts or fora of accountability, even where upstream agency remains real. It is continuous with classical accounts by exception, not displacement.",
+      },
+      {
+        number: "10–12",
+        heading: "Reformulating sin, judgment, and moral agency",
+        summary:
+          "Doctrinal consequence is drawn in three movements, followed by institutional form as theological responsibility and a conclusion on the conditions of answerability: those conditions are either produced or not, and their production is itself a moral and theological responsibility.",
+      },
+    ],
+    results: [
+      {
+        label: "Diagnostic claim",
+        statement:
+          "The tradition is not silent before these configurations; its categories remain necessary. But those categories require an object — an act — that the configurations do not, at the operating level, supply.",
+      },
+      {
+        label: "Doctrine of sin",
+        statement:
+          "The doctrine admits a distinct category of upstream sin whose object is the production of harm at an operating level that does not produce acts. This is not structural sin; it is the design of structures that withdraw the conditions under which sin could be located at the point of harm.",
+      },
+      {
+        label: "Institutional form",
+        statement:
+          "Theological responsibility includes responsibility for institutional forms — specifically, for whether they produce action at the operating level or withdraw it. This is not a displacement of personal responsibility but its completion.",
+      },
+      {
+        label: "Scope",
+        statement:
+          "The claim is deliberately narrow: not that technologically mediated institutions universally extinguish action, but that certain architectures increasingly exhibit configurations in which outcomes carry the practical weight of action while the act-structures presupposed by moral judgment become difficult to locate.",
+      },
+    ],
+    conditions: [
+      {
+        label: "Discreteness",
+        body: "There must be a bounded event to point to — an answer to the question when did this happen? Continuous infrastructural processing dissolves it: the Robodebt income-averaging comparison ran across a tax year with no isolable moment of decision.",
+      },
+      {
+        label: "Authorship",
+        body: "Someone must stand behind the outcome as its author. Metric substitution replaces normative judgment with the application of formal criteria whose origins are remote from the outcome: the risk-classification score in the toeslagenaffaire had designers, but no one stood behind it as the accuser of any particular family.",
+      },
+      {
+        label: "Publicness",
+        body: "There must be a forum in which the matter can be answered. Procedural diffusion disperses responsibility across roles, modules, and stages without ever assigning it — each capable of pointing to the next, none capable of being addressed.",
+      },
+      {
+        label: "Temporal economy",
+        body: "Judgment requires intervals: a sequence of distinct events to which sequential answerability can attach. Platform moderation, classifying around the clock, offers no natural interval at which a case could be said to have closed.",
+      },
+    ],
+    positioning:
+      "Theology cannot supply the institutional production of action by doctrinal restatement. It can only mark precisely where the conditions of answerability hold and where they fail, reformulate the doctrines under explicit acknowledgment of their institutional presupposition, and refuse the consolation of a grammar that has lost its object.",
+  },
   {
     slug: "licensing-problem-predictive-maintenance",
     title: "The Licensing Problem in Predictive Maintenance",
