@@ -18,6 +18,24 @@ export type Publication = {
 
 export const PUBLICATIONS: Publication[] = [
   {
+    title:
+      "Action Without Acts: The Institutional Production of Action and the Doctrinal Conditions of Responsibility",
+    venue: "Neue Zeitschrift für Systematische Theologie und Religionsphilosophie",
+    status: "Published",
+    year: "2026",
+    themeSlug: "institutions-infrastructure-technological-mediation",
+    conceptSlug: "epistemic-infrastructure",
+    paperSlug: "action-without-acts",
+    doi: "10.1515/nzsth-2026-0021",
+    href: "https://doi.org/10.1515/nzsth-2026-0021",
+    contribution:
+      "Shows that the tradition's resources for indirect agency are act-derivative without exception, and that some infrastructural configurations decline, at the operating level, to produce the act those resources require — then reformulates sin, judgment, and moral agency accordingly.",
+    caseNote:
+      "Robodebt, the Dutch childcare-benefits scandal, and automated platform moderation serve as the three institutional configurations.",
+    selected: true,
+    capacities: ["concealed", "transformed"],
+  },
+  {
     title: "Standing Is Not an Ordering",
     venue: "Under review",
     status: "Under review",

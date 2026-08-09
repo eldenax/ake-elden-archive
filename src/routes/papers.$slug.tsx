@@ -102,6 +102,18 @@ function PaperPage() {
           <p className="mt-6 text-sm text-muted-foreground">
             Åke Elden · {paper.affiliation}
           </p>
+          {paper.href && (
+            <p className="mt-3 text-sm">
+              <a
+                href={paper.href}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+              >
+                Read the published article{paper.doi ? ` · doi:${paper.doi}` : ""} →
+              </a>
+            </p>
+          )}
           {paper.draftNote && (
             <p className="mt-2 text-xs text-muted-foreground">{paper.draftNote}</p>
           )}
