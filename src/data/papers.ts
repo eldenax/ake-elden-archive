@@ -266,6 +266,122 @@ export const PAPERS: Paper[] = [
     positioning:
       "The prescriptive-maintenance literature has named the gap: predictive capability translates poorly into prescriptive capability, because associative models cannot support interventional claims. What it has not established is what the conditions on legitimate action are, how they relate to predictive accuracy, and what sustaining them costs.",
   },
+  {
+    slug: "automated-certainty",
+    title: "Automated Certainty",
+    subtitle: "Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+    affiliation: "NLA University College, Oslo, Norway",
+    status: "Published · Journal for the Cognitive Science of Religion 11.1–2 (2026)",
+    doi: "10.1558/jcsr.34912",
+    href: "https://doi.org/10.1558/jcsr.34912",
+    draftNote: "© 2026 Equinox Publishing Ltd. Advance access.",
+    themeSlug: "formation-agency-human-subject",
+    themeLabel: "Formation, Agency and the Human Subject",
+    conceptSlugs: ["automated-certainty", "epistemic-infrastructure", "judgment-gap"],
+    abstract:
+      "Automated certainty is a technologically mediated condition in which experienced perplexity is reduced more rapidly than users acquire the competence required to evaluate the apparent resolution thereby produced. Drawing on the cognitive science of religion, processing fluency, predictive processing, and cognitive ecology, this article argues that algorithmic systems may increase the accessibility and apparent completeness of theological representations without producing correspondingly developed interpretive competence. The central empirical prediction is a divergence between subjective certainty and demonstrated competence. The paper proposes a research program comparing singular-fluent, interpretively plural, and scaffolded-complexity presentations, and identifies boundary conditions including algorithmic specificity, user expertise, and cross-cultural and tradition-specific variation.",
+    keywords: [
+      "automated certainty",
+      "cognitive science of religion",
+      "cognitive ecology",
+      "metacognition",
+      "processing fluency",
+      "practiced naturalness",
+      "predictive processing",
+      "epistemic calibration",
+      "algorithmic mediation",
+    ],
+    claim:
+      "Under conditions of repeated exposure to fluent, personalized, and authoritative-seeming outputs, algorithmic mediation may reduce experienced perplexity more rapidly than it develops the interpretive competence required to evaluate the resulting understanding.",
+    sections: [
+      {
+        number: "I",
+        heading: "Automated certainty and the calibration problem",
+        summary:
+          "Defines automated certainty as the production of apparently settled understanding without the corresponding cognitive labour, and distinguishes epistemic miscalibration from mere falsity.",
+      },
+      {
+        number: "II",
+        heading: "Automated certainty in the cognitive science of religion",
+        summary:
+          "Situates the phenomenon within CSR research on cognitive accessibility, doctrinal representation, attention, memory, social reasoning, and McCauley’s distinction between maturational and practiced naturalness.",
+      },
+      {
+        number: "III",
+        heading: "Historical analogies and their limits",
+        summary:
+          "Compares indulgences, catechisms, revival preaching, radio, and television with algorithmic systems, stressing that the novelty lies in continuous adaptation, personalised selection, and feedback rather than compression alone.",
+      },
+      {
+        number: "IV",
+        heading: "Mechanisms of algorithmic miscalibration",
+        summary:
+          "Identifies processing fluency, recommendation pathways, representational accessibility, algorithmic specificity, and the expert blind spot as mechanisms through which fluent outputs may outpace competence.",
+      },
+      {
+        number: "V",
+        heading: "Religious practices as metacognitive scaffolds",
+        summary:
+          "Examines Chavruta, Vipassanā, lectio divina, and apophatic discipline as functional scaffolds that interrupt premature closure and preserve the labour of interpretation.",
+      },
+      {
+        number: "VI",
+        heading: "Empirical implications and testable hypotheses",
+        summary:
+          "Proposes a research program comparing three presentation conditions and specifies secondary hypotheses concerning expertise, epistemic motivation, analytic style, repeated exposure, and tradition-specific calibration.",
+      },
+      {
+        number: "VII",
+        heading: "Limitations and future directions",
+        summary:
+          "Acknowledges the lack of direct experimental verification, ecological-validity challenges, system heterogeneity, expertise as a boundary condition, and the normative ambivalence of perplexity reduction.",
+      },
+      {
+        number: "VIII",
+        heading: "Conclusion: calibrated understanding",
+        summary:
+          "Reframes the task as preserving the difference between access to a representation and competence in a domain, and defends docta ignorantia as a form of epistemic calibration.",
+      },
+    ],
+    results: [
+      {
+        label: "Central hypothesis",
+        statement:
+          "Fluent, singular, and authoritative-seeming algorithmic presentations can produce a divergence between subjective certainty and demonstrated interpretive competence.",
+      },
+      {
+        label: "Empirical prediction",
+        statement:
+          "Participants exposed to singular-fluent theological explanations without visible sources or uncertainty markers will show poorer confidence-accuracy calibration than those exposed to interpretive plurality or scaffolded-complexity conditions.",
+      },
+      {
+        label: "Moderator",
+        statement:
+          "Expertise is a principal moderator: the same fluent output may scaffold an expert while producing automated certainty in a novice lacking corrective resources.",
+      },
+      {
+        label: "Design implication",
+        statement:
+          "Systems can reduce miscalibration by preserving source visibility, signalling uncertainty, presenting structured disagreement, and distinguishing synthesis from consensus.",
+      },
+    ],
+    conditions: [
+      {
+        label: "Singular-fluent condition",
+        body: "One concise, coherent explanation presented without visible sources, interpretive alternatives, or uncertainty markers — the baseline most likely to produce automated certainty.",
+      },
+      {
+        label: "Interpretive-plurality condition",
+        body: "Multiple defensible positions and their principal disagreements are made explicit, so users cannot mistake accessibility for resolution.",
+      },
+      {
+        label: "Scaffolded-complexity condition",
+        body: "A concise explanation is accompanied by sources, uncertainty markers, and explicit indications of what has been omitted, preserving accessibility while resisting premature closure.",
+      },
+    ],
+    positioning:
+      "The cognitive science of religion shows that religious understanding depends on more than the availability of propositions. Algorithmic systems can reorganise the attention, authority, memory, and social labour through which that understanding is formed. The task is not to maximise perplexity but to calibrate resolution to competence.",
+  },
 ];
 
 export function getPaper(slug: string): Paper | undefined {

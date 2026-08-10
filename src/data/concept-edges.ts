@@ -99,6 +99,30 @@ export const CONCEPT_EDGES: ConceptEdge[] = [
     note: "Friction is a load-bearing feature of epistemic infrastructure, not an inefficiency.",
     publications: ["Systemic friction", "Administrative expertise as epistemic lag"],
   },
+  {
+    a: "automated-certainty",
+    b: "epistemic-infrastructure",
+    note: "Algorithmic systems function as epistemic infrastructure that can make representations accessible without producing the competence required to evaluate them.",
+    publications: [
+      "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+    ],
+  },
+  {
+    a: "automated-certainty",
+    b: "judgment-gap",
+    note: "Automated certainty widens the judgment gap by producing felt resolution at the operating level while the conditions of answerable evaluation are absent.",
+    publications: [
+      "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+    ],
+  },
+  {
+    a: "automated-certainty",
+    b: "systemic-friction",
+    note: "Removing the friction of perplexity, disagreement, and repetition can accelerate resolution while removing the temporal room in which competence is formed.",
+    publications: [
+      "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+    ],
+  },
 ];
 
 export function pairKey(a: string, b: string): string {
