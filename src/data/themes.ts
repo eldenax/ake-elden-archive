@@ -79,6 +79,7 @@ export const THEMES: Theme[] = [
       { title: "Algorithmic Habitus and the Invisible Mission", status: "Working paper" },
       { title: "Algorithmic Formation and the Mimetic Self", status: "Working paper" },
       { title: "Epistemic Automation and the Deformation of the Human", status: "Working paper" },
+      { title: "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration", status: "Published" },
     ],
     conceptSlugs: [],
     conceptNotes: [

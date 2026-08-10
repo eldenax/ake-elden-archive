@@ -176,6 +176,25 @@ export const CONCEPTS: Concept[] = [
       "A diagnostic instrument for identifying productive friction in institutional workflows.",
     ],
   },
+  {
+    slug: "automated-certainty",
+    name: "Automated Certainty",
+    tagline:
+      "The technologically mediated production of settled understanding faster than the competence required to evaluate it.",
+    theory: [
+      "Automated certainty names a condition in which experienced perplexity is reduced more rapidly than the user develops the interpretive competence needed to evaluate the apparent resolution.",
+      "The problem is not falsity as such, but epistemic miscalibration: confidence and felt comprehension exceed the depth, scope, or reliability of actual understanding. Fluent algorithmic outputs can feel like expertise without producing the discriminatory competence that expert fluency presupposes.",
+      "The concept treats algorithmic mediation as an ecological intervention: it reorganises attention, authority, memory, and interpretive labour across the environment in which understanding is formed.",
+    ],
+    publications: [
+      "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration (Journal for the Cognitive Science of Religion, 2026).",
+    ],
+    currentWork: [
+      "Experimental comparison of singular-fluent, interpretively plural, and scaffolded-complexity presentations.",
+      "Cross-traditional study of confidence-accuracy calibration in digital religious environments.",
+      "Design criteria for systems that preserve source visibility, uncertainty markers, and structured disagreement.",
+    ],
+  },
 ];
 
 export function getConcept(slug: string): Concept | undefined {

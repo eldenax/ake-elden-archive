@@ -19,6 +19,24 @@ export type Publication = {
 export const PUBLICATIONS: Publication[] = [
   {
     title:
+      "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+    venue: "Journal for the Cognitive Science of Religion",
+    status: "Published",
+    year: "2026",
+    themeSlug: "formation-agency-human-subject",
+    conceptSlug: "automated-certainty",
+    paperSlug: "automated-certainty",
+    doi: "10.1558/jcsr.34912",
+    href: "https://doi.org/10.1558/jcsr.34912",
+    contribution:
+      "Introduces automated certainty as a condition in which algorithmic systems reduce experienced perplexity faster than they produce the interpretive competence required to evaluate the resolution, and proposes an empirical research program for tracking the resulting divergence between theological confidence and competence.",
+    caseNote:
+      "Cognitive science of religion, processing fluency, predictive processing, and historical practices of interpretive formation (Chavruta, lectio divina, apophatic discipline) frame the analysis.",
+    selected: true,
+    capacities: ["concealed", "transformed"],
+  },
+  {
+    title:
       "Action Without Acts: The Institutional Production of Action and the Doctrinal Conditions of Responsibility",
     venue: "Neue Zeitschrift für Systematische Theologie und Religionsphilosophie",
     status: "Published",
