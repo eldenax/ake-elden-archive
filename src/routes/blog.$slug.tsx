@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getBlogPost, BLOG_POSTS } from "../data/blog";
+import { getBlogPost, BLOG_POSTS, type BlogPost } from "../data/blog";
 import { getConcept } from "../data/concepts";
 
 const BASE = "https://ake-elden-archive.lovable.app";
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function BlogPostPage() {
-  const post = Route.useLoaderData();
+  const post = Route.useLoaderData() as BlogPost;
 
   return (
     <article>
