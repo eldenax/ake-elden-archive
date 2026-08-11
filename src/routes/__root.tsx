@@ -200,6 +200,7 @@ const NAV = [
   { to: "/projects", label: "Projects" },
   { to: "/academic-profile", label: "Profile" },
   { to: "/news", label: "News" },
+  { to: "/blog", label: "Notes" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
