@@ -21,9 +21,11 @@ import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
 import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -85,6 +87,11 @@ const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
   path: '/concepts/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PapersSlugRoute = PapersSlugRouteImport.update({
   id: '/papers/$slug',
   path: '/papers/$slug',
@@ -100,6 +107,11 @@ const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
   path: '/concepts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -113,9 +125,11 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -130,9 +144,11 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
@@ -148,9 +164,11 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
@@ -167,9 +185,11 @@ export interface FileRouteTypes {
     | '/projects'
     | '/publications'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog/'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -184,9 +204,11 @@ export interface FileRouteTypes {
     | '/projects'
     | '/publications'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog'
     | '/concepts'
   id:
     | '__root__'
@@ -201,9 +223,11 @@ export interface FileRouteTypes {
     | '/projects'
     | '/publications'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog/'
     | '/concepts/'
   fileRoutesById: FileRoutesById
 }
@@ -219,8 +243,10 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   PapersSlugRoute: typeof PapersSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
@@ -310,6 +336,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceptsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/papers/$slug': {
       id: '/papers/$slug'
       path: '/papers/$slug'
@@ -329,6 +362,13 @@ declare module '@tanstack/react-router' {
       path: '/concepts/$slug'
       fullPath: '/concepts/$slug'
       preLoaderRoute: typeof ConceptsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -357,8 +397,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
   PapersSlugRoute: PapersSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }
 export const routeTree = rootRouteImport
