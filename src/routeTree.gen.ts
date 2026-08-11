@@ -21,6 +21,7 @@ import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
 import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
@@ -85,6 +86,11 @@ const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
   path: '/concepts/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PapersSlugRoute = PapersSlugRouteImport.update({
   id: '/papers/$slug',
   path: '/papers/$slug',
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/concepts': typeof ConceptsIndexRoute
 }
 export interface FileRoutesById {
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
 }
 export interface FileRouteTypes {
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog/'
     | '/concepts/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog'
     | '/concepts'
   id:
     | '__root__'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
+    | '/blog/'
     | '/concepts/'
   fileRoutesById: FileRoutesById
 }
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   PapersSlugRoute: typeof PapersSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
 }
 
@@ -310,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConceptsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/papers/$slug': {
       id: '/papers/$slug'
       path: '/papers/$slug'
@@ -359,18 +379,9 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
   PapersSlugRoute: PapersSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
