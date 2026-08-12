@@ -1,30 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { zodValidator } from "@tanstack/zod-adapter";
 import { z } from "zod";
-import { PUBLICATIONS, type Capacity } from "../data/publications";
-import { THEMES, getTheme } from "../data/themes";
-import { getConcept } from "../data/concepts";
-import { edgesForPublication, pairKey } from "../data/concept-edges";
+import {
+  PUBLICATIONS,
+  UNDER_REVIEW,
+  ALL_ENTRIES,
+  type Capacity,
+} from "../data/publications";
+import { THEMES } from "../data/themes";
+import {
+  PublicationCard,
+  CAPACITY_LABEL,
+  CAPACITY_DESCRIPTION,
+} from "../components/PublicationCard";
 
 const TITLE = "Publications — Dr. Åke Elden";
 const DESCRIPTION =
-  "Selected and complete publications, organised by theme rather than discipline. Each entry names the theme, the contribution, and — where relevant — the concept it develops.";
+  "Peer-reviewed publications of Dr. Åke Elden, verified against NVA: thirteen articles in 2026 across theology, philosophy of science, and the ethics of automated institutions.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/publications";
-
-const CAPACITY_LABEL: Record<Capacity, string> = {
-  presupposed: "Presupposed",
-  transformed: "Transformed",
-  concealed: "Concealed",
-};
-
-const CAPACITY_DESCRIPTION: Record<Capacity, string> = {
-  presupposed:
-    "Capacities that must already be in place for institutions and technologies to function: judgment, moral standing, responsibility, object constitution, answerability.",
-  transformed:
-    "Capacities that are reshaped when delegated to technological and institutional systems: practical wisdom, desire, creaturehood, friction, infrastructure.",
-  concealed:
-    "Capacities that are obscured, evacuated, or rendered unaddressable by automated systems: agency, exclusion, epistemic lag, invisible missions.",
-};
 
 const publicationsSearchSchema = z.object({
   capacity: z.string().optional(),
@@ -52,6 +45,15 @@ export const Route = createFileRoute("/publications")({
           name: TITLE,
           description: DESCRIPTION,
           about: { "@type": "Person", name: "Åke Elden" },
+          hasPart: PUBLICATIONS.map((p) => ({
+            "@type": "ScholarlyArticle",
+            headline: p.title,
+            datePublished: p.year,
+            isPartOf: { "@type": "Periodical", name: p.venue },
+            ...(p.doi ? { identifier: `https://doi.org/${p.doi}` } : {}),
+            ...(p.href ? { url: p.href } : {}),
+            author: { "@type": "Person", name: "Åke Elden" },
+          })),
         }),
       },
     ],
@@ -59,167 +61,8 @@ export const Route = createFileRoute("/publications")({
   component: PublicationsPage,
 });
 
-function PublicationCard({ p }: { p: (typeof PUBLICATIONS)[number] }) {
-  const theme = getTheme(p.themeSlug);
-  const concept = p.conceptSlug ? getConcept(p.conceptSlug) : undefined;
-  const edges = edgesForPublication(p.title);
-  return (
-    <article className="border-t border-border pt-6">
-      {/* Title */}
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h3 className="font-display text-lg leading-snug text-foreground md:text-xl">
-          {p.title}
-        </h3>
-        <span className="inline-flex items-center rounded-sm border border-border bg-background px-2 py-0.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          {p.status}
-        </span>
-      </div>
-
-      {/* Contribution — placed immediately after the title, answering "why read this?" */}
-      <p className="mt-4 text-base leading-relaxed text-foreground/85">
-        {p.contribution}
-      </p>
-      {p.caseNote && (
-        <p className="mt-3 text-sm leading-relaxed text-foreground/75">
-          <span className="font-medium uppercase tracking-[0.18em] text-xs text-muted-foreground">
-            Case ·{" "}
-          </span>
-          {p.caseNote}
-        </p>
-      )}
-
-      {p.paperSlug && (
-        <p className="mt-4">
-          <Link
-            to="/papers/$slug"
-            params={{ slug: p.paperSlug }}
-            className="text-sm underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
-          >
-            Read the abstract & argument →
-          </Link>
-        </p>
-      )}
-
-
-      {/* Journal / venue */}
-      <dl className="mt-5 grid grid-cols-1 gap-y-2 text-sm sm:grid-cols-[8rem_1fr]">
-        <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Journal
-        </dt>
-        <dd className="text-foreground/85">
-          {p.venue}
-          {p.year ? ` · ${p.year}` : ""}
-          {p.doi ? (
-            <>
-              {" · "}
-              <a
-                href={`https://doi.org/${p.doi}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-dotted underline-offset-4 hover:text-foreground"
-              >
-                DOI
-              </a>
-            </>
-          ) : null}
-        </dd>
-
-        {/* Concepts introduced */}
-        {concept && (
-          <>
-            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Concepts introduced
-            </dt>
-            <dd>
-              <Link
-                to="/concepts/$slug"
-                params={{ slug: concept.slug }}
-                className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
-              >
-                {concept.name}
-              </Link>
-            </dd>
-          </>
-        )}
-
-        {/* Related theme */}
-        {theme && (
-          <>
-            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Related theme
-            </dt>
-            <dd>
-              <Link
-                to="/inquiry/$slug"
-                params={{ slug: theme.slug }}
-                className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
-              >
-                {theme.short}
-              </Link>
-            </dd>
-          </>
-        )}
-
-        {/* Capacities */}
-        {p.capacities && p.capacities.length > 0 && (
-          <>
-            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Capacities
-            </dt>
-            <dd>
-              <ul className="flex flex-wrap gap-2">
-                {p.capacities.map((c) => (
-                  <li key={c}>
-                    <Link
-                      to="/publications"
-                      search={{ capacity: c }}
-                      className="inline-flex items-center rounded-sm border border-border bg-background px-2 py-0.5 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground hover:bg-accent hover:text-foreground"
-                    >
-                      {CAPACITY_LABEL[c]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </>
-        )}
-
-        {/* Supporting connections in the concept graph */}
-        {edges.length > 0 && (
-          <>
-            <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Supporting connections
-            </dt>
-            <dd>
-              <ul className="space-y-1.5">
-                {edges.map((e) => {
-                  const a = getConcept(e.a);
-                  const b = getConcept(e.b);
-                  if (!a || !b) return null;
-                  const key = pairKey(e.a, e.b);
-                  return (
-                    <li key={key} className="leading-snug">
-                      <Link
-                        to="/concept-graph"
-                        search={{ pair: key }}
-                        hash={`pair-${key}`}
-                        className="underline decoration-dotted underline-offset-4 text-foreground/85 hover:text-foreground"
-                      >
-                        {a.name}
-                        <span className="mx-1.5 text-muted-foreground">×</span>
-                        {b.name}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </dd>
-          </>
-        )}
-      </dl>
-    </article>
-  );
-}
+const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
+const YEAR_2026 = PUBLICATIONS.filter((p) => p.year === "2026").length;
 
 function PublicationsPage() {
   const { capacity } = Route.useSearch();
@@ -230,7 +73,7 @@ function PublicationsPage() {
     : undefined;
 
   const filtered = activeCapacity
-    ? PUBLICATIONS.filter((p) => p.capacities?.includes(activeCapacity))
+    ? ALL_ENTRIES.filter((p) => p.capacities?.includes(activeCapacity))
     : undefined;
 
   return (
@@ -241,15 +84,24 @@ function PublicationsPage() {
             Publications
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            Publications, organised by theme
+            Peer-reviewed publications
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            Each entry names the theme it belongs to, its contribution to the
-            programme, and — where relevant — the concept it develops.
-            Publications are grouped by problem area rather than by discipline.
+            {YEAR_2026} peer-reviewed articles published in 2026, {LEVEL_2} of
+            them in Level 2 channels. Each entry names its journal, its
+            contribution to the programme, and — where relevant — the concept it
+            develops. Metadata is verified against NVA (Nasjonalt vitenarkiv).
           </p>
           <p className="mt-6 text-sm text-muted-foreground">
-            The most current record is maintained on the{" "}
+            Drafts, working papers, and items in preparation are kept separately
+            on the{" "}
+            <Link
+              to="/research-notes"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              research notes
+            </Link>{" "}
+            page. The canonical record is on the{" "}
             <Link
               to="/academic-profile"
               className="underline decoration-dotted underline-offset-4 hover:text-foreground"
@@ -262,7 +114,7 @@ function PublicationsPage() {
       </section>
 
       {activeCapacity ? (
-        <section className="border-b border-border bg-muted/30">
+        <section className="bg-muted/30">
           <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Filtered archive
@@ -287,7 +139,7 @@ function PublicationsPage() {
                 filtered.map((p) => <PublicationCard key={p.title} p={p} />)
               ) : (
                 <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
-                  No publications are currently tagged with this capacity.
+                  No entries are currently tagged with this capacity.
                 </p>
               )}
             </div>
@@ -314,52 +166,20 @@ function PublicationsPage() {
           <section className="border-b border-border">
             <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Published
+                Complete record
               </p>
               <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-                Published papers
+                Published articles by theme
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 Peer-reviewed articles that have appeared in print or been
-                formally accepted for publication.
+                formally accepted. Norwegian channel levels are given where a
+                level is registered.
               </p>
-              <div className="mt-10 space-y-10">
-                {(() => {
-                  const published = PUBLICATIONS.filter((p) =>
-                    p.status.toLowerCase().startsWith("published"),
-                  );
-                  if (published.length === 0) {
-                    return (
-                      <p className="border-t border-border pt-6 text-sm italic text-muted-foreground">
-                        No entries currently marked as published. Papers listed
-                        below are under review, in preparation, or circulating
-                        as working papers; those accepted for publication will
-                        move into this section.
-                      </p>
-                    );
-                  }
-                  return published.map((p) => (
-                    <PublicationCard key={p.title} p={p} />
-                  ));
-                })()}
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Complete list
-              </p>
-              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-                All publications by theme
-              </h2>
               <div className="mt-12 space-y-16">
                 {THEMES.map((t) => {
                   const pubs = PUBLICATIONS.filter(
-                    (p) =>
-                      p.themeSlug === t.slug &&
-                      !p.status.toLowerCase().startsWith("published"),
+                    (p) => p.themeSlug === t.slug,
                   );
                   if (pubs.length === 0) return null;
                   return (
@@ -385,6 +205,34 @@ function PublicationsPage() {
                   );
                 })}
               </div>
+            </div>
+          </section>
+
+          <section>
+            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Under review
+              </p>
+              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                Manuscripts under review
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Submitted manuscripts awaiting decision or revision. Not part of
+                the published record.
+              </p>
+              <div className="mt-10 space-y-10">
+                {UNDER_REVIEW.map((p) => (
+                  <PublicationCard key={p.title} p={p} />
+                ))}
+              </div>
+              <p className="mt-10 text-sm text-muted-foreground">
+                <Link
+                  to="/research-notes"
+                  className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Research notes: working papers and items in preparation →
+                </Link>
+              </p>
             </div>
           </section>
         </>
