@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CONCEPTS } from "../data/concepts";
-import { PUBLICATIONS, type Capacity } from "../data/publications";
+import { ALL_ENTRIES as PUBLICATIONS, type Capacity } from "../data/publications";
 import { CONCEPT_EDGES as EDGES, pairKey, type ConceptEdge } from "../data/concept-edges";
 
 const CAPACITIES: { slug: Capacity; label: string; blurb: string }[] = [
