@@ -223,7 +223,9 @@ function Header() {
               {n.label}
             </Link>
           ))}
+          <LanguageToggle />
         </nav>
+
       </div>
     </header>
   );
