@@ -45,9 +45,22 @@ type ActiveProject = {
 
 const ACTIVE: ActiveProject[] = [
   {
+    workingTitle: "When Institutions Stop Answering Back",
+    paragraph:
+      "The principal manuscript currently in draft. When institutional reasoning is delegated to automated procedures, answerability is not eliminated but silently relocated — and often to a site that cannot in fact bear it. The manuscript identifies that site, gives it a name, and shows why nominal oversight arrangements frequently leave the underlying gap intact.",
+    question:
+      "Where in an institution must answerability be borne once parts of its reasoning have been absorbed into automated procedures — and what does it take for that site to remain occupied?",
+    output:
+      "Draft manuscript, 2026; companion paper on typologies of answerability failure.",
+    themeSlug: "judgment-answerability-institutional-reason",
+    themeLabel: "Judgment & Answerability",
+    conceptSlug: "judgment-gap",
+    conceptLabel: "Judgment Gap",
+  },
+  {
     workingTitle: "Standing Is Not an Ordering",
     paragraph:
-      "The partition thesis distinguishes the question of who counts morally from the question of how those admitted are to be ordered against one another. Ontocentric information ethics is used as the maximal test case: even the most inclusive standing criterion cannot, by itself, supply an internal principle of priority. The argument is currently being sharpened against objections from moral-status theorists.",
+      "The partition thesis distinguishes the question of who counts morally from the question of how those admitted are to be ordered against one another. Ontocentric information ethics is used as the maximal test case: even the most inclusive standing criterion cannot, by itself, supply an internal principle of priority. The manuscript is under review and is being sharpened against objections from moral-status theorists.",
     question:
       "Under what conditions can criteria of moral standing generate an internal ordering — and when do they leave the ordering problem structurally unresolved?",
     output:
@@ -58,17 +71,17 @@ const ACTIVE: ActiveProject[] = [
     conceptLabel: "Partition Thesis",
   },
   {
-    workingTitle: "The Locus of Answerability",
+    workingTitle: "Comparative Desire and Social Violence",
     paragraph:
-      "When institutional reasoning is delegated to automated procedures, answerability is not eliminated but silently relocated — and often to a site that cannot in fact bear it. The project identifies that site, gives it a name, and shows why nominal oversight arrangements frequently leave the underlying gap intact.",
+      "Platform environments do not merely display inequality — they format it as entitlement whose frustration takes a recognisable, and monetisable, affective shape. The paper develops a philosophical account of how comparative entitlements are formed, and of the pathway from platform-mediated comparison, through grievance, to social violence at scale. Currently in revision after review.",
     question:
-      "Where in an institution must answerability be borne once parts of its reasoning have been absorbed into automated procedures — and what does it take for that site to remain occupied?",
+      "How does infrastructural comparison generate entitlements whose frustration is structurally converted into grievance — and under what conditions does that conversion scale into social violence?",
     output:
-      "Working paper submission (early 2027); companion paper on typologies of answerability failure; input into ClaimBuilder.ai design.",
-    themeSlug: "judgment-answerability-institutional-reason",
-    themeLabel: "Judgment & Answerability",
-    conceptSlug: "judgment-gap",
-    conceptLabel: "Judgment Gap",
+      "Journal article (revise and resubmit, 2026); book-length treatment of post-mimetic relationality as a general social configuration.",
+    themeSlug: "desire-comparison-social-relations",
+    themeLabel: "Desire & Relations",
+    conceptSlug: "comparative-entitlement-formation",
+    conceptLabel: "Comparative Entitlement Formation",
   },
   {
     workingTitle: "Second-Order Provenance",
@@ -77,37 +90,14 @@ const ACTIVE: ActiveProject[] = [
     question:
       "What would it take for an institution to own not only the data it uses, but the normative orderings under which those data are taken to matter?",
     output:
-      "Journal article; operational audit framework co-developed with ClaimBuilder.ai; workshop paper on institutional recordkeeping as moral infrastructure.",
+      "Working paper; operational audit framework co-developed with ClaimBuilder.ai; workshop paper on institutional recordkeeping as moral infrastructure.",
     themeSlug: "judgment-answerability-institutional-reason",
     themeLabel: "Judgment & Answerability",
     conceptSlug: "second-order-provenance",
     conceptLabel: "Second-Order Provenance",
   },
-  {
-    workingTitle: "Creaturehood Under Conditions of Optimization",
-    paragraph:
-      "The project reconstructs creaturehood as an anthropological structure — the sense in which a human life is given rather than assembled — and asks what persists or is deformed when optimisation becomes an ambient environment. It draws together theological anthropology, philosophy of action, and formation theory, without collapsing the philosophical question into a confessional one.",
-    question:
-      "Which features of the human subject presuppose that a life is received rather than optimised — and what happens to those features when the environment is engineered to eliminate exactly that assumption?",
-    output:
-      "Book chapter (in preparation, 2026–27); series of essays on formation and agency under optimisation.",
-    themeSlug: "formation-agency-human-subject",
-    themeLabel: "Formation & Agency",
-  },
-  {
-    workingTitle: "Comparative Desire and Social Violence",
-    paragraph:
-      "Platform environments do not merely display inequality — they format it as entitlement whose frustration takes a recognisable, and monetisable, affective shape. The project develops a philosophical account of how comparative entitlements are formed, and of the pathway from platform-mediated comparison, through grievance, to social violence at scale.",
-    question:
-      "How does infrastructural comparison generate entitlements whose frustration is structurally converted into grievance — and under what conditions does that conversion scale into social violence?",
-    output:
-      "Journal article (working paper, 2026); book-length treatment of post-mimetic relationality as a general social configuration.",
-    themeSlug: "desire-comparison-social-relations",
-    themeLabel: "Desire & Relations",
-    conceptSlug: "comparative-entitlement-formation",
-    conceptLabel: "Comparative Entitlement Formation",
-  },
 ];
+
 
 function CurrentResearchPage() {
   return (
