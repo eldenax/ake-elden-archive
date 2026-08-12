@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { THEMES, getTheme } from "../data/themes";
 import { getConcept } from "../data/concepts";
-import { PUBLICATIONS } from "../data/publications";
+import { ALL_ENTRIES as PUBLICATIONS } from "../data/publications";
 import {
   Accordion,
   AccordionContent,

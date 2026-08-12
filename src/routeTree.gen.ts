@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ResearchNotesRouteImport } from './routes/research-notes'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
@@ -30,6 +31,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchNotesRoute = ResearchNotesRouteImport.update({
+  id: '/research-notes',
+  path: '/research-notes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PublicationsRoute = PublicationsRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/research-notes': typeof ResearchNotesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/research-notes': typeof ResearchNotesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
+  '/research-notes': typeof ResearchNotesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
@@ -184,6 +193,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/projects'
     | '/publications'
+    | '/research-notes'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/concepts/$slug'
@@ -203,6 +213,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/projects'
     | '/publications'
+    | '/research-notes'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/concepts/$slug'
@@ -222,6 +233,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/projects'
     | '/publications'
+    | '/research-notes'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/concepts/$slug'
@@ -242,6 +254,7 @@ export interface RootRouteChildren {
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
+  ResearchNotesRoute: typeof ResearchNotesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-notes': {
+      id: '/research-notes'
+      path: '/research-notes'
+      fullPath: '/research-notes'
+      preLoaderRoute: typeof ResearchNotesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/publications': {
@@ -396,6 +416,7 @@ const rootRouteChildren: RootRouteChildren = {
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
+  ResearchNotesRoute: ResearchNotesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
