@@ -1,4 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { LanguageToggle } from "@/components/LanguageToggle";
+
 import {
   Outlet,
   Link,
