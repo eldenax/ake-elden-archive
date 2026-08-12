@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "Current Research — Dr. Åke Elden";
 const DESCRIPTION =
-  "Five active research projects: their central philosophical questions, the state of the argument, and expected outputs.";
+  "Work in progress by Dr. Åke Elden: the manuscript under draft, papers under review, and the working papers extending the programme.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/current-research";
 
 export const Route = createFileRoute("/current-research")({
@@ -108,14 +108,14 @@ function CurrentResearchPage() {
             Current research
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            Five active projects
+            Work in progress
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            These are the projects currently under active work. Each one names
+            These are the projects currently under active work — the draft manuscript first, then manuscripts under review, then working papers. Each one names
             a working title, the philosophical question it is trying to
             answer, and the expected output. Together they show where the
             programme is being extended right now, rather than what it has
-            already produced.
+            already produced. Published articles are listed under Publications; other drafts under Research Notes.
           </p>
         </div>
       </section>
