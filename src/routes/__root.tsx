@@ -13,6 +13,16 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { BLOG_POSTS } from "../data/blog";
+
+/** Freshness signal derived from the most recent dated content item. */
+const LAST_UPDATED = (() => {
+  const dates = BLOG_POSTS.map((p) => p.date).filter(Boolean).sort();
+  const latest = dates[dates.length - 1];
+  const d = latest ? new Date(latest) : new Date();
+  return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+})();
+
 
 function NotFoundComponent() {
   return (
