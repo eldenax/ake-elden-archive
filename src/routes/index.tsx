@@ -252,6 +252,12 @@ function Index() {
               }
             />
           </div>
+          <p className="mt-4 text-xs text-muted-foreground">
+            A contribution may address more than one capacity; the counts
+            therefore represent classifications rather than unique
+            publications.
+          </p>
+
         </div>
       </section>
 
