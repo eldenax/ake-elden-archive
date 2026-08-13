@@ -87,11 +87,13 @@ function PublicationsPage() {
             Peer-reviewed publications
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            {YEAR_2026} peer-reviewed articles published in 2026, {LEVEL_2} of
-            them in Level 2 channels. Each entry names its journal, its
-            contribution to the programme, and — where relevant — the concept it
-            develops. Metadata is verified against NVA (Nasjonalt vitenarkiv).
+            {YEAR_2026} peer-reviewed articles published online or formally
+            accepted in 2026, including {LEVEL_2} in Level 2 channels. Each
+            entry names its journal, its contribution to the programme, and —
+            where relevant — the concept it develops. Metadata is verified
+            against NVA (Nasjonalt vitenarkiv).
           </p>
+
           <p className="mt-6 text-sm text-muted-foreground">
             Drafts, working papers, and items in preparation are kept separately
             on the{" "}

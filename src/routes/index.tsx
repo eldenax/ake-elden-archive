@@ -106,12 +106,19 @@ function Index() {
               contexts in which these problems become visible.
             </p>
             <p className="mt-5 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
-
               Artificial intelligence enters the programme as one revealing
               context — the setting in which transformations of judgment,
               responsibility, and institutional reason show up under load.
               The questions themselves precede it and outlast it.
             </p>
+            <p className="mt-8 max-w-[32rem] text-sm leading-relaxed text-foreground/80">
+              Research Advisor at NLA University College, Oslo.{" "}
+              {PUBLICATIONS.length} peer-reviewed articles published online or
+              formally accepted in 2026, including{" "}
+              {PUBLICATIONS.filter((p) => p.level === "2").length} in Level 2
+              channels.
+            </p>
+
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/inquiry"
@@ -252,6 +259,12 @@ function Index() {
               }
             />
           </div>
+          <p className="mt-4 text-xs text-muted-foreground">
+            A contribution may address more than one capacity; the counts
+            therefore represent classifications rather than unique
+            publications.
+          </p>
+
         </div>
       </section>
 

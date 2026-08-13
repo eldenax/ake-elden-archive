@@ -24,11 +24,12 @@ export const THEMES: Theme[] = [
     name: "Judgment, Answerability and Institutional Reason",
     short: "Judgment & Answerability",
     tagline:
-      "How institutional judgment, answerability, and provenance are reorganised when reasoning is delegated.",
+      "The normative question: what makes an institutional decision answerable, and who can be held to it.",
     description: [
-      "This theme studies the conditions under which institutions remain answerable when parts of their reasoning are absorbed into automated procedures. It develops a vocabulary for institutional judgment that treats provenance, inferential license, and closure as first-order objects of analysis rather than administrative details.",
-      "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability.",
+      "This theme asks a normative question about acts: under what conditions does an institutional decision count as a judgment that someone can be held to? It develops a vocabulary — provenance, inferential license, closure — for locating the point at which answerability is either preserved or lost.",
+      "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability. Where Area 6 asks what infrastructure makes decisions possible, this area asks what makes them defensible.",
     ],
+
     works: [
       { title: "Standing Is Not an Ordering", status: "Under review" },
       { title: "The Locus of Answerability", status: "Working paper" },
@@ -144,11 +145,12 @@ export const THEMES: Theme[] = [
     name: "Institutions, Infrastructure and Technological Mediation",
     short: "Institutions & Infrastructure",
     tagline:
-      "Epistemic infrastructure, institutional friction, and the automation of institutional functions.",
+      "The material question: which infrastructures make institutional knowing and deciding possible in the first place.",
     description: [
-      "This theme treats infrastructure as a first-class philosophical object. It studies how epistemic infrastructure, institutional friction, and administrative expertise shape what an institution can know, decide, and stand behind — and how these are transformed when institutional functions are automated.",
-      "Applied projects such as TrialTact and ClaimBuilder.ai are treated here as diagnostic contexts: practical settings in which the philosophical problems of the programme become visible under load.",
+      "This theme treats infrastructure as a first-class philosophical object. Its question is material rather than normative: which systems, records, frictions, and forms of administrative expertise constitute what an institution is able to know and decide at all — and how that capacity changes when institutional functions are automated.",
+      "Where Area 1 evaluates decisions once made, this area studies the conditions of their production. Applied projects such as TrialTact and ClaimBuilder.ai are treated here as diagnostic contexts: practical settings in which the philosophical problems of the programme become visible under load.",
     ],
+
     works: [
       { title: "AI as epistemic infrastructure", status: "Working paper" },
       { title: "Institutional inversion", status: "Working paper" },

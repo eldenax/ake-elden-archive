@@ -27,7 +27,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Creaturehood Under Conditions of Optimization: AI and the Externalization of Moral Formation",
     venue: "Studies in Christian Ethics",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "2",
     doi: "10.1177/09539468261467326",
@@ -42,7 +42,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Action Without Acts: The Institutional Production of Action and the Doctrinal Conditions of Responsibility",
     venue: "Neue Zeitschrift für Systematische Theologie und Religionsphilosophie",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "2",
     doi: "10.1515/nzsth-2026-0021",
@@ -61,7 +61,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "From Phronesis to Pronoia: Algorithmic Mediation and the Theological Displacement of Practical Wisdom",
     venue: "Studies in Christian Ethics",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "2",
     doi: "10.1177/09539468261463719",
@@ -76,7 +76,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "The Gifted Subject: Kenosis, Phenomenology, and the Constitution of Responsive Agency",
     venue: "Studia Theologica — Nordic Journal of Theology",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "2",
     doi: "10.1080/0039338x.2026.2691693",
@@ -91,7 +91,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "When Responsibility Fails to Arise: Institutional Conditions of Action in Algorithmic Governance",
     venue: "AI and Ethics",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     doi: "10.1007/s43681-026-01204-1",
@@ -106,7 +106,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "The Diffuse Void: Algorithmic Safety and the Disappearance of Judgment",
     venue: "AI and Ethics",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     doi: "10.1007/s43681-026-01095-2",
@@ -122,7 +122,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
     venue: "Journal for the Cognitive Science of Religion",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     doi: "10.1558/jcsr.34912",
@@ -140,7 +140,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Epistemic Automation and the Deformation of the Human: Artificial Intelligence and the Reconfiguration of Theological Anthropology",
     venue: "Religions",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     href: "https://www.mdpi.com/2077-1444/17/5/515",
@@ -153,7 +153,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Sanctification and the Ordo Extractionis: Formative Sovereignty and Predictive Habituation",
     venue: "Religions",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     href: "https://www.mdpi.com/2077-1444/17/3/392",
@@ -166,7 +166,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Conceptual Inflation and Explanatory Entitlement: On the Limits of Construct Extension in Science",
     venue: "Philosophies",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     href: "https://www.mdpi.com/2409-9287/11/4/105",
@@ -179,7 +179,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Algorithmic Habitus and the Invisible Mission: Sanctification as the Reordering of Desire",
     venue: "New Blackfriars",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "0",
     doi: "10.1017/nbf.2026.10162",
@@ -193,7 +193,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Micro-Discipline: A Process Model of Behavioural Regulation and Character Formation",
     venue: "Behavioral Sciences",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     doi: "10.3390/bs16060879",
@@ -207,7 +207,7 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Amplification Chambers and Belief Persistence in Commercial Health Communication",
     venue: "Journal of Health Communication",
-    status: "Published",
+    status: "Published online",
     year: "2026",
     level: "1",
     doi: "10.1080/10810730.2026.2693890",

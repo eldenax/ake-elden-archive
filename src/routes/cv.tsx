@@ -81,11 +81,11 @@ const SELECTED_PUBLICATIONS = [
 
 const PROFILES = [
   { name: "ORCID", href: "https://orcid.org/0009-0003-0965-7666" },
-  { name: "Google Scholar", href: "https://scholar.google.com/citations?user=" },
   { name: "PhilPapers", href: "https://philpapers.org/s/Aake%20Elden" },
   { name: "PhilPeople", href: "https://philpeople.org/profiles/aake-elden" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/" },
+  { name: "NVA — Nasjonalt vitenarkiv", href: "https://nva.sikt.no/research-profile/57416" },
 ];
+
 
 function CVPage() {
   return (

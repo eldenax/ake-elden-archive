@@ -9,10 +9,20 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { BLOG_POSTS } from "../data/blog";
+
+/** Freshness signal derived from the most recent dated content item. */
+const LAST_UPDATED = (() => {
+  const dates = BLOG_POSTS.map((p) => p.date).filter(Boolean).sort();
+  const latest = dates[dates.length - 1];
+  const d = latest ? new Date(latest) : new Date();
+  return d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+})();
+
 
 function NotFoundComponent() {
   return (
@@ -192,20 +202,62 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-const NAV = [
-  { to: "/", label: "Home" },
+const RESEARCH_MENU = [
   { to: "/inquiry", label: "Research Programme" },
-  { to: "/concepts", label: "Concepts" },
-  { to: "/concept-graph", label: "Research Map" },
   { to: "/current-research", label: "Current Research" },
-  { to: "/publications", label: "Publications" },
+  { to: "/concept-graph", label: "Research Map" },
   { to: "/research-notes", label: "Research Notes" },
   { to: "/projects", label: "Projects" },
-  { to: "/academic-profile", label: "Profile" },
+] as const;
+
+const NAV = [
+  { to: "/concepts", label: "Concepts" },
+  { to: "/publications", label: "Publications" },
+  { to: "/academic-profile", label: "Academic Profile" },
   { to: "/news", label: "News" },
-  { to: "/blog", label: "Notes" },
+  { to: "/blog", label: "Essays" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
+function ResearchMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        className="text-foreground/70 transition-colors hover:text-foreground"
+      >
+        Research <span aria-hidden>▾</span>
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full z-50 w-56 rounded-md border border-border bg-background p-2 shadow-md">
+          {RESEARCH_MENU.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              onClick={() => setOpen(false)}
+              activeProps={{ className: "font-semibold text-foreground" }}
+              className="block rounded px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {n.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function Header() {
   return (
@@ -215,6 +267,7 @@ function Header() {
           Dr. Åke Elden
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
+          <ResearchMenu />
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -233,6 +286,7 @@ function Header() {
     </header>
   );
 }
+
 
 function Footer() {
   return (
@@ -277,14 +331,15 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-xs">
               <li>
                 <a
-                  href="https://scholar.google.com/citations?user="
+                  href="https://orcid.org/0009-0003-0965-7666"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
-                  Google Scholar
+                  ORCID
                 </a>
               </li>
+
               <li>
                 <a
                   href="https://philpapers.org/s/Aake%20Elden"
@@ -325,15 +380,14 @@ function Footer() {
             </p>
             <ul className="mt-4 space-y-2 text-xs">
               <li>
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/academic-profile"
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
-                  LinkedIn
-                </a>
+                  Academic profile
+                </Link>
               </li>
+
               <li>
                 <Link
                   to="/cv"
@@ -354,8 +408,9 @@ function Footer() {
               © {new Date().getFullYear()} Åke Elden
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Last updated: July 2026
+              Last updated: {LAST_UPDATED}
             </p>
+
           </div>
         </div>
       </div>
