@@ -321,14 +321,15 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-xs">
               <li>
                 <a
-                  href="https://scholar.google.com/citations?user="
+                  href="https://orcid.org/0009-0003-0965-7666"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
-                  Google Scholar
+                  ORCID
                 </a>
               </li>
+
               <li>
                 <a
                   href="https://philpapers.org/s/Aake%20Elden"
