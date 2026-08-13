@@ -370,15 +370,14 @@ function Footer() {
             </p>
             <ul className="mt-4 space-y-2 text-xs">
               <li>
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/academic-profile"
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
-                  LinkedIn
-                </a>
+                  Academic profile
+                </Link>
               </li>
+
               <li>
                 <Link
                   to="/cv"
