@@ -192,20 +192,62 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-const NAV = [
-  { to: "/", label: "Home" },
+const RESEARCH_MENU = [
   { to: "/inquiry", label: "Research Programme" },
-  { to: "/concepts", label: "Concepts" },
-  { to: "/concept-graph", label: "Research Map" },
   { to: "/current-research", label: "Current Research" },
-  { to: "/publications", label: "Publications" },
+  { to: "/concept-graph", label: "Research Map" },
   { to: "/research-notes", label: "Research Notes" },
   { to: "/projects", label: "Projects" },
-  { to: "/academic-profile", label: "Profile" },
+] as const;
+
+const NAV = [
+  { to: "/concepts", label: "Concepts" },
+  { to: "/publications", label: "Publications" },
+  { to: "/academic-profile", label: "Academic Profile" },
   { to: "/news", label: "News" },
-  { to: "/blog", label: "Notes" },
+  { to: "/blog", label: "Essays" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
+function ResearchMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        className="text-foreground/70 transition-colors hover:text-foreground"
+      >
+        Research <span aria-hidden>▾</span>
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full z-50 w-56 rounded-md border border-border bg-background p-2 shadow-md">
+          {RESEARCH_MENU.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              onClick={() => setOpen(false)}
+              activeProps={{ className: "font-semibold text-foreground" }}
+              className="block rounded px-3 py-2 text-sm text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {n.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function Header() {
   return (
@@ -215,6 +257,7 @@ function Header() {
           Dr. Åke Elden
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
+          <ResearchMenu />
           {NAV.map((n) => (
             <Link
               key={n.to}
@@ -233,6 +276,7 @@ function Header() {
     </header>
   );
 }
+
 
 function Footer() {
   return (
