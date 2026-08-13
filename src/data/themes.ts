@@ -145,11 +145,12 @@ export const THEMES: Theme[] = [
     name: "Institutions, Infrastructure and Technological Mediation",
     short: "Institutions & Infrastructure",
     tagline:
-      "Epistemic infrastructure, institutional friction, and the automation of institutional functions.",
+      "The material question: which infrastructures make institutional knowing and deciding possible in the first place.",
     description: [
-      "This theme treats infrastructure as a first-class philosophical object. It studies how epistemic infrastructure, institutional friction, and administrative expertise shape what an institution can know, decide, and stand behind — and how these are transformed when institutional functions are automated.",
-      "Applied projects such as TrialTact and ClaimBuilder.ai are treated here as diagnostic contexts: practical settings in which the philosophical problems of the programme become visible under load.",
+      "This theme treats infrastructure as a first-class philosophical object. Its question is material rather than normative: which systems, records, frictions, and forms of administrative expertise constitute what an institution is able to know and decide at all — and how that capacity changes when institutional functions are automated.",
+      "Where Area 1 evaluates decisions once made, this area studies the conditions of their production. Applied projects such as TrialTact and ClaimBuilder.ai are treated here as diagnostic contexts: practical settings in which the philosophical problems of the programme become visible under load.",
     ],
+
     works: [
       { title: "AI as epistemic infrastructure", status: "Working paper" },
       { title: "Institutional inversion", status: "Working paper" },
