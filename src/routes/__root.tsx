@@ -398,8 +398,9 @@ function Footer() {
               © {new Date().getFullYear()} Åke Elden
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              Last updated: July 2026
+              Last updated: {LAST_UPDATED}
             </p>
+
           </div>
         </div>
       </div>
