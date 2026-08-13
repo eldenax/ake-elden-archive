@@ -24,11 +24,12 @@ export const THEMES: Theme[] = [
     name: "Judgment, Answerability and Institutional Reason",
     short: "Judgment & Answerability",
     tagline:
-      "How institutional judgment, answerability, and provenance are reorganised when reasoning is delegated.",
+      "The normative question: what makes an institutional decision answerable, and who can be held to it.",
     description: [
-      "This theme studies the conditions under which institutions remain answerable when parts of their reasoning are absorbed into automated procedures. It develops a vocabulary for institutional judgment that treats provenance, inferential license, and closure as first-order objects of analysis rather than administrative details.",
-      "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability.",
+      "This theme asks a normative question about acts: under what conditions does an institutional decision count as a judgment that someone can be held to? It develops a vocabulary — provenance, inferential license, closure — for locating the point at which answerability is either preserved or lost.",
+      "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability. Where Area 6 asks what infrastructure makes decisions possible, this area asks what makes them defensible.",
     ],
+
     works: [
       { title: "Standing Is Not an Ordering", status: "Under review" },
       { title: "The Locus of Answerability", status: "Working paper" },
