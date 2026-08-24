@@ -195,6 +195,27 @@ export const CONCEPTS: Concept[] = [
       "Design criteria for systems that preserve source visibility, uncertainty markers, and structured disagreement.",
     ],
   },
+  {
+    slug: "exercisable-answerability",
+    name: "Exercisable Answerability",
+    tagline:
+      "The difference between being formally assigned responsibility and actually being able to answer for what has been done.",
+    theory: [
+      "Exercisable answerability distinguishes nominal responsibility from the actual capacity to answer for a decision. A person or institution is answerable only when they can reconstruct the relevant judgment, explain why the reasons counted as they did, defend the ordering under challenge, and revise the conclusion when those reasons fail.",
+      "Responsibility can remain formally human while the conditions required to exercise it have migrated into systems, procedures, or infrastructures that no individual can adequately reconstruct. Retaining a human decision-maker does not by itself preserve human judgment.",
+      "The concept therefore asks a deeper question than opacity. An organisation may know which system produced a decision and still lack anyone capable of answering for why that decision deserved to count.",
+    ],
+    publications: [
+      "The Locus of Answerability (working paper).",
+      "Answerability on the Record (in preparation).",
+      "When Responsibility Fails to Arise (working paper).",
+    ],
+    currentWork: [
+      "A typology of cases in which responsibility is formally retained but practically unexercisable.",
+      "Integration with second-order provenance and the judgment gap in the wider programme.",
+      "Applied work on institutional redesign for answerability-preserving workflows.",
+    ],
+  },
 ];
 
 export function getConcept(slug: string): Concept | undefined {

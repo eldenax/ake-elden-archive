@@ -53,6 +53,10 @@ const DYNAMIC_EXPANDERS = {
     const mod = await import(pathToFileURL(resolve(ROOT, "src/data/themes.ts")).href);
     return mod.THEMES.map((t) => `/inquiry/${t.slug}`);
   },
+  "/blog/$slug": async () => {
+    const mod = await import(pathToFileURL(resolve(ROOT, "src/data/blog.ts")).href);
+    return mod.BLOG_POSTS.map((b) => `/blog/${b.slug}`);
+  },
 };
 
 const routes = new Set();
