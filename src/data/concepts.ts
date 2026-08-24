@@ -194,6 +194,7 @@ export const CONCEPTS: Concept[] = [
       "Cross-traditional study of confidence-accuracy calibration in digital religious environments.",
       "Design criteria for systems that preserve source visibility, uncertainty markers, and structured disagreement.",
     ],
+  },
   {
     slug: "exercisable-answerability",
     name: "Exercisable Answerability",
