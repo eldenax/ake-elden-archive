@@ -191,6 +191,22 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     title:
+      "Comparative Desire and Social Violence: Mimetic Structure, Inequity, and the Scapegoat Dynamic",
+    venue: "Philosophy & Social Criticism",
+    status: "Published online",
+    year: "2026",
+    level: "1",
+    doi: "10.1177/01914537261481740",
+    href: "https://doi.org/10.1177/01914537261481740",
+    themeSlug: "desire-comparison-social-relations",
+    conceptSlug: "comparative-entitlement-formation",
+    contribution:
+      "Develops comparative entitlement formation as a single mechanism linking proximate comparison, the felt claim it generates, grievance, and displacement onto vulnerable third parties; shows that the characteristic irrationality of unfairness experience reflects the mechanics of comparison rather than a failure of rational judgement.",
+    selected: true,
+    capacities: ["transformed"],
+  },
+  {
+    title:
       "Micro-Discipline: A Process Model of Behavioural Regulation and Character Formation",
     venue: "Behavioral Sciences",
     status: "Published online",
