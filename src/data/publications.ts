@@ -237,17 +237,6 @@ export const UNDER_REVIEW: Publication[] = [
       "Ontocentric information ethics serves as the maximal test of the thesis.",
     capacities: ["presupposed"],
   },
-  {
-    title: "Comparative Desire and Social Violence",
-    venue: "Revise and resubmit",
-    status: "Revise and resubmit",
-    year: "2026",
-    themeSlug: "desire-comparison-social-relations",
-    conceptSlug: "comparative-entitlement-formation",
-    contribution:
-      "Analyses how platform-mediated comparison produces entitlements whose frustration is structurally converted into grievance and, at scale, into social violence.",
-    capacities: ["transformed"],
-  },
 ];
 
 /**
