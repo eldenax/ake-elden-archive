@@ -103,7 +103,7 @@ export const THEMES: Theme[] = [
       "The theme is not reducible to 'social media studies' or 'platform studies': it is a study of the relational configuration of the human under conditions in which comparison itself has been engineered.",
     ],
     works: [
-      { title: "Comparative Desire and Social Violence", status: "Working paper" },
+      { title: "Comparative Desire and Social Violence", status: "Published online" },
       { title: "The Platforming of Desire", status: "Working paper" },
     ],
     conceptSlugs: ["comparative-entitlement-formation", "post-mimetic-relationality"],

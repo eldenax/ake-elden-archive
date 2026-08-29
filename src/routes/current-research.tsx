@@ -73,11 +73,11 @@ const ACTIVE: ActiveProject[] = [
   {
     workingTitle: "Comparative Desire and Social Violence",
     paragraph:
-      "Platform environments do not merely display inequality — they format it as entitlement whose frustration takes a recognisable, and monetisable, affective shape. The paper develops a philosophical account of how comparative entitlements are formed, and of the pathway from platform-mediated comparison, through grievance, to social violence at scale. Currently in revision after review.",
+      "Platform environments do not merely display inequality — they format it as entitlement whose frustration takes a recognisable, and monetisable, affective shape. The paper develops a philosophical account of how comparative entitlements are formed, and of the pathway from platform-mediated comparison, through grievance, to social violence at scale. Now published in Philosophy & Social Criticism.",
     question:
       "How does infrastructural comparison generate entitlements whose frustration is structurally converted into grievance — and under what conditions does that conversion scale into social violence?",
     output:
-      "Journal article (revise and resubmit, 2026); book-length treatment of post-mimetic relationality as a general social configuration.",
+      "Journal article (Philosophy & Social Criticism, 2026); book-length treatment of post-mimetic relationality as a general social configuration.",
     themeSlug: "desire-comparison-social-relations",
     themeLabel: "Desire & Relations",
     conceptSlug: "comparative-entitlement-formation",
