@@ -116,7 +116,7 @@ export const CONCEPTS: Concept[] = [
       "The concept explains why platform environments generate grievance at scale: they do not merely display inequality, they format it as entitlement whose frustration has a recognisable, and monetisable, affective shape.",
     ],
     publications: [
-      "Comparative Desire and Social Violence (Philosophy & Social Criticism, 2026)."
+      "Comparative Desire and Social Violence (Philosophy & Social Criticism, 2026).",
       "The Platforming of Desire (working paper).",
     ],
     currentWork: [
