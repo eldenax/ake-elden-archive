@@ -16,7 +16,7 @@ import {
 
 const TITLE = "Publications — Dr. Åke Elden";
 const DESCRIPTION =
-  "Peer-reviewed publications of Dr. Åke Elden, verified against NVA: thirteen articles in 2026 across theology, philosophy of science, and the ethics of automated institutions.";
+  "Peer-reviewed publications of Dr. Åke Elden, verified against NVA: 14 articles published online or formally accepted in 2026 across theology, philosophy of science, and the ethics of automated institutions.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/publications";
 
 const publicationsSearchSchema = z.object({

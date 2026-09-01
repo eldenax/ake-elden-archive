@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "../assets/ake-elden-hero.jpg";
 import { THEMES } from "../data/themes";
-import { ALL_ENTRIES as PUBLICATIONS } from "../data/publications";
+import { PUBLICATIONS } from "../data/publications";
 
 const TITLE = "Dr. Åke Elden — Philosopher of Judgment, Responsibility and Formation";
 const DESCRIPTION =
@@ -96,20 +96,12 @@ function Index() {
               explanation become possible — and how technological and
               institutional systems reorganize those conditions.
             </p>
-            <p className="mt-14 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
-
-              The programme is organised around philosophical problems, not
-              domains: judgment and answerability; normativity and moral
-              standing; explanation and object constitution; formation and
-              agency; desire and social relations; institutions and
-              infrastructure. Different disciplines and technologies provide
-              contexts in which these problems become visible.
-            </p>
-            <p className="mt-5 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
-              Artificial intelligence enters the programme as one revealing
-              context — the setting in which transformations of judgment,
-              responsibility, and institutional reason show up under load.
-              The questions themselves precede it and outlast it.
+            <p className="mt-12 max-w-[32rem] text-base leading-relaxed text-muted-foreground">
+              The programme is organised around philosophical problems rather
+              than domains: judgment and answerability, normativity and moral
+              standing, explanation, formation, desire, and institutional
+              infrastructure. Artificial intelligence enters as one revealing
+              context — not as the subject itself.
             </p>
             <p className="mt-8 max-w-[32rem] text-sm leading-relaxed text-foreground/80">
               Research Advisor at NLA University College, Oslo.{" "}
