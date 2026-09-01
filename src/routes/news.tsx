@@ -5,13 +5,16 @@ const DESCRIPTION =
   "Updates on research output, forthcoming publications, and programme developments.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/news";
 
+const TOTAL = PUBLICATIONS.length;
+const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
+
 const ITEMS = [
   {
     date: "2026",
     heading: "Research output (2026)",
     body: [
-      "In 2026, I published or had accepted 14 peer-reviewed journal articles, including 13 solo-authored papers.",
-      "The publications span philosophy of science, theology, AI ethics, behavioural science, and health communication, with four appearing in Norwegian Register Level 2 journals.",
+      `In 2026, ${TOTAL} peer-reviewed journal articles were published online or formally accepted.`,
+      `The publications span philosophy of science, theology, AI ethics, behavioural science, and health communication, with ${LEVEL_2} appearing in Norwegian Register Level 2 journals.`,
       "Together, they develop a research programme on agency, judgment, responsibility, scientific inference, and human formation under conditions of artificial intelligence.",
     ],
   },
