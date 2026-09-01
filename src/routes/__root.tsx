@@ -110,10 +110,14 @@ const PERSON_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Åke Elden",
-  honorificPrefix: "Dr.",
-  jobTitle: "Research Advisor",
+  honorificSuffix: "PhD",
+  jobTitle: "Researcher",
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Research Advisor, NLA University College",
+  },
   description:
-    "Researcher in artificial intelligence, philosophy of technology, and theological anthropology.",
+    "Researcher in philosophy of technology, social epistemology, and theological anthropology.",
   url: SITE_URL,
   identifier: "https://orcid.org/0009-0003-0965-7666",
   sameAs: [
@@ -264,7 +268,7 @@ function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
         <Link to="/" className="shrink-0 font-display text-base tracking-tight text-foreground">
-          Dr. Åke Elden
+          Åke Elden
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
           <ResearchMenu />
