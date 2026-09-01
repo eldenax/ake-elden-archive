@@ -102,9 +102,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const SITE_URL = "https://ake-elden-archive.lovable.app";
-const SITE_TITLE = "Dr. Åke Elden — Philosophy & Theology of Artificial Intelligence";
+const SITE_TITLE =
+  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
 const SITE_DESCRIPTION =
-  "Dr. Åke Elden is a researcher at NLA University College investigating the philosophical and theological conditions of human judgment, responsibility, and formation in the age of AI.";
+  "Åke Elden studies the conditions under which judgment, responsibility, agency, and explanation become possible, and how technological and institutional systems reorganize them.";
 
 const PERSON_JSONLD = {
   "@context": "https://schema.org",
