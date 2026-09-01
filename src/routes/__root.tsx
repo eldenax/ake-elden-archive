@@ -205,17 +205,17 @@ function RootShell({ children }: { children: ReactNode }) {
 const RESEARCH_MENU = [
   { to: "/inquiry", label: "Research Programme" },
   { to: "/current-research", label: "Current Research" },
+  { to: "/concepts", label: "Concepts" },
   { to: "/concept-graph", label: "Research Map" },
   { to: "/research-notes", label: "Research Notes" },
   { to: "/projects", label: "Projects" },
 ] as const;
 
 const NAV = [
-  { to: "/concepts", label: "Concepts" },
   { to: "/publications", label: "Publications" },
-  { to: "/academic-profile", label: "Academic Profile" },
-  { to: "/news", label: "News" },
-  { to: "/blog", label: "Essays" },
+  { to: "/academic-profile", label: "About" },
+  { to: "/blog", label: "Notes" },
+  { to: "/cv", label: "CV" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -394,6 +394,14 @@ function Footer() {
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
                   Download CV
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/news"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Updates
                 </Link>
               </li>
             </ul>
