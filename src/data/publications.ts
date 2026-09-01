@@ -15,6 +15,8 @@ export type Publication = {
   /** Norwegian publication channel level (NSD/HK-dir): "2", "1", "0". */
   level?: string;
   selected?: boolean;
+  /** Reading order within the selected set (1 = read first). */
+  selectedRank?: number;
   capacities?: Capacity[];
 };
 
@@ -35,7 +37,6 @@ export const PUBLICATIONS: Publication[] = [
     themeSlug: "formation-agency-human-subject",
     contribution:
       "Reconstructs creaturehood as an anthropological structure — a life received rather than assembled — and shows what is externalised when moral formation is delegated to optimising systems.",
-    selected: true,
     capacities: ["transformed"],
   },
   {
@@ -55,6 +56,7 @@ export const PUBLICATIONS: Publication[] = [
     caseNote:
       "Robodebt, the Dutch childcare-benefits scandal, and automated platform moderation serve as the three institutional configurations.",
     selected: true,
+    selectedRank: 3,
     capacities: ["concealed", "transformed"],
   },
   {
@@ -70,6 +72,7 @@ export const PUBLICATIONS: Publication[] = [
     contribution:
       "Traces the displacement of practical wisdom by anticipatory foresight when deliberation is mediated by predictive systems, and identifies what is lost when judgment is replaced by provision.",
     selected: true,
+    selectedRank: 2,
     capacities: ["transformed"],
   },
   {
@@ -85,6 +88,7 @@ export const PUBLICATIONS: Publication[] = [
     contribution:
       "Recovers the gifted subject — an agency constituted through reception and response — against a self taken to be exhaustively self-authored or exhaustively optimised.",
     selected: true,
+    selectedRank: 4,
     capacities: ["presupposed"],
   },
   {
@@ -100,6 +104,7 @@ export const PUBLICATIONS: Publication[] = [
     contribution:
       "Distinguishes cases in which responsibility is refused from cases in which the institutional conditions for responsibility to arise at all are absent from the outset.",
     selected: true,
+    selectedRank: 5,
     capacities: ["presupposed"],
   },
   {
@@ -115,7 +120,6 @@ export const PUBLICATIONS: Publication[] = [
     conceptSlug: "judgment-gap",
     contribution:
       "Examines the diffuse configurations in which no addressable party stands where a moral claim would ordinarily land, and shows how safety engineering can produce exactly that vacancy.",
-    selected: true,
     capacities: ["concealed"],
   },
   {
@@ -173,6 +177,8 @@ export const PUBLICATIONS: Publication[] = [
     themeSlug: "explanation-object-constitution-philosophy-of-science",
     contribution:
       "Names conceptual inflation as a systematic pathology: extending a construct beyond the explanatory entitlements conferred by its underlying object constitution.",
+    selected: true,
+    selectedRank: 6,
     capacities: ["concealed"],
   },
   {
@@ -203,6 +209,7 @@ export const PUBLICATIONS: Publication[] = [
     contribution:
       "Develops comparative entitlement formation as a single mechanism linking proximate comparison, the felt claim it generates, grievance, and displacement onto vulnerable third parties; shows that the characteristic irrationality of unfairness experience reflects the mechanics of comparison rather than a failure of rational judgement.",
     selected: true,
+    selectedRank: 1,
     capacities: ["transformed"],
   },
   {
@@ -452,3 +459,8 @@ export const ALL_ENTRIES: Publication[] = [
   ...UNDER_REVIEW,
   ...RESEARCH_NOTES,
 ];
+
+/** The selected set, in the reading order the programme should be met in. */
+export const SELECTED: Publication[] = PUBLICATIONS.filter((p) => p.selected).sort(
+  (a, b) => (a.selectedRank ?? 99) - (b.selectedRank ?? 99),
+);

@@ -102,18 +102,23 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const SITE_URL = "https://ake-elden-archive.lovable.app";
-const SITE_TITLE = "Dr. Åke Elden — Philosophy & Theology of Artificial Intelligence";
+const SITE_TITLE =
+  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
 const SITE_DESCRIPTION =
-  "Dr. Åke Elden is a researcher at NLA University College investigating the philosophical and theological conditions of human judgment, responsibility, and formation in the age of AI.";
+  "Åke Elden studies the conditions under which judgment, responsibility, agency, and explanation become possible, and how technological and institutional systems reorganize them.";
 
 const PERSON_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Åke Elden",
-  honorificPrefix: "Dr.",
-  jobTitle: "Research Advisor",
+  honorificSuffix: "PhD",
+  jobTitle: "Researcher",
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Research Advisor, NLA University College",
+  },
   description:
-    "Researcher in artificial intelligence, philosophy of technology, and theological anthropology.",
+    "Researcher in philosophy of technology, social epistemology, and theological anthropology.",
   url: SITE_URL,
   identifier: "https://orcid.org/0009-0003-0965-7666",
   sameAs: [
@@ -205,17 +210,17 @@ function RootShell({ children }: { children: ReactNode }) {
 const RESEARCH_MENU = [
   { to: "/inquiry", label: "Research Programme" },
   { to: "/current-research", label: "Current Research" },
+  { to: "/concepts", label: "Concepts" },
   { to: "/concept-graph", label: "Research Map" },
   { to: "/research-notes", label: "Research Notes" },
   { to: "/projects", label: "Projects" },
 ] as const;
 
 const NAV = [
-  { to: "/concepts", label: "Concepts" },
   { to: "/publications", label: "Publications" },
-  { to: "/academic-profile", label: "Academic Profile" },
-  { to: "/news", label: "News" },
-  { to: "/blog", label: "Essays" },
+  { to: "/academic-profile", label: "About" },
+  { to: "/blog", label: "Notes" },
+  { to: "/cv", label: "CV" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -264,7 +269,7 @@ function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
         <Link to="/" className="shrink-0 font-display text-base tracking-tight text-foreground">
-          Dr. Åke Elden
+          Åke Elden
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
           <ResearchMenu />
@@ -394,6 +399,14 @@ function Footer() {
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
                   Download CV
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/news"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Updates
                 </Link>
               </li>
             </ul>
