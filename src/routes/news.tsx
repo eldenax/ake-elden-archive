@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PUBLICATIONS } from "../data/publications";
 
 const TITLE = "News — Dr. Åke Elden";
 const DESCRIPTION =
