@@ -459,3 +459,8 @@ export const ALL_ENTRIES: Publication[] = [
   ...UNDER_REVIEW,
   ...RESEARCH_NOTES,
 ];
+
+/** The selected set, in the reading order the programme should be met in. */
+export const SELECTED: Publication[] = PUBLICATIONS.filter((p) => p.selected).sort(
+  (a, b) => (a.selectedRank ?? 99) - (b.selectedRank ?? 99),
+);

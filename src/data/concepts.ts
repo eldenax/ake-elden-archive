@@ -221,3 +221,23 @@ export const CONCEPTS: Concept[] = [
 export function getConcept(slug: string): Concept | undefined {
   return CONCEPTS.find((c) => c.slug === slug);
 }
+
+/**
+ * The core vocabulary: concepts that carry the argument of the published
+ * record. Everything else is developing work, shown separately so the
+ * programme reads as a line of argument rather than a private lexicon.
+ */
+export const CORE_CONCEPT_SLUGS = [
+  "inferential-license",
+  "exercisable-answerability",
+  "epistemic-infrastructure",
+  "judgment-gap",
+] as const;
+
+export const CORE_CONCEPTS: Concept[] = CORE_CONCEPT_SLUGS.map(
+  (slug) => CONCEPTS.find((c) => c.slug === slug)!,
+).filter(Boolean);
+
+export const DEVELOPING_CONCEPTS: Concept[] = CONCEPTS.filter(
+  (c) => !(CORE_CONCEPT_SLUGS as readonly string[]).includes(c.slug),
+);
