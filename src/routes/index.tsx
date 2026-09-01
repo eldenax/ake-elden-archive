@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImage from "../assets/ake-elden-hero.jpg";
 import { THEMES } from "../data/themes";
-import { PUBLICATIONS } from "../data/publications";
+import { PUBLICATIONS, SELECTED } from "../data/publications";
 
-const TITLE = "Dr. Åke Elden — Philosopher of Judgment, Responsibility and Formation";
+const TITLE =
+  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
 const DESCRIPTION =
-  "A research programme on the philosophical conditions of judgment, responsibility, explanation, institutional reason, normativity, and human formation — with AI as one diagnostic context among several.";
+  "Åke Elden studies the conditions under which judgment, responsibility, agency, and explanation become possible — and how technological and institutional systems reorganize them.";
 const OG_IMAGE =
   "https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app/ake-elden-hero.jpg";
 
