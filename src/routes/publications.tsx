@@ -5,6 +5,7 @@ import {
   PUBLICATIONS,
   UNDER_REVIEW,
   ALL_ENTRIES,
+  SELECTED,
   type Capacity,
 } from "../data/publications";
 import { THEMES } from "../data/themes";
@@ -14,9 +15,8 @@ import {
   CAPACITY_DESCRIPTION,
 } from "../components/PublicationCard";
 
-const TITLE = "Publications — Dr. Åke Elden";
-const DESCRIPTION =
-  "Peer-reviewed publications of Dr. Åke Elden, verified against NVA: 14 articles published online or formally accepted in 2026 across theology, philosophy of science, and the ethics of automated institutions.";
+const TITLE = "Publications — Åke Elden";
+const DESCRIPTION = `Peer-reviewed publications of Åke Elden, verified against NVA: ${PUBLICATIONS.length} articles published online or formally accepted in 2026 across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
 const URL_SELF = "https://ake-elden-archive.lovable.app/publications";
 
 const publicationsSearchSchema = z.object({
@@ -155,10 +155,15 @@ function PublicationsPage() {
                 Selected publications
               </p>
               <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-                Six papers to read first
+                {SELECTED.length} papers to read first
               </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Ordered as a route through the programme: social philosophy,
+                ethics, action and responsibility, agency, institutional
+                philosophy, philosophy of science.
+              </p>
               <div className="mt-10 space-y-10">
-                {PUBLICATIONS.filter((p) => p.selected).map((p) => (
+                {SELECTED.map((p) => (
                   <PublicationCard key={p.title} p={p} />
                 ))}
               </div>
