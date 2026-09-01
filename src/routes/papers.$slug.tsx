@@ -83,6 +83,10 @@ function PaperPage() {
   const concepts = paper.conceptSlugs
     .map((slug: string) => CONCEPTS.find((c) => c.slug === slug))
     .filter(Boolean) as Concept[];
+  /** Unpublished work is summarised only: published work leads the record. */
+  const isPublished = Boolean(paper.href || paper.doi);
+
+
 
   return (
     <div className="bg-background">
