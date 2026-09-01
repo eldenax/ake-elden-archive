@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CONCEPTS } from "../data/concepts";
+import { CORE_CONCEPTS, DEVELOPING_CONCEPTS, type Concept } from "../data/concepts";
 
-const TITLE = "Concepts — Dr. Åke Elden";
+const TITLE = "Concepts — Åke Elden";
 const DESCRIPTION =
-  "The conceptual vocabulary of the research programme: inferential license, judgment gap, second-order provenance, partition thesis, ethical disclosure, comparative entitlement formation, post-mimetic relationality, epistemic infrastructure, systemic friction.";
+  "The core vocabulary of the research programme — inferential license, exercisable answerability, epistemic infrastructure, and the judgment gap — together with concepts still under development.";
 
 const URL_SELF = "https://ake-elden-archive.lovable.app/concepts";
 
