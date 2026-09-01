@@ -154,73 +154,99 @@ function PaperPage() {
             </p>
           </div>
 
-          <div className="border-t border-border pt-8">
-            <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              The four conditions
-            </h2>
-            <dl className="mt-6 space-y-6">
-              {paper.conditions.map((c: Paper["conditions"][number]) => (
-                <div key={c.label}>
-                  <dt className="font-display text-base text-foreground md:text-lg">
-                    {c.label}
-                  </dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-foreground/85">
-                    {c.body}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          {isPublished ? (
+            <>
+            <div className="border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                The four conditions
+              </h2>
+              <dl className="mt-6 space-y-6">
+                {paper.conditions.map((c: Paper["conditions"][number]) => (
+                  <div key={c.label}>
+                    <dt className="font-display text-base text-foreground md:text-lg">
+                      {c.label}
+                    </dt>
+                    <dd className="mt-2 text-sm leading-relaxed text-foreground/85">
+                      {c.body}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
 
-          <div className="border-t border-border pt-8">
-            <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Formal results
-            </h2>
-            <ul className="mt-6 space-y-6">
-              {paper.results.map((r: Paper["results"][number]) => (
-                <li key={r.label}>
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    {r.label}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/85">
-                    {r.statement}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="border-t border-border pt-8">
-            <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Structure of the argument
-            </h2>
-            <ol className="mt-6 space-y-6">
-              {paper.sections.map((s: Paper["sections"][number]) => (
-                <li key={s.number} className="grid grid-cols-[3rem_1fr] gap-4">
-                  <span className="font-display text-sm text-muted-foreground">
-                    § {s.number}
-                  </span>
-                  <div>
-                    <p className="font-display text-base text-foreground md:text-lg">
-                      {s.heading}
+            <div className="border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Formal results
+              </h2>
+              <ul className="mt-6 space-y-6">
+                {paper.results.map((r: Paper["results"][number]) => (
+                  <li key={r.label}>
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                      {r.label}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-foreground/85">
-                      {s.summary}
+                      {r.statement}
                     </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="border-t border-border pt-8">
-            <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Positioning
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-foreground/85">
-              {paper.positioning}
-            </p>
-          </div>
+            <div className="border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Structure of the argument
+              </h2>
+              <ol className="mt-6 space-y-6">
+                {paper.sections.map((s: Paper["sections"][number]) => (
+                  <li key={s.number} className="grid grid-cols-[3rem_1fr] gap-4">
+                    <span className="font-display text-sm text-muted-foreground">
+                      § {s.number}
+                    </span>
+                    <div>
+                      <p className="font-display text-base text-foreground md:text-lg">
+                        {s.heading}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                        {s.summary}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Positioning
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-foreground/85">
+                {paper.positioning}
+              </p>
+            </div>
+            </>
+          ) : (
+            <div className="border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Contributions
+              </h2>
+              <ul className="mt-6 space-y-6">
+                {paper.results.slice(0, 3).map((r: Paper["results"][number]) => (
+                  <li key={r.label}>
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                      {r.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                      {r.statement}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+                The full argument is withheld while the manuscript is under
+                review. Available on request.
+              </p>
+            </div>
+          )}
 
           <div className="border-t border-border pt-8">
             <h2 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
