@@ -179,8 +179,75 @@ function AcademicProfilePage() {
         </div>
       </section>
 
-      {/* Indicators */}
+      {/* Signature corpus */}
       <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Signature corpus
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            Five works that define the programme
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            A ranked selection of the publications that most clearly establish the
+            philosophical identity of the research programme — not by citation,
+            but by conceptual centrality.
+          </p>
+          <ol className="mt-10 space-y-10">
+            {SIGNATURE_CORPUS.map((item) => (
+              <li
+                key={item.title}
+                className="relative border-t border-border pt-6"
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-3 left-0 inline-flex h-6 w-6 items-center justify-center rounded-full bg-foreground text-xs font-medium text-background"
+                >
+                  {item.rank}
+                </span>
+                <p className="pl-9 font-display text-lg leading-snug text-foreground">
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-dotted underline-offset-4 hover:text-muted-foreground"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    item.title
+                  )}
+                </p>
+                <p className="mt-1 pl-9 text-sm text-muted-foreground">
+                  {item.venue}
+                  {item.level && (
+                    <span className="ml-2 inline-flex items-center rounded-sm border border-border px-1.5 py-0.5 text-xs">
+                      Level {item.level}
+                    </span>
+                  )}
+                </p>
+                <p className="mt-4 pl-9 text-sm leading-relaxed text-foreground/85">
+                  {item.rationale}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-10 text-sm text-muted-foreground">
+            The full peer-reviewed record is on the{" "}
+            <Link
+              to="/publications"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              publications
+            </Link>{" "}
+            page.
+          </p>
+        </div>
+      </section>
+
+      {/* Indicators */}
+      <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Selected indicators
