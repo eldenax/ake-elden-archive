@@ -179,6 +179,94 @@ function AcademicProfilePage() {
         </div>
       </section>
 
+      {/* Role, discipline, fields */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Position and discipline
+          </p>
+          <dl className="mt-8 space-y-6 text-base leading-relaxed">
+            <div>
+              <dt className="text-sm font-medium text-foreground">
+                Current role
+              </dt>
+              <dd className="mt-1 text-foreground/85">
+                Research Advisor, NLA University College, Oslo, Norway.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-foreground">Doctorate</dt>
+              <dd className="mt-1 text-foreground/85">
+                PhD in psychology (psychophysiology), with subsequent research
+                concentrated in philosophy of technology and theology.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-foreground">
+                Principal research fields
+              </dt>
+              <dd className="mt-3 space-y-3">
+                {FIELDS.map((f) => (
+                  <p key={f.name} className="text-foreground/85">
+                    <span className="font-medium text-foreground">
+                      {f.name}.
+                    </span>{" "}
+                    {f.note}
+                  </p>
+                ))}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      {/* Intellectual biography */}
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Intellectual biography
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            From measurement to the conditions of judgment
+          </h2>
+          <div className="mt-6 space-y-5 text-base leading-relaxed text-foreground/85">
+            <p>
+              My early work was empirical: measuring how bodies and minds
+              respond under controlled conditions. What stayed with me from
+              that period was not the data but the problem behind it — what an
+              instrument must presuppose before its readings mean anything at
+              all.
+            </p>
+            <p>
+              That question migrated. In institutional and technological
+              settings, the same structure recurs: procedures produce outputs
+              that look like judgments, while the conditions that would make
+              them answerable judgments are quietly removed. The present
+              programme formalises this as a set of philosophical problems —
+              inferential license, the judgment gap, second-order provenance,
+              epistemic infrastructure — rather than as a critique of any
+              particular technology.
+            </p>
+            <p>
+              Theology enters not as commentary but as a source of
+              anthropological precision: doctrines of creaturehood, formation,
+              and answerability describe what a human agent is supposed to be
+              before any system attempts to substitute for one.
+            </p>
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">
+            The full programme is set out on the{" "}
+            <Link
+              to="/inquiry"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              research programme
+            </Link>{" "}
+            page.
+          </p>
+        </div>
+      </section>
+
       {/* Signature corpus */}
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
@@ -278,94 +366,6 @@ function AcademicProfilePage() {
           <p className="mt-4 text-xs text-muted-foreground">
             Source: NVA (Nasjonalt vitenarkiv), verified August 2026. Channel
             levels follow the Norwegian register (HK-dir).
-          </p>
-        </div>
-      </section>
-
-      {/* Role, discipline, fields */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Position and discipline
-          </p>
-          <dl className="mt-8 space-y-6 text-base leading-relaxed">
-            <div>
-              <dt className="text-sm font-medium text-foreground">
-                Current role
-              </dt>
-              <dd className="mt-1 text-foreground/85">
-                Research Advisor, NLA University College, Oslo, Norway.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium text-foreground">Doctorate</dt>
-              <dd className="mt-1 text-foreground/85">
-                PhD in psychology (psychophysiology), with subsequent research
-                concentrated in philosophy of technology and theology.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium text-foreground">
-                Principal research fields
-              </dt>
-              <dd className="mt-3 space-y-3">
-                {FIELDS.map((f) => (
-                  <p key={f.name} className="text-foreground/85">
-                    <span className="font-medium text-foreground">
-                      {f.name}.
-                    </span>{" "}
-                    {f.note}
-                  </p>
-                ))}
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      {/* Intellectual biography */}
-      <section className="border-b border-border bg-muted/30">
-        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Intellectual biography
-          </p>
-          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-            From measurement to the conditions of judgment
-          </h2>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-foreground/85">
-            <p>
-              My early work was empirical: measuring how bodies and minds
-              respond under controlled conditions. What stayed with me from
-              that period was not the data but the problem behind it — what an
-              instrument must presuppose before its readings mean anything at
-              all.
-            </p>
-            <p>
-              That question migrated. In institutional and technological
-              settings, the same structure recurs: procedures produce outputs
-              that look like judgments, while the conditions that would make
-              them answerable judgments are quietly removed. The present
-              programme formalises this as a set of philosophical problems —
-              inferential license, the judgment gap, second-order provenance,
-              epistemic infrastructure — rather than as a critique of any
-              particular technology.
-            </p>
-            <p>
-              Theology enters not as commentary but as a source of
-              anthropological precision: doctrines of creaturehood, formation,
-              and answerability describe what a human agent is supposed to be
-              before any system attempts to substitute for one.
-            </p>
-          </div>
-          <p className="mt-6 text-sm text-muted-foreground">
-            The full programme is set out on the{" "}
-            <Link
-              to="/inquiry"
-              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
-            >
-              research programme
-            </Link>{" "}
-            page.
           </p>
         </div>
       </section>
