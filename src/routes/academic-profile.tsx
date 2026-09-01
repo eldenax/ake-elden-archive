@@ -247,7 +247,7 @@ function AcademicProfilePage() {
       </section>
 
       {/* Indicators */}
-      <section className="border-b border-border">
+      <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Selected indicators
