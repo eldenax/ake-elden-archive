@@ -15,6 +15,11 @@ const PROFILES: { name: string; href: string; note?: string }[] = [
     href: "https://nva.sikt.no/research-profile/57416",
     note: "Authoritative Norwegian record used to verify all metadata on this site",
   },
+  {
+    name: "Wikidata",
+    href: "https://www.wikidata.org/wiki/Q101208302",
+    note: "Q101208302 — includes the NVA person identifier",
+  },
 ];
 
 const FIELDS = [
@@ -32,6 +37,24 @@ const FIELDS = [
   },
 ];
 
+const EARLIER_WORK = [
+  {
+    period: "Clinical research",
+    role: "Rheumatology and diagnostic imaging",
+    note: "Work in the PREMIER programme on imaging evidence in rheumatoid arthritis: what a diagnostic signal can be taken to establish, and where reading it outruns what it supports.",
+  },
+  {
+    period: "Experimental psychology",
+    role: "Behavioural science · UiT The Arctic University of Norway",
+    note: "Prepulse inhibition, dissociative conditions, and behavioural measurement — paradigms built entirely around whether a measured response licenses the inference drawn from it.",
+  },
+  {
+    period: "Technology leadership",
+    role: "Applied and industry settings",
+    note: "Building and running systems whose outputs were treated as grounds for institutional decisions.",
+  },
+];
+
 const EXPERIENCE = [
   {
     period: "Present",
@@ -40,12 +63,19 @@ const EXPERIENCE = [
     note: "Research development and advisory work alongside an independent research programme in philosophy of technology and theological anthropology.",
   },
   {
+    period: "Present",
+    role: "Managing Director and Chair",
+    org: "Eccelude AS, Stabekk",
+    note: "Registered research and development company; the vehicle for applied and commissioned work.",
+  },
+  {
     period: "Applied research",
     role: "Research contexts",
     org: "TrialTact · ClaimBuilder.ai",
     note: "Applied settings in which the programme's philosophical problems — institutional judgment, provenance, and answerability — become observable under load.",
   },
 ];
+
 
 export const Route = createFileRoute("/academic-profile")({
   head: () => ({
@@ -369,6 +399,48 @@ function AcademicProfilePage() {
           </p>
         </div>
       </section>
+
+      {/* Earlier research and continuity */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Earlier research
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            One question, several disciplines
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-foreground/85">
+            Before the present programme, my work ran through clinical
+            rheumatology, experimental psychology, and technology leadership.
+            The continuity is a single question: under what conditions can a
+            signal carry the inference someone draws from it? That is the same
+            problem in a prepulse-inhibition paradigm, in a diagnostic image,
+            and in what I now call inferential license.
+          </p>
+          <ul className="mt-10 space-y-8">
+            {EARLIER_WORK.map((e) => (
+              <li key={e.role} className="border-t border-border pt-6">
+                <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                  {e.period}
+                </p>
+                <p className="mt-2 font-display text-lg text-foreground">
+                  {e.role}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {e.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            Public writing from this transition includes an opinion essay on
+            synthetic authority in university governance, published in Inside
+            Higher Ed on 10 February 2026, where the byline still describes the
+            behavioural-science background above.
+          </p>
+        </div>
+      </section>
+
 
       {/* Experience */}
       <section className="border-b border-border">
