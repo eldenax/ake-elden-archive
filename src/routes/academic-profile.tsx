@@ -15,6 +15,11 @@ const PROFILES: { name: string; href: string; note?: string }[] = [
     href: "https://nva.sikt.no/research-profile/57416",
     note: "Authoritative Norwegian record used to verify all metadata on this site",
   },
+  {
+    name: "Wikidata",
+    href: "https://www.wikidata.org/wiki/Q101208302",
+    note: "Q101208302 — includes the NVA person identifier",
+  },
 ];
 
 const FIELDS = [
@@ -32,6 +37,24 @@ const FIELDS = [
   },
 ];
 
+const EARLIER_WORK = [
+  {
+    period: "Clinical research",
+    role: "Rheumatology and diagnostic imaging",
+    note: "Work in the PREMIER programme on imaging evidence in rheumatoid arthritis: what a diagnostic signal can be taken to establish, and where reading it outruns what it supports.",
+  },
+  {
+    period: "Experimental psychology",
+    role: "Behavioural science · UiT The Arctic University of Norway",
+    note: "Prepulse inhibition, dissociative conditions, and behavioural measurement — paradigms built entirely around whether a measured response licenses the inference drawn from it.",
+  },
+  {
+    period: "Technology leadership",
+    role: "Applied and industry settings",
+    note: "Building and running systems whose outputs were treated as grounds for institutional decisions.",
+  },
+];
+
 const EXPERIENCE = [
   {
     period: "Present",
@@ -40,12 +63,19 @@ const EXPERIENCE = [
     note: "Research development and advisory work alongside an independent research programme in philosophy of technology and theological anthropology.",
   },
   {
+    period: "Present",
+    role: "Managing Director and Chair",
+    org: "Eccelude AS, Stabekk",
+    note: "Registered research and development company; the vehicle for applied and commissioned work.",
+  },
+  {
     period: "Applied research",
     role: "Research contexts",
     org: "TrialTact · ClaimBuilder.ai",
     note: "Applied settings in which the programme's philosophical problems — institutional judgment, provenance, and answerability — become observable under load.",
   },
 ];
+
 
 export const Route = createFileRoute("/academic-profile")({
   head: () => ({
