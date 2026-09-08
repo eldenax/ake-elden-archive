@@ -109,6 +109,23 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     title:
+      "When Responsibility Cannot Arise: Algorithmic Mediation and the Preconditions of Moral Imputability",
+    venue: "AI and Ethics",
+    status: "Published online",
+    year: "2026",
+    level: "1",
+    doi: "10.1007/s43681-026-01359-x",
+    href: "https://doi.org/10.1007/s43681-026-01359-x",
+    themeSlug: "normativity-moral-standing-ethical-disclosure",
+    conceptSlug: "judgment-gap",
+    contribution:
+      "Argues that responsibility can fail in two structurally connected ways — motivational states formed opaquely (the Conditional Reflexive Requirement) and institutions assigning responsibility where the conditions of genuine authorship are absent (misfired imputation) — and shows that one architectural property produces both failures at once, so neither can be remedied without the other.",
+    caseNote:
+      "A worked case of proprietary sepsis-prediction alerting in hospital care carries the unity claim, with the result brought to bear on Article 14 of the EU AI Act.",
+    capacities: ["presupposed", "concealed"],
+  },
+  {
+    title:
       "The Diffuse Void: Algorithmic Safety and the Disappearance of Judgment",
     venue: "AI and Ethics",
     status: "Published online",
