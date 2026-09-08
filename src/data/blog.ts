@@ -17,6 +17,53 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "when-responsibility-cannot-arise",
+    title: "When Responsibility Cannot Arise",
+    date: "2026-09-07",
+    readingTime: "5 min read",
+    description:
+      "A new article in AI and Ethics argues that algorithmic mediation can erode the preconditions of moral imputability itself — so that responsibility does not merely go unassigned but cannot arise at all.",
+    lede: "Responsibility gaps are usually described as failures of attribution: something went wrong, and no one can be made to answer for it. A new article in AI and Ethics argues that algorithmic mediation produces something more fundamental — situations in which responsibility cannot arise in the first place, because the conditions that make an act imputable to an agent have been eroded before the outcome occurs.",
+    sections: [
+      {
+        heading: "Beyond the responsibility gap",
+        paragraphs: [
+          "The standard worry about automated decision-making is the responsibility gap: outcomes produced jointly by humans and systems that no single party can be held to. The article argues this framing is too optimistic. It assumes there is still a responsible party to be found — the difficulty is merely locating them.",
+          "Algorithmic mediation can instead operate upstream, on the preconditions of imputability itself. When the informational basis, the range of perceived options, and the moment of judgment are all formatted by a system before a person acts, the resulting act may not be attributable to anyone in the way responsibility requires.",
+        ],
+        concepts: ["inferential-license", "judgment-gap"],
+      },
+      {
+        heading: "Conditional responsibility requirements",
+        paragraphs: [
+          "The analysis builds on conditional responsibility requirements: the conditions that must hold for an outcome to count as something an agent did, rather than something that happened through them. Control, awareness, and the capacity to have done otherwise are not optional extras; they are what make imputation possible.",
+          "When a system's outputs arrive pre-ordered, pre-weighted, and pre-interpreted, these conditions can fail quietly. The human in the loop still clicks, approves, or signs — but the act no longer bears the structure that would make it theirs.",
+        ],
+        concepts: ["exercisable-answerability", "second-order-provenance"],
+      },
+      {
+        heading: "Misfired imputation",
+        paragraphs: [
+          "The article names the resulting failure misfired imputation: responsibility is assigned after the fact to parties who could not have been responsible, because the conditions for imputation were already absent. Institutions then answer a structural problem with an individual verdict.",
+          "The sepsis-alerting case developed in the article shows the pattern. A clinician follows a system's recommendation; the patient is harmed; the clinician is held responsible. Yet the salience, timing, and framing that shaped the judgment were produced upstream, by infrastructure no one at the bedside controlled or could reconstruct.",
+        ],
+        concepts: ["epistemic-infrastructure", "systemic-friction"],
+      },
+      {
+        heading: "What this changes",
+        paragraphs: [
+          "If responsibility can fail to arise, then assigning it more carefully is not a remedy. The practical question shifts from liability after the fact to design before it: how to preserve the conditions under which the acts of persons remain imputable to them when decisions are algorithmically mediated.",
+          "This connects the article to the wider programme. Inferential license concerns who may conclude; the judgment gap concerns what separates output from judgment; this article concerns what happens to responsibility itself when mediation reaches deep enough into the formation of the act.",
+        ],
+        concepts: ["inferential-license", "exercisable-answerability"],
+      },
+    ],
+    closing: [
+      "When Responsibility Cannot Arise: Algorithmic Mediation and the Preconditions of Moral Imputability is published in AI and Ethics (2026). It extends the programme's account of judgment and answerability to the conditions that must hold before responsibility can be attributed at all.",
+      "The full article is available via DOI: 10.1007/s43681-026-01359-x.",
+    ],
+  },
+  {
     slug: "comparative-desire-and-social-violence",
     title: "Comparative Desire and Social Violence",
     date: "2026-08-29",
