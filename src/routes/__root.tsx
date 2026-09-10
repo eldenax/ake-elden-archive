@@ -210,6 +210,7 @@ function RootShell({ children }: { children: ReactNode }) {
 const RESEARCH_MENU = [
   { to: "/inquiry", label: "Research Programme" },
   { to: "/research-premises", label: "Research Premises" },
+  { to: "/method", label: "Method" },
   { to: "/current-research", label: "Current Research" },
   { to: "/concepts", label: "Concepts" },
   { to: "/concept-graph", label: "Research Map" },
