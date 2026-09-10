@@ -15,6 +15,7 @@ import { Route as ResearchNotesRouteImport } from './routes/research-notes'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as MethodRouteImport } from './routes/method'
 import { Route as InquiryRouteImport } from './routes/inquiry'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as CurrentResearchRouteImport } from './routes/current-research'
@@ -57,6 +58,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InquiryRoute = InquiryRouteImport.update({
@@ -133,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/method'
     | '/news'
     | '/projects'
     | '/publications'
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/method'
     | '/news'
     | '/projects'
     | '/publications'
@@ -241,6 +252,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/method'
     | '/news'
     | '/projects'
     | '/publications'
@@ -263,6 +275,7 @@ export interface RootRouteChildren {
   CurrentResearchRoute: typeof CurrentResearchRoute
   CvRoute: typeof CvRoute
   InquiryRoute: typeof InquiryRouteWithChildren
+  MethodRoute: typeof MethodRoute
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inquiry': {
@@ -433,6 +453,7 @@ const rootRouteChildren: RootRouteChildren = {
   CurrentResearchRoute: CurrentResearchRoute,
   CvRoute: CvRoute,
   InquiryRoute: InquiryRouteWithChildren,
+  MethodRoute: MethodRoute,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
