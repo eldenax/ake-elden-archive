@@ -74,13 +74,22 @@ export const THEMES: Theme[] = [
     ],
     works: [
       { title: "Creaturehood Under Conditions of Optimization", status: "In preparation" },
+      {
+        title:
+          "The Other Who Resists: AI, Relational Friction, and the Conditions of Moral Formation",
+        status: "Working paper",
+      },
       { title: "From Phronesis to Pronoia", status: "Working paper" },
       { title: "The Gifted Subject", status: "Working paper" },
       { title: "Action Without Acts", status: "Working paper" },
       { title: "Algorithmic Habitus and the Invisible Mission", status: "Working paper" },
       { title: "Algorithmic Formation and the Mimetic Self", status: "Working paper" },
       { title: "Epistemic Automation and the Deformation of the Human", status: "Working paper" },
-      { title: "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration", status: "Published" },
+      {
+        title:
+          "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration",
+        status: "Published",
+      },
     ],
     conceptSlugs: [],
     conceptNotes: [

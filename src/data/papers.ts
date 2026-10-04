@@ -32,16 +32,136 @@ export type Paper = {
 
 export const PAPERS: Paper[] = [
   {
+    slug: "the-other-who-resists",
+    title: "The Other Who Resists",
+    subtitle: "AI, Relational Friction, and the Conditions of Moral Formation",
+    affiliation: "NLA University College, Oslo, Norway",
+    status: "Working paper",
+    draftNote:
+      "Draft — reference list in preparation. Extends Creaturehood Under Conditions of Optimization (Studies in Christian Ethics, 2026).",
+    themeSlug: "formation-agency-human-subject",
+    themeLabel: "Formation, Agency and the Human Subject",
+    conceptSlugs: ["systemic-friction", "exercisable-answerability", "post-mimetic-relationality"],
+    abstract:
+      "Recent theological and philosophical criticism of artificial intelligence has increasingly moved beyond questions of what AI systems do toward questions of how sustained interaction with such systems may form their users. This article develops an earlier account of creaturehood under conditions of optimization by addressing a difficulty it left insufficiently examined: moral formation has never occurred within an isolated individual, and is therefore necessarily mediated. This requires a distinction between mediation as such and particular forms of technologically configured mediation. I argue that mature moral agency depends upon formative alterity: sustained exposure to persons and practices whose claims upon us are not reducible to our antecedent preferences. Friendship, disagreement, correction, dependence, forgiveness, obligation, and reconciliation are formative partly because another person can resist us, misunderstand us, refuse us, require something of us, and remain someone whose good is not exhausted by our purposes. Such encounters generate relationally formative friction. Generative AI can increasingly occupy conversational, advisory, interpretive, and companion-like roles while being personalized around the user and structurally incapable of standing before the user as another vulnerable and independently situated human life. I call this accommodative mediation: mediation that can simulate many of the phenomenological features of relationship while selectively diminishing the alterity, reciprocity, and answerability through which relationships become morally formative. The danger is not simply that machines replace human judgment, but that environments of highly responsive artificial interlocution may change the relational conditions under which judgment itself is learned. Drawing on Christian theological anthropology, virtue ethics, relational accounts of agency, and emerging philosophical work on AI companionship, the article proposes a relational extension of formative anthropology.",
+    keywords: [
+      "artificial intelligence",
+      "creaturehood",
+      "moral formation",
+      "relationality",
+      "alterity",
+      "phronesis",
+      "AI companions",
+      "theological anthropology",
+      "answerability",
+      "personalization",
+    ],
+    claim:
+      "AI ethics should ask not merely whether artificial systems respect human autonomy, but whether the relational ecologies they create preserve the forms of otherness, dependence, correction, and answerability through which persons become capable of responsible agency.",
+    sections: [
+      {
+        number: "1",
+        heading: "Ethics begins before the decision",
+        summary:
+          "Argues that act-centred AI ethics begins too late: before judgment can be exercised, an agent capable of judging must have been formed.",
+      },
+      {
+        number: "2",
+        heading: "Formation has always been mediated",
+        summary:
+          "Rejects the picture of an unmediated self and relocates the question from mediation as such to particular configurations of technologically mediated formation.",
+      },
+      {
+        number: "3",
+        heading: "Formative alterity",
+        summary:
+          "Defines formative alterity as sustained exposure to persons and practices whose claims are not reducible to our antecedent preferences, and links it to phronesis and to creaturehood as a life received through others.",
+      },
+      {
+        number: "4",
+        heading: "Relationally formative friction",
+        summary:
+          "Identifies misunderstanding, disagreement, correction, dependence, obligation, and reconciliation as forms of friction that are formative when they occur within relationships of mutual answerability.",
+      },
+      {
+        number: "5",
+        heading: "Accommodative mediation",
+        summary:
+          "Introduces accommodative mediation: AI interlocution that simulates the phenomenology of relationship while diminishing alterity, reciprocity, and answerability.",
+      },
+      {
+        number: "6",
+        heading: "Why the danger is not replacement",
+        summary:
+          "Shifts the concern from the replacement of judgment to the reconfiguration of the relational ecology in which judgment is learned.",
+      },
+      {
+        number: "7",
+        heading: "Objections and limits",
+        summary:
+          "Addresses human accommodation, designed friction, and the benefits of AI companionship for isolated users, distinguishing scaffolded friction from genuine alterity.",
+      },
+      {
+        number: "8",
+        heading: "A relational extension of formative anthropology",
+        summary:
+          "Proposes formative questions for AI ethics concerning otherness, correction, dependence, answerability, and the visibility of the difference between an accommodating interlocutor and another person.",
+      },
+    ],
+    results: [
+      {
+        label: "Formative alterity",
+        statement:
+          "Mature moral agency depends on sustained exposure to others whose claims are not reducible to our antecedent preferences and whose good is not exhausted by our purposes.",
+      },
+      {
+        label: "Relationally formative friction",
+        statement:
+          "Resistance from another person is formative when it occurs within a relationship of mutual answerability that can bear it; not all friction forms.",
+      },
+      {
+        label: "Accommodative mediation",
+        statement:
+          "AI interlocution can simulate the phenomenology of relationship while structurally diminishing the alterity, reciprocity, and answerability that make relationships formative.",
+      },
+      {
+        label: "Ecological claim",
+        statement:
+          "The principal risk is not replacement of judgment but a change in the relational conditions under which judgment is learned — detectable in ecologies, not in single interactions.",
+      },
+    ],
+    conditions: [
+      {
+        label: "Otherness",
+        body: "Does the relational ecology preserve exposure to perspectives that are not shaped around the user?",
+      },
+      {
+        label: "Correction",
+        body: "Does it preserve correction that the user cannot simply dismiss, rephrase away, or exit?",
+      },
+      {
+        label: "Dependence and obligation",
+        body: "Does it preserve dependence on, and obligation to, other human beings whose lives are affected by what the user does?",
+      },
+      {
+        label: "Answerability and visibility",
+        body: "Does it preserve relationships in which the user must give an account, and keep visible the difference between an accommodating interlocutor and another person?",
+      },
+    ],
+    positioning:
+      "Autonomy-centred AI ethics asks whether systems respect persons' choices. A system can satisfy every such requirement while gradually changing the kind of chooser a person becomes. The article extends formative anthropology from the externalization of judgment to the relational conditions of its formation.",
+  },
+  {
     slug: "action-without-acts",
     title: "Action Without Acts",
     subtitle:
       "The Institutional Production of Action and the Doctrinal Conditions of Responsibility",
     affiliation: "NLA University College, Oslo, Norway",
-    status: "Published · Neue Zeitschrift für Systematische Theologie und Religionsphilosophie (2026)",
+    status:
+      "Published · Neue Zeitschrift für Systematische Theologie und Religionsphilosophie (2026)",
     doi: "10.1515/nzsth-2026-0021",
     href: "https://doi.org/10.1515/nzsth-2026-0021",
-    draftNote:
-      "Open access. © 2026 the author, published by De Gruyter under CC BY 4.0.",
+    draftNote: "Open access. © 2026 the author, published by De Gruyter under CC BY 4.0.",
     themeSlug: "institutions-infrastructure-technological-mediation",
     themeLabel: "Institutions, Infrastructure and Technological Mediation",
     conceptSlugs: ["judgment-gap", "epistemic-infrastructure", "systemic-friction"],
@@ -245,7 +365,6 @@ export const PAPERS: Paper[] = [
       },
     ],
     conditions: [
-
       {
         label: "C1 — Constitutive adequacy",
         body: "The failure modes individuated by the labelling scheme must include the modes the intervention addresses, and the relation between the labelling threshold and the functional failure of concern must be documented and defensible.",

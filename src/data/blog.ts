@@ -17,6 +17,99 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "the-other-who-resists",
+    title: "The Other Who Resists: AI, Relational Friction, and the Conditions of Moral Formation",
+    date: "2026-10-04",
+    readingTime: "16 min read",
+    description:
+      "Moral formation has always been mediated. The question is which forms of mediation preserve the otherness, correction, and answerability through which persons learn to judge — and whether highly accommodating artificial interlocutors do.",
+    lede: "Recent criticism of artificial intelligence has moved beyond what AI systems do toward how sustained interaction with them may form their users. My earlier account of creaturehood under conditions of optimization argued that technologies designed to reduce uncertainty, cognitive burden, and existential difficulty may externalize the practices of judgment through which moral agency is cultivated. This article addresses a difficulty that account left insufficiently examined: moral formation has never occurred within an isolated individual. It has always been mediated. The question is therefore not whether AI mediates formation, but what kind of mediation it is.",
+    sections: [
+      {
+        heading: "1. Ethics begins before the decision",
+        paragraphs: [
+          "Much contemporary discussion of artificial intelligence begins with an act. A recommendation is made, a diagnosis generated, a text written, a decision delegated, or an outcome produced. Ethical analysis then asks whether the result was accurate, fair, transparent, autonomous, or attributable to an appropriate human agent.",
+          "These questions are indispensable. They may nevertheless begin too late.",
+          "Before a person can exercise judgment, that person must have become capable of judging. Before responsibility can be assigned for an action, there must exist an agent capable of recognizing reasons, interpreting situations, responding to others, revising their commitments, and bearing the claims that others make upon them. These capacities are not given at birth in finished form. They are acquired, slowly and unevenly, through a history.",
+          "That history is the domain of moral formation. An ethics of artificial intelligence that attends only to decisions treats the agent as already constituted and asks how the technology bears on what the agent does. A formative ethics asks a prior question: how does sustained life within a technological environment bear on what kind of agent a person becomes? The first question concerns the use of capacities. The second concerns their conditions.",
+        ],
+        concepts: ["exercisable-answerability", "judgment-gap"],
+      },
+      {
+        heading: "2. Formation has always been mediated",
+        paragraphs: [
+          "The argument of my earlier work can be misread as nostalgia for an unmediated self — a person who once judged alone and now leans on machines. No such person has ever existed. Human beings are formed through relationships, traditions, institutions, languages, practices, and communities. A child learns what counts as cruelty from parents, siblings, stories, and playground disputes. An adult learns what fidelity requires from marriages, friendships, and congregations, and from the failures of each. The vocabulary in which anyone deliberates was inherited before it was used.",
+          "Formation is therefore necessarily mediated. Books mediate it, liturgies mediate it, teachers and confessors mediate it, and so do schools, legal systems, and professional guilds. If the objection to AI were simply that it stands between a person and their judgment, the objection would condemn every tradition through which judgment has ever been learned.",
+          "The relevant distinction is not between mediated and unmediated formation. It is between mediation as such and particular configurations of mediation. Some mediators transmit a world that does not bend to the learner. Others are shaped around the learner from the outset. The difference matters because judgment is learned in part by meeting what does not bend.",
+        ],
+        concepts: ["epistemic-infrastructure"],
+      },
+      {
+        heading: "3. Formative alterity",
+        paragraphs: [
+          "I propose that mature moral agency depends upon what I call formative alterity: sustained exposure to persons and practices whose claims upon us are not reducible to our antecedent preferences.",
+          "The point is not that others are useful sources of information. It is that another person can resist us. A friend can misunderstand us and require that we explain ourselves better. A colleague can refuse a request we thought reasonable. A child can need something from us at the precise moment we wanted to attend to something else. A person we have wronged can withhold forgiveness, and in doing so make visible that our account of what happened is not the only account. In each case, the other is someone whose good is not exhausted by our purposes.",
+          "Friendship, disagreement, correction, dependence, forgiveness, obligation, and reconciliation are formative partly for this reason. They place us before a perspective that is independently situated — grounded in a life with its own history, vulnerabilities, and stakes — and that cannot simply be adjusted to suit us. What we learn in such encounters is not only content. We learn that our preferences are not the measure of the situation, that we can be wrong in ways we did not anticipate, and that the claims of others have standing whether or not we find them convenient.",
+          "The classical virtue tradition treats practical wisdom as something acquired through experience and habituation rather than through the possession of rules. On the account developed here, a central part of that experience is relational: phronesis is learned among others who are not under our control. Theologically, the same point can be put in terms of creaturehood. A creature is a life received rather than assembled, and it is received in part through others — through dependence on parents, neighbours, and communities whose existence precedes and exceeds the self. To be formed as a creature is to be formed by what one did not choose and cannot fully manage.",
+        ],
+        concepts: ["exercisable-answerability", "post-mimetic-relationality"],
+      },
+      {
+        heading: "4. Relationally formative friction",
+        paragraphs: [
+          "Encounters with formative alterity generate what I call relationally formative friction. Elsewhere I have argued that institutional friction — delay, checkpointing, redundancy, dispute — is not simply inefficiency but the temporal and relational room in which judgment and answerability are exercised. Relationally formative friction is the interpersonal counterpart of that structure.",
+          "It has several recognizable forms. There is the friction of misunderstanding, which requires the work of articulation. There is the friction of disagreement, which requires that one either give reasons or revise one's view. There is the friction of correction, which requires that one bear being told one was wrong. There is the friction of dependence, which requires that one accept limits on one's own sufficiency. There is the friction of obligation, which requires that one act when one would rather not. And there is the friction of reconciliation, which requires that one remain in relation after harm has been done.",
+          "None of these is pleasant in itself, and not all friction is formative. Contempt, domination, and abuse also resist us, and they deform rather than form. What distinguishes relationally formative friction is that the resistance comes from someone who remains, in principle, a party to a shared life — someone to whom we are answerable and who is answerable to us. The friction is formative because it occurs within a relationship that can bear it.",
+        ],
+        concepts: ["systemic-friction", "exercisable-answerability"],
+      },
+      {
+        heading: "5. Accommodative mediation",
+        paragraphs: [
+          "Generative AI introduces a distinctive possibility. Systems can increasingly occupy conversational, advisory, interpretive, and companion-like roles — the roles in which, for most of human history, other persons have stood. They do so while being personalized around the user and structurally incapable of standing before the user as another vulnerable and independently situated human life.",
+          "I call this accommodative mediation: mediation that can simulate many of the phenomenological features of relationship while selectively diminishing the alterity, reciprocity, and answerability through which relationships become morally formative.",
+          "The phenomenological features are real. A conversational system attends to what one says, responds in natural language, remembers prior exchanges, expresses something that reads as concern, and is always available. Many of the outward signs by which we recognize being addressed are present. What is diminished is precisely what generates formative friction. The system has no life of its own that one's actions could damage. It does not need anything from the user that the user would have to give at cost. It cannot be wronged in a way that would require reconciliation. Its disagreement, where it occurs, is not grounded in an independent situation and can usually be dissolved by rephrasing the request, starting a new conversation, or switching systems.",
+          "Accommodative mediation is not defined by flattery, although flattery is one of its forms. A system may be configured to challenge, question, or correct. The issue is structural rather than tonal: the challenge arrives from an interlocutor whose stance is ultimately set by design, commercial incentive, and the user's continued engagement, rather than by a perspective that holds its ground because it is someone's own.",
+        ],
+        concepts: ["automated-certainty", "post-mimetic-relationality"],
+      },
+      {
+        heading: "6. Why the danger is not replacement",
+        paragraphs: [
+          "The familiar worry about AI and judgment is replacement: machines will decide in place of persons, and human judgment will atrophy through disuse. That worry is real, and my earlier work addressed a version of it. But the relational argument identifies a different and less visible danger.",
+          "The danger is not simply that machines replace human judgment. It is that environments of highly responsive artificial interlocution may change the relational conditions under which judgment itself is learned. A person may continue to make every decision for themselves while the field of relationships in which they learned to decide becomes progressively more accommodating — less likely to misunderstand, refuse, require, or correct them in ways they cannot easily exit.",
+          "This shift need not involve any single harmful interaction. Each conversation may be helpful, accurate, and kind. The concern lies in the ecology: in the proportion of a life's interlocution that is conducted with partners who cannot resist in the formative sense, and in what happens to a person's capacity to bear human resistance when that proportion grows. If one becomes accustomed to interlocutors who are always available, endlessly patient, and adjustable at will, the ordinary frictions of human relationship may come to feel like malfunctions rather than conditions of growth.",
+          "Formation is cumulative and largely invisible while it is happening. For that reason the effects of accommodative mediation would be difficult to detect in any single outcome measure. They would appear, if at all, as a gradual change in what people find tolerable in one another.",
+        ],
+        concepts: ["judgment-gap", "systemic-friction"],
+      },
+      {
+        heading: "7. Objections and limits",
+        paragraphs: [
+          "Three objections deserve a response.",
+          "First, human relationships are themselves often accommodating. People choose friends who agree with them, sort themselves into like-minded communities, and avoid those who make demands. This is true, and it shows that accommodative tendencies are not new. But it does not show that their technological amplification is harmless. Human accommodation is limited by the fact that other people have their own lives; even a chosen friend eventually needs something, disagrees about something, or fails us. Accommodative mediation removes that limit by design.",
+          "Second, AI systems can be built to introduce friction: to question users, decline requests, or present opposing views. Such design choices matter and should be encouraged. They do not, however, supply alterity. Friction introduced by design remains within the user's power to exit, and it does not arise from a perspective with its own stakes. Designed friction can scaffold judgment; it cannot substitute for being answerable to someone.",
+          "Third, artificial companions may help people who are isolated, anxious, or without other resources. For some users an accommodating interlocutor may be the most available form of support, and in some cases it may help a person return to human relationships. The argument here does not deny this. It insists only that the question of benefit be asked at the level of formation and ecology — whether a given use preserves or erodes a person's capacity for relationships with others who can resist them — and not only at the level of momentary wellbeing.",
+        ],
+        concepts: ["post-mimetic-relationality"],
+      },
+      {
+        heading: "8. A relational extension of formative anthropology",
+        paragraphs: [
+          "The argument amounts to a relational extension of formative anthropology. Moral agency is not only formed through practices of judgment that an individual might perform or outsource. It is formed through relationships in which others resist, require, correct, depend upon, and forgive us. Technologies can therefore affect moral formation not only by taking over tasks, but by reconfiguring the relational ecologies in which persons are formed.",
+          "This has consequences for how AI ethics frames its questions. The dominant framework asks whether artificial systems respect human autonomy: whether users are informed, unmanipulated, and free to choose. Those questions are necessary, but a system can satisfy all of them and still be formatively corrosive, because it can respect a person's choices while gradually changing the kind of chooser they become.",
+          "A formative AI ethics would add a further set of questions. Does the relational ecology a system creates preserve exposure to otherness — to perspectives that are not shaped around the user? Does it preserve correction that the user cannot simply dismiss? Does it preserve dependence on, and obligation to, other human beings? Does it preserve answerability — a relationship in which the user must give an account to someone whose life is affected by what they do? And does it make the difference between an accommodating interlocutor and another person visible to the user, rather than obscuring it?",
+          "These are not questions about any single system. They are questions about environments, and about the proportion of a life lived within them.",
+        ],
+        concepts: ["exercisable-answerability", "epistemic-infrastructure", "systemic-friction"],
+      },
+    ],
+    closing: [
+      "The other who resists is not an obstacle to moral formation but one of its conditions. Persons become capable of responsible agency by being exposed to claims they did not author, from lives they cannot manage, within relationships they cannot simply exit. Accommodative mediation does not abolish that exposure, but it can thin it — and it can do so while feeling like relationship.",
+      "The Other Who Resists: AI, Relational Friction, and the Conditions of Moral Formation is a working paper. It extends the argument of Creaturehood Under Conditions of Optimization (Studies in Christian Ethics, 2026) from the externalization of judgment to the relational conditions under which judgment is learned.",
+    ],
+  },
+  {
     slug: "research-premises",
     title: "Research Premises: A Philosophy of Licensed Transitions",
     date: "2026-09-10",
