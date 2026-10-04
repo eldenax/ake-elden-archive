@@ -4,7 +4,7 @@ import { CORE_INSIGHT, INTRO, PATTERNS, SCENARIOS, type OptionKey } from "../dat
 
 const TITLE = "Tvilsterror — en test i reell dømmekraft | Dr. Åke Elden";
 const DESCRIPTION =
-  "Tvilsterror: ti scenarioer der svaralternativene selv er feller. En norskspråklig test i reell dømmekraft og kognitiv motstandskraft mot gassbelysning og realitetsmanipulasjon.";
+  "Tvilsterror: ti scenarioer der svaralternativene selv er feller. En norskspråklig test i reell dømmekraft og kognitiv motstandskraft mot tvilsterror og realitetsmanipulasjon.";
 const URL_SELF = "https://ake-elden-archive.lovable.app/tvilsterror";
 
 export const Route = createFileRoute("/tvilsterror")({
@@ -371,7 +371,7 @@ const PRIVACY: { label: string; text: string }[] = [
   },
   {
     label: "Formål",
-    text: "Testen er en refleksjonsøvelse og et formidlingstiltak knyttet til forskning på dømmekraft, teknologisk mediering og realitetsmanipulasjon. Den er ikke en datainnsamling, og svarene inngår ikke i noe forskningsprosjekt.",
+    text: "Testen inngår i forskningsprosjektet «Tvilsterror – dømmekraft under realitetsmanipulasjon» ved NLA Høgskolen. Denne nettversjonen er en refleksjons- og formidlingsversjon og lagrer ingen svar. Svar som brukes i forskningen, samles bare inn i en egen spørreundersøkelse i Nettskjema, med eget informasjonsskriv og samtykke.",
   },
   {
     label: "Hvilke opplysninger som behandles",

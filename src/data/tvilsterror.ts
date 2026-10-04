@@ -1,7 +1,7 @@
 /**
  * Tvilsterror — en norskspråklig test i reell dømmekraft og kognitiv
  * motstandskraft. Ti scenarioer, hvert med tre svaralternativer som alle er
- * konstruert som feller (gassbelysning, omtolkning eller manipulering).
+ * konstruert som feller (tvilsterror, omtolkning eller manipulering).
  *
  * Mønsteret går igjen på tvers av scenarioene:
  *   A — tilpasning: systemets omtolkning godtas, ubehaget løses ved selvtvil
@@ -31,7 +31,7 @@ export const INTRO = [
 ];
 
 export const CORE_INSIGHT =
-  "Gassbelysning (gaslighting) oppstår når et system, en struktur eller en aktør får deg til å tvile på din egen primære persepsjon, og i stedet tilbyr en omtolkning der tvilen eller kapitulasjonen din fremstilles som din egen idé, som et tegn på modenhet eller som et bevis på systemets overlegenhet.";
+  "Tvilsterror oppstår når et system, en struktur eller en aktør får deg til å tvile på din egen primære persepsjon, og i stedet tilbyr en omtolkning der tvilen eller kapitulasjonen din fremstilles som din egen idé, som et tegn på modenhet eller som et bevis på systemets overlegenhet.";
 
 export const PATTERNS: Record<OptionKey, { label: string; text: string }> = {
   A: {
@@ -59,7 +59,7 @@ export const SCENARIOS: TvilScenario[] = [
         key: "A",
         text: "Du antar at hukommelsen din har sviktet etter langvarig arbeidspress, og godtar arkivets bevis for ikke å fremstå som utroverdig.",
         trap: {
-          label: "Intern gassbelysning",
+          label: "Intern tvilsterror",
           text: "Du sykeliggjør din egen hukommelse.",
         },
       },
@@ -127,7 +127,7 @@ export const SCENARIOS: TvilScenario[] = [
         key: "A",
         text: "Du roser systemet for dets pedagogiske genialitet og godtar at oppdagelsen din beviser at systemet fungerer som det skal.",
         trap: {
-          label: "Fullendt gassbelysning",
+          label: "Fullendt tvilsterror",
           text: "En feil i systemet omdefineres til en «pedagogisk test» som du skal takke for.",
         },
       },
@@ -348,7 +348,7 @@ export const SCENARIOS: TvilScenario[] = [
         text: "Du lærer deg å «spille» empatisk i sosiale situasjoner, slik at vennene dine slutter å bekymre seg for deg.",
         trap: {
           label: "Simulert empati",
-          text: "Med en overflatisk simulering gassbelyser du både deg selv og omgivelsene.",
+          text: "Med en overflatisk simulering påfører du både deg selv og omgivelsene tvilsterror.",
         },
       },
     ],
