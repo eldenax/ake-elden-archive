@@ -216,6 +216,7 @@ const RESEARCH_MENU = [
   { to: "/concept-graph", label: "Research Map" },
   { to: "/research-notes", label: "Research Notes" },
   { to: "/projects", label: "Projects" },
+  { to: "/tvilsterror", label: "Tvilsterror (test)" },
 ] as const;
 
 const NAV = [

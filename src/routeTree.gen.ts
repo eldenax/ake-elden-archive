@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TvilsterrorRouteImport } from './routes/tvilsterror'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
 import { Route as ResearchNotesRouteImport } from './routes/research-notes'
@@ -30,6 +31,11 @@ import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const TvilsterrorRoute = TvilsterrorRouteImport.update({
+  id: '/tvilsterror',
+  path: '/tvilsterror',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tvilsterror': typeof TvilsterrorRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tvilsterror': typeof TvilsterrorRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tvilsterror': typeof TvilsterrorRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/tvilsterror'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/tvilsterror'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/tvilsterror'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   ResearchNotesRoute: typeof ResearchNotesRoute
   ResearchPremisesRoute: typeof ResearchPremisesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TvilsterrorRoute: typeof TvilsterrorRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   PapersSlugRoute: typeof PapersSlugRoute
@@ -291,6 +304,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tvilsterror': {
+      id: '/tvilsterror'
+      path: '/tvilsterror'
+      fullPath: '/tvilsterror'
+      preLoaderRoute: typeof TvilsterrorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -460,6 +480,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchNotesRoute: ResearchNotesRoute,
   ResearchPremisesRoute: ResearchPremisesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TvilsterrorRoute: TvilsterrorRoute,
   BlogSlugRoute: BlogSlugRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
   PapersSlugRoute: PapersSlugRoute,
