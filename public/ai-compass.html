@@ -224,18 +224,18 @@ var T = {
   mapTitle: "Compass",
   mapImgTitle: "Compass map of your AI use",
   mapDesc: "Horizontal axis: ownership of the thinking, from AI does the thinking for me to I do the thinking myself. Vertical axis: transparency, from hidden to fully disclosed.",
-  legend: "A dot with a red ring marks a use involving sensitive or personal data. The AI log below describes each use in text.",
+  legend: "A dot with a red ring marks a use involving special categories of personal data. The AI log below describes each use in text.",
   logTitle: "4 · Draft AI use log",
   logHelp: "The text updates as you go. Edit it before you use it in an article, thesis, project report or AI statement. Nothing is sent anywhere; your choices are saved only in this browser.",
   copy: "Copy AI log", reset: "Reset", copied: "Copied.", manualCopy: "Select the text and copy with Ctrl/Cmd + C.", resetDone: "Reset.",
   none: "No AI use has been registered.",
   noTools: "No AI tool has been selected yet.",
   logHeading: "AI USE LOG",
-  sensitiveWarning: "You have marked one or more uses as involving sensitive or personal data. Do not enter such data into an AI service before you have checked NLA's rules and the privacy requirements that apply to your work. This also applies to Sikt KI and Microsoft Copilot.",
+  sensitiveWarning: "You have marked one or more uses as involving special categories of personal data. Do not enter such data into an AI service before you have checked NLA's rules and the privacy requirements that apply to your work. This also applies to Sikt KI and Microsoft Copilot.",
   sensitiveCommercial: "Services such as ChatGPT, Claude or Gemini are not among NLA's preferred tools. Use Sikt KI or Microsoft Copilot with your NLA account instead, and still check the rules first.",
   emptyReflection: "Select at least one use to get reflection questions.",
   uses: {plan:"Planning, outlining and structuring", lit:"Searching for literature and sources", sum:"Summarising or explaining texts", idea:"Generating ideas or research questions", design:"Design, method and approach", code:"Data analysis or coding", draft:"Drafting text", lang:"Language editing or translation", ref:"References and citations", resp:"Feedback on my own draft"},
-  labels: {own:"Ownership: who is doing the thinking?", ownL:"AI does the thinking for me", ownR:"I think, judge and verify", trans:"Transparency: how visible is the use?", transL:"Hidden / undocumented", transR:"Fully disclosed", sens:"Involves sensitive or personal data"},
+  labels: {own:"Ownership: who is doing the thinking?", ownL:"AI does the thinking for me", ownR:"I think, judge and verify", trans:"Transparency: how visible is the use?", transL:"Hidden / undocumented", transR:"Fully disclosed", sens:"Involves special categories of personal data"},
   quad: {
    q1: ["Responsible tool use","You keep ownership of the thinking and you disclose the use. The main question is whether the practice holds up and can be defended over time."],
    q2: ["Invisible assistance","You do the thinking yourself, but the use is poorly documented. The main issue is transparency."],
@@ -263,7 +263,7 @@ var T = {
      : trans >= 50 ? "This use was mostly documented"
      : trans >= 25 ? "This use was only partly documented"
      : "This use was not systematically documented";
-   var c = sens ? " The activity involved sensitive or personal data and therefore needs a separate privacy and data-protection review." : "";
+   var c = sens ? " The activity involved special categories of personal data and therefore needs a separate privacy and data-protection review." : "";
    return "For " + name.toLowerCase() + ", " + a + ". " + b + "." + c;
   },
   closing: function(work){ return "I remain responsible for the accuracy, interpretation, source checking, argument and final wording of " + work + "."; },
@@ -325,18 +325,18 @@ var T = {
   mapTitle: "Kompasset",
   mapImgTitle: "Kompasskart over din KI-bruk",
   mapDesc: "Vannrett akse: eierskap til tenkningen, fra KI tenker for meg til jeg tenker selv. Loddrett akse: åpenhet, fra skjult til fullt oppgitt.",
-  legend: "Prikk med rød ring betyr at bruken involverer sensitive data eller personopplysninger. KI-loggen nedenfor beskriver hver bruk i tekst.",
+  legend: "Prikk med rød ring betyr at bruken involverer særlige kategorier av personopplysninger. KI-loggen nedenfor beskriver hver bruk i tekst.",
   logTitle: "4 · Utkast til KI-logg",
   logHelp: "Teksten oppdateres mens du fyller ut. Rediger den før du bruker den i en artikkel, oppgave, prosjektrapport eller KI-erklæring. Ingenting sendes noe sted; valgene lagres bare i denne nettleseren.",
   copy: "Kopier KI-loggen", reset: "Nullstill", copied: "Kopiert.", manualCopy: "Marker teksten og kopier med Ctrl/Cmd + C.", resetDone: "Nullstilt.",
   none: "Ingen KI-bruk er registrert.",
   noTools: "Ingen KI-verktøy er valgt ennå.",
   logHeading: "KI-LOGG",
-  sensitiveWarning: "Du har markert én eller flere bruksformer som involverer sensitive data eller personopplysninger. Ikke legg inn slike data i en KI-tjeneste før du har sjekket NLAs regler og personvernkravene som gjelder for arbeidet ditt. Dette gjelder også Sikt KI og Microsoft Copilot.",
+  sensitiveWarning: "Du har markert én eller flere bruksformer som involverer særlige kategorier av personopplysninger. Ikke legg inn slike opplysninger i en KI-tjeneste før du har sjekket NLAs regler og personvernkravene som gjelder for arbeidet ditt. Dette gjelder også Sikt KI og Microsoft Copilot.",
   sensitiveCommercial: "Tjenester som ChatGPT, Claude eller Gemini er ikke blant verktøyene NLA foretrekker. Bruk heller Sikt KI eller Microsoft Copilot med NLA-kontoen din, og sjekk likevel reglene først.",
   emptyReflection: "Kryss av minst én bruksmåte for å få refleksjonsspørsmål.",
   uses: {plan:"Planlegging, disposisjon og struktur", lit:"Søk etter litteratur og kilder", sum:"Oppsummering eller forklaring av tekster", idea:"Idéer og problemstillinger", design:"Design, metode og tilnærming", code:"Dataanalyse eller koding", draft:"Utkast til tekst", lang:"Språkvask eller oversettelse", ref:"Referanser og kildehenvisninger", resp:"Respons på eget utkast"},
-  labels: {own:"Eierskap: hvem gjør tenkningen?", ownL:"KI tenker for meg", ownR:"Jeg tenker, vurderer og kontrollerer", trans:"Åpenhet: hvor synlig er bruken?", transL:"Skjult / ikke dokumentert", transR:"Fullt oppgitt", sens:"Involverer sensitive data eller personopplysninger"},
+  labels: {own:"Eierskap: hvem gjør tenkningen?", ownL:"KI tenker for meg", ownR:"Jeg tenker, vurderer og kontrollerer", trans:"Åpenhet: hvor synlig er bruken?", transL:"Skjult / ikke dokumentert", transR:"Fullt oppgitt", sens:"Involverer særlige kategorier av personopplysninger"},
   quad: {
    q1: ["Ansvarlig verktøybruk","Du beholder eierskapet til tenkningen og oppgir bruken. Hovedspørsmålet er om praksisen holder og er faglig forsvarlig over tid."],
    q2: ["Usynlig hjelp","Du gjør tenkningen selv, men bruken er dårlig dokumentert. Hovedspørsmålet er åpenhet."],
@@ -364,7 +364,7 @@ var T = {
      : trans >= 50 ? "Denne bruken ble i hovedsak dokumentert"
      : trans >= 25 ? "Denne bruken ble bare delvis dokumentert"
      : "Denne bruken ble ikke systematisk dokumentert";
-   var c = sens ? " Aktiviteten involverte sensitive data eller personopplysninger og krever derfor en egen vurdering av personvern og databeskyttelse." : "";
+   var c = sens ? " Aktiviteten involverte særlige kategorier av personopplysninger og krever derfor en egen vurdering av personvern og databeskyttelse." : "";
    return "Når det gjelder " + name.toLowerCase() + ", " + a + ". " + b + "." + c;
   },
   closing: function(work){ return "Jeg er fortsatt ansvarlig for nøyaktighet, fortolkning, kildekontroll, argumentasjon og endelig ordlyd i " + work + "."; },
@@ -425,18 +425,18 @@ var T = {
   mapTitle: "Kompassen",
   mapImgTitle: "Kompasskarta över din AI-användning",
   mapDesc: "Horisontell axel: ägarskap över tänkandet, från AI tänker åt mig till jag tänker själv. Vertikal axel: transparens, från dold till fullt redovisad.",
-  legend: "En punkt med röd ring betyder att användningen omfattar känsliga uppgifter eller personuppgifter. AI-loggen nedan beskriver varje användning i text.",
+  legend: "En punkt med röd ring betyder att användningen omfattar särskilda kategorier av personuppgifter. AI-loggen nedan beskriver varje användning i text.",
   logTitle: "4 · Utkast till AI-logg",
   logHelp: "Texten uppdateras medan du fyller i. Redigera den innan du använder den i en artikel, uppsats, projektrapport eller AI-deklaration. Ingenting skickas någonstans; valen sparas endast i denna webbläsare.",
   copy: "Kopiera AI-loggen", reset: "Återställ", copied: "Kopierat.", manualCopy: "Markera texten och kopiera med Ctrl/Cmd + C.", resetDone: "Återställt.",
   none: "Ingen AI-användning har registrerats.",
   noTools: "Inget AI-verktyg har valts ännu.",
   logHeading: "AI-LOGG",
-  sensitiveWarning: "Du har markerat en eller flera användningar som omfattar känsliga uppgifter eller personuppgifter. Ange inte sådana uppgifter i en AI-tjänst innan du har kontrollerat NLA:s regler och de integritetskrav som gäller för ditt arbete. Detta gäller även Sikt KI och Microsoft Copilot.",
+  sensitiveWarning: "Du har markerat en eller flera användningar som omfattar särskilda kategorier av personuppgifter. Ange inte sådana uppgifter i en AI-tjänst innan du har kontrollerat NLA:s regler och de integritetskrav som gäller för ditt arbete. Detta gäller även Sikt KI och Microsoft Copilot.",
   sensitiveCommercial: "Tjänster som ChatGPT, Claude eller Gemini hör inte till de verktyg som NLA föredrar. Använd Sikt KI eller Microsoft Copilot med ditt NLA-konto i stället, och kontrollera ändå reglerna först.",
   emptyReflection: "Välj minst ett användningsområde för att få reflektionsfrågor.",
   uses: {plan:"Planering, disposition och struktur", lit:"Sökning efter litteratur och källor", sum:"Sammanfattning eller förklaring av texter", idea:"Idéer och frågeställningar", design:"Design, metod och tillvägagångssätt", code:"Dataanalys eller kodning", draft:"Textutkast", lang:"Språkgranskning eller översättning", ref:"Referenser och källhänvisningar", resp:"Respons på eget utkast"},
-  labels: {own:"Ägarskap: vem står för tänkandet?", ownL:"AI tänker åt mig", ownR:"Jag tänker, bedömer och kontrollerar", trans:"Transparens: hur synlig är användningen?", transL:"Dold / odokumenterad", transR:"Fullt redovisad", sens:"Omfattar känsliga uppgifter eller personuppgifter"},
+  labels: {own:"Ägarskap: vem står för tänkandet?", ownL:"AI tänker åt mig", ownR:"Jag tänker, bedömer och kontrollerar", trans:"Transparens: hur synlig är användningen?", transL:"Dold / odokumenterad", transR:"Fullt redovisad", sens:"Omfattar särskilda kategorier av personuppgifter"},
   quad: {
    q1: ["Ansvarsfull verktygsanvändning","Du behåller ägarskapet över tänkandet och redovisar användningen. Huvudfrågan är om praktiken håller och går att försvara över tid."],
    q2: ["Osynlig hjälp","Du står själv för tänkandet, men användningen är dåligt dokumenterad. Huvudfrågan är transparens."],
@@ -464,7 +464,7 @@ var T = {
      : trans >= 50 ? "Denna användning dokumenterades i huvudsak"
      : trans >= 25 ? "Denna användning dokumenterades endast delvis"
      : "Denna användning dokumenterades inte systematiskt";
-   var c = sens ? " Aktiviteten omfattade känsliga uppgifter eller personuppgifter och kräver därför en särskild granskning av integritet och dataskydd." : "";
+   var c = sens ? " Aktiviteten omfattade särskilda kategorier av personuppgifter och kräver därför en särskild granskning av integritet och dataskydd." : "";
    return "När det gäller " + name.toLowerCase() + " " + a + ". " + b + "." + c;
   },
   closing: function(work){ return "Jag är fortfarande ansvarig för korrekthet, tolkning, källkontroll, argumentation och slutlig formulering i " + work + "."; },
