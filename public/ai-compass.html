@@ -125,7 +125,6 @@ button.secondary{background:transparent;color:var(--accent)}
         <div class="rec-item">
           <label><input type="checkbox" id="tool-copilot"><span>Microsoft Copilot</span></label>
           <p id="rec-copilot"></p>
-          <p><a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener" id="rec-copilot-link"></a></p>
         </div>
       </div>
     </div>
@@ -218,7 +217,6 @@ var T = {
   recSikt: "Sikt KI (KI-chat) is provided by Sikt for the Norwegian education and research sector. You log in with Feide.",
   recSiktLink: "Open Sikt KI chat ↗",
   recCopilot: "Microsoft Copilot (Copilot Chat) is available through NLA's Microsoft 365. Sign in with your NLA account, not a private Microsoft account.",
-  recCopilotLink: "Open Copilot Chat ↗",
   nudge: "You selected other tools but none of NLA's preferred ones. NLA prefers Sikt KI and Microsoft Copilot, so consider using one of them for this work.",
   other: "Other tool",
   otherPlaceholder: "e.g. Elicit, Consensus, Scite Assistant",
@@ -320,7 +318,6 @@ var T = {
   recSikt: "Sikt KI (KI-chat) leveres av Sikt for norsk utdanning og forskning. Du logger inn med Feide.",
   recSiktLink: "Åpne Sikt KI-chat ↗",
   recCopilot: "Microsoft Copilot (Copilot Chat) er tilgjengelig gjennom NLAs Microsoft 365. Logg inn med NLA-kontoen din, ikke en privat Microsoft-konto.",
-  recCopilotLink: "Åpne Copilot Chat ↗",
   nudge: "Du har valgt andre verktøy, men ingen av dem NLA foretrekker. NLA foretrekker Sikt KI og Microsoft Copilot, så vurder å bruke en av dem i dette arbeidet.",
   other: "Annet verktøy",
   otherPlaceholder: "f.eks. Elicit, Consensus, Scite Assistant",
@@ -421,7 +418,6 @@ var T = {
   recSikt: "Sikt KI (KI-chat) tillhandahålls av Sikt för norsk utbildning och forskning. Du loggar in med Feide.",
   recSiktLink: "Öppna Sikt KI-chat ↗",
   recCopilot: "Microsoft Copilot (Copilot Chat) finns tillgänglig via NLA:s Microsoft 365. Logga in med ditt NLA-konto, inte ett privat Microsoft-konto.",
-  recCopilotLink: "Öppna Copilot Chat ↗",
   nudge: "Du har valt andra verktyg men inget av dem som NLA föredrar. NLA föredrar Sikt KI och Microsoft Copilot, så överväg att använda ett av dem i detta arbete.",
   other: "Annat verktyg",
   otherPlaceholder: "t.ex. Elicit, Consensus, Scite Assistant",
@@ -616,7 +612,6 @@ function renderStatic(){
  $("rec-sikt").textContent = L.recSikt;
  $("rec-sikt-link").textContent = L.recSiktLink;
  $("rec-copilot").textContent = L.recCopilot;
- $("rec-copilot-link").textContent = L.recCopilotLink;
  $("other-label").textContent = L.other;
  $("other-tool").placeholder = L.otherPlaceholder;
  $("h-uses").textContent = L.usesTitle;
