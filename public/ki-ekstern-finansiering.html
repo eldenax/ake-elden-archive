@@ -17,7 +17,8 @@ h2{font-size:1.1rem;margin:0 0 10px}
 p.lead{color:var(--muted);margin:4px 0 18px;max-width:78ch}
 a{color:var(--accent)}
 .topbar{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
-.langbox{display:flex;gap:8px;align-items:center}
+.langbox{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.reset-status{width:100%;text-align:right}
 .steps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .step{font-size:.85rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:18px}
@@ -98,8 +99,10 @@ table.matrix{width:100%;border-collapse:separate;border-spacing:2px;font-size:.8
       <p class="lead" id="lead"></p>
     </div>
     <div class="langbox">
+      <button id="new-app" type="button" class="secondary"></button>
       <label for="language" id="language-label"></label>
       <select id="language"><option value="nb">Norsk</option><option value="en">English</option></select>
+      <span id="top-status" class="status reset-status" role="status"></span>
     </div>
   </div>
 
@@ -316,6 +319,8 @@ var T = {
   formats: {full:"Utfyllende erklæring (vedlegg eller eget felt)", short:"Kort merknad (søknadsskjema eller prosjektbeskrivelse)"},
   dLang: "Språk i erklæringen",
   dCopy: "Kopier erklæringen", dTxt: "Last ned .txt", dDoc: "Last ned for Word (.doc)", reset: "Nullstill",
+  newApp: "↺ Ny søknad – start på nytt",
+  confirmReset: "Vil du tømme alt du har fylt inn og starte på en ny søknad? Dette kan ikke angres. Husk å lagre erklæringen og kompasset først hvis du trenger dem.",
   copied: "Kopiert.", manualCopy: "Marker teksten og kopier med Ctrl/Cmd + C.", resetDone: "Nullstilt.",
   file: "ki-erklaering-soknad",
 
@@ -446,6 +451,8 @@ var T = {
   formats: {full:"Full declaration (attachment or separate field)", short:"Short note (application form or project description)"},
   dLang: "Language of the declaration",
   dCopy: "Copy declaration", dTxt: "Download .txt", dDoc: "Download for Word (.doc)", reset: "Reset",
+  newApp: "↺ New application – start over",
+  confirmReset: "Clear everything you have filled in and start a new application? This cannot be undone. Save the declaration and compass first if you need them.",
   copied: "Copied.", manualCopy: "Select the text and copy with Ctrl/Cmd + C.", resetDone: "Reset.",
   file: "ai-declaration-application",
 
@@ -587,7 +594,7 @@ function renderStatic(){
   "h-parts": L.hParts, "parts-help": L.partsHelp,
   "h-resp": L.hResp, "resp-help": L.respHelp, "extra-label": L.extra,
   "h-decl": L.hDecl, "decl-help": L.declHelp, "d-format-label": L.dFormat, "d-lang-label": L.dLang,
-  "decl-label": L.hDecl, "d-copy": L.dCopy, "d-txt": L.dTxt, "d-doc": L.dDoc, "reset": L.reset});
+  "decl-label": L.hDecl, "d-copy": L.dCopy, "d-txt": L.dTxt, "d-doc": L.dDoc, "reset": L.reset, "new-app": L.newApp});
  setPh({"funder-name": L.funderNamePh, "call": L.callPh, "app-title": L.appTitlePh, "partners": L.partnersPh,
   "other-tool": L.otherToolPh, "details": L.detailsPh, "extra": L.extraPh});
 
@@ -928,14 +935,20 @@ $("svg-dl").addEventListener("click", function(){
  download(tx().svgFile + ".svg", "image/svg+xml", src);
 });
 
-$("reset").addEventListener("click", function(){
+// Clears every field (keeping only the page language) so a new application can start from scratch.
+function resetAll(){
+ if (!window.confirm(tx().confirmReset)) return;
  var lang = state.lang;
  state = defaults();
  state.lang = lang;
  state.dLang = lang;
  renderAll();
- $("d-status").textContent = tx().resetDone;
-});
+ ["d-status","copy-status"].forEach(function(id){ var e = $(id); if (e) e.textContent = ""; });
+ $("top-status").textContent = tx().resetDone;
+ window.scrollTo(0, 0);
+}
+$("reset").addEventListener("click", resetAll);
+$("new-app").addEventListener("click", resetAll);
 
 renderAll();
 })();
