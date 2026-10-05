@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KI-erklæring for søknader</title>
+<style>
+:root{--bg:#f7f6f2;--panel:#fff;--ink:#1f2328;--muted:#5b616b;--line:#d9d6cc;--accent:#2f5d8a;--accent-soft:#e3ecf5;--rec:#1e6b47;--rec-soft:#e2f2e9;--info:#fbf1dc;--warn:#b3261e;--focus:#f0a500}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17191c;--panel:#202328;--ink:#eceae4;--muted:#a7abb2;--line:#3a3e45;--accent:#8bb4e0;--accent-soft:#263445;--rec:#7fd1a6;--rec-soft:#1d3328;--info:#3a321f;--warn:#f2958e}}
+:root[data-theme="dark"]{--bg:#17191c;--panel:#202328;--ink:#eceae4;--muted:#a7abb2;--line:#3a3e45;--accent:#8bb4e0;--accent-soft:#263445;--rec:#7fd1a6;--rec-soft:#1d3328;--info:#3a321f;--warn:#f2958e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.6rem;margin:0}
+h2{font-size:1.1rem;margin:0 0 10px}
+p.lead{color:var(--muted);margin:4px 0 18px;max-width:78ch}
+a{color:var(--accent)}
+.topbar{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.langbox{display:flex;gap:8px;align-items:center}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.step{font-size:.85rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:18px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:640px){.fields{grid-template-columns:1fr}}
+.field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.field select,.field input{width:100%}
+select,input[type=text]{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:7px 9px}
+input[type=checkbox],input[type=radio]{width:18px;height:18px;accent-color:var(--accent);flex:none;margin:0}
+.rec-wrap{border:1px solid var(--rec);background:var(--rec-soft);border-radius:10px;padding:12px 14px;margin:10px 0 12px}
+.rec-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 18px;margin-top:8px}
+@media(max-width:640px){.rec-grid{grid-template-columns:1fr}}
+.rec-item label{font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center}
+.rec-item p{margin:6px 0 0;font-size:.9rem}
+.badge{display:inline-block;font-size:.75rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--rec);color:var(--panel)}
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px;margin:10px 0}
+@media(max-width:640px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.check{display:flex;gap:8px;align-items:center;cursor:pointer}
+.check.top{align-items:flex-start}
+.check.top input{margin-top:3px}
+.part{border-top:1px solid var(--line);padding:10px 0}
+.part:first-child{border-top:0}
+.part-body{margin:8px 0 0 26px;display:none;gap:6px 18px;flex-wrap:wrap;font-size:.92rem}
+.part.active .part-body{display:flex}
+.part-body input[type=text]{flex:1 1 100%}
+.list{display:grid;gap:10px}
+.note{font-size:.88rem;color:var(--muted);margin:4px 0 0}
+.info{background:var(--info);border-radius:8px;padding:10px 12px;font-size:.9rem;margin-top:12px}
+.info p{margin:0}
+.info p+p{margin-top:6px}
+.warn{color:var(--warn);font-size:.9rem;margin:10px 0 0}
+textarea{width:100%;min-height:260px;font:inherit;font-size:.93rem;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+button{font:inherit;padding:8px 14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--panel);cursor:pointer}
+button.secondary{background:transparent;color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.status{font-size:.85rem;color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <div>
+      <h1 id="title"></h1>
+      <p class="lead" id="lead"></p>
+    </div>
+    <div class="langbox">
+      <label for="language" id="language-label"></label>
+      <select id="language"><option value="nb">Norsk</option><option value="en">English</option></select>
+    </div>
+  </div>
+
+  <div class="steps" id="steps"></div>
+
+  <!-- 1 -->
+  <section class="panel" aria-labelledby="h-app">
+    <h2 id="h-app"></h2>
+    <div class="fields">
+      <div class="field"><label for="funder" id="funder-label"></label><select id="funder"></select></div>
+      <div class="field" id="funder-name-box"><label for="funder-name" id="funder-name-label"></label><input id="funder-name" type="text"></div>
+      <div class="field"><label for="call" id="call-label"></label><input id="call" type="text"></div>
+      <div class="field"><label for="app-title" id="app-title-label"></label><input id="app-title" type="text"></div>
+      <div class="field"><label for="applicant" id="applicant-label"></label><select id="applicant"></select></div>
+      <div class="field" id="partners-box"><label for="partners" id="partners-label"></label><input id="partners" type="text"></div>
+    </div>
+    <div class="info" id="funder-tip"></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="panel" aria-labelledby="h-tools">
+    <h2 id="h-tools"></h2>
+    <p class="note" id="tools-help"></p>
+    <div class="rec-wrap">
+      <span class="badge" id="rec-badge"></span>
+      <div class="rec-grid">
+        <div class="rec-item">
+          <label><input type="checkbox" id="tool-sikt"><span>Sikt KI</span></label>
+          <p id="rec-sikt"></p>
+          <p><a href="https://www.sikt.no/tjenester/sikt-ki/ki-chat" target="_blank" rel="noopener" id="rec-sikt-link"></a></p>
+        </div>
+        <div class="rec-item">
+          <label><input type="checkbox" id="tool-copilot"><span>Microsoft Copilot</span></label>
+          <p id="rec-copilot"></p>
+        </div>
+      </div>
+    </div>
+    <div class="tools" id="tools"></div>
+    <div class="fields">
+      <div class="field"><label for="other-tool" id="other-tool-label"></label><input id="other-tool" type="text"></div>
+      <div class="field"><label for="details" id="details-label"></label><input id="details" type="text"></div>
+    </div>
+    <p class="warn" id="tool-warn" hidden></p>
+    <label class="check" style="margin-top:14px"><input type="checkbox" id="no-ai"><span id="no-ai-label"></span></label>
+  </section>
+
+  <!-- 3 -->
+  <section class="panel" aria-labelledby="h-parts" id="parts-panel">
+    <h2 id="h-parts"></h2>
+    <p class="note" id="parts-help"></p>
+    <div id="parts"></div>
+  </section>
+
+  <!-- 4 -->
+  <section class="panel" aria-labelledby="h-resp" id="resp-panel">
+    <h2 id="h-resp"></h2>
+    <p class="note" id="resp-help"></p>
+    <div class="list" id="confirms" style="margin-top:10px"></div>
+    <div class="field" style="margin-top:12px"><label for="extra" id="extra-label"></label><input id="extra" type="text"></div>
+    <p class="warn" id="conf-warn" hidden></p>
+    <div class="info" id="reviewer"></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="panel" aria-labelledby="h-decl">
+    <h2 id="h-decl"></h2>
+    <p class="note" id="decl-help"></p>
+    <div class="fields" style="margin:10px 0 12px">
+      <div class="field"><label for="d-format" id="d-format-label"></label><select id="d-format"></select></div>
+      <div class="field"><label for="d-lang" id="d-lang-label"></label>
+        <select id="d-lang"><option value="nb">Norsk</option><option value="en">English</option></select>
+      </div>
+    </div>
+    <label for="decl" class="sr-only" id="decl-label"></label>
+    <textarea id="decl" readonly></textarea>
+    <div class="row">
+      <button id="d-copy" type="button"></button>
+      <button id="d-txt" type="button" class="secondary"></button>
+      <button id="d-doc" type="button" class="secondary"></button>
+      <button id="reset" type="button" class="secondary"></button>
+      <span id="d-status" class="status" role="status"></span>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+"use strict";
+
+var STORE_KEY = "ki-ekstern-v1";
+var SIKT = "Sikt KI", COPILOT = "Microsoft Copilot";
+var PREFERRED = [SIKT, COPILOT];
+var OTHER_TOOLS = ["ChatGPT","Claude","Gemini","Perplexity","NotebookLM","Grok"];
+var TOOLS = PREFERRED.concat(OTHER_TOOLS);
+var FUNDERS = ["nfr","eu","nordforsk","hkdir","norad","rff","church","private","nla","other"];
+var NAMED = ["church","private","other"];          // funders where the user types the name
+var PARTS = ["desc","impact","impl","summary","budget","cv","lit","lang","other"];
+var FIXED = ["lit","lang"];                         // parts with a fixed sentence, no level choice
+var CONFIRMS = ["conf","personal","consent","orig"];
+var FORMATS = ["full","short"];
+
+var T = {
+ nb: {
+  title: "KI-erklæring for eksterne søknader",
+  lead: "For deg som søker ekstern finansiering, for eksempel fra Forskningsrådet, EU (Horisont Europa) eller andre. Fyll inn søknaden, hvilke KI-verktøy du brukte og til hvilke deler av søknaden. Siden lager en KI-erklæring du kan redigere og legge ved søknaden. Ingenting sendes noe sted; valgene lagres bare i denne nettleseren.",
+  language: "Språk",
+  steps: ["1 · Søknaden","2 · KI-verktøy","3 · Søknadsdeler","4 · Ansvar og konfidensialitet","5 · Erklæring"],
+  hApp: "1 · Søknaden",
+  funder: "Finansiør",
+  funders: {nfr:"Forskningsrådet (NFR)", eu:"EU – Horisont Europa (ERC, MSCA, klynger)", nordforsk:"NordForsk", hkdir:"HK-dir", norad:"Norad", rff:"Regionale forskningsfond", church:"Kirkelig fond eller misjonsfond", private:"Privat stiftelse", nla:"Interne NLA-midler", other:"Annen finansiør"},
+  funderName: "Navn på finansiøren",
+  funderNamePh: "f.eks. navnet på fondet eller stiftelsen",
+  call: "Utlysning eller program (valgfritt)",
+  callPh: "f.eks. Forskerprosjekt for fornyelse, ERC Starting Grant",
+  appTitle: "Prosjekttittel (valgfritt)",
+  appTitlePh: "Tittelen på prosjektet",
+  applicant: "Hvem søker?",
+  applicants: {single:"Jeg som prosjektleder (jeg)", multi:"Konsortium eller prosjektgruppe (vi)"},
+  partners: "Partnere (valgfritt)",
+  partnersPh: "f.eks. NLA Høgskolen, Universitetet i Bergen",
+  tips: {
+   nfr: "Forskningsrådet: Les utlysningsteksten og Forskningsrådets gjeldende retningslinjer for KI i søknader. Sjekk om KI-bruk skal oppgis i et eget felt, i prosjektbeskrivelsen eller i et vedlegg.",
+   eu: "Horisont Europa: Følg Europakommisjonens «Living guidelines on the responsible use of generative AI in research». Søkerne har fullt ansvar for alt innhold i søknaden. Oppgi KI-bruk der søknadsmalen ber om det, ellers i metodedelen eller som en kort merknad.",
+   nla: "Interne NLA-midler: Følg NLAs retningslinjer for bruk av KI.",
+   other: "Sjekk finansiørens retningslinjer for KI. Har de ingen egne regler, kan du legge erklæringen ved som vedlegg eller i følgebrevet."
+  },
+  hTools: "2 · KI-verktøy du brukte",
+  toolsHelp: "Velg alle KI-verktøy du brukte i arbeidet med søknaden.",
+  recBadge: "Foretrukket ved NLA",
+  recSikt: "Sikt KI (KI-chat) leveres av Sikt for norsk utdanning og forskning. Du logger inn med Feide.",
+  recSiktLink: "Åpne Sikt KI-chat ↗",
+  recCopilot: "Microsoft Copilot er innebygd i NLAs Microsoft 365. Logg inn med NLA-kontoen din, ikke en privat Microsoft-konto.",
+  otherTool: "Annet verktøy",
+  otherToolPh: "f.eks. Elicit, DeepL",
+  details: "Versjoner og datoer (valgfritt)",
+  detailsPh: "f.eks. Copilot og Sikt KI, januar–mars 2027",
+  toolWarn: "Du har valgt andre verktøy, men ingen av dem NLA foretrekker. Bruk helst Sikt KI eller Microsoft Copilot når du jobber med en søknad, fordi søknaden inneholder upubliserte idéer.",
+  noAI: "Jeg/vi brukte ikke generativ KI i denne søknaden",
+  hParts: "3 · Hvilke deler av søknaden brukte du KI til?",
+  partsHelp: "Kryss av for delene, og velg hvordan KI ble brukt i hver del.",
+  parts: {desc:"Prosjektbeskrivelse (mål, metode, forskningsfront)", impact:"Virkning og formidling", impl:"Gjennomføring (arbeidspakker, tidsplan, risiko)", summary:"Sammendrag og populærvitenskapelig tekst", budget:"Budsjett og budsjettbegrunnelse", cv:"CV og publikasjonslister", lit:"Litteratursøk og referanser", lang:"Språkvask og oversettelse", other:"Annet"},
+  otherPartPh: "Beskriv delen, f.eks. etikkdelen",
+  levels: {support:"Idéer, struktur eller tilbakemelding – teksten er skrevet av søkeren", draft:"KI laget utkast som søkeren har bearbeidet"},
+  hResp: "4 · Ansvar og konfidensialitet",
+  respHelp: "Kryss bare av for det som stemmer. Det du krysser av for, kommer med i erklæringen.",
+  confirms: {
+   conf: "Upubliserte idéer og konfidensielt materiale ble bare lagt inn i Sikt KI eller Microsoft Copilot med NLA-kontoen",
+   personal: "Ingen personopplysninger ble lagt inn i KI-verktøyene",
+   consent: "Alle partnere er informert om og har godtatt KI-bruken",
+   orig: "Prosjektidéen, forskningsspørsmålene og metodevalgene er søkernes egne"
+  },
+  extra: "Annet du vil ha med i erklæringen (valgfritt)",
+  extraPh: "Skriv en egen setning",
+  confWarn: "Du har bekreftet at upubliserte idéer bare ble lagt inn i Sikt KI eller Copilot, men du har også valgt andre verktøy. Sjekk at dette stemmer.",
+  reviewer: ["Er du selv fagfelle eller evaluator?","Søknader du vurderer for en finansiør er konfidensielle. Ikke legg dem inn i KI-verktøy, heller ikke Sikt KI eller Copilot, med mindre finansiøren uttrykkelig tillater det."],
+  hDecl: "5 · KI-erklæring",
+  declHelp: "Teksten oppdateres mens du fyller ut. Les den nøye og pass på at hver setning stemmer før du legger den ved søknaden.",
+  dFormat: "Format",
+  formats: {full:"Utfyllende erklæring (vedlegg eller eget felt)", short:"Kort merknad (søknadsskjema eller prosjektbeskrivelse)"},
+  dLang: "Språk i erklæringen",
+  dCopy: "Kopier erklæringen", dTxt: "Last ned .txt", dDoc: "Last ned for Word (.doc)", reset: "Nullstill",
+  copied: "Kopiert.", manualCopy: "Marker teksten og kopier med Ctrl/Cmd + C.", resetDone: "Nullstilt.",
+  file: "ki-erklaering-soknad",
+
+  // Declaration text (used when Norsk is the declaration language)
+  D: {
+   funderNames: {nfr:"Forskningsrådet", eu:"Horisont Europa", nordforsk:"NordForsk", hkdir:"HK-dir", norad:"Norad", rff:"regionale forskningsfond", church:"et kirkelig fond eller misjonsfond", private:"en privat stiftelse", nla:"NLA Høgskolens interne forskningsmidler", other:"[navn på finansiør]"},
+   partNames: {desc:"prosjektbeskrivelsen", impact:"virkningsdelen", impl:"gjennomføringsplanen", summary:"sammendragene", budget:"budsjettet", cv:"CV-ene", lit:"litteratursøket", lang:"språkvasken"},
+   and: "og",
+   toolsPh: "[velg KI-verktøyene du brukte]",
+   partsPh: "[velg delene av søknaden der KI ble brukt]",
+   heading: "Erklæring om bruk av generativ KI i søknaden",
+   app: function(o){
+    return "søknaden" + (o.title ? " «" + o.title + "»" : "") + " til " + o.funder + (o.call ? " (" + o.call + ")" : "");
+   },
+   build: function(o){
+    var I = o.multi ? "Vi" : "Jeg", i = o.multi ? "vi" : "jeg", me = o.multi ? "oss" : "meg";
+    var applicant = o.multi ? "søkernes" : "søkerens";
+    if (o.noAI) return ["Ingen generativ KI eller KI-assisterte verktøy ble brukt i arbeidet med " + this.app(o) + "."];
+    var s = [];
+    if (o.format === "short"){
+     s.push("I arbeidet med " + this.app(o) + " brukte " + i + " " + o.tools + " som støtte til " + (o.allParts || this.partsPh) + ".");
+     if (o.c.conf) s.push("Upubliserte idéer ble bare behandlet i KI-tjenester med NLA Høgskolens institusjonelle tilgang.");
+     s.push(I + " tar fullt ansvar for innholdet i søknaden.");
+     return s;
+    }
+    s.push("I arbeidet med " + this.app(o) + (o.partners ? ", med " + o.partners + " som partnere," : "") + " brukte " + i + " " + o.tools + ".");
+    if (o.preferred) s.push(o.preferred + " ble brukt gjennom NLA Høgskolens institusjonelle tilgang.");
+    if (!o.any) s.push(this.partsPh);
+    if (o.support) s.push("KI ble brukt til idéutvikling, strukturering eller tilbakemelding på " + o.support + ". Teksten i disse delene er skrevet av " + me + ".");
+    if (o.draft) s.push("KI laget utkast til " + o.draft + ". " + I + " har bearbeidet utkastene grundig og kontrollert alt innhold.");
+    if (o.parts.lit) s.push("KI ble brukt som hjelp til litteratursøk, og alle referanser i søknaden er kontrollert mot originalkildene.");
+    if (o.parts.lang) s.push("KI ble brukt til språkvask og oversettelse av søknadsteksten.");
+    if (o.c.orig) s.push("Prosjektidéen, forskningsspørsmålene og metodevalgene er " + applicant + " egne.");
+    if (o.c.conf) s.push("Upubliserte idéer og konfidensielt materiale ble bare behandlet i Sikt KI eller Microsoft Copilot med NLA Høgskolens institusjonelle tilgang.");
+    if (o.c.personal) s.push("Ingen personopplysninger ble lagt inn i KI-verktøyene.");
+    if (o.c.consent) s.push("Alle partnere i prosjektet er informert om og har godtatt denne bruken av KI.");
+    if (o.extra) s.push(o.extra);
+    s.push(I + " tar fullt ansvar for innholdet i søknaden, inkludert nøyaktighet, originalitet og kildebruk.");
+    return s;
+   }
+  }
+ },
+
+ en: {
+  title: "AI declaration for funding applications",
+  lead: "For anyone applying for external funding, for example from the Research Council of Norway, the EU (Horizon Europe) or others. Fill in the application, the AI tools you used and the parts of the application you used them for. The page builds an AI declaration you can edit and attach to the application. Nothing is sent anywhere; your choices are saved only in this browser.",
+  language: "Language",
+  steps: ["1 · The application","2 · AI tools","3 · Parts of the application","4 · Responsibility and confidentiality","5 · Declaration"],
+  hApp: "1 · The application",
+  funder: "Funder",
+  funders: {nfr:"Research Council of Norway (NFR)", eu:"EU – Horizon Europe (ERC, MSCA, clusters)", nordforsk:"NordForsk", hkdir:"HK-dir", norad:"Norad", rff:"Regional Research Funds", church:"Church or mission fund", private:"Private foundation", nla:"Internal NLA funding", other:"Other funder"},
+  funderName: "Name of the funder",
+  funderNamePh: "e.g. the name of the fund or foundation",
+  call: "Call or programme (optional)",
+  callPh: "e.g. Researcher Project for Renewal, ERC Starting Grant",
+  appTitle: "Project title (optional)",
+  appTitlePh: "The title of the project",
+  applicant: "Who is applying?",
+  applicants: {single:"Me as principal investigator (I)", multi:"Consortium or project team (we)"},
+  partners: "Partners (optional)",
+  partnersPh: "e.g. NLA University College, University of Bergen",
+  tips: {
+   nfr: "Research Council of Norway: Read the call text and the Council's current guidelines on AI in applications. Check whether AI use should be stated in a separate field, in the project description or in an attachment.",
+   eu: "Horizon Europe: Follow the European Commission's \"Living guidelines on the responsible use of generative AI in research\". Applicants are fully responsible for all content in the proposal. State AI use where the proposal template asks for it, otherwise in the methodology section or as a short note.",
+   nla: "Internal NLA funding: Follow NLA's guidelines on the use of AI.",
+   other: "Check the funder's guidelines on AI. If they have no rules of their own, attach the declaration or include it in the cover letter."
+  },
+  hTools: "2 · AI tools you used",
+  toolsHelp: "Select every AI tool you used while working on the application.",
+  recBadge: "Preferred at NLA",
+  recSikt: "Sikt KI (KI-chat) is provided by Sikt for the Norwegian education and research sector. You log in with Feide.",
+  recSiktLink: "Open Sikt KI chat ↗",
+  recCopilot: "Microsoft Copilot is built into NLA's Microsoft 365. Sign in with your NLA account, not a private Microsoft account.",
+  otherTool: "Other tool",
+  otherToolPh: "e.g. Elicit, DeepL",
+  details: "Versions and dates (optional)",
+  detailsPh: "e.g. Copilot and Sikt KI, January–March 2027",
+  toolWarn: "You selected other tools but none of NLA's preferred ones. For applications, use Sikt KI or Microsoft Copilot where you can, because the application contains unpublished ideas.",
+  noAI: "I/we did not use generative AI in this application",
+  hParts: "3 · Which parts of the application did you use AI for?",
+  partsHelp: "Tick the parts, and choose how AI was used in each one.",
+  parts: {desc:"Project description (objectives, methods, state of the art)", impact:"Impact and dissemination", impl:"Implementation (work packages, timeline, risks)", summary:"Summary and popular science text", budget:"Budget and budget justification", cv:"CVs and publication lists", lit:"Literature search and references", lang:"Language editing and translation", other:"Other"},
+  otherPartPh: "Describe the part, e.g. the ethics section",
+  levels: {support:"Ideas, structure or feedback – the text is written by the applicant", draft:"AI produced drafts that the applicant revised"},
+  hResp: "4 · Responsibility and confidentiality",
+  respHelp: "Only tick what is true. What you tick goes into the declaration.",
+  confirms: {
+   conf: "Unpublished ideas and confidential material were only entered into Sikt KI or Microsoft Copilot with my NLA account",
+   personal: "No personal data were entered into the AI tools",
+   consent: "All partners have been informed of and have agreed to the AI use",
+   orig: "The project idea, research questions and methodological choices are the applicants' own"
+  },
+  extra: "Anything else to include in the declaration (optional)",
+  extraPh: "Write your own sentence",
+  confWarn: "You confirmed that unpublished ideas were only entered into Sikt KI or Copilot, but you also selected other tools. Check that this is correct.",
+  reviewer: ["Are you a reviewer or evaluator yourself?","Applications you assess for a funder are confidential. Do not enter them into AI tools, including Sikt KI or Copilot, unless the funder explicitly allows it."],
+  hDecl: "5 · AI declaration",
+  declHelp: "The text updates as you go. Read it carefully and make sure every sentence is true before you attach it to the application.",
+  dFormat: "Format",
+  formats: {full:"Full declaration (attachment or separate field)", short:"Short note (application form or project description)"},
+  dLang: "Language of the declaration",
+  dCopy: "Copy declaration", dTxt: "Download .txt", dDoc: "Download for Word (.doc)", reset: "Reset",
+  copied: "Copied.", manualCopy: "Select the text and copy with Ctrl/Cmd + C.", resetDone: "Reset.",
+  file: "ai-declaration-application",
+
+  D: {
+   funderNames: {nfr:"the Research Council of Norway", eu:"Horizon Europe", nordforsk:"NordForsk", hkdir:"HK-dir", norad:"Norad", rff:"the Regional Research Funds", church:"a church or mission fund", private:"a private foundation", nla:"NLA University College's internal research funding", other:"[name of funder]"},
+   partNames: {desc:"the project description", impact:"the impact section", impl:"the implementation plan", summary:"the summaries", budget:"the budget", cv:"the CVs", lit:"the literature search", lang:"language editing"},
+   and: "and",
+   toolsPh: "[select the AI tools you used]",
+   partsPh: "[select the parts of the application where AI was used]",
+   heading: "Declaration on the use of generative AI in this application",
+   app: function(o){
+    return "the application" + (o.title ? " “" + o.title + "”" : "") + " to " + o.funder + (o.call ? " (" + o.call + ")" : "");
+   },
+   build: function(o){
+    var I = o.multi ? "We" : "I", i = o.multi ? "we" : "I", me = o.multi ? "us" : "me";
+    var applicant = o.multi ? "applicants'" : "applicant's";
+    if (o.noAI) return ["No generative AI or AI-assisted technologies were used in preparing " + this.app(o) + "."];
+    var s = [];
+    if (o.format === "short"){
+     s.push("In preparing " + this.app(o) + ", " + i + " used " + o.tools + " as support for " + (o.allParts || this.partsPh) + ".");
+     if (o.c.conf) s.push("Unpublished ideas were processed only in AI services provided through NLA University College's institutional access.");
+     s.push(I + " take full responsibility for the content of the application.");
+     return s;
+    }
+    s.push("In preparing " + this.app(o) + (o.partners ? ", with " + o.partners + " as partners, " : ", ") + i + " used " + o.tools + ".");
+    if (o.preferred) s.push(o.preferred + (o.nPreferred === 1 ? " was" : " were") + " used through NLA University College's institutional access.");
+    if (!o.any) s.push(this.partsPh);
+    if (o.support) s.push("AI was used for brainstorming, structuring or feedback on " + o.support + ". The text in these parts was written by " + me + ".");
+    if (o.draft) s.push("AI generated draft text for " + o.draft + ". " + I + " revised these drafts substantially and checked all content.");
+    if (o.parts.lit) s.push("AI was used to assist the literature search, and all references in the application have been checked against the original sources.");
+    if (o.parts.lang) s.push("AI was used for language editing and translation of the application text.");
+    if (o.c.orig) s.push("The project idea, research questions and methodological choices are the " + applicant + " own.");
+    if (o.c.conf) s.push("Unpublished ideas and confidential material were processed only in Sikt KI or Microsoft Copilot through NLA University College's institutional access.");
+    if (o.c.personal) s.push("No personal data were entered into the AI tools.");
+    if (o.c.consent) s.push("All project partners have been informed of and have agreed to this use of AI.");
+    if (o.extra) s.push(o.extra);
+    s.push(I + " take full responsibility for the content of the application, including its accuracy, originality and use of sources.");
+    return s;
+   }
+  }
+ }
+};
+
+/* ---------- state ---------- */
+
+function defaults(){
+ var s = {lang: "nb", funder: "nfr", funderName: "", call: "", title: "", multi: false, partners: "",
+  tools: {}, otherTool: "", details: "", noAI: false, parts: {}, otherPart: "", c: {}, extra: "",
+  format: "full", dLang: "nb"};
+ TOOLS.forEach(function(t){ s.tools[t] = false; });
+ PARTS.forEach(function(p){ s.parts[p] = {on: false, level: "support"}; });
+ CONFIRMS.forEach(function(c){ s.c[c] = false; });
+ return s;
+}
+
+function load(){
+ var s = defaults();
+ try{
+  var x = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+  if (x){
+   if (T[x.lang]) s.lang = x.lang;
+   if (T[x.dLang]) s.dLang = x.dLang;
+   if (FUNDERS.indexOf(x.funder) >= 0) s.funder = x.funder;
+   if (FORMATS.indexOf(x.format) >= 0) s.format = x.format;
+   ["funderName","call","title","partners","otherTool","details","otherPart","extra"].forEach(function(k){
+    if (typeof x[k] === "string") s[k] = x[k];
+   });
+   s.multi = !!x.multi; s.noAI = !!x.noAI;
+   if (x.tools) TOOLS.forEach(function(t){ s.tools[t] = !!x.tools[t]; });
+   if (x.parts) PARTS.forEach(function(p){
+    if (!x.parts[p]) return;
+    s.parts[p].on = !!x.parts[p].on;
+    if (x.parts[p].level === "draft") s.parts[p].level = "draft";
+   });
+   if (x.c) CONFIRMS.forEach(function(c){ s.c[c] = !!x.c[c]; });
+  }
+ }catch(e){}
+ return s;
+}
+
+var state = load();
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+
+/* ---------- helpers ---------- */
+
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+ var e = document.createElement(tag);
+ if (attrs) Object.keys(attrs).forEach(function(k){ e.setAttribute(k, attrs[k]); });
+ if (text != null) e.textContent = text;
+ return e;
+}
+function tx(){ return T[state.lang] || T.nb; }
+function fillSelect(sel, keys, labels, value){
+ sel.innerHTML = "";
+ keys.forEach(function(k){ sel.appendChild(el("option", {value: k}, labels[k])); });
+ sel.value = value;
+}
+function bindText(id, key){
+ var inp = $(id);
+ inp.value = state[key];
+ inp.oninput = function(){ state[key] = inp.value; update(); };
+}
+function listJoin(items, and){
+ if (items.length < 2) return items.join("");
+ return items.slice(0, -1).join(", ") + " " + and + " " + items[items.length - 1];
+}
+function activeTools(){
+ var a = TOOLS.filter(function(t){ return state.tools[t]; });
+ var o = state.otherTool.trim();
+ if (o) a.push(o);
+ return a;
+}
+function preferredUsed(){ return PREFERRED.filter(function(t){ return state.tools[t]; }); }
+function othersUsed(){
+ return OTHER_TOOLS.some(function(t){ return state.tools[t]; }) || state.otherTool.trim() !== "";
+}
+
+/* ---------- rendering ---------- */
+
+function setText(map){ Object.keys(map).forEach(function(id){ $(id).textContent = map[id]; }); }
+function setPh(map){ Object.keys(map).forEach(function(id){ $(id).placeholder = map[id]; }); }
+
+function renderStatic(){
+ var L = tx();
+ document.documentElement.lang = state.lang;
+ document.title = L.title;
+ $("language").value = state.lang;
+ setText({"title": L.title, "lead": L.lead, "language-label": L.language,
+  "h-app": L.hApp, "funder-label": L.funder, "funder-name-label": L.funderName, "call-label": L.call,
+  "app-title-label": L.appTitle, "applicant-label": L.applicant, "partners-label": L.partners,
+  "h-tools": L.hTools, "tools-help": L.toolsHelp, "rec-badge": L.recBadge, "rec-sikt": L.recSikt,
+  "rec-sikt-link": L.recSiktLink, "rec-copilot": L.recCopilot, "other-tool-label": L.otherTool,
+  "details-label": L.details, "no-ai-label": L.noAI,
+  "h-parts": L.hParts, "parts-help": L.partsHelp,
+  "h-resp": L.hResp, "resp-help": L.respHelp, "extra-label": L.extra,
+  "h-decl": L.hDecl, "decl-help": L.declHelp, "d-format-label": L.dFormat, "d-lang-label": L.dLang,
+  "decl-label": L.hDecl, "d-copy": L.dCopy, "d-txt": L.dTxt, "d-doc": L.dDoc, "reset": L.reset});
+ setPh({"funder-name": L.funderNamePh, "call": L.callPh, "app-title": L.appTitlePh, "partners": L.partnersPh,
+  "other-tool": L.otherToolPh, "details": L.detailsPh, "extra": L.extraPh});
+
+ var st = $("steps"); st.innerHTML = "";
+ L.steps.forEach(function(x){ st.appendChild(el("span", {"class": "step"}, x)); });
+
+ fillSelect($("funder"), FUNDERS, L.funders, state.funder);
+ fillSelect($("applicant"), ["single","multi"], L.applicants, state.multi ? "multi" : "single");
+ fillSelect($("d-format"), FORMATS, L.formats, state.format);
+ $("d-lang").value = state.dLang;
+
+ var rv = $("reviewer"); rv.innerHTML = "";
+ rv.appendChild(el("p", null)).appendChild(el("strong", null, L.reviewer[0]));
+ rv.appendChild(el("p", null, L.reviewer[1]));
+}
+
+function buildInputs(){
+ var L = tx();
+ $("funder").onchange = function(){ state.funder = this.value; update(); };
+ $("applicant").onchange = function(){ state.multi = this.value === "multi"; buildConfirms(); update(); };
+ $("d-format").onchange = function(){ state.format = this.value; update(); };
+ $("d-lang").onchange = function(){ state.dLang = this.value; update(); };
+ ["funder-name:funderName","call:call","app-title:title","partners:partners","other-tool:otherTool","details:details","extra:extra"]
+  .forEach(function(p){ var a = p.split(":"); bindText(a[0], a[1]); });
+
+ [[SIKT, "tool-sikt"], [COPILOT, "tool-copilot"]].forEach(function(p){
+  var cb = $(p[1]);
+  cb.checked = !!state.tools[p[0]];
+  cb.onchange = function(){ state.tools[p[0]] = cb.checked; update(); };
+ });
+ var box = $("tools"); box.innerHTML = "";
+ OTHER_TOOLS.forEach(function(t){
+  var row = el("label", {"class": "check"});
+  var cb = el("input", {type: "checkbox"});
+  cb.checked = !!state.tools[t];
+  cb.onchange = function(){ state.tools[t] = cb.checked; update(); };
+  row.appendChild(cb); row.appendChild(document.createTextNode(t));
+  box.appendChild(row);
+ });
+
+ var na = $("no-ai");
+ na.checked = state.noAI;
+ na.onchange = function(){ state.noAI = na.checked; update(); };
+
+ var wrap = $("parts"); wrap.innerHTML = "";
+ PARTS.forEach(function(p){
+  var P = state.parts[p];
+  var item = el("div", {"class": "part" + (P.on ? " active" : "")});
+  var head = el("label", {"class": "check"});
+  var cb = el("input", {type: "checkbox"});
+  cb.checked = P.on;
+  cb.onchange = function(){ P.on = cb.checked; item.classList.toggle("active", cb.checked); update(); };
+  head.appendChild(cb);
+  head.appendChild(el("strong", null, L.parts[p]));
+  item.appendChild(head);
+  if (FIXED.indexOf(p) < 0){
+   var body = el("div", {"class": "part-body"});
+   if (p === "other"){
+    var ot = el("input", {type: "text", "aria-label": L.parts.other, placeholder: L.otherPartPh});
+    ot.value = state.otherPart;
+    ot.oninput = function(){ state.otherPart = ot.value; update(); };
+    body.appendChild(ot);
+   }
+   ["support","draft"].forEach(function(lv){
+    var r = el("label", {"class": "check"});
+    var rb = el("input", {type: "radio", name: "lv-" + p, value: lv});
+    rb.checked = P.level === lv;
+    rb.onchange = function(){ if (rb.checked){ P.level = lv; update(); } };
+    r.appendChild(rb); r.appendChild(document.createTextNode(L.levels[lv]));
+    body.appendChild(r);
+   });
+   item.appendChild(body);
+  }
+  wrap.appendChild(item);
+ });
+
+ buildConfirms();
+}
+
+function buildConfirms(){
+ var L = tx(), box = $("confirms"); box.innerHTML = "";
+ CONFIRMS.forEach(function(c){
+  if (c === "consent" && !state.multi) return;
+  var row = el("label", {"class": "check top"});
+  var cb = el("input", {type: "checkbox"});
+  cb.checked = state.c[c];
+  cb.onchange = function(){ state.c[c] = cb.checked; update(); };
+  row.appendChild(cb); row.appendChild(el("span", null, L.confirms[c]));
+  box.appendChild(row);
+ });
+}
+
+function drawDynamic(){
+ var L = tx();
+ $("funder-name-box").hidden = NAMED.indexOf(state.funder) < 0;
+ $("partners-box").hidden = !state.multi;
+ $("funder-tip").textContent = L.tips[state.funder] || L.tips.other;
+ $("parts-panel").hidden = state.noAI;
+ $("resp-panel").hidden = state.noAI;
+
+ var tw = $("tool-warn");
+ tw.hidden = !(othersUsed() && !preferredUsed().length);
+ tw.textContent = L.toolWarn;
+ var cw = $("conf-warn");
+ cw.hidden = !(state.c.conf && othersUsed());
+ cw.textContent = L.confWarn;
+}
+
+/* ---------- declaration ---------- */
+
+function declaration(){
+ var D = T[state.dLang].D;
+ var tools = activeTools(), details = state.details.trim();
+ var name = state.funderName.trim();
+ var funder = NAMED.indexOf(state.funder) >= 0 && name ? name : D.funderNames[state.funder];
+ var partName = function(p){ return p === "other" ? state.otherPart.trim() : D.partNames[p]; };
+ var on = PARTS.filter(function(p){ return state.parts[p].on && partName(p); });
+ var byLevel = function(lv){
+  return listJoin(on.filter(function(p){ return FIXED.indexOf(p) < 0 && state.parts[p].level === lv; }).map(partName), D.and);
+ };
+ var pref = preferredUsed();
+ var o = {
+  format: state.format, multi: state.multi, noAI: state.noAI,
+  funder: funder, call: state.call.trim(), title: state.title.trim(),
+  partners: state.multi ? state.partners.trim() : "",
+  tools: tools.length ? listJoin(tools, D.and) + (details ? " (" + details + ")" : "") : D.toolsPh,
+  preferred: listJoin(pref, D.and), nPreferred: pref.length,
+  any: on.length > 0,
+  allParts: listJoin(on.map(partName), D.and),
+  support: byLevel("support"), draft: byLevel("draft"),
+  parts: {lit: on.indexOf("lit") >= 0, lang: on.indexOf("lang") >= 0},
+  c: {conf: state.c.conf, personal: state.c.personal, orig: state.c.orig, consent: state.multi && state.c.consent},
+  extra: state.extra.trim()
+ };
+ return {heading: D.heading, body: D.build(o).join(" ")};
+}
+
+function declText(){ var r = declaration(); return r.heading + "\n\n" + r.body; }
+
+function download(name, type, content){
+ var a = el("a", {download: name});
+ a.href = URL.createObjectURL(new Blob([content], {type: type}));
+ document.body.appendChild(a);
+ a.click();
+ setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+function escapeHtml(s){
+ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; });
+}
+
+function update(){ save(); drawDynamic(); $("decl").value = declText(); }
+function renderAll(){ renderStatic(); buildInputs(); update(); }
+
+$("language").addEventListener("change", function(){ state.lang = this.value; renderAll(); });
+
+$("d-copy").addEventListener("click", function(){
+ var L = tx(), ta = $("decl"), st = $("d-status");
+ function manual(){ ta.select(); st.textContent = L.manualCopy; }
+ if (navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(ta.value).then(function(){ st.textContent = L.copied; }, manual);
+ } else manual();
+});
+$("d-txt").addEventListener("click", function(){
+ download(tx().file + ".txt", "text/plain;charset=utf-8", declText());
+});
+$("d-doc").addEventListener("click", function(){
+ // Word opens HTML saved with a .doc extension as a normal, editable document.
+ var r = declaration();
+ var html = "<!doctype html><html lang=\"" + state.dLang + "\"><head><meta charset=\"utf-8\"><title>" + escapeHtml(r.heading) + "</title></head>" +
+  "<body style=\"font-family:'Times New Roman',serif;font-size:12pt;line-height:1.5\">" +
+  "<h2 style=\"font-size:13pt\">" + escapeHtml(r.heading) + "</h2><p>" + escapeHtml(r.body) + "</p></body></html>";
+ download(tx().file + ".doc", "application/msword", "﻿" + html);
+});
+$("reset").addEventListener("click", function(){
+ var lang = state.lang;
+ state = defaults();
+ state.lang = lang;
+ state.dLang = lang;
+ renderAll();
+ $("d-status").textContent = tx().resetDone;
+});
+
+renderAll();
+})();
+</script>
+</body>
+</html>
