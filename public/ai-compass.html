@@ -29,11 +29,19 @@ a{color:var(--accent)}
 @media(max-width:640px){.work{grid-template-columns:1fr}}
 .field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:4px}
 .field select,.field input{width:100%}
-.rec-card{border:1px solid var(--rec);background:var(--rec-soft);border-radius:10px;padding:12px 14px;margin:10px 0 12px}
-.rec-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.rec-head label{font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center}
+.rec-wrap{border:1px solid var(--rec);background:var(--rec-soft);border-radius:10px;padding:12px 14px;margin:10px 0 12px}
+.rec-wrap>.badge{display:inline-block;margin-bottom:8px}
+.rec-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 18px}
+@media(max-width:640px){.rec-grid{grid-template-columns:1fr}}
+.rec-item label{font-weight:700;cursor:pointer;display:flex;gap:8px;align-items:center}
 .badge{font-size:.75rem;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--rec);color:var(--panel)}
-.rec-card p{margin:6px 0 0;font-size:.9rem}
+.rec-item p{margin:6px 0 0;font-size:.9rem}
+.disc-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:12px}
+@media(max-width:820px){.disc-opts{grid-template-columns:1fr}}
+.disc-extra{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px;align-items:end;margin-bottom:12px}
+@media(max-width:640px){.disc-extra{grid-template-columns:1fr}}
+.check{display:flex;gap:8px;align-items:center;font-size:.92rem}
+#decl{min-height:190px}
 .nudge{font-size:.88rem;color:var(--rec);margin:8px 0 0}
 .use{border-top:1px solid var(--line);padding:10px 0}
 .use:first-of-type{border-top:0}
@@ -106,13 +114,20 @@ button.secondary{background:transparent;color:var(--accent)}
 
     <p class="tool-note" id="tools-help"></p>
 
-    <div class="rec-card">
-      <div class="rec-head">
-        <label><input type="checkbox" id="tool-sikt"><span>Sikt KI</span></label>
-        <span class="badge" id="rec-badge"></span>
+    <div class="rec-wrap">
+      <span class="badge" id="rec-badge"></span>
+      <div class="rec-grid">
+        <div class="rec-item">
+          <label><input type="checkbox" id="tool-sikt"><span>Sikt KI</span></label>
+          <p id="rec-sikt"></p>
+          <p><a href="https://www.sikt.no/tjenester/sikt-ki/ki-chat" target="_blank" rel="noopener" id="rec-sikt-link"></a></p>
+        </div>
+        <div class="rec-item">
+          <label><input type="checkbox" id="tool-copilot"><span>Microsoft Copilot</span></label>
+          <p id="rec-copilot"></p>
+          <p><a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noopener" id="rec-copilot-link"></a></p>
+        </div>
       </div>
-      <p id="rec-text"></p>
-      <p><a href="https://www.sikt.no/tjenester/sikt-ki/ki-chat" target="_blank" rel="noopener" id="rec-link"></a></p>
     </div>
 
     <div id="chatbots" class="chatbots"></div>
@@ -144,7 +159,32 @@ button.secondary{background:transparent;color:var(--accent)}
     <div class="row">
       <button id="copy" type="button"></button>
       <button id="reset" type="button" class="secondary"></button>
+      <button id="dl-log" type="button" class="secondary"></button>
       <span id="copy-status" class="status" role="status"></span>
+    </div>
+  </section>
+
+  <section class="panel section-gap" aria-labelledby="h-disc">
+    <h2 id="h-disc"></h2>
+    <p class="status" id="disc-help"></p>
+    <div class="disc-opts">
+      <div class="field"><label for="d-format" id="d-format-label"></label><select id="d-format"></select></div>
+      <div class="field"><label for="d-authors" id="d-authors-label"></label><select id="d-authors"></select></div>
+      <div class="field"><label for="d-lang" id="d-lang-label"></label>
+        <select id="d-lang"><option value="en">English</option><option value="nb">Norsk</option><option value="sv">Svenska</option></select>
+      </div>
+    </div>
+    <div class="disc-extra">
+      <div class="field"><label for="d-details" id="d-details-label"></label><input id="d-details" type="text"></div>
+      <label class="check"><input type="checkbox" id="d-noai"><span id="d-noai-label"></span></label>
+    </div>
+    <label for="decl" class="sr-only" id="decl-label"></label>
+    <textarea id="decl" readonly></textarea>
+    <div class="row">
+      <button id="d-copy" type="button"></button>
+      <button id="d-txt" type="button" class="secondary"></button>
+      <button id="d-doc" type="button" class="secondary"></button>
+      <span id="d-status" class="status" role="status"></span>
     </div>
   </section>
 </main>
@@ -153,9 +193,11 @@ button.secondary{background:transparent;color:var(--accent)}
 "use strict";
 
 var STORE_KEY = "ai-compass-v3";
-var SIKT = "Sikt KI";
-var OTHER_TOOLS = ["ChatGPT","Claude","Gemini","Microsoft Copilot","Perplexity","NotebookLM","Grok"];
-var TOOLS = [SIKT].concat(OTHER_TOOLS);
+var SIKT = "Sikt KI", COPILOT = "Microsoft Copilot";
+var PREFERRED = [SIKT, COPILOT];
+var OTHER_TOOLS = ["ChatGPT","Claude","Gemini","Perplexity","NotebookLM","Grok"];
+var TOOLS = PREFERRED.concat(OTHER_TOOLS);
+var FORMATS = ["standard","detailed","short"];
 var WORK = ["article","thesis","research","project","other"];
 var USES = ["plan","lit","sum","idea","design","code","draft","lang","ref","resp"];
 
@@ -164,7 +206,7 @@ var T = {
   title: "AI Use Compass",
   lead: "For anyone writing an article, an assignment or a thesis, or working on a research or development project. Choose the AI tools you used and what you used them for, and place each use by who did the thinking and how openly it is reported. The compass then gives you reflection questions and an AI use log in full sentences that you can edit and paste into your work.",
   language: "Language",
-  steps: ["1 · Your work and AI tools","2 · What you used AI for","3 · Place each use on the axes","4 · Copy your AI log"],
+  steps: ["1 · Your work and AI tools","2 · What you used AI for","3 · Place each use on the axes","4 · Copy your AI log","5 · Export a journal declaration"],
   toolsTitle: "1 · Your work and the AI tools you used",
   workType: "What are you working on?",
   workTitle: "Title (optional)",
@@ -173,9 +215,11 @@ var T = {
   workPhrase: {article:"this article", thesis:"this assignment", research:"this research project", project:"this project", other:"this work"},
   toolsHelp: "Select every chatbot or AI assistant you used. Your choices go into the AI log.",
   recBadge: "Preferred at NLA",
-  recText: "Sikt KI (KI-chat) is the AI service NLA University College wants staff and students to use. It is provided by Sikt for the Norwegian education and research sector, and you log in with Feide.",
-  recLink: "Open Sikt KI chat ↗",
-  nudge: "You selected other tools but not Sikt KI. NLA prefers Sikt KI, so consider using it for this work.",
+  recSikt: "Sikt KI (KI-chat) is provided by Sikt for the Norwegian education and research sector. You log in with Feide.",
+  recSiktLink: "Open Sikt KI chat ↗",
+  recCopilot: "Microsoft Copilot (Copilot Chat) is available through NLA's Microsoft 365. Sign in with your NLA account, not a private Microsoft account.",
+  recCopilotLink: "Open Copilot Chat ↗",
+  nudge: "You selected other tools but none of NLA's preferred ones. NLA prefers Sikt KI and Microsoft Copilot, so consider using one of them for this work.",
   other: "Other tool",
   otherPlaceholder: "e.g. Elicit, Consensus, Scite Assistant",
   usesTitle: "2–3 · How you used AI",
@@ -189,8 +233,8 @@ var T = {
   none: "No AI use has been registered.",
   noTools: "No AI tool has been selected yet.",
   logHeading: "AI USE LOG",
-  sensitiveWarning: "You have marked one or more uses as involving sensitive or personal data. Do not enter such data into an AI service before you have checked NLA's rules and the privacy requirements that apply to your work. This also applies to Sikt KI.",
-  sensitiveCommercial: "Commercial services such as ChatGPT, Claude or Gemini are not NLA's preferred choice. Use Sikt KI instead, and still check the rules first.",
+  sensitiveWarning: "You have marked one or more uses as involving sensitive or personal data. Do not enter such data into an AI service before you have checked NLA's rules and the privacy requirements that apply to your work. This also applies to Sikt KI and Microsoft Copilot.",
+  sensitiveCommercial: "Services such as ChatGPT, Claude or Gemini are not among NLA's preferred tools. Use Sikt KI or Microsoft Copilot with your NLA account instead, and still check the rules first.",
   emptyReflection: "Select at least one use to get reflection questions.",
   uses: {plan:"Planning, outlining and structuring", lit:"Searching for literature and sources", sum:"Summarising or explaining texts", idea:"Generating ideas or research questions", design:"Design, method and approach", code:"Data analysis or coding", draft:"Drafting text", lang:"Language editing or translation", ref:"References and citations", resp:"Feedback on my own draft"},
   labels: {own:"Ownership: who is doing the thinking?", ownL:"AI does the thinking for me", ownR:"I think, judge and verify", trans:"Transparency: how visible is the use?", transL:"Hidden / undocumented", transR:"Fully disclosed", sens:"Involves sensitive or personal data"},
@@ -224,14 +268,47 @@ var T = {
    var c = sens ? " The activity involved sensitive or personal data and therefore needs a separate privacy and data-protection review." : "";
    return "For " + name.toLowerCase() + ", " + a + ". " + b + "." + c;
   },
-  closing: function(work){ return "I remain responsible for the accuracy, interpretation, source checking, argument and final wording of " + work + "."; }
+  closing: function(work){ return "I remain responsible for the accuracy, interpretation, source checking, argument and final wording of " + work + "."; },
+  dlLog: "Download AI log (.txt)",
+  discTitle: "5 · Journal AI declaration",
+  discHelp: "Most journals ask authors to declare how they used generative AI. This builds a declaration from your choices above that you can paste into the submission form, the Methods or Acknowledgements section, or a cover letter. Check your journal's author guidelines, and make sure every sentence is true for your work before you submit.",
+  dFormat: "Format",
+  formats: {standard:"Standard declaration (common journal format)", detailed:"Detailed statement", short:"Short note for Methods or Acknowledgements"},
+  dAuthors: "Written as",
+  authors: {single:"Single author (I)", multi:"Several authors (we)"},
+  dLang: "Language of the declaration",
+  dDetails: "Tool versions and dates (optional)",
+  dDetailsPh: "e.g. Sikt KI (GPT-4o) and Copilot Chat, March–May 2026",
+  dNoAI: "I did not use generative AI in this work",
+  dCopy: "Copy declaration", dTxt: "Download .txt", dDoc: "Download for Word (.doc)",
+  dFile: "ai-declaration", logFile: "ai-log",
+  // Strings below are used when this language is chosen as the declaration language.
+  purposes: {plan:"plan and structure the work", lit:"search for literature and sources", sum:"summarise and explain texts", idea:"generate ideas and research questions", design:"discuss design, method and approach", code:"support data analysis or coding", draft:"draft parts of the text", lang:"improve language and readability or translate text", ref:"check references and citation formatting", resp:"obtain feedback on drafts"},
+  and: "and",
+  toolsPh: "[select the AI tools you used]",
+  purposePh: "[describe what you used the tools for]",
+  decl: function(o){
+   var s = o.multi ? "the authors" : "I", S = o.multi ? "The authors" : "I";
+   if (o.noAI) return {heading: "Declaration of generative AI use", body: "No generative AI or AI-assisted technologies were used in the preparation of " + o.work + "."};
+   if (o.fmt === "standard") return {
+    heading: "Declaration of generative AI and AI-assisted technologies in the writing process",
+    body: "During the preparation of " + o.work + ", " + s + " used " + o.tools + " in order to " + o.purposes + ". After using " + (o.n === 1 ? "this tool" : "these tools") + ", " + s + " reviewed and edited the content as needed and take full responsibility for the content of the publication."
+   };
+   if (o.fmt === "detailed") return {
+    heading: "Statement on the use of generative AI",
+    body: S + " used " + o.tools + " while preparing " + o.work + ". The tools were used to " + o.purposes + "." +
+     (o.low ? " In some of these tasks the AI contributed substantially to the content, and these parts were checked with particular care against the sources." : "") +
+     " All AI-generated suggestions were assessed critically, and facts, references and quotations were checked against the original sources. No AI tool is credited as an author. " + S + " take full responsibility for the content."
+   };
+   return {heading: "", body: S + " used " + o.tools + " to " + o.purposes + ". " + S + " reviewed all AI-generated output and take full responsibility for the content."};
+  }
  },
 
  nb: {
   title: "KI-bruk-kompasset",
   lead: "For alle som skriver en artikkel, en oppgave eller en avhandling, eller som jobber med et forsknings- eller utviklingsprosjekt. Velg hvilke KI-verktøy du brukte og hva du brukte dem til, og plasser hver bruk etter hvem som gjorde tenkningen og hvor åpent bruken er oppgitt. Kompasset gir deg deretter refleksjonsspørsmål og en KI-logg i hele setninger som du kan redigere og lime inn i arbeidet ditt.",
   language: "Språk",
-  steps: ["1 · Arbeidet ditt og KI-verktøy","2 · Hva du brukte KI til","3 · Plasser hver bruk på aksene","4 · Kopier KI-loggen"],
+  steps: ["1 · Arbeidet ditt og KI-verktøy","2 · Hva du brukte KI til","3 · Plasser hver bruk på aksene","4 · Kopier KI-loggen","5 · Eksporter KI-erklæring"],
   toolsTitle: "1 · Arbeidet ditt og KI-verktøyene du brukte",
   workType: "Hva jobber du med?",
   workTitle: "Tittel (valgfritt)",
@@ -240,9 +317,11 @@ var T = {
   workPhrase: {article:"denne artikkelen", thesis:"denne oppgaven", research:"dette forskningsprosjektet", project:"dette prosjektet", other:"dette arbeidet"},
   toolsHelp: "Velg alle chatboter eller KI-assistenter du brukte. Valgene flettes inn i KI-loggen.",
   recBadge: "Foretrukket ved NLA",
-  recText: "Sikt KI (KI-chat) er KI-tjenesten NLA Høgskolen ønsker at ansatte og studenter skal bruke. Tjenesten leveres av Sikt for norsk utdanning og forskning, og du logger inn med Feide.",
-  recLink: "Åpne Sikt KI-chat ↗",
-  nudge: "Du har valgt andre verktøy, men ikke Sikt KI. NLA foretrekker Sikt KI, så vurder å bruke den i dette arbeidet.",
+  recSikt: "Sikt KI (KI-chat) leveres av Sikt for norsk utdanning og forskning. Du logger inn med Feide.",
+  recSiktLink: "Åpne Sikt KI-chat ↗",
+  recCopilot: "Microsoft Copilot (Copilot Chat) er tilgjengelig gjennom NLAs Microsoft 365. Logg inn med NLA-kontoen din, ikke en privat Microsoft-konto.",
+  recCopilotLink: "Åpne Copilot Chat ↗",
+  nudge: "Du har valgt andre verktøy, men ingen av dem NLA foretrekker. NLA foretrekker Sikt KI og Microsoft Copilot, så vurder å bruke en av dem i dette arbeidet.",
   other: "Annet verktøy",
   otherPlaceholder: "f.eks. Elicit, Consensus, Scite Assistant",
   usesTitle: "2–3 · Slik brukte du KI",
@@ -256,8 +335,8 @@ var T = {
   none: "Ingen KI-bruk er registrert.",
   noTools: "Ingen KI-verktøy er valgt ennå.",
   logHeading: "KI-LOGG",
-  sensitiveWarning: "Du har markert én eller flere bruksformer som involverer sensitive data eller personopplysninger. Ikke legg inn slike data i en KI-tjeneste før du har sjekket NLAs regler og personvernkravene som gjelder for arbeidet ditt. Dette gjelder også Sikt KI.",
-  sensitiveCommercial: "Kommersielle tjenester som ChatGPT, Claude eller Gemini er ikke NLAs foretrukne valg. Bruk Sikt KI i stedet, og sjekk likevel reglene først.",
+  sensitiveWarning: "Du har markert én eller flere bruksformer som involverer sensitive data eller personopplysninger. Ikke legg inn slike data i en KI-tjeneste før du har sjekket NLAs regler og personvernkravene som gjelder for arbeidet ditt. Dette gjelder også Sikt KI og Microsoft Copilot.",
+  sensitiveCommercial: "Tjenester som ChatGPT, Claude eller Gemini er ikke blant verktøyene NLA foretrekker. Bruk heller Sikt KI eller Microsoft Copilot med NLA-kontoen din, og sjekk likevel reglene først.",
   emptyReflection: "Kryss av minst én bruksmåte for å få refleksjonsspørsmål.",
   uses: {plan:"Planlegging, disposisjon og struktur", lit:"Søk etter litteratur og kilder", sum:"Oppsummering eller forklaring av tekster", idea:"Idéer og problemstillinger", design:"Design, metode og tilnærming", code:"Dataanalyse eller koding", draft:"Utkast til tekst", lang:"Språkvask eller oversettelse", ref:"Referanser og kildehenvisninger", resp:"Respons på eget utkast"},
   labels: {own:"Eierskap: hvem gjør tenkningen?", ownL:"KI tenker for meg", ownR:"Jeg tenker, vurderer og kontrollerer", trans:"Åpenhet: hvor synlig er bruken?", transL:"Skjult / ikke dokumentert", transR:"Fullt oppgitt", sens:"Involverer sensitive data eller personopplysninger"},
@@ -291,14 +370,46 @@ var T = {
    var c = sens ? " Aktiviteten involverte sensitive data eller personopplysninger og krever derfor en egen vurdering av personvern og databeskyttelse." : "";
    return "Når det gjelder " + name.toLowerCase() + ", " + a + ". " + b + "." + c;
   },
-  closing: function(work){ return "Jeg er fortsatt ansvarlig for nøyaktighet, fortolkning, kildekontroll, argumentasjon og endelig ordlyd i " + work + "."; }
+  closing: function(work){ return "Jeg er fortsatt ansvarlig for nøyaktighet, fortolkning, kildekontroll, argumentasjon og endelig ordlyd i " + work + "."; },
+  dlLog: "Last ned KI-loggen (.txt)",
+  discTitle: "5 · KI-erklæring til tidsskrift",
+  discHelp: "De fleste tidsskrifter ber forfattere oppgi hvordan de har brukt generativ KI. Her lages en erklæring ut fra valgene dine ovenfor, som du kan lime inn i innsendingsskjemaet, i metode- eller takkedelen, eller i et følgebrev. Sjekk forfatterveiledningen til tidsskriftet, og pass på at hver setning stemmer for arbeidet ditt før du sender inn.",
+  dFormat: "Format",
+  formats: {standard:"Standarderklæring (vanlig tidsskriftformat)", detailed:"Utfyllende erklæring", short:"Kort merknad til metode- eller takkedelen"},
+  dAuthors: "Skrevet som",
+  authors: {single:"Én forfatter (jeg)", multi:"Flere forfattere (vi)"},
+  dLang: "Språk i erklæringen",
+  dDetails: "Verktøyversjoner og datoer (valgfritt)",
+  dDetailsPh: "f.eks. Sikt KI (GPT-4o) og Copilot Chat, mars–mai 2026",
+  dNoAI: "Jeg har ikke brukt generativ KI i dette arbeidet",
+  dCopy: "Kopier erklæringen", dTxt: "Last ned .txt", dDoc: "Last ned for Word (.doc)",
+  dFile: "ki-erklaering", logFile: "ki-logg",
+  purposes: {plan:"planlegge og strukturere arbeidet", lit:"søke etter litteratur og kilder", sum:"oppsummere og forklare tekster", idea:"utvikle idéer og problemstillinger", design:"drøfte design, metode og tilnærming", code:"støtte dataanalyse eller koding", draft:"skrive utkast til deler av teksten", lang:"forbedre språk og lesbarhet eller oversette tekst", ref:"kontrollere referanser og kildehenvisninger", resp:"få respons på utkast"},
+  and: "og",
+  toolsPh: "[velg KI-verktøyene du brukte]",
+  purposePh: "[beskriv hva du brukte verktøyene til]",
+  decl: function(o){
+   var s = o.multi ? "forfatterne" : "jeg", S = o.multi ? "Forfatterne" : "Jeg";
+   if (o.noAI) return {heading: "Erklæring om bruk av generativ KI", body: "Ingen generativ KI eller KI-assisterte verktøy ble brukt i arbeidet med " + o.work + "."};
+   if (o.fmt === "standard") return {
+    heading: "Erklæring om bruk av generativ KI og KI-assisterte verktøy i skriveprosessen",
+    body: "Under arbeidet med " + o.work + " brukte " + s + " " + o.tools + " til å " + o.purposes + ". Etter bruk av " + (o.n === 1 ? "dette verktøyet" : "disse verktøyene") + " har " + s + " gjennomgått og redigert innholdet etter behov, og " + s + " tar fullt ansvar for innholdet i publikasjonen."
+   };
+   if (o.fmt === "detailed") return {
+    heading: "Erklæring om bruk av generativ KI",
+    body: S + " brukte " + o.tools + " i arbeidet med " + o.work + ". Verktøyene ble brukt til å " + o.purposes + "." +
+     (o.low ? " I noen av oppgavene bidro KI vesentlig til innholdet, og disse delene ble kontrollert særlig nøye mot kildene." : "") +
+     " Alle KI-genererte forslag ble vurdert kritisk, og fakta, referanser og sitater ble kontrollert mot originalkildene. Ingen KI-verktøy er oppført som forfatter. " + S + " tar fullt ansvar for innholdet."
+   };
+   return {heading: "", body: S + " brukte " + o.tools + " til å " + o.purposes + ". " + S + " har gjennomgått alt KI-generert innhold og tar fullt ansvar for innholdet."};
+  }
  },
 
  sv: {
   title: "AI-användningskompassen",
   lead: "För alla som skriver en artikel, en uppgift eller en uppsats, eller som arbetar med ett forsknings- eller utvecklingsprojekt. Välj vilka AI-verktyg du använde och vad du använde dem till, och placera varje användning efter vem som stod för tänkandet och hur öppet användningen redovisas. Kompassen ger dig sedan reflektionsfrågor och en AI-logg i fullständiga meningar som du kan redigera och klistra in i ditt arbete.",
   language: "Språk",
-  steps: ["1 · Ditt arbete och AI-verktyg","2 · Vad du använde AI till","3 · Placera varje användning på axlarna","4 · Kopiera AI-loggen"],
+  steps: ["1 · Ditt arbete och AI-verktyg","2 · Vad du använde AI till","3 · Placera varje användning på axlarna","4 · Kopiera AI-loggen","5 · Exportera AI-deklaration"],
   toolsTitle: "1 · Ditt arbete och de AI-verktyg du använde",
   workType: "Vad arbetar du med?",
   workTitle: "Titel (valfritt)",
@@ -307,9 +418,11 @@ var T = {
   workPhrase: {article:"denna artikel", thesis:"denna uppgift", research:"detta forskningsprojekt", project:"detta projekt", other:"detta arbete"},
   toolsHelp: "Välj alla chattbotar eller AI-assistenter du använde. Dina val vävs in i AI-loggen.",
   recBadge: "Föredras vid NLA",
-  recText: "Sikt KI (KI-chat) är den AI-tjänst som NLA Høgskolen vill att anställda och studenter ska använda. Tjänsten tillhandahålls av Sikt för norsk utbildning och forskning, och du loggar in med Feide.",
-  recLink: "Öppna Sikt KI-chat ↗",
-  nudge: "Du har valt andra verktyg men inte Sikt KI. NLA föredrar Sikt KI, så överväg att använda den i detta arbete.",
+  recSikt: "Sikt KI (KI-chat) tillhandahålls av Sikt för norsk utbildning och forskning. Du loggar in med Feide.",
+  recSiktLink: "Öppna Sikt KI-chat ↗",
+  recCopilot: "Microsoft Copilot (Copilot Chat) finns tillgänglig via NLA:s Microsoft 365. Logga in med ditt NLA-konto, inte ett privat Microsoft-konto.",
+  recCopilotLink: "Öppna Copilot Chat ↗",
+  nudge: "Du har valt andra verktyg men inget av dem som NLA föredrar. NLA föredrar Sikt KI och Microsoft Copilot, så överväg att använda ett av dem i detta arbete.",
   other: "Annat verktyg",
   otherPlaceholder: "t.ex. Elicit, Consensus, Scite Assistant",
   usesTitle: "2–3 · Så använde du AI",
@@ -323,8 +436,8 @@ var T = {
   none: "Ingen AI-användning har registrerats.",
   noTools: "Inget AI-verktyg har valts ännu.",
   logHeading: "AI-LOGG",
-  sensitiveWarning: "Du har markerat en eller flera användningar som omfattar känsliga uppgifter eller personuppgifter. Ange inte sådana uppgifter i en AI-tjänst innan du har kontrollerat NLA:s regler och de integritetskrav som gäller för ditt arbete. Detta gäller även Sikt KI.",
-  sensitiveCommercial: "Kommersiella tjänster som ChatGPT, Claude eller Gemini är inte NLA:s föredragna val. Använd Sikt KI i stället, och kontrollera ändå reglerna först.",
+  sensitiveWarning: "Du har markerat en eller flera användningar som omfattar känsliga uppgifter eller personuppgifter. Ange inte sådana uppgifter i en AI-tjänst innan du har kontrollerat NLA:s regler och de integritetskrav som gäller för ditt arbete. Detta gäller även Sikt KI och Microsoft Copilot.",
+  sensitiveCommercial: "Tjänster som ChatGPT, Claude eller Gemini hör inte till de verktyg som NLA föredrar. Använd Sikt KI eller Microsoft Copilot med ditt NLA-konto i stället, och kontrollera ändå reglerna först.",
   emptyReflection: "Välj minst ett användningsområde för att få reflektionsfrågor.",
   uses: {plan:"Planering, disposition och struktur", lit:"Sökning efter litteratur och källor", sum:"Sammanfattning eller förklaring av texter", idea:"Idéer och frågeställningar", design:"Design, metod och tillvägagångssätt", code:"Dataanalys eller kodning", draft:"Textutkast", lang:"Språkgranskning eller översättning", ref:"Referenser och källhänvisningar", resp:"Respons på eget utkast"},
   labels: {own:"Ägarskap: vem står för tänkandet?", ownL:"AI tänker åt mig", ownR:"Jag tänker, bedömer och kontrollerar", trans:"Transparens: hur synlig är användningen?", transL:"Dold / odokumenterad", transR:"Fullt redovisad", sens:"Omfattar känsliga uppgifter eller personuppgifter"},
@@ -358,7 +471,39 @@ var T = {
    var c = sens ? " Aktiviteten omfattade känsliga uppgifter eller personuppgifter och kräver därför en särskild granskning av integritet och dataskydd." : "";
    return "När det gäller " + name.toLowerCase() + " " + a + ". " + b + "." + c;
   },
-  closing: function(work){ return "Jag är fortfarande ansvarig för korrekthet, tolkning, källkontroll, argumentation och slutlig formulering i " + work + "."; }
+  closing: function(work){ return "Jag är fortfarande ansvarig för korrekthet, tolkning, källkontroll, argumentation och slutlig formulering i " + work + "."; },
+  dlLog: "Ladda ner AI-loggen (.txt)",
+  discTitle: "5 · AI-deklaration till tidskrift",
+  discHelp: "De flesta tidskrifter ber författare redovisa hur de har använt generativ AI. Här skapas en deklaration utifrån dina val ovan, som du kan klistra in i inlämningsformuläret, i metod- eller tackavsnittet eller i ett följebrev. Kontrollera tidskriftens författaranvisningar och se till att varje mening stämmer för ditt arbete innan du skickar in.",
+  dFormat: "Format",
+  formats: {standard:"Standarddeklaration (vanligt tidskriftsformat)", detailed:"Utförlig deklaration", short:"Kort notis till metod- eller tackavsnittet"},
+  dAuthors: "Skriven som",
+  authors: {single:"En författare (jag)", multi:"Flera författare (vi)"},
+  dLang: "Deklarationens språk",
+  dDetails: "Verktygsversioner och datum (valfritt)",
+  dDetailsPh: "t.ex. Sikt KI (GPT-4o) och Copilot Chat, mars–maj 2026",
+  dNoAI: "Jag har inte använt generativ AI i detta arbete",
+  dCopy: "Kopiera deklarationen", dTxt: "Ladda ner .txt", dDoc: "Ladda ner för Word (.doc)",
+  dFile: "ai-deklaration", logFile: "ai-logg",
+  purposes: {plan:"planera och strukturera arbetet", lit:"söka efter litteratur och källor", sum:"sammanfatta och förklara texter", idea:"utveckla idéer och frågeställningar", design:"diskutera design, metod och tillvägagångssätt", code:"stödja dataanalys eller kodning", draft:"skriva utkast till delar av texten", lang:"förbättra språk och läsbarhet eller översätta text", ref:"kontrollera referenser och källhänvisningar", resp:"få respons på utkast"},
+  and: "och",
+  toolsPh: "[välj de AI-verktyg du använde]",
+  purposePh: "[beskriv vad du använde verktygen till]",
+  decl: function(o){
+   var s = o.multi ? "författarna" : "jag", S = o.multi ? "Författarna" : "Jag";
+   if (o.noAI) return {heading: "Deklaration om användning av generativ AI", body: "Ingen generativ AI eller AI-stödda verktyg användes i arbetet med " + o.work + "."};
+   if (o.fmt === "standard") return {
+    heading: "Deklaration om användning av generativ AI och AI-stödda verktyg i skrivprocessen",
+    body: "Under arbetet med " + o.work + " använde " + s + " " + o.tools + " för att " + o.purposes + ". Efter användningen av " + (o.n === 1 ? "detta verktyg" : "dessa verktyg") + " har " + s + " granskat och redigerat innehållet vid behov, och " + s + " tar fullt ansvar för publikationens innehåll."
+   };
+   if (o.fmt === "detailed") return {
+    heading: "Deklaration om användning av generativ AI",
+    body: S + " använde " + o.tools + " i arbetet med " + o.work + ". Verktygen användes för att " + o.purposes + "." +
+     (o.low ? " I vissa av uppgifterna bidrog AI väsentligt till innehållet, och dessa delar kontrollerades särskilt noggrant mot källorna." : "") +
+     " Alla AI-genererade förslag granskades kritiskt, och fakta, referenser och citat kontrollerades mot originalkällorna. Inget AI-verktyg anges som författare. " + S + " tar fullt ansvar för innehållet."
+   };
+   return {heading: "", body: S + " använde " + o.tools + " för att " + o.purposes + ". " + S + " har granskat allt AI-genererat innehåll och tar fullt ansvar för innehållet."};
+  }
  }
 };
 
@@ -374,7 +519,8 @@ function browserLang(){
 }
 
 function defaults(){
- var s = {lang: browserLang(), workType: "article", workTitle: "", tools: {}, otherTool: "", uses: {}};
+ var s = {lang: browserLang(), workType: "article", workTitle: "", tools: {}, otherTool: "", uses: {},
+  decl: {fmt: "standard", multi: false, lang: "en", details: "", noAI: false}};
  TOOLS.forEach(function(t){ s.tools[t] = false; });
  USES.forEach(function(id){ s.uses[id] = {on: false, own: 50, trans: 50, sens: false}; });
  return s;
@@ -392,6 +538,13 @@ function load(){
    s.otherTool = typeof x.otherTool === "string" ? x.otherTool : "";
    if (x.tools) TOOLS.forEach(function(t){ s.tools[t] = !!x.tools[t]; });
    if (x.uses) USES.forEach(function(k){ if (x.uses[k]) Object.assign(s.uses[k], x.uses[k]); });
+   if (x.decl){
+    if (FORMATS.indexOf(x.decl.fmt) >= 0) s.decl.fmt = x.decl.fmt;
+    if (T[x.decl.lang]) s.decl.lang = x.decl.lang;
+    s.decl.multi = !!x.decl.multi;
+    s.decl.noAI = !!x.decl.noAI;
+    s.decl.details = typeof x.decl.details === "string" ? x.decl.details : "";
+   }
   }
  }catch(e){}
  return s;
@@ -424,6 +577,7 @@ function activeTools(){
  return a;
 }
 function activeUses(){ return USES.filter(function(id){ return state.uses[id].on; }); }
+function usesPreferred(){ return PREFERRED.some(function(t){ return state.tools[t]; }); }
 function usesCommercial(){
  return OTHER_TOOLS.some(function(t){ return state.tools[t]; }) || state.otherTool.trim() !== "";
 }
@@ -459,8 +613,10 @@ function renderStatic(){
 
  $("tools-help").textContent = L.toolsHelp;
  $("rec-badge").textContent = L.recBadge;
- $("rec-text").textContent = L.recText;
- $("rec-link").textContent = L.recLink;
+ $("rec-sikt").textContent = L.recSikt;
+ $("rec-sikt-link").textContent = L.recSiktLink;
+ $("rec-copilot").textContent = L.recCopilot;
+ $("rec-copilot-link").textContent = L.recCopilotLink;
  $("other-label").textContent = L.other;
  $("other-tool").placeholder = L.otherPlaceholder;
  $("h-uses").textContent = L.usesTitle;
@@ -473,12 +629,48 @@ function renderStatic(){
  $("log-label").textContent = L.logTitle;
  $("copy").textContent = L.copy;
  $("reset").textContent = L.reset;
+ $("dl-log").textContent = L.dlLog;
+
+ $("h-disc").textContent = L.discTitle;
+ $("disc-help").textContent = L.discHelp;
+ $("d-format-label").textContent = L.dFormat;
+ $("d-authors-label").textContent = L.dAuthors;
+ $("d-lang-label").textContent = L.dLang;
+ $("d-details-label").textContent = L.dDetails;
+ $("d-details").placeholder = L.dDetailsPh;
+ $("d-noai-label").textContent = L.dNoAI;
+ $("decl-label").textContent = L.discTitle;
+ $("d-copy").textContent = L.dCopy;
+ $("d-txt").textContent = L.dTxt;
+ $("d-doc").textContent = L.dDoc;
+ fillSelect($("d-format"), FORMATS, L.formats, state.decl.fmt);
+ fillSelect($("d-authors"), ["single","multi"], L.authors, state.decl.multi ? "multi" : "single");
+ $("d-lang").value = state.decl.lang;
+}
+
+function fillSelect(sel, keys, labels, value){
+ sel.innerHTML = "";
+ keys.forEach(function(k){ sel.appendChild(el("option", {value: k}, labels[k])); });
+ sel.value = value;
 }
 
 function buildInputs(){
- var sikt = $("tool-sikt");
- sikt.checked = !!state.tools[SIKT];
- sikt.onchange = function(){ state.tools[SIKT] = sikt.checked; update(); };
+ [[SIKT, "tool-sikt"], [COPILOT, "tool-copilot"]].forEach(function(p){
+  var cb = $(p[1]);
+  cb.checked = !!state.tools[p[0]];
+  cb.onchange = function(){ state.tools[p[0]] = cb.checked; update(); };
+ });
+
+ var d = state.decl;
+ $("d-format").onchange = function(){ d.fmt = this.value; update(); };
+ $("d-authors").onchange = function(){ d.multi = this.value === "multi"; update(); };
+ $("d-lang").onchange = function(){ d.lang = this.value; update(); };
+ var det = $("d-details");
+ det.value = d.details;
+ det.oninput = function(){ d.details = det.value; update(); };
+ var na = $("d-noai");
+ na.checked = d.noAI;
+ na.onchange = function(){ d.noAI = na.checked; update(); };
 
  var box = $("chatbots"); box.innerHTML = "";
  OTHER_TOOLS.forEach(function(t){
@@ -547,7 +739,7 @@ function buildUses(){
 
 function drawNudge(){
  var n = $("nudge");
- var show = usesCommercial() && !state.tools[SIKT];
+ var show = usesCommercial() && !usesPreferred();
  n.hidden = !show;
  n.textContent = show ? tx().nudge : "";
 }
@@ -638,18 +830,75 @@ function writeLog(){
  $("log").value = lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
-function update(){ save(); drawNudge(); drawMap(); drawReflection(); writeLog(); }
+function listJoin(items, and){
+ if (items.length < 2) return items.join("");
+ return items.slice(0, -1).join(", ") + " " + and + " " + items[items.length - 1];
+}
+
+function declaration(){
+ var D = T[state.decl.lang] || T.en, d = state.decl;
+ var tools = activeTools(), active = activeUses();
+ var details = d.details.trim();
+ var toolStr = tools.length ? listJoin(tools, D.and) + (details ? " (" + details + ")" : "") : D.toolsPh;
+ var purposes = active.length ? listJoin(active.map(function(id){ return D.purposes[id]; }), D.and) : D.purposePh;
+ return D.decl({
+  fmt: d.fmt, multi: d.multi, noAI: d.noAI,
+  tools: toolStr, n: tools.length, purposes: purposes,
+  work: D.workPhrase[state.workType] || D.workPhrase.other,
+  low: active.some(function(id){ return state.uses[id].own < 50; })
+ });
+}
+
+function declText(){
+ var r = declaration();
+ return r.heading ? r.heading + "\n\n" + r.body : r.body;
+}
+
+function writeDecl(){ $("decl").value = declText(); }
+
+function download(name, type, content){
+ var a = el("a", {download: name});
+ a.href = URL.createObjectURL(new Blob([content], {type: type}));
+ document.body.appendChild(a);
+ a.click();
+ setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+function escapeHtml(s){
+ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; });
+}
+
+function copyText(text, ta, status){
+ var L = tx();
+ function manual(){ ta.select(); status.textContent = L.manualCopy; }
+ if (navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(text).then(function(){ status.textContent = L.copied; }, manual);
+ } else manual();
+}
+
+function update(){ save(); drawNudge(); drawMap(); drawReflection(); writeLog(); writeDecl(); }
 
 function renderAll(){ renderStatic(); buildInputs(); buildUses(); update(); }
 
 $("language").addEventListener("change", function(){ state.lang = this.value; renderAll(); });
 
-$("copy").addEventListener("click", function(){
- var L = tx(), ta = $("log"), st = $("copy-status");
- function manual(){ ta.select(); st.textContent = L.manualCopy; }
- if (navigator.clipboard && navigator.clipboard.writeText){
-  navigator.clipboard.writeText(ta.value).then(function(){ st.textContent = L.copied; }, manual);
- } else manual();
+$("copy").addEventListener("click", function(){ copyText($("log").value, $("log"), $("copy-status")); });
+$("dl-log").addEventListener("click", function(){
+ download(tx().logFile + ".txt", "text/plain;charset=utf-8", $("log").value);
+});
+
+$("d-copy").addEventListener("click", function(){ copyText($("decl").value, $("decl"), $("d-status")); });
+$("d-txt").addEventListener("click", function(){
+ download(tx().dFile + ".txt", "text/plain;charset=utf-8", declText());
+});
+$("d-doc").addEventListener("click", function(){
+ // Word opens HTML saved with a .doc extension as a normal, editable document.
+ var r = declaration(), lang = state.decl.lang;
+ var html = "<!doctype html><html lang=\"" + lang + "\"><head><meta charset=\"utf-8\"><title>" + escapeHtml(r.heading || tx().discTitle) + "</title></head>" +
+  "<body style=\"font-family:'Times New Roman',serif;font-size:12pt;line-height:1.5\">" +
+  (r.heading ? "<h2 style=\"font-size:13pt\">" + escapeHtml(r.heading) + "</h2>" : "") +
+  "<p>" + escapeHtml(r.body) + "</p></body></html>";
+ download(tx().dFile + ".doc", "application/msword", "\ufeff" + html);
 });
 
 $("reset").addEventListener("click", function(){
@@ -658,6 +907,7 @@ $("reset").addEventListener("click", function(){
  state.lang = lang;
  renderAll();
  $("copy-status").textContent = tx().resetDone;
+ $("d-status").textContent = "";
 });
 
 renderAll();
