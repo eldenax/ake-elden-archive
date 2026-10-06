@@ -4,7 +4,7 @@ import { BLOG_POSTS } from "../data/blog";
 const TITLE = "Notes — Dr. Åke Elden";
 const DESCRIPTION =
   "Essays and notes from the research programme on judgment, responsibility, and human formation under conditions of artificial intelligence.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/blog";
+const URL_SELF = "https://akeelden.com/blog";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({

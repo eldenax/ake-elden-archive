@@ -6,7 +6,7 @@ import { PublicationCard } from "../components/PublicationCard";
 const TITLE = "Research Notes — Dr. Åke Elden";
 const DESCRIPTION =
   "Working papers, drafts, and items in preparation by Dr. Åke Elden — exploratory material kept separate from the peer-reviewed publication record.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/research-notes";
+const URL_SELF = "https://akeelden.com/research-notes";
 
 export const Route = createFileRoute("/research-notes")({
   head: () => ({

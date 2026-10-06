@@ -18,7 +18,7 @@
  *
  * Usage:
  *   node scripts/check-seo.mjs
- *   BASE_URL=https://ake-elden-archive.lovable.app node scripts/check-seo.mjs
+ *   BASE_URL=https://akeelden.com node scripts/check-seo.mjs
  */
 
 import { readFileSync } from "node:fs";

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/concepts/$slug")({
     return { concept };
   },
   head: ({ loaderData, params }) => {
-    const url = `https://ake-elden-archive.lovable.app/concepts/${params.slug}`;
+    const url = `https://akeelden.com/concepts/${params.slug}`;
     if (!loaderData) {
       return {
         meta: [
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/concepts/$slug")({
             isPartOf: {
               "@type": "CollectionPage",
               name: "Concepts — Dr. Åke Elden",
-              url: "https://ake-elden-archive.lovable.app/concepts",
+              url: "https://akeelden.com/concepts",
             },
           }),
         },

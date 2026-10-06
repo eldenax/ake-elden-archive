@@ -4,7 +4,7 @@ import { PUBLICATIONS } from "../data/publications";
 const TITLE = "News — Dr. Åke Elden";
 const DESCRIPTION =
   "Updates on research output, forthcoming publications, and programme developments.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/news";
+const URL_SELF = "https://akeelden.com/news";
 
 const TOTAL = PUBLICATIONS.length;
 const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;

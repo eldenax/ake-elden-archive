@@ -5,7 +5,7 @@ const TITLE = "Concepts — Åke Elden";
 const DESCRIPTION =
   "The core vocabulary of the research programme — inferential license, exercisable answerability, epistemic infrastructure, and the judgment gap — together with concepts still under development.";
 
-const URL_SELF = "https://ake-elden-archive.lovable.app/concepts";
+const URL_SELF = "https://akeelden.com/concepts";
 
 export const Route = createFileRoute("/concepts/")({
   head: () => ({

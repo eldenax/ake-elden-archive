@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 const TITLE = "Curriculum Vitae — Dr. Åke Elden";
 const DESCRIPTION = "Academic CV of Dr. Åke Elden, Research Advisor at NLA University College, Oslo.";
 
-const URL_SELF = "https://ake-elden-archive.lovable.app/cv";
+const URL_SELF = "https://akeelden.com/cv";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({

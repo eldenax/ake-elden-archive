@@ -13,7 +13,7 @@
  *
  * Usage:
  *   node scripts/check-sitemap.mjs                       # against http://localhost:8080
- *   BASE_URL=https://ake-elden-archive.lovable.app node scripts/check-sitemap.mjs
+ *   BASE_URL=https://akeelden.com node scripts/check-sitemap.mjs
  */
 
 import { readFileSync } from "node:fs";

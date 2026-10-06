@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 const TITLE = "Method: The Error Lies in the Transition — Dr. Åke Elden";
 const DESCRIPTION =
   "A methodological statement: on unlicensed ascent in philosophical reasoning — bridge omission, property migration, constitutive-condition neglect, and the philosophy of prior conditions.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/method";
+const URL_SELF = "https://akeelden.com/method";
 
 export const Route = createFileRoute("/method")({
   head: () => ({

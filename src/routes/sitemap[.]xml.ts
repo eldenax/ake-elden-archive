@@ -4,7 +4,7 @@ import { CONCEPTS } from "../data/concepts";
 import { PAPERS } from "../data/papers";
 import { BLOG_POSTS } from "../data/blog";
 
-const BASE_URL = "https://ake-elden-archive.lovable.app";
+const BASE_URL = "https://akeelden.com";
 
 interface SitemapEntry {
   path: string;
