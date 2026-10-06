@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 const TITLE = "Projects — Dr. Åke Elden";
 const DESCRIPTION =
   "Applied research projects that serve as diagnostic contexts for the philosophical programme: TrialTact and ClaimBuilder.ai.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/projects";
+const URL_SELF = "https://akeelden.com/projects";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({

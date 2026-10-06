@@ -26,7 +26,7 @@ const CAPACITIES: { slug: Capacity; label: string; blurb: string }[] = [
 const TITLE = "Concept Relationship Graph — Dr. Åke Elden";
 const DESCRIPTION =
   "An interactive map of the research programme's core concepts and the publications that support each connection between them.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/concept-graph";
+const URL_SELF = "https://akeelden.com/concept-graph";
 
 type GraphSearch = { pair?: string };
 

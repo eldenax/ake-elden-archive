@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getBlogPost, BLOG_POSTS, type BlogPost } from "../data/blog";
 import { getConcept } from "../data/concepts";
 
-const BASE = "https://ake-elden-archive.lovable.app";
+const BASE = "https://akeelden.com";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {

@@ -102,7 +102,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-const SITE_URL = "https://ake-elden-archive.lovable.app";
+const SITE_URL = "https://akeelden.com";
 const SITE_TITLE =
   "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
 const SITE_DESCRIPTION =

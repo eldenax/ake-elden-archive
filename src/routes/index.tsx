@@ -10,7 +10,7 @@ const DESCRIPTION =
 const OG_IMAGE =
   "https://id-preview--433ae820-2d37-44cc-ae5b-3f9c81619f70.lovable.app/ake-elden-hero.jpg";
 
-const URL_SELF = "https://ake-elden-archive.lovable.app/";
+const URL_SELF = "https://akeelden.com/";
 
 export const Route = createFileRoute("/")({
   head: () => ({

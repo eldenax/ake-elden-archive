@@ -4,7 +4,7 @@ const TITLE = "Contact — Dr. Åke Elden";
 const DESCRIPTION =
   "Contact Dr. Åke Elden, Research Advisor at NLA University College, Oslo — for academic correspondence, invited lectures, and research collaborations.";
 
-const URL_SELF = "https://ake-elden-archive.lovable.app/contact";
+const URL_SELF = "https://akeelden.com/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({

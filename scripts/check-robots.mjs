@@ -10,7 +10,7 @@
  *
  * Usage:
  *   node scripts/check-robots.mjs
- *   EXPECTED_SITEMAP=https://ake-elden-archive.lovable.app/sitemap.xml node scripts/check-robots.mjs
+ *   EXPECTED_SITEMAP=https://akeelden.com/sitemap.xml node scripts/check-robots.mjs
  *   SKIP_FETCH=1 node scripts/check-robots.mjs   # skip network check
  */
 
@@ -22,7 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const ROBOTS = resolve(ROOT, "public/robots.txt");
 const EXPECTED_SITEMAP =
-  process.env.EXPECTED_SITEMAP ?? "https://ake-elden-archive.lovable.app/sitemap.xml";
+  process.env.EXPECTED_SITEMAP ?? "https://akeelden.com/sitemap.xml";
 
 const errors = [];
 const fail = (msg) => errors.push(msg);

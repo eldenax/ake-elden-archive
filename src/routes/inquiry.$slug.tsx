@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 
-const BASE = "https://ake-elden-archive.lovable.app";
+const BASE = "https://akeelden.com";
 
 function truncate(s: string, max = 300) {
   const clean = s.replace(/\s+/g, " ").trim();

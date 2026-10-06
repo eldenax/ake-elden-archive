@@ -4,7 +4,7 @@ import { PUBLICATIONS } from "../data/publications";
 const TITLE = "Academic Profile — Dr. Åke Elden";
 const DESCRIPTION =
   "Academic profile of Dr. Åke Elden: Research Advisor at NLA University College, Oslo. Philosophy of technology, social epistemology, and theological anthropology — role, fields, indicators, and verified scholarly records.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/academic-profile";
+const URL_SELF = "https://akeelden.com/academic-profile";
 
 const PROFILES: { name: string; href: string; note?: string }[] = [
   { name: "ORCID", href: "https://orcid.org/0009-0003-0965-7666", note: "0009-0003-0965-7666" },

@@ -4,7 +4,7 @@ import { THEMES } from "../data/themes";
 const TITLE = "Research Programme — Dr. Åke Elden";
 const DESCRIPTION =
   "One research programme, six problem areas: judgment and answerability, normativity and standing, formation and agency, desire and social relations, explanation and philosophy of science, institutions and infrastructure.";
-const URL_SELF = "https://ake-elden-archive.lovable.app/inquiry";
+const URL_SELF = "https://akeelden.com/inquiry";
 
 export const Route = createFileRoute("/inquiry")({
   head: () => ({

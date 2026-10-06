@@ -4,7 +4,7 @@ import type { Concept } from "../data/concepts";
 import type { Paper } from "../data/papers";
 import { CONCEPTS } from "../data/concepts";
 
-const BASE = "https://ake-elden-archive.lovable.app";
+const BASE = "https://akeelden.com";
 
 export const Route = createFileRoute("/papers/$slug")({
   loader: ({ params }) => {
