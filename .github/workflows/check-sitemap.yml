@@ -45,7 +45,7 @@ jobs:
 
       - name: Check robots.txt
         env:
-          EXPECTED_SITEMAP: http://127.0.0.1:8080/sitemap.xml
+          EXPECTED_SITEMAP: https://akeelden.com/sitemap.xml
         run: bun run check:robots
 
       - name: Check SEO meta
