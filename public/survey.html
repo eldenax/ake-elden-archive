@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Being Seen in the Age of AI</title>
+    <script>
+      // Randomly assigns each participant to one of the two Nettskjema versions.
+      (function () {
+        var forms = ["https://nettskjema.no/a/658513", "https://nettskjema.no/a/658464"];
+        var i = 0;
+        try {
+          var buf = new Uint32Array(1);
+          window.crypto.getRandomValues(buf);
+          i = buf[0] % forms.length;
+        } catch (e) {
+          i = Math.floor(Math.random() * forms.length);
+        }
+        window.location.replace(forms[i]);
+      })();
+    </script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 36rem;
+        margin: 4rem auto;
+        padding: 0 1rem;
+        line-height: 1.5;
+        color: #222;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Opening the survey…</p>
+    <noscript>
+      <p>This survey needs JavaScript to open. Please enable JavaScript and reload the page.</p>
+    </noscript>
+  </body>
+</html>
