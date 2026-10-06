@@ -264,12 +264,6 @@
       </p>
     </main>
 
-    <noscript>
-      <p style="max-width: 32rem; margin: 0 auto; padding: 0 1.25rem">
-        This page needs JavaScript to open the questionnaire automatically. The
-        address below opens the same questionnaire: akeelden.com/survey
-      </p>
-    </noscript>
 
     <script>
       (function () {
@@ -292,24 +286,10 @@
           return forms[i];
         }
 
-        // Keep the link itself usable (new tab, bookmarks, no JavaScript) while
-        // the click handler decides which form version this visitor answers.
-        var open = document.getElementById("open");
-        open.href = pick();
-        open.addEventListener("click", function (e) {
-          if (
-            e.defaultPrevented ||
-            e.button !== 0 ||
-            e.metaKey ||
-            e.ctrlKey ||
-            e.shiftKey ||
-            e.altKey
-          ) {
-            return;
-          }
-          e.preventDefault();
-          window.location.replace(pick());
-        });
+        // The link itself is the mechanism, with or without JavaScript: the
+        // form version is chosen once when the page loads, and clicking
+        // follows the link normally (new tab, back button and all).
+        document.getElementById("open").href = pick();
 
         var copy = document.getElementById("copy");
         var input = document.getElementById("link");
