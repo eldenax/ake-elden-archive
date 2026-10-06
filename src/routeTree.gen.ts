@@ -9,85 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
-import { Route as ResearchNotesRouteImport } from './routes/research-notes'
-import { Route as PublicationsRouteImport } from './routes/publications'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as NewsRouteImport } from './routes/news'
-import { Route as MethodRouteImport } from './routes/method'
-import { Route as InquiryRouteImport } from './routes/inquiry'
-import { Route as CvRouteImport } from './routes/cv'
-import { Route as CurrentResearchRouteImport } from './routes/current-research'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
-import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
+import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CurrentResearchRouteImport } from './routes/current-research'
+import { Route as CvRouteImport } from './routes/cv'
+import { Route as InquiryRouteImport } from './routes/inquiry'
+import { Route as MethodRouteImport } from './routes/method'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as PublicationsRouteImport } from './routes/publications'
+import { Route as ResearchNotesRouteImport } from './routes/research-notes'
+import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
-import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
-import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
+import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
+import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
+import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResearchPremisesRoute = ResearchPremisesRouteImport.update({
-  id: '/research-premises',
-  path: '/research-premises',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResearchNotesRoute = ResearchNotesRouteImport.update({
-  id: '/research-notes',
-  path: '/research-notes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PublicationsRoute = PublicationsRouteImport.update({
-  id: '/publications',
-  path: '/publications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MethodRoute = MethodRouteImport.update({
-  id: '/method',
-  path: '/method',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InquiryRoute = InquiryRouteImport.update({
-  id: '/inquiry',
-  path: '/inquiry',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CvRoute = CvRouteImport.update({
-  id: '/cv',
-  path: '/cv',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CurrentResearchRoute = CurrentResearchRouteImport.update({
-  id: '/current-research',
-  path: '/current-research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConceptGraphRoute = ConceptGraphRouteImport.update({
-  id: '/concept-graph',
-  path: '/concept-graph',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicProfileRoute = AcademicProfileRouteImport.update({
@@ -95,14 +40,64 @@ const AcademicProfileRoute = AcademicProfileRouteImport.update({
   path: '/academic-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ConceptGraphRoute = ConceptGraphRouteImport.update({
+  id: '/concept-graph',
+  path: '/concept-graph',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
-  id: '/concepts/',
-  path: '/concepts/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurrentResearchRoute = CurrentResearchRouteImport.update({
+  id: '/current-research',
+  path: '/current-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CvRoute = CvRouteImport.update({
+  id: '/cv',
+  path: '/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InquiryRoute = InquiryRouteImport.update({
+  id: '/inquiry',
+  path: '/inquiry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicationsRoute = PublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchNotesRoute = ResearchNotesRouteImport.update({
+  id: '/research-notes',
+  path: '/research-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchPremisesRoute = ResearchPremisesRouteImport.update({
+  id: '/research-premises',
+  path: '/research-premises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -110,9 +105,19 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PapersSlugRoute = PapersSlugRouteImport.update({
-  id: '/papers/$slug',
-  path: '/papers/$slug',
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptsIndexRoute = ConceptsIndexRouteImport.update({
+  id: '/concepts/',
+  path: '/concepts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
+  id: '/concepts/$slug',
+  path: '/concepts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InquirySlugRoute = InquirySlugRouteImport.update({
@@ -120,14 +125,9 @@ const InquirySlugRoute = InquirySlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => InquiryRoute,
 } as any)
-const ConceptsSlugRoute = ConceptsSlugRouteImport.update({
-  id: '/concepts/$slug',
-  path: '/concepts/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
+const PapersSlugRoute = PapersSlugRouteImport.update({
+  id: '/papers/$slug',
+  path: '/papers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -291,88 +291,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/research-premises': {
-      id: '/research-premises'
-      path: '/research-premises'
-      fullPath: '/research-premises'
-      preLoaderRoute: typeof ResearchPremisesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/research-notes': {
-      id: '/research-notes'
-      path: '/research-notes'
-      fullPath: '/research-notes'
-      preLoaderRoute: typeof ResearchNotesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/publications': {
-      id: '/publications'
-      path: '/publications'
-      fullPath: '/publications'
-      preLoaderRoute: typeof PublicationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/method': {
-      id: '/method'
-      path: '/method'
-      fullPath: '/method'
-      preLoaderRoute: typeof MethodRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inquiry': {
-      id: '/inquiry'
-      path: '/inquiry'
-      fullPath: '/inquiry'
-      preLoaderRoute: typeof InquiryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cv': {
-      id: '/cv'
-      path: '/cv'
-      fullPath: '/cv'
-      preLoaderRoute: typeof CvRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/current-research': {
-      id: '/current-research'
-      path: '/current-research'
-      fullPath: '/current-research'
-      preLoaderRoute: typeof CurrentResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/concept-graph': {
-      id: '/concept-graph'
-      path: '/concept-graph'
-      fullPath: '/concept-graph'
-      preLoaderRoute: typeof ConceptGraphRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academic-profile': {
@@ -382,18 +305,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AcademicProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/concept-graph': {
+      id: '/concept-graph'
+      path: '/concept-graph'
+      fullPath: '/concept-graph'
+      preLoaderRoute: typeof ConceptGraphRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/concepts/': {
-      id: '/concepts/'
-      path: '/concepts'
-      fullPath: '/concepts/'
-      preLoaderRoute: typeof ConceptsIndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/current-research': {
+      id: '/current-research'
+      path: '/current-research'
+      fullPath: '/current-research'
+      preLoaderRoute: typeof CurrentResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cv': {
+      id: '/cv'
+      path: '/cv'
+      fullPath: '/cv'
+      preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inquiry': {
+      id: '/inquiry'
+      path: '/inquiry'
+      fullPath: '/inquiry'
+      preLoaderRoute: typeof InquiryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/publications': {
+      id: '/publications'
+      path: '/publications'
+      fullPath: '/publications'
+      preLoaderRoute: typeof PublicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-notes': {
+      id: '/research-notes'
+      path: '/research-notes'
+      fullPath: '/research-notes'
+      preLoaderRoute: typeof ResearchNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-premises': {
+      id: '/research-premises'
+      path: '/research-premises'
+      fullPath: '/research-premises'
+      preLoaderRoute: typeof ResearchPremisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -403,11 +396,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/papers/$slug': {
-      id: '/papers/$slug'
-      path: '/papers/$slug'
-      fullPath: '/papers/$slug'
-      preLoaderRoute: typeof PapersSlugRouteImport
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concepts/': {
+      id: '/concepts/'
+      path: '/concepts'
+      fullPath: '/concepts/'
+      preLoaderRoute: typeof ConceptsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concepts/$slug': {
+      id: '/concepts/$slug'
+      path: '/concepts/$slug'
+      fullPath: '/concepts/$slug'
+      preLoaderRoute: typeof ConceptsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inquiry/$slug': {
@@ -417,18 +424,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InquirySlugRouteImport
       parentRoute: typeof InquiryRoute
     }
-    '/concepts/$slug': {
-      id: '/concepts/$slug'
-      path: '/concepts/$slug'
-      fullPath: '/concepts/$slug'
-      preLoaderRoute: typeof ConceptsSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
+    '/papers/$slug': {
+      id: '/papers/$slug'
+      path: '/papers/$slug'
+      fullPath: '/papers/$slug'
+      preLoaderRoute: typeof PapersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
