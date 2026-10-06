@@ -5,26 +5,364 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Being Seen in the Age of AI</title>
-    <script>
-      (function () {
-        var forms = ["https://nettskjema.no/a/658513", "https://nettskjema.no/a/658464"];
-        var i = 0;
-        try {
-          var buf = new Uint32Array(1);
-          window.crypto.getRandomValues(buf);
-          i = buf[0] % forms.length;
-        } catch (e) {
-          i = Math.floor(Math.random() * forms.length);
-        }
-        window.location.replace(forms[i]);
-      })();
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 4rem auto; padding: 0 1rem; line-height: 1.5; color: #222; background: #fff; }
+      :root {
+        --paper: #f7f6f2;
+        --surface: #edebe4;
+        --ink: #191817;
+        --muted: #55534e;
+        --line: rgba(25, 24, 23, 0.14);
+        --display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+        --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { -webkit-text-size-adjust: 100%; }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: clamp(2.5rem, 8vw, 6rem) 1.25rem 5rem;
+      }
+
+      .kicker {
+        margin: 0 0 1.1rem;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(2rem, 7vw, 2.85rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .rule {
+        width: 3rem;
+        height: 1px;
+        margin: 2rem 0;
+        background: var(--line);
+      }
+
+      .lede {
+        margin: 0 0 2.2rem;
+        max-width: 32rem;
+        color: var(--muted);
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.95rem 1.6rem;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--sans);
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        border: 1px solid var(--ink);
+        border-radius: 2px;
+        transition: background 0.16s ease;
+      }
+      .cta:hover { background: #33312e; }
+      .cta .arrow { transform: translateY(1px); }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--muted);
+        outline-offset: 3px;
+      }
+
+      section {
+        margin-top: 3.6rem;
+        padding-top: 2.2rem;
+        border-top: 1px solid var(--line);
+      }
+
+      h2 {
+        margin: 0 0 0.5rem;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 1.35rem;
+        letter-spacing: -0.01em;
+      }
+
+      .hint {
+        margin: 0 0 1.4rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .copy-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: stretch;
+      }
+
+      .copy-row input {
+        flex: 1 1 16rem;
+        min-width: 0;
+        padding: 0.7rem 0.9rem;
+        background: var(--surface);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        font-family: var(--sans);
+        font-size: 0.95rem;
+      }
+
+      .copy-row button {
+        padding: 0.7rem 1.3rem;
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--ink);
+        border-radius: 2px;
+        font-family: var(--sans);
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.16s ease, color 0.16s ease;
+      }
+      .copy-row button:hover { background: var(--ink); color: var(--paper); }
+
+      .status {
+        min-height: 1.5rem;
+        margin: 0.7rem 0 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .qr-card {
+        display: block;
+        width: 100%;
+        max-width: 16rem;
+        height: auto;
+        margin: 0 0 1.4rem;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .dl-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .dl {
+        display: inline-block;
+        padding: 0.6rem 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        background: var(--surface);
+        color: var(--ink);
+        font-size: 0.92rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .dl:hover { border-color: var(--ink); }
+
+      .foot {
+        margin-top: 4rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .foot a { color: var(--muted); }
+
+      @media print {
+        body { background: #fff; }
+        .cta, .copy-row, .status, .dl-row, .foot, .lede { display: none; }
+        .qr-card { max-width: 88mm; border: none; }
+      }
     </style>
   </head>
   <body>
-    <p>Opening the survey…</p>
-    <noscript><p>This survey needs JavaScript to open. Please enable JavaScript and reload the page.</p></noscript>
+    <main class="page">
+      <p class="kicker">Research questionnaire</p>
+      <h1>Being Seen in the Age of AI</h1>
+      <div class="rule"></div>
+      <p class="lede">
+        Thank you for taking part. The questionnaire opens when you choose the
+        button below.
+      </p>
+
+      <a class="cta" id="open" href="https://nettskjema.no/a/658513">
+        Open the questionnaire
+        <span class="arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <section aria-labelledby="share-h">
+        <h2 id="share-h">Share this address</h2>
+        <p class="hint">
+          Send it to visitors directly. It opens this page, where the
+          questionnaire is one button away.
+        </p>
+        <div class="copy-row">
+          <input
+            id="link"
+            type="text"
+            readonly
+            value="https://akeelden.com/survey"
+            aria-label="Survey address to copy"
+          />
+          <button id="copy" type="button">Copy link</button>
+        </div>
+        <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="qr-h">
+        <h2 id="qr-h">Print materials</h2>
+        <p class="hint">
+          Download the card to place on a poster, flyer or slide. The image is
+          sized for A6 at 300 dpi.
+        </p>
+        <img
+          class="qr-card"
+          src="/survey-qr-card.png"
+          width="1240"
+          height="1754"
+          alt="Card with a QR code and the address akeelden.com/survey. Scanning it opens the questionnaire."
+        />
+        <div class="dl-row">
+          <a class="dl" href="/survey-qr-card.png" download="akeelden-survey-qr.png"
+            >Download image (PNG)</a
+          >
+          <a class="dl" href="/survey-qr-card.svg" download="akeelden-survey-qr.svg"
+            >Download vector (SVG)</a
+          >
+        </div>
+      </section>
+
+      <p class="foot">
+        Part of the research of
+        <a href="https://akeelden.com">Åke Elden</a>.
+      </p>
+    </main>
+
+    <noscript>
+      <p style="max-width: 32rem; margin: 0 auto; padding: 0 1.25rem">
+        This page needs JavaScript to open the questionnaire automatically. The
+        address below opens the same questionnaire: akeelden.com/survey
+      </p>
+    </noscript>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var forms = [
+          "https://nettskjema.no/a/658513",
+          "https://nettskjema.no/a/658464",
+        ];
+
+        function pick() {
+          var i = 0;
+          try {
+            var buf = new Uint32Array(1);
+            window.crypto.getRandomValues(buf);
+            i = buf[0] % forms.length;
+          } catch (e) {
+            i = Math.floor(Math.random() * forms.length);
+          }
+          return forms[i];
+        }
+
+        // Keep the link itself usable (new tab, bookmarks, no JavaScript) while
+        // the click handler decides which form version this visitor answers.
+        var open = document.getElementById("open");
+        open.href = pick();
+        open.addEventListener("click", function (e) {
+          if (
+            e.defaultPrevented ||
+            e.button !== 0 ||
+            e.metaKey ||
+            e.ctrlKey ||
+            e.shiftKey ||
+            e.altKey
+          ) {
+            return;
+          }
+          e.preventDefault();
+          window.location.replace(pick());
+        });
+
+        var copy = document.getElementById("copy");
+        var input = document.getElementById("link");
+        var status = document.getElementById("copy-status");
+        var resetTimer = null;
+
+        function report(ok) {
+          status.textContent = ok
+            ? "Copied. Paste it wherever you like."
+            : "Select the address and press Ctrl+C (Cmd+C on Mac).";
+          copy.textContent = ok ? "Copied" : "Copy link";
+          if (resetTimer) window.clearTimeout(resetTimer);
+          if (ok) {
+            resetTimer = window.setTimeout(function () {
+              copy.textContent = "Copy link";
+            }, 2200);
+          }
+        }
+
+        function legacyCopy() {
+          var wasReadonly = input.hasAttribute("readonly");
+          input.removeAttribute("readonly");
+          input.focus();
+          input.select();
+          try {
+            input.setSelectionRange(0, input.value.length);
+          } catch (e) {}
+          var ok = false;
+          try {
+            ok = document.execCommand("copy");
+          } catch (e) {
+            ok = false;
+          }
+          if (wasReadonly) input.setAttribute("readonly", "readonly");
+          report(ok);
+        }
+
+        copy.addEventListener("click", function () {
+          var text = input.value;
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(
+              function () {
+                report(true);
+              },
+              function () {
+                legacyCopy();
+              }
+            );
+          } else {
+            legacyCopy();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
