@@ -23,6 +23,7 @@ import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchNotesRouteImport } from './routes/research-notes'
 import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SurveyRouteImport } from './routes/survey'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
@@ -100,6 +101,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SurveyRoute = SurveyRouteImport.update({
+  id: '/survey',
+  path: '/survey',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/survey'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/survey'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/research-notes'
     | '/research-premises'
     | '/sitemap.xml'
+    | '/survey'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   ResearchNotesRoute: typeof ResearchNotesRoute
   ResearchPremisesRoute: typeof ResearchPremisesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SurveyRoute: typeof SurveyRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ConceptsSlugRoute: typeof ConceptsSlugRoute
   PapersSlugRoute: typeof PapersSlugRoute
@@ -389,6 +402,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/survey': {
+      id: '/survey'
+      path: '/survey'
+      fullPath: '/survey'
+      preLoaderRoute: typeof SurveyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -460,6 +480,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchNotesRoute: ResearchNotesRoute,
   ResearchPremisesRoute: ResearchPremisesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SurveyRoute: SurveyRoute,
   BlogSlugRoute: BlogSlugRoute,
   ConceptsSlugRoute: ConceptsSlugRoute,
   PapersSlugRoute: PapersSlugRoute,

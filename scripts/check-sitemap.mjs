@@ -36,7 +36,7 @@ if (!fullPathsMatch) {
 }
 const fullPaths = [...fullPathsMatch[1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
 
-const EXCLUDED = new Set(["/sitemap.xml"]); // served, not indexed
+const EXCLUDED = new Set(["/sitemap.xml", "/survey"]); // served, not indexed
 const DYNAMIC_EXPANDERS = {
   "/concepts/$slug": async () => {
     const mod = await import(pathToFileURL(resolve(ROOT, "src/data/concepts.ts")).href);
