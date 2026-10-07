@@ -17,6 +17,72 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "epistemic-automation-academic-evaluation",
+    title:
+      "Epistemic Automation and the Atrophy of Academic Evaluation: How Institutional Peer Review Rewards Conformity and Punishes Conceptual Overshoot",
+    date: "2026-10-07",
+    readingTime: "5 min read",
+    description:
+      "How expert committees in higher education come to act as pattern-recognition filters — rewarding backward-looking conformity and dismissing conceptual overshoot as “of limited relevance”.",
+    lede: "This scientific essay analyzes how the evaluation of research competence and academic suitability in higher education is increasingly characterized by a form of “epistemic automation.” By examining institutional peer reviews and expert committee evaluations through postphenomenological and epistemological frameworks, this paper demonstrates how evaluative bodies functionally act as pattern-recognition algorithms. Rather than exercising genuine professional judgment, these committees filter out theoretical extensions and institutional innovation as “of limited relevance” whenever contributions exceed established taxonomies and historical keywords. This process illustrates a paradox in contemporary academia: while the field of practice undergoes radical, technologically mediated transformations, the evaluative apparatus rewards backward-looking conformity over conceptual overshoot.",
+    sections: [
+      {
+        heading: "1. Introduction: Evaluation as pattern recognition",
+        paragraphs: [
+          "In contemporary academic institutions, peer review and expert committee evaluation (sakkyndig vurdering) are framed as the gold standard of quality assurance, scholarly judgment, and academic autonomy. It is assumed that an expert panel possesses the necessary metacognitive flexibility to weigh complex, heterogeneous, and innovative contributions against institutional needs.",
+          "However, recent organizational and evaluative practices reveal a fundamental shift in how this judgment is exercised. When confronted with interdisciplinary, theoretically advanced, or epistemologically novel candidate profiles, expert evaluations exhibit a marked tendency toward atrophy — a shrinking of the evaluative, methodological, and conceptual scope. The review is no longer concluded through open, dialectical reflection on where a discipline ought to move, but through a simplified, taxonomical reconciliation with where the discipline has been.",
+          "This mechanism can be conceptualized as epistemic automation. Although evaluation committees consist of human agents, they functionally operate akin to closed perplexity-reduction algorithms: anything that disrupts the established category structure or exceeds predefined keywords is perceived not as scholarly overshoot, but as noise to be filtered out.",
+        ],
+        concepts: ["judgment-gap", "automated-certainty"],
+      },
+      {
+        heading: "2. Theoretical framework: Epistemic automation and perplexity-reduction",
+        paragraphs: [
+          "To understand how academic evaluation atrophies, we must draw upon concepts from recent philosophy of technology and digital epistemology. When complex decision-making systems — whether algorithmic or institutional — are confronted with high informational complexity or theoretical ambiguity (perplexity), their primary function is to reduce this uncertainty as rapidly as possible into a binary or ranked order.",
+          "In academic expert reviews, this perplexity-reduction occurs through the creation of closed “textual filters”. Instead of evaluating the deeper substance, methodology, and overarching utility of a theoretical or empirical work, the committee searches for surface-level lexical markers (keyword matching).",
+          "If a position is defined within psychology for social work and child welfare, the evaluative body looks for historically ingrained terms such as living conditions, cross-sectional studies, or field-adjacent interventions. If an applicant presents a body of work analyzing the infrastructural and algorithmically mediated preconditions for casework, discretion, and moral imputability — that is, the very conditions under which future social governance operates — this triggers an epistemic friction.",
+          "Because the contribution cannot be seamlessly mapped onto the committee's familiar empirical taxonomies, a reductionist assertion is deployed: the work is declared to be of “limited relevance to the field”. The evaluation has thus executed an automated reduction of complexity simply by dismissing it.",
+        ],
+        concepts: ["automated-certainty", "systemic-friction"],
+      },
+      {
+        heading: "3. Case study: The penalty for conceptual overshoot",
+        paragraphs: [
+          "Observations from expert committee evaluations in health and social science faculties provide an instructive case study of how this mechanism penalizes candidates with broad methodological and theoretical repertoires.",
+          "When an applicant possesses a documented, quantitative, and experimental methodological foundation — a solid empirical “bedrock” — but additionally offers an overarching framework of theoretical and institutional inquiry regarding technological mediation, a striking evaluative paradox occurs:",
+          "Subtractions over additions. In an open and dynamic academic environment, the combination of empirical craftsmanship and theoretical innovation would be treated as significant added value. In automated evaluation logic, however, the conceptual overshoot is interpreted as a divergence from the core.",
+          "Categorical reductionism. The committee acts exclusively rather than inclusively. Instead of recognizing that the applicant can teach empirical methodology while simultaneously contributing critical analysis of the future of public governance, it is inferred that the theoretical focus renders the applicant “less relevant”.",
+          "Asymmetry of metrics. The evaluative metric becomes inherently asymmetric. While candidates who reproduce conventional research within established, narrow channels are rewarded for conformity, the candidate who challenges or expands the boundaries of the discipline is penalized for lack of alignment.",
+          "This demonstrates that expert committees frequently do not evaluate a candidate's potential or actual capacity, but rather measure how seamlessly the candidate's publication history can be mapped onto the committee's own backward-looking cognitive template.",
+        ],
+        concepts: ["inferential-license"],
+      },
+      {
+        heading: "4. The institutional blind spot: Backward-looking evaluation in an accelerating world",
+        paragraphs: [
+          "The consequences of this epistemic automation extend far beyond individual candidate rankings; they represent a profound institutional problem for higher education.",
+          "When universities rely on evaluative bodies that reward academic conformity, a deep rift emerges between educational content and field reality:",
+          "The field of practice (social services, child welfare, healthcare) is undergoing a pervasive digital transformation in which algorithmic casework, predictive modeling, and automated decision-support systems alter the fundamental preconditions for professional judgment, ethics, and responsibility.",
+          "The evaluative apparatus tenaciously clings to a definition of “discipline relevance” that was forged in a pre-digital, analogue regime.",
+          "By classifying research on algorithmic governance and digital formation as “of limited relevance” for future social workers and psychologists, expert committees actively preserve curricula in the past. The candidates best equipped to understand and research the actual systemic conditions students will face are systematically devalued in favor of candidates who deliver more of the same.",
+        ],
+        concepts: ["epistemic-infrastructure", "exercisable-answerability"],
+      },
+      {
+        heading: "5. Conclusion: Restoring academic judgment",
+        paragraphs: [
+          "When expert reviews in academia function as mechanical perplexity-reduction filters, peer review ceases to serve as an engine of disciplinary advancement. It becomes, instead, an instrument of epistemic reproduction and institutional conservation.",
+          "To counter this atrophy, academic institutions must demand higher epistemological competence from their evaluation committees. An expert panel must not merely check whether a candidate fits into yesterday's taxonomical slots; it must exercise genuine metacognitive judgment by asking: How does this research expand the horizon of our discipline for tomorrow?",
+          "Until such a restoration of scholarly discretion takes place, academic evaluation systems will continue to reward the safe and the conformist — while conceptual overshoot and necessary innovation remain discarded on the outside as “of limited relevance”.",
+        ],
+        concepts: ["judgment-gap", "inferential-license"],
+      },
+    ],
+    closing: [
+      "This essay applies the programme's account of automated certainty and the judgment gap to academic evaluation itself: the same perplexity-reduction that algorithmic systems perform on users can be performed by institutions on the work they are asked to judge.",
+    ],
+  },
+  {
     slug: "research-premises",
     title: "Research Premises: A Philosophy of Licensed Transitions",
     date: "2026-09-10",
@@ -136,7 +202,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "comparative-desire-and-social-violence",
     title: "Comparative Desire and Social Violence",
     date: "2026-08-29",
-    readingTime: "6 min read",
+    readingTime: "5 min read",
     description:
       "A new article in Philosophy & Social Criticism argues that comparative relations do not merely shape responses to unequal outcomes but constitute the sense of entitlement through which those outcomes are experienced as unfair.",
     lede: "Social experiences of unfairness resist standard distributional accounts. A new article in Philosophy & Social Criticism develops the mechanism of comparative entitlement formation: the process by which comparative relations do not merely shape responses to unequal outcomes but participate in constituting the sense of entitlement through which those outcomes are experienced as unfair. Drawing on Girard's mimetic desire, Festinger's social comparison theory, Honneth's recognition, and empirical work on inequity aversion, the paper traces the pathway from comparison to grievance and, under determinate conditions, to displacement onto vulnerable third parties.",
