@@ -106,6 +106,22 @@ function BlogPostPage() {
           </section>
         ))}
 
+        {post.references && post.references.length > 0 && (
+          <section className="mb-14 border-t border-border pt-10">
+            <h2 className="font-display text-2xl leading-snug text-foreground">References</h2>
+            <ul className="mt-4 space-y-3">
+              {post.references.map((ref) => (
+                <li
+                  key={ref}
+                  className="pl-6 -indent-6 text-sm leading-relaxed text-muted-foreground"
+                >
+                  {ref.split("_").map((part, i) => (i % 2 ? <em key={i}>{part}</em> : part))}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <div className="border-t border-border pt-10">
           {post.closing.map((p, i) => (
             <p key={i} className="mt-4 font-display text-lg leading-relaxed text-foreground/85">
