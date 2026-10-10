@@ -112,6 +112,33 @@ function BlogPostPage() {
               {p}
             </p>
           ))}
+          {post.references && post.references.length > 0 && (
+            <section className="mt-12">
+              <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                References
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {post.references.map((ref) => (
+                  <li key={ref.text} className="text-sm leading-relaxed text-muted-foreground">
+                    {ref.text}
+                    {ref.url && (
+                      <>
+                        {" "}
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+                        >
+                          Link
+                        </a>
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           <div className="mt-8 flex flex-wrap gap-4 text-sm">
             <Link
               to="/concepts"

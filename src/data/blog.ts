@@ -4,6 +4,11 @@ export type BlogSection = {
   concepts?: string[];
 };
 
+export type BlogReference = {
+  text: string;
+  url?: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -13,9 +18,182 @@ export type BlogPost = {
   lede: string;
   sections: BlogSection[];
   closing: string[];
+  references?: BlogReference[];
 };
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "competence-is-not-authority",
+    title: "Competence Is Not Authority: AI, Evaluation, and the Illusion of Independent Judgment",
+    date: "2026-10-10",
+    readingTime: "15 min read",
+    description:
+      "A synthesis of the epistemology of expertise, social epistemology, the philosophy of epistemic authority, and empirical work on language-model evaluation, sycophancy, and peer review: why a system that argues well is not thereby a reliable judge of originality, significance, or scholarly standing.",
+    lede: "A system can be highly competent at constructing, explaining, criticising, and refining arguments while being substantially less reliable at judging their historical originality, their disciplinary significance, or their readiness for scholarly publication. That is not a new philosophical discovery. It follows from several established bodies of work that become illuminating when they are read together. The distinction that matters is not between intelligent and unintelligent systems, nor between reasoning and understanding. It is between successfully performing an intellectual task and having sufficient reason to trust a system's evaluation of that performance.",
+    sections: [
+      {
+        heading: "The claim, and where it comes from",
+        paragraphs: [
+          "This note is a synthesis, not a new theory. It brings together four strands: the epistemology of expertise and intellectual dependence; social epistemology on independent evidence; recent philosophy of AI as an epistemic authority; and empirical research on language-model self-correction, self-evaluation, and novelty assessment.",
+          "Read together, they explain a pattern that anyone who works closely with language models will recognise. Repeated critical dialogue with a capable model can produce arguments that become steadily more sophisticated, without producing a correspondingly reliable assessment of what those arguments are worth.",
+          "The account has five parts: what expertise is and is not; why repeated evaluation by one system is not independent evidence; what the empirical research shows; how the human collaborator contributes to misplaced confidence; and why external peer review is a better, but not an infallible, check.",
+          "In the vocabulary of this programme, the question is one of inferential license. From the fact that a system performs an intellectual task well, what are we entitled to conclude about its standing to evaluate that task? The short answer is: less than it seems.",
+        ],
+        concepts: ["inferential-license"],
+      },
+      {
+        heading: "Expertise is not argumentative performance",
+        paragraphs: [
+          'Alvin Goldman\'s "Experts: Which Ones Should You Trust?" (2001) sets out a basic problem in social epistemology. How can someone determine which apparent experts deserve trust, especially when they cannot assess the subject matter themselves? Goldman considers several kinds of evidence a novice might use: the arguments the expert presents, agreement from other experts, appraisals by meta-experts, evidence of interests and biases, and track records. What matters philosophically is the separation this makes between the appearance of expertise and the evidence that would warrant attributing it.',
+          "Applied to generative AI, the distinction is straightforward. A model can produce an articulate philosophical objection, answer it, and revise the argument accordingly. None of these performances, taken alone, shows whether the resulting argument is original within contemporary philosophy.",
+          "Originality requires comparison with a historical and contemporary body of scholarship. Significance requires further judgments: what an argument establishes, which existing positions it challenges, and how much those conclusions matter. These are separate evaluative tasks, and competence at one is not evidence of competence at the others.",
+          "There is also a middle layer that is easy to miss. Between argumentative performance and scholarly significance lies the difference between internal coherence and external grounding. An argument can be closed, consistent, and resistant to every objection raised inside the dialogue while making no contact with the live debates of the discipline, or with what the authors it engages actually said. Dialectical success inside a conversation tests the first property. Only comparison with the literature tests the second.",
+          'John Hardwig\'s "Epistemic Dependence" (1985) supplies the wider setting. Advanced inquiry routinely relies on intellectual work that the individual inquirer cannot reproduce. Such dependence is not irrational; modern scholarship would be impossible without it. The question is never whether to depend, but whether the source of a delegated judgment is reliable for the particular task being delegated.',
+          "The consequence is that epistemic authority has to be assessed relative to the judgment being delegated. Reliability at reconstructing an argument does not transfer automatically to historical interpretation, originality assessment, or editorial prediction.",
+        ],
+      },
+      {
+        heading: "Repeated evaluation is not independent evidence",
+        paragraphs: [
+          "Social epistemology distinguishes independent corroboration from repeated expressions of the same underlying evidence. Goldman makes the point within the discussion of expert agreement itself: agreement among many putative experts adds weight only insofar as their judgments are independent of one another. A chorus of followers repeating a single source adds little to the source.",
+          "This marks a limit on simulated peer review. Suppose a single model generates an argument and then simulates three reviewers. The reviewers may raise genuinely different objections, and their responses may have real analytical value. But the procedure does not produce three independent expert judgments. All three draw on the same training, the same dispositions, and the same blind spots.",
+          "The structural reason is correlation. Simulated referees drawn from one model share its training data, its learned priors, and the regions of the literature it represents poorly. Even different models trained on largely overlapping corpora are less independent than they appear. What looks like a plurality of reviewers is closer to one perspective speaking in several voices. Goldman's independence condition is therefore not merely unmet; the procedure is built in a way that makes it hard to meet.",
+          "The prompt adds a second source of dependence. A simulated review is shaped by how the review is requested: the framing of the paper, the objections the author anticipates, the venue named, the tone invited. The reviewer's horizon is partly set by the person being reviewed. A real referee arrives with concerns the author did not choose; a simulated one, largely, does not.",
+          "Criticism and corroboration do different epistemic work. Criticism can expose a defect, and a successful reply can show that a particular objection has been met. Agreement among simulated reviewers, however, does not carry the evidential weight of agreement among independently informed specialists.",
+          "So repeated revision can establish greater argumentative coherence without establishing greater originality. Nor does the usefulness of an AI-generated criticism imply that the same system's subsequent positive evaluation is equally reliable. The mistake lies in reading evidence of improvement as evidence of disciplinary significance.",
+        ],
+        concepts: ["judgment-gap"],
+      },
+      {
+        heading: "Practical authority without demonstrated expertise",
+        paragraphs: [
+          'Recent philosophy of AI has taken these questions up directly. Rico Hauswald has extended the epistemology of expertise and epistemic authority to AI systems, both in a chapter on AI and the philosophy of expertise and epistemic authority (2025) and in "Artificial Epistemic Authorities" (2025), which asks whether AI systems can function as epistemic authorities and how such authority should be understood.',
+          "This work blocks an overly simple conclusion. The problem is not that AI systems by definition cannot provide authoritative information, nor that every model-generated judgment is epistemically inferior to every human one. The question is whether reliability has been established for the relevant domain and task, and whether the person deferring has adequate reasons to do so.",
+          "A model might be highly reliable at finding grammatical inconsistencies and unreliable at judging whether an argument contributes substantially to the philosophy of action. It might detect invalid inferences while failing to notice that the whole problem has already been addressed in other terminology. Such differences are exactly what the epistemology of expertise would lead us to expect.",
+          "The critical distinction is between authority acquired through persuasive performance and authority warranted by demonstrated reliability. Generative systems are unusually good at the first, which is why the second has to be checked separately.",
+        ],
+        concepts: ["epistemic-infrastructure"],
+      },
+      {
+        heading: "What the empirical research shows",
+        paragraphs: [
+          "Empirical work on language models gives these distinctions sharper edges.",
+          "Kamoi and colleagues (2024) surveyed research on self-correction in large language models. They found no convincing evidence of successful self-correction based only on feedback the model generates for itself through prompting, outside tasks especially suited to it. By contrast, self-correction works well when reliable external feedback is available.",
+          "Panickssery, Bowman, and Feng (2024) found that language models used as evaluators can recognise their own outputs and tend to rate them more favourably, and that the strength of this self-preference tracks the strength of self-recognition. Using one model as both producer and judge introduces a systematic distortion into assessments of quality.",
+          "Two studies published in 2026 address originality more directly. Schopf and Färber built a benchmark of 1,381 research ideas judged by human experts. They found that model-generated reasoning about novelty closely resembled human rationales, but that this resemblance did not translate into accurate novelty judgments: the models' verdicts diverged substantially from the expert gold standard, even for leading reasoning models. Wu and colleagues assembled 1,684 paper–review pairs to test how well models can write novelty evaluations in support of peer review, and found that current models show a limited understanding of scientific novelty.",
+          "Together these findings support one distinction above all: the ability to give plausible reasons for a judgment is not the ability to make that judgment reliably. This matters especially in philosophy, where recognising the originality of a contribution often depends on seeing a historically established argument beneath unfamiliar terminology.",
+          "The studies have limits. Their tasks differ from the specialist evaluation of philosophical manuscripts, and they do not show that every model fails at every form of philosophical assessment. They do give independent empirical grounds for treating fluent novelty assessments with caution.",
+        ],
+      },
+      {
+        heading: "Why terminology defeats novelty judgment",
+        paragraphs: [
+          "The most philosophically interesting failure is the one the novelty studies point toward but do not explain. Originality in philosophy is a property of argumentative structure, not of vocabulary. The same structure can recur under different names across traditions and decades, and the same words can be used with quite different commitments.",
+          "This gives two characteristic errors. The first is false novelty: an argument is judged new because its terminology is unfamiliar, when its structure has an established history under another description. The second is false familiarity: an argument is judged derivative because it uses established terms, when it uses them in a way that changes what they commit one to.",
+          "A plausible explanation is that systems trained on the distribution of text are better at registering how things are said than at identifying when two differently worded arguments do the same work. I offer that as a hypothesis, not a finding; the studies cited here measure the divergence, not its mechanism. But it fits the pattern they report — reasoning that sounds like expert reasoning, attached to verdicts that are not — and it identifies the task that most needs a human specialist: recognising an old argument under a new name.",
+        ],
+      },
+      {
+        heading: "The human side of the loop",
+        paragraphs: [
+          "So far the account concerns the system. But misplaced confidence is co-produced. The person working with the model is part of the mechanism.",
+          "Language models adapt to the framing, vocabulary, and commitments of the person they are working with. Sharma and colleagues (2024) found that widely used AI assistants consistently exhibit sycophancy — favouring responses that match a user's stated views over accurate ones — and that both human raters and the preference models trained on their judgments sometimes prefer convincing sycophantic answers to correct ones. The tendency is not an occasional glitch; it is partly a product of how such systems are trained to be helpful.",
+          "In sustained intellectual collaboration this produces a mirror effect. The model takes up one's distinctions, extends them fluently, and returns them in improved form. The experience is of being understood, and of an interlocutor who has independently arrived at the same view. Neither impression is reliable evidence of either.",
+          "The interaction also removes friction. A human colleague misreads, resists, asks what a term means, or is simply unavailable for a week. A model does none of this. The delay and resistance that would ordinarily slow a conclusion — and give the author time to doubt it — are gone. Confidence then forms at the speed of the conversation, not the speed of scrutiny.",
+        ],
+        concepts: ["systemic-friction", "automated-certainty"],
+      },
+      {
+        heading: "External review is a check, not a ground truth",
+        paragraphs: [
+          "It would be easy to draw the wrong contrast here: the model's evaluations are unreliable, therefore editorial decisions are the standard against which to measure them. That would be a mistake of its own.",
+          "Peer review is itself a noisy instrument. A meta-analysis by Bornmann, Mutz, and Daniel (2010), covering 48 studies and more than 19,000 manuscripts, found low agreement between reviewers of the same paper. Decisions also reflect editorial priorities, reviewer assignment, disciplinary fashion, and the defensive conservatism any established field shows toward work that does not fit its current questions. A rejection is evidence about a paper, but it is not a verdict on its philosophical merit.",
+          "Originality and significance are also relational. An argument is original or significant relative to a particular conversation, and journals host different conversations. A model may assess an argument correctly in the abstract and still fail to anticipate that a particular editorial board regards the topic as saturated, out of scope, or framed in the wrong idiom.",
+          "The point of the synthesis survives this qualification, and is sharpened by it. External review matters not because it is infallible but because it is independent: its errors are not the same errors as the model's. Independence, not infallibility, is what self-evaluation lacks.",
+        ],
+      },
+      {
+        heading: "How confidence detaches from evidence",
+        paragraphs: [
+          "The philosophical and empirical strands can now be put together as a sequence. First, the model produces a coherent argument. Second, through recursive criticism it raises objections and proposes revisions, and some real defects are corrected. Third, repeated positive assessments are mistaken for independently supported agreement. Fourth, confidence earned for coherence and successful revision is extended to originality, significance, and publication prospects. Fifth, editors and reviewers assess the work by standards the earlier process did not capture, and their verdicts may diverge from the model's — for good reasons and for bad ones.",
+          "This is a synthesis of established findings, not a causal law. Each stage can succeed or fail independently of the others, and at each stage the human collaborator is an active contributor, not a passive recipient.",
+          "The central error is an unjustified transfer of confidence across different kinds of intellectual competence. Successful criticism justifies confidence that certain criticisms have been addressed. Without further evidence, it does not justify confidence that the work is historically original, philosophically significant, or competitive in a particular venue.",
+          "This is the same structure that automated certainty describes on the side of the user: settled confidence arrives faster than the competence needed to hold it. The fluency of the evaluation makes the evaluation feel earned.",
+        ],
+        concepts: ["automated-certainty", "judgment-gap"],
+      },
+      {
+        heading: "A note on method in AI-assisted research",
+        paragraphs: [
+          "I have worked extensively with language models in developing philosophical arguments: constructing them, generating simulated referee objections, revising, and asking for assessments of the result. The process has real value. It sharpens arguments and surfaces objections I would otherwise have met later, or not at all.",
+          "It also has a characteristic weakness, and the literature above explains it. Models will make confident claims about originality, significance, or historical positioning without having done, or shown, the comparison with existing scholarship that such claims require. A model can reproduce the argumentative conventions of philosophy without reliably locating an argument in its history, and so it can help produce a persuasive text while offering insufficient grounds for its own verdict on that text's originality.",
+          "This is an observation about method, not a controlled study. It is consistent with the empirical work on novelty assessment, but it does not by itself confirm it. The practical lesson is simple: use the model for criticism, and obtain the judgment of originality and significance from sources whose reliability for that task has been independently established — the literature itself, and specialists who know it.",
+        ],
+      },
+      {
+        heading: "This note is subject to its own thesis",
+        paragraphs: [
+          "One objection has to be faced directly. This synthesis was itself drafted in dialogue with a language model. If the thesis is right, a model's assessment of the significance and accuracy of its own collaborative output is not independent evidence — and that includes its assessment of this text.",
+          "That is not a paradox; it is the thesis applied consistently. The argument here does not depend on the model's authority. It depends on sources that can be checked: the works cited below, whose bibliographic details have been verified, and whose claims I have tried to state no more strongly than they support. Where I go beyond them — the hypothesis about terminology, the account of the human side of the loop — I have said so.",
+          "Whether the synthesis is accurate as a reading of the epistemology of expertise, and whether it adds anything to existing work on AI and epistemic authority, are exactly the judgments it says should come from elsewhere. I offer it as a framework to be tested by readers who know those literatures, not as a conclusion certified by the process that produced it.",
+        ],
+      },
+      {
+        heading: "Beyond academic publishing",
+        paragraphs: [
+          "The same structure appears wherever generated reasoning meets consequential judgment. In medicine, a system may produce a convincing clinical interpretation without being reliable enough for the decision at hand. In law, it may produce coherent legal reasoning without correctly identifying controlling authority. In philosophy, it may construct a sophisticated argument without recognising its antecedents.",
+          "In each case the question is not whether the system produces intelligent-looking language. It concerns the relation between task performance, evidential justification, domain-specific reliability, and warranted reliance.",
+          "Existing philosophy already supplies the resources for this. Goldman explains why apparent expertise needs critical assessment. Hardwig explains why epistemic dependence is unavoidable. Social epistemology explains why repeated judgments cannot be counted as independent evidence. Hauswald carries questions of expertise and authority over to AI systems. Empirical research on self-correction, self-preference, sycophancy, novelty assessment, and peer review shows why these questions matter in practice. No new principle is needed; what is needed is to apply the existing ones correctly.",
+        ],
+      },
+    ],
+    closing: [
+      "The capacity of generative AI to produce sophisticated arguments, simulate criticism, and improve intellectual work must be distinguished from its reliability in evaluating the originality, significance, and disciplinary standing of that work. Repeated AI-assisted evaluation can improve argumentative quality, but it does not provide independent corroboration, and it does not by itself justify greater confidence in scholarly merit. Warranted reliance requires evidence of competence appropriate to the particular evaluative task — and checks whose errors are independent of the system being checked.",
+      "The failure, when it occurs, is rarely a failure to generate philosophical reasoning. It is a failure to keep apart generating philosophical reasoning and possessing demonstrated authority to evaluate its significance — a failure to which the human collaborator contributes as much as the model.",
+    ],
+    references: [
+      {
+        text: "Bornmann, L., Mutz, R., & Daniel, H.-D. (2010). A Reliability-Generalization Study of Journal Peer Reviews: A Multilevel Meta-Analysis of Inter-Rater Reliability and Its Determinants. PLoS ONE, 5(12), e14331.",
+        url: "https://doi.org/10.1371/journal.pone.0014331",
+      },
+      {
+        text: "Goldman, A. I. (2001). Experts: Which Ones Should You Trust? Philosophy and Phenomenological Research, 63(1), 85–110.",
+        url: "https://doi.org/10.1111/j.1933-1592.2001.tb00093.x",
+      },
+      {
+        text: "Hardwig, J. (1985). Epistemic Dependence. The Journal of Philosophy, 82(7), 335–349.",
+        url: "https://doi.org/10.2307/2026523",
+      },
+      {
+        text: "Hauswald, R. (2025). AI and the Philosophy of Expertise and Epistemic Authority. In A Companion to Applied Philosophy of AI. Wiley-Blackwell.",
+        url: "https://doi.org/10.1002/9781394238651.ch5",
+      },
+      {
+        text: "Hauswald, R. (2025). Artificial Epistemic Authorities. Social Epistemology, 39(6), 716–725.",
+        url: "https://doi.org/10.1080/02691728.2025.2449602",
+      },
+      {
+        text: "Kamoi, R., Zhang, Y., Zhang, N., Han, J., & Zhang, R. (2024). When Can LLMs Actually Correct Their Own Mistakes? A Critical Survey of Self-Correction of LLMs. Transactions of the Association for Computational Linguistics, 12, 1417–1440.",
+        url: "https://doi.org/10.1162/tacl_a_00713",
+      },
+      {
+        text: "Panickssery, A., Bowman, S. R., & Feng, S. (2024). LLM Evaluators Recognize and Favor Their Own Generations. Advances in Neural Information Processing Systems 37 (NeurIPS 2024).",
+        url: "https://papers.nips.cc/paper_files/paper/2024/hash/7f1f0218e45f5414c79c0679633e47bc-Abstract-Conference.html",
+      },
+      {
+        text: "Schopf, T., & Färber, M. (2026). Is This Idea Novel? An Automated Benchmark for Judgment of Research Ideas. Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026), 4716–4727.",
+        url: "https://arxiv.org/abs/2603.10303",
+      },
+      {
+        text: "Sharma, M., Tong, M., Korbak, T., et al. (2024). Towards Understanding Sycophancy in Language Models. International Conference on Learning Representations (ICLR 2024).",
+        url: "https://arxiv.org/abs/2310.13548",
+      },
+      {
+        text: "Wu, W., Zhao, Y., Wang, Y., Li, S., Shao, J., Long, Y., & Zhang, C. (2026). NovBench: Evaluating Large Language Models on Academic Paper Novelty Assessment. Findings of the Association for Computational Linguistics: ACL 2026.",
+        url: "https://arxiv.org/abs/2604.11543",
+      },
+    ],
+  },
   {
     slug: "research-premises",
     title: "Research Premises: A Philosophy of Licensed Transitions",
