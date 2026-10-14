@@ -224,6 +224,8 @@ const NAV = [
   { to: "/academic-profile", label: "About" },
   { to: "/blog", label: "Notes" },
   { to: "/cv", label: "CV" },
+  { to: "/engagements", label: "Lectures" },
+  { to: "/letter", label: "Letter" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -402,6 +404,30 @@ function Footer() {
                   className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
                 >
                   Download CV
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/engagements"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Lectures &amp; consultation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/letter"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  The Research Letter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/resources"
+                  className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground"
+                >
+                  Resources
                 </Link>
               </li>
               <li>

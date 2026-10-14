@@ -15,13 +15,16 @@ import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CurrentResearchRouteImport } from './routes/current-research'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as EngagementsRouteImport } from './routes/engagements'
 import { Route as InquiryRouteImport } from './routes/inquiry'
+import { Route as LetterRouteImport } from './routes/letter'
 import { Route as MethodRouteImport } from './routes/method'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchNotesRouteImport } from './routes/research-notes'
 import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SurveyRouteImport } from './routes/survey'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -61,9 +64,19 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EngagementsRoute = EngagementsRouteImport.update({
+  id: '/engagements',
+  path: '/engagements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InquiryRoute = InquiryRouteImport.update({
   id: '/inquiry',
   path: '/inquiry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LetterRoute = LetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MethodRoute = MethodRouteImport.update({
@@ -94,6 +107,11 @@ const ResearchNotesRoute = ResearchNotesRouteImport.update({
 const ResearchPremisesRoute = ResearchPremisesRouteImport.update({
   id: '/research-premises',
   path: '/research-premises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -144,13 +162,16 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/engagements': typeof EngagementsRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/letter': typeof LetterRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -167,13 +188,16 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/engagements': typeof EngagementsRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/letter': typeof LetterRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -191,13 +215,16 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
+  '/engagements': typeof EngagementsRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/letter': typeof LetterRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/resources': typeof ResourcesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -216,13 +243,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/engagements'
     | '/inquiry'
+    | '/letter'
     | '/method'
     | '/news'
     | '/projects'
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/resources'
     | '/sitemap.xml'
     | '/survey'
     | '/blog/$slug'
@@ -239,13 +269,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/engagements'
     | '/inquiry'
+    | '/letter'
     | '/method'
     | '/news'
     | '/projects'
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/resources'
     | '/sitemap.xml'
     | '/survey'
     | '/blog/$slug'
@@ -262,13 +295,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/current-research'
     | '/cv'
+    | '/engagements'
     | '/inquiry'
+    | '/letter'
     | '/method'
     | '/news'
     | '/projects'
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/resources'
     | '/sitemap.xml'
     | '/survey'
     | '/blog/$slug'
@@ -286,13 +322,16 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CurrentResearchRoute: typeof CurrentResearchRoute
   CvRoute: typeof CvRoute
+  EngagementsRoute: typeof EngagementsRoute
   InquiryRoute: typeof InquiryRouteWithChildren
+  LetterRoute: typeof LetterRoute
   MethodRoute: typeof MethodRoute
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
   PublicationsRoute: typeof PublicationsRoute
   ResearchNotesRoute: typeof ResearchNotesRoute
   ResearchPremisesRoute: typeof ResearchPremisesRoute
+  ResourcesRoute: typeof ResourcesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SurveyRoute: typeof SurveyRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -346,11 +385,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/engagements': {
+      id: '/engagements'
+      path: '/engagements'
+      fullPath: '/engagements'
+      preLoaderRoute: typeof EngagementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inquiry': {
       id: '/inquiry'
       path: '/inquiry'
       fullPath: '/inquiry'
       preLoaderRoute: typeof InquiryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letter': {
+      id: '/letter'
+      path: '/letter'
+      fullPath: '/letter'
+      preLoaderRoute: typeof LetterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/method': {
@@ -393,6 +446,13 @@ declare module '@tanstack/react-router' {
       path: '/research-premises'
       fullPath: '/research-premises'
       preLoaderRoute: typeof ResearchPremisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -472,13 +532,16 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CurrentResearchRoute: CurrentResearchRoute,
   CvRoute: CvRoute,
+  EngagementsRoute: EngagementsRoute,
   InquiryRoute: InquiryRouteWithChildren,
+  LetterRoute: LetterRoute,
   MethodRoute: MethodRoute,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,
   PublicationsRoute: PublicationsRoute,
   ResearchNotesRoute: ResearchNotesRoute,
   ResearchPremisesRoute: ResearchPremisesRoute,
+  ResourcesRoute: ResourcesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SurveyRoute: SurveyRoute,
   BlogSlugRoute: BlogSlugRoute,
