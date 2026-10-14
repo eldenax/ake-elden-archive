@@ -17,6 +17,73 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "for-dommekraft-handling-og-ansvar",
+    title: "Før dømmekraft, handling og ansvar",
+    date: "2026-10-14",
+    readingTime: "5 min lesetid",
+    description:
+      "Hva må være på plass før menneskelig dømmekraft, handling og ansvar kan utøves? Om forståelse, handlingsrom og institusjonene som gjør dem mulige.",
+    lede: "Vi spør ofte om mennesker har vurdert riktig, handlet godt eller tatt ansvar. Men disse spørsmålene forutsetter noe som lett blir oversett: at det faktisk var mulig å vurdere, handle og svare for det som skjedde. Forskningen min undersøker hva som må være på plass før menneskelig dømmekraft, handling og ansvar kan utøves.",
+    sections: [
+      {
+        heading: "Spørsmålet som kommer før",
+        paragraphs: [
+          "Når en beslutning får uheldige følger, leter vi gjerne etter personen som tok den. Hvem godkjente? Hvem signerte? Hvem burde ha grepet inn? Det er nødvendige spørsmål. Men de er ikke alltid de første vi bør stille.",
+          "Før vi vurderer hva noen burde ha gjort, må vi undersøke hvilke muligheter vedkommende faktisk hadde. Var informasjonen tilgjengelig og forståelig? Fantes det tid til å vurdere den? Kunne personen utfordre premissene, velge annerledes eller stanse prosessen?",
+          "Dette flytter oppmerksomheten fra den enkelte beslutningen til betingelsene som gjorde beslutningen mulig. Poenget er ikke å frita mennesker for ansvar, men å undersøke grunnlaget for å tilskrive dem det.",
+        ],
+      },
+      {
+        heading: "Dømmekraft er mer enn å motta et svar",
+        paragraphs: [
+          "Menneskelig dømmekraft innebærer mer enn å velge mellom ferdig oppstilte alternativer. Den krever at vi kan forstå hva som står på spill, vurdere relevansen av opplysninger og spørre om selve problemstillingen er riktig. Noen ganger består god dømmekraft nettopp i å avvise rammen som en beslutning presenteres innenfor.",
+          "Et system kan levere en anbefaling uten å gjøre begrunnelsen tilgjengelig for den som skal bruke den. Anbefalingen kan til og med være korrekt. Likevel følger det ikke automatisk at personen som godtar den, har hatt anledning til å utøve selvstendig dømmekraft. Et riktig resultat og en begrunnet vurdering er ikke det samme.",
+          "Vi må derfor spørre hva som gjør en vurdering til personens egen: ikke at den er upåvirket av andre, men at personen har en reell mulighet til å undersøke, prøve og ta stilling til grunnene.",
+        ],
+        concepts: ["judgment-gap", "inferential-license"],
+      },
+      {
+        heading: "Handling krever et reelt handlingsrom",
+        paragraphs: [
+          "Å være til stede i en prosess er ikke det samme som å kunne påvirke den. En person kan stå oppført som beslutningstaker og likevel mangle myndighet, ressurser eller praktiske muligheter til å handle annerledes. Den formelle rollen forteller oss derfor ikke alene hvor handlingsrommet finnes.",
+          "Tenk på en tenkt arbeidssituasjon der en ansatt skal godkjenne en automatisk anbefaling. Arbeidsmengden gir knapt tid til gjennomgang, grunnlaget er vanskelig å etterprøve, og et avvik krever en godkjenning som sjelden er tilgjengelig. Den ansatte kan teknisk sett trykke nei. Men den tekniske muligheten er ikke nødvendigvis et reelt alternativ.",
+          "Dette betyr ikke at enhver begrensning opphever handleevne. Menneskelig handling foregår alltid innenfor rammer. Spørsmålet er hvilke begrensninger som fortsatt tillater meningsfull påvirkning, og hvilke som gjør personens deltakelse til en formalitet.",
+        ],
+        concepts: ["systemic-friction"],
+      },
+      {
+        heading: "Ansvar må kunne utøves, ikke bare plasseres",
+        paragraphs: [
+          "Ansvar omtales ofte som noe som fordeles etter at en hendelse har funnet sted. Men ansvar har også en side som kommer før utfallet: muligheten til å forstå en forpliktelse, reagere på relevante grunner og gripe inn mens handlingen ennå kan påvirkes.",
+          "Det er derfor ikke nok at en institusjon kan peke på en navngitt ansvarlig. Personen må også kunne svare for vurderingen på en meningsfull måte. Det krever blant annet tilgang til grunnlaget og mulighet til å forklare, utfordre og korrigere det som gjøres.",
+          "Når slike betingelser mangler, kan problemet være mer grunnleggende enn uklar ansvarsfordeling. Vi må undersøke om den formen for ansvar vi tilskriver personen, overhodet kunne oppstå i situasjonen. Å plassere ansvar kan ikke i ettertid skape det handlingsrommet som manglet.",
+        ],
+        concepts: ["exercisable-answerability"],
+      },
+      {
+        heading: "Betingelsene formes før beslutningen",
+        paragraphs: [
+          "Tid, tilgang til informasjon, arbeidsdeling og muligheter for innsigelse er ikke bare bakgrunn for menneskelige valg. De er med på å bestemme hva mennesker kan få øye på, forstå og gjøre. Institusjoner og teknologier former dermed betingelsene for dømmekraft og ansvar før den enkelte står overfor en beslutning.",
+          "Kunstig intelligens gjør dette særlig synlig, men spørsmålet er ikke begrenset til AI. Det oppstår også i administrative rutiner, profesjonelle hierarkier og vurderingssystemer. Overalt hvor noen forventes å svare for et resultat, må vi undersøke forholdet mellom forventningen og de faktiske mulighetene til å påvirke det.",
+          "Den praktiske oppgaven blir å bevare rom for begrunnet uenighet, etterprøving og inngrep. Det er ikke tilstrekkelig å beholde et menneske i prosessen dersom prosessen samtidig fjerner det mennesket trenger for å kunne utøve rollen.",
+        ],
+        concepts: ["epistemic-infrastructure"],
+      },
+      {
+        heading: "Fra det vi observerer, til det vi tilskriver",
+        paragraphs: [
+          "At noen har signert, viser at en signatur foreligger. Det viser ikke alene at personen hadde kontroll. At noen har godkjent en anbefaling, viser ikke alene at vedkommende kunne vurdere den. Overgangen fra et observerbart forhold til en tilskrivelse av dømmekraft, handling eller ansvar trenger en begrunnelse.",
+          "Her ligger en felles tråd i forskningsprogrammet mitt: Hva gir oss grunnlag for å gjøre denne overgangen, og hva må allerede være på plass for at grunnlaget skal holde? Det er et spørsmål om betingelser, men også om hvordan betingelsene blir skapt, fordelt og noen ganger fjernet.",
+        ],
+        concepts: ["inferential-license"],
+      },
+    ],
+    closing: [
+      "Vi bør ikke slutte å spørre hva mennesker har gjort, eller hva de bør svare for. Men vi må også stille spørsmålet som kommer før: Hadde de reelle muligheter til å forstå, vurdere og påvirke det som skjedde?",
+      "Menneskelig dømmekraft, handling og ansvar sikres ikke bare ved å kreve dem. Vi må også sørge for at betingelsene for å utøve dem er til stede.",
+    ],
+  },
+  {
     slug: "research-premises",
     title: "Research Premises: A Philosophy of Licensed Transitions",
     date: "2026-09-10",
