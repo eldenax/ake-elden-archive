@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-const TITLE = "Research Premises — Dr. Åke Elden";
+const TITLE = "The Philosophy of Exercisable Human Capacities — Dr. Åke Elden";
 const DESCRIPTION =
-  "The governing statement of Dr. Åke Elden's research programme: a philosophy of licensed transitions and prior conditions across judgment, responsibility, normativity, and agency.";
+  "Åke Elden's philosophical framework: how technology transforms the epistemic, relational, and institutional conditions for exercising knowledge, judgment, freedom, agency, and responsibility.";
 const URL_SELF = "https://akeelden.com/research-premises";
 
 export const Route = createFileRoute("/research-premises")({
@@ -23,17 +23,84 @@ export const Route = createFileRoute("/research-premises")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: "Research Premises: A Philosophy of Licensed Transitions",
+          headline: "The Philosophy of Exercisable Human Capacities",
           description: DESCRIPTION,
           url: URL_SELF,
           author: { "@type": "Person", name: "Åke Elden" },
           datePublished: "2026-09-10",
+          dateModified: "2026-10-14",
         }),
       },
     ],
   }),
   component: ResearchPremisesPage,
 });
+
+const STRUCTURE = [
+  { title: "Philosophical theories", question: "What do theories of knowledge, judgment, freedom, and responsibility presuppose?" },
+  { title: "Conditions of exercisability", question: "Which epistemic, relational, temporal, and institutional conditions must be available?" },
+  { title: "Transformed conditions", question: "How are these conditions reorganized by technology and social practices?" },
+  { title: "Philosophical consequences", question: "What must we revise in our theories of human capacities and their legitimate attribution?" },
+];
+
+const FRAMEWORK = [
+  {
+    id: "fundamental-distinction",
+    label: "Possession, attribution, and exercise",
+    paragraphs: [
+      "Possessing a capacity is not the same as having an opportunity to exercise it. Nor does formally attributing agency, autonomy, or responsibility establish that the conditions for their exercise are present. A person can retain the relevant abilities while the environment makes their meaningful exercise unavailable.",
+      "The object of inquiry is therefore neither the isolated individual nor technology alone. It is the relation between human capacities and the conditions that make their exercise possible. Exercisability is situated: it concerns what a person can meaningfully do in a particular epistemic, relational, and institutional setting.",
+    ],
+  },
+  {
+    id: "domains-of-exercise",
+    label: "The capacities and their conditions",
+    paragraphs: [
+      "Knowledge requires more than receiving information. Depending on the claim and context, knowing may require access to evidence, opportunities to assess its reliability, and the possibility of revising a belief. The inquiry asks when technological fluency supports understanding and when it conceals the absence of epistemic warrant.",
+      "Judgment requires more than selecting a recommended answer. It involves recognizing relevant reasons, considering alternatives, and being able to question the framing of the decision. The inquiry asks whether these possibilities remain available when systems organize relevance in advance.",
+      "Agency and freedom require more than formal permission to act. They involve meaningful alternatives and a practical capacity to initiate, refuse, or redirect action. The inquiry examines how infrastructures shape the available field of action before an individual chooses.",
+      "Responsibility requires more than locating a named person in a procedure. Depending on the kind of responsibility at issue, relevant conditions can include understanding, control, time to deliberate, and a position from which to explain or contest a decision. These are candidates for examination, not a universal checklist assumed to settle every case.",
+      "Across these domains, relational conditions matter: recognition by others, access to interlocutors, and institutional willingness to hear challenges may help determine whether a capacity can actually be exercised. Temporal conditions matter as well: an opportunity to intervene that arrives after a decision is irreversible may not be a meaningful opportunity at all.",
+    ],
+  },
+  {
+    id: "technological-transformation",
+    label: "From assistance to the organization of conditions",
+    paragraphs: [
+      "Consider a physician using a system to compare treatments. When the physician can examine the reasons, investigate conflicting evidence, identify alternatives, and reject the recommendation, the system may support exercisable judgment.",
+      "Contrast a setting in which the system has already selected the relevant alternatives, risk factors, and sources of evidence, while the physician lacks access to what has been excluded. A formal power to approve or reject the recommendation does not by itself establish an ability to assess its framing. The question is no longer only whether the decision is correct, but whether independent judgment remains exercisable.",
+      "The thesis is not technological determinism. Systems can strengthen, redistribute, weaken, or displace the conditions of exercise. Which transformation occurs depends on design, institutional arrangements, access, authority, and practice—not on the mere presence of technology.",
+    ],
+  },
+  {
+    id: "attribution-gap",
+    label: "Responsibility without exercisability?",
+    paragraphs: [
+      "The central normative problem is a possible mismatch between attribution and exercisability. An institution may continue to hold a person responsible while restricting that person's ability to investigate, understand, challenge, or correct the basis of a decision.",
+      "Under what conditions is it legitimate to demand responsibility from a person when the system organizing the action limits the exercise of the judgment that responsibility presupposes?",
+      "A failure of these conditions does not automatically remove every form of responsibility. Duties to seek help, raise an objection, or refuse a role may remain, where these actions are genuinely available. The philosophical task is to distinguish the responsibilities that can still be exercised from those assigned only formally, and to examine the obligations of those who organize the conditions.",
+    ],
+  },
+  {
+    id: "method-of-inquiry",
+    label: "A method of philosophical inquiry",
+    paragraphs: [
+      "First, specify the capacity and the kind of exercise being assessed. Second, reconstruct the conditions the relevant philosophical account requires. Third, investigate how those conditions are organized in the actual setting. Fourth, determine which technological or institutional changes affect them. Finally, assess whether the resulting attribution of knowledge, agency, autonomy, or responsibility remains warranted.",
+      "Not every influence is a change in a condition of possibility. A claim about impaired exercisability must identify the relevant condition, explain why it is necessary in this context, and show how its alteration constrains meaningful exercise. Inconvenience, lower performance, and the unavailability of a capacity's exercise must not be conflated.",
+      "Empirical investigation can establish how access, options, deliberative time, or opportunities for contestation are distributed. It cannot by itself determine which normative attributions are justified. That conclusion requires an explicit philosophical argument connecting the evidence to the relevant conditions.",
+    ],
+  },
+  {
+    id: "scope-and-contribution",
+    label: "Scope, continuity, and the claim to contribution",
+    paragraphs: [
+      "Technology has always shaped human action. The programme does not claim to discover that fact. It engages existing work on technological mediation, extended and distributed cognition, institutional power, and the cultivation of moral capacities.",
+      "Its proposed analytical focus is the distinction between mediating the exercise of a capacity, helping constitute that capacity, and transforming the conditions of its exercise while its formal attribution persists. Whether this distinction yields an original contribution must be demonstrated through arguments and engagement with existing theories, not asserted through a new name.",
+      "Within the wider programme, epistemic calibration concerns the conditions of knowing; personhood and development concern the conditions of being understood over time; normative authority concerns the conditions of directing action; moral deliberation concerns the availability of an interval for judgment; and exercisable answerability concerns the conditions of giving and demanding an answer. These inquiries need not make identical arguments to share this governing problem.",
+      "The connection to licensed transitions is direct. If we move from a person's formal role or observable action to an attribution of responsibility, the conditions of exercisability help determine whether that transition is licensed. The earlier statement below develops this broader methodological architecture.",
+    ],
+  },
+];
 
 const SECTIONS = [
   {
@@ -148,20 +215,60 @@ function ResearchPremisesPage() {
             Research Premises
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            A philosophy of licensed transitions
+            The Philosophy of Exercisable Human Capacities
           </h1>
           <p className="mt-8 font-display text-lg italic leading-relaxed text-foreground/80">
-            The governing statement of the research programme: what must already
-            be true before a transition in normative, epistemic, evaluative, or
-            agential status is warranted?
+            Technology can transform the very conditions under which human
+            knowledge, judgment, agency, freedom, and responsibility can be exercised.
           </p>
         </div>
       </header>
 
       <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+        <section aria-labelledby="conditions-thesis" className="mb-16">
+          <h2 id="conditions-thesis" className="font-display text-2xl leading-snug text-foreground">
+            The Conditions of Exercisability Thesis
+          </h2>
+          <blockquote className="mt-6 border-l-2 border-foreground/30 pl-6 font-display text-lg leading-relaxed text-foreground">
+            Technological systems may transform not merely the performance of
+            human capacities but the epistemic, relational, and institutional
+            conditions under which those capacities remain exercisable.
+            Consequently, the formal attribution of agency, autonomy, or
+            responsibility may persist even when the conditions required for
+            their meaningful exercise have been weakened or displaced.
+          </blockquote>
+        </section>
+
+        <section aria-labelledby="philosophical-structure" className="mb-16 border-y border-border py-10">
+          <h2 id="philosophical-structure" className="font-display text-2xl text-foreground">
+            The philosophical structure
+          </h2>
+          <ol className="mt-8">
+            {STRUCTURE.map((stage, index) => (
+              <li key={stage.title} className="text-center">
+                <h3 className="font-display text-xl leading-snug text-foreground">{stage.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{stage.question}</p>
+                {index < STRUCTURE.length - 1 && <span aria-hidden="true" className="my-6 block text-2xl text-muted-foreground">↓</span>}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {FRAMEWORK.map((section) => (
+          <section key={section.id} id={section.id} className="mb-14 scroll-mt-24">
+            <h2 className="font-display text-2xl leading-snug text-foreground">{section.label}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="mt-4 text-base leading-relaxed text-muted-foreground">{paragraph}</p>
+            ))}
+          </section>
+        ))}
+
+        <h2 className="mb-8 border-t border-border pt-10 font-display text-3xl leading-snug text-foreground">
+          A philosophy of licensed transitions
+        </h2>
         <nav
           aria-label="Premises sections"
-          className="mb-16 rounded-md border border-border bg-muted/30 p-6"
+          className="mb-16 border-b border-border pb-8"
         >
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Sections
@@ -216,7 +323,7 @@ function ResearchPremisesPage() {
 
         <div className="border-t border-border pt-10">
           <p className="font-display text-lg leading-relaxed text-foreground/85">
-            This statement also appears as a{" "}
+            The earlier licensed-transitions statement also appears as a{" "}
             <Link
               to="/blog/$slug"
               params={{ slug: "research-premises" }}
