@@ -84,6 +84,48 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
   {
+    slug: "mennesket-i-endring",
+    title: "Mennesket i endring: Hva skjer med frihet, kunnskap og ansvar når verden forvandles?",
+    date: "2026-10-14",
+    readingTime: "2 min lesetid",
+    description:
+      "Når teknologi, sosiale relasjoner og institusjonelle praksiser endrer seg, utfordres det teoretiske fundamentet som filosofien har hvilt på.",
+    lede: "Klassisk filosofi har gitt oss dypsindige teorier om hva det vil si å tenke, handle, være fri og bære ansvar. Tradisjonelt har disse teoriene tatt utgangspunkt i gitte forutsetninger om den menneskelige natur og våre omgivelser: at kunnskap krever en bevisst observatør, at en handling er et resultat av et fritt valg, og at etisk ansvar forutsetter en viss grad av kontroll.\n\nMen hva skjer når selve betingelsene for disse begrepene endres i takt med omverdenen?\n\nNår teknologi, sosiale relasjoner og institusjonelle praksiser endrer seg, utfordres det teoretiske fundamentet som filosofien har hvilt på.",
+    sections: [
+      {
+        heading: "1. Kunnskap i en digital og nettverksbasert tidsalder",
+        paragraphs: [
+          "Hva vil det si å «vite» noe når algoritmer, søkemotorer og kunstig intelligens overtar deler av vår kognitive prosess? Tidligere var kunnskap noe som i hovedsak ble tilegnet, bearbeidet og lagret i det enkelte menneskes sinn. I dag er kunnskap i økende grad distribuert og mediert gjennom teknologiske verktøy og institusjonelle nettverk. Forutsetningen om det uavhengige, erkjennende subjektet må derfor revideres.",
+        ],
+      },
+      {
+        heading: "2. Handling og agens: Hvem handlet egentlig?",
+        paragraphs: [
+          "Tradisjonelle handlingsteorier forutsetter en klar årsakssammenheng mellom menneskelig intensjon og den utførte handlingen. Men når beslutninger fattes i komplekse sosiotekniske systemer – der algoritmisk styring, institusjonelt regelverk og sosiale normer veves sammen – blir grensene for menneskelig agens uklare. Er det personen, verktøyet eller systemet som utfører handlingen?",
+        ],
+      },
+      {
+        heading: "3. Frihetens nye rammebetingelser",
+        paragraphs: [
+          "Frihet defineres ofte som fravær av tvang eller som evnen til å forme eget liv. Samtidig endrer nye teknologier og sosiale mønstre måten vi påvirkes på. Gjennom atferdsdesign, sosiale medier og institusjonelle føringer formes våre preferanser og valg lenge før vi i det hele tatt er klar over det. Frihet handler i dag ikke bare om å kunne velge fritt blant alternativer, men om å forstå hvordan selve handlingsrommet oppstår og begrenses.",
+        ],
+      },
+      {
+        heading: "4. Ansvar i komplekse strukturer",
+        paragraphs: [
+          "Etisk og juridisk ansvar forutsetter vanligvis kontroll, forutsigbarhet og en klar aktør. Når handlinger skjer gjennom sammensatte institusjoner eller automatiserte prosesser, oppstår ofte et «ansvarsvakuum». Hvem bærer ansvaret når et system feiler, eller når institusjonelle praksiser fører til utilsiktede konsekvenser?",
+        ],
+      },
+      {
+        heading: "Veien videre for filosofien",
+        paragraphs: [
+          "Å undersøke filosofiens forutsetninger i lys av samtiden er ikke bare en teoretisk øvelse, men en praktisk nødvendighet. For å kunne navigere i en verden preget av raske teknologiske og sosiale endringer, må vi kontinuerlig stille spørsmålet: Holdes de filosofiske verktøyene våre fortsatt oppdatert, eller analyserer vi en ny virkelighet med utdaterte briller?",
+        ],
+      },
+    ],
+    closing: [],
+  },
+  {
     slug: "research-premises",
     title: "Research Premises: A Philosophy of Licensed Transitions",
     date: "2026-09-10",

@@ -68,7 +68,7 @@ function BlogPostPage() {
             })}{" "}
             · {post.readingTime}
           </p>
-          <p className="mt-8 font-display text-lg italic leading-relaxed text-foreground/80">
+          <p className="mt-8 whitespace-pre-line font-display text-lg italic leading-relaxed text-foreground/80">
             {post.lede}
           </p>
         </div>
