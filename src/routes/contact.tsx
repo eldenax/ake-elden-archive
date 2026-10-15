@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const TITLE = "Contact — Dr. Åke Elden";
 const DESCRIPTION =
-  "Contact Dr. Åke Elden, Research Advisor at NLA University College, Oslo — for academic correspondence, invited lectures, and research collaborations.";
+  "Contact Dr. Åke Elden, Researcher and Research Advisor at NLA University College, Oslo — for academic correspondence, invited lectures, and research collaborations.";
 
 const URL_SELF = "https://akeelden.com/contact";
 
@@ -14,6 +14,8 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -52,7 +54,7 @@ function ContactPage() {
         Åke Elden, PhD
       </h1>
       <p className="mt-4 font-display text-lg italic text-foreground/80">
-        Research Advisor · NLA University College · Oslo, Norway
+        Researcher and Research Advisor · NLA University College · Oslo, Norway
       </p>
 
       <div className="mt-12 border-t border-border pt-10">

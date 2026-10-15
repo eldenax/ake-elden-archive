@@ -6,7 +6,7 @@ import { SELECTED } from "../data/publications";
 const TITLE =
   "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
 const DESCRIPTION =
-  "Åke Elden studies the conditions under which judgment, responsibility, agency, and explanation become possible — and how technological and institutional systems reorganize them.";
+  "Åke Elden is a researcher and research advisor at NLA University College. He explores how technology changes our ability to judge, act freely, and take responsibility.";
 const URL_SELF = "https://akeelden.com/";
 
 export const Route = createFileRoute("/")({
@@ -49,7 +49,7 @@ function Index() {
         <div className="max-w-xl">
           <p className="text-sm text-muted-foreground">Philosophy · Technology · Human life</p>
           <h1 className="mt-4 font-display text-4xl leading-tight tracking-normal text-foreground md:text-5xl">
-            Åke Elden<span className="mt-2 block font-sans text-base text-muted-foreground">PhD · Research Advisor, NLA University College</span>
+            Åke Elden<span className="mt-2 block font-sans text-base text-muted-foreground">PhD · Researcher and Research Advisor, NLA University College</span>
           </h1>
           <p className="mt-7 text-lg leading-relaxed text-foreground">
             What makes it possible for us to judge, act freely, and take responsibility?

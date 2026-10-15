@@ -3,7 +3,7 @@ import { PUBLICATIONS } from "../data/publications";
 
 const TITLE = "Academic Profile — Dr. Åke Elden";
 const DESCRIPTION =
-  "Academic profile of Dr. Åke Elden: Research Advisor at NLA University College, Oslo. Philosophy of technology, social epistemology, and theological anthropology — role, fields, indicators, and verified scholarly records.";
+  "Academic profile of Dr. Åke Elden: Researcher and Research Advisor at NLA University College, Oslo. Philosophy of technology, social epistemology, and theological anthropology — role, fields, indicators, and verified scholarly records.";
 const URL_SELF = "https://akeelden.com/academic-profile";
 
 const PROFILES: { name: string; href: string; note?: string }[] = [
@@ -58,7 +58,7 @@ const EARLIER_WORK = [
 const EXPERIENCE = [
   {
     period: "Present",
-    role: "Research Advisor",
+    role: "Researcher and Research Advisor",
     org: "NLA University College, Oslo",
     note: "Research development and advisory work alongside an independent research programme in philosophy of technology and theological anthropology.",
   },
@@ -102,7 +102,7 @@ export const Route = createFileRoute("/academic-profile")({
             "@type": "Person",
             name: "Åke Elden",
             honorificPrefix: "Dr.",
-            jobTitle: "Research Advisor",
+            jobTitle: "Researcher and Research Advisor",
             identifier: "https://orcid.org/0009-0003-0965-7666",
             knowsAbout: FIELDS.map((f) => f.name),
             affiliation: {
@@ -181,7 +181,7 @@ function AcademicProfilePage() {
           </h1>
           <p className="mt-4 font-display text-lg italic leading-snug text-foreground/85">
             Philosopher of technology, social epistemology, and theological
-            anthropology · Research Advisor at NLA University College, Oslo
+            anthropology · Researcher and Research Advisor at NLA University College, Oslo
           </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground/85">
             I work on the conditions under which judgment, responsibility, and
@@ -221,7 +221,7 @@ function AcademicProfilePage() {
                 Current role
               </dt>
               <dd className="mt-1 text-foreground/85">
-                Research Advisor, NLA University College, Oslo, Norway.
+                Researcher and Research Advisor, NLA University College, Oslo, Norway.
               </dd>
             </div>
             <div>
