@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "Curriculum Vitae — Dr. Åke Elden";
-const DESCRIPTION = "Academic CV of Dr. Åke Elden, Research Advisor at NLA University College, Oslo.";
+const DESCRIPTION = "Academic CV of Dr. Åke Elden, Researcher and Research Advisor at NLA University College, Oslo.";
 
 const URL_SELF = "https://akeelden.com/cv";
 
@@ -13,6 +13,8 @@ export const Route = createFileRoute("/cv")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -28,7 +30,7 @@ export const Route = createFileRoute("/cv")({
             "@type": "Person",
             name: "Åke Elden",
             honorificPrefix: "Dr.",
-            jobTitle: "Research Advisor",
+            jobTitle: "Researcher and Research Advisor",
             affiliation: {
               "@type": "CollegeOrUniversity",
               name: "NLA University College",
@@ -112,7 +114,7 @@ function CVPage() {
           Åke Elden, PhD
         </h1>
         <p className="mt-3 font-display text-lg italic text-foreground/80">
-          Research Advisor · NLA University College · Oslo, Norway
+          Researcher and Research Advisor · NLA University College · Oslo, Norway
         </p>
         <div className="mt-6 space-y-1 text-sm text-muted-foreground">
           <p>

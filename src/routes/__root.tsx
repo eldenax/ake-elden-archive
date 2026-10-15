@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "@/components/LanguageToggle";
 
 import {
@@ -113,10 +114,10 @@ const PERSON_JSONLD = {
   "@type": "Person",
   name: "Åke Elden",
   honorificSuffix: "PhD",
-  jobTitle: "Researcher",
+  jobTitle: "Researcher and Research Advisor",
   hasOccupation: {
     "@type": "Occupation",
-    name: "Research Advisor, NLA University College",
+    name: "Researcher and Research Advisor, NLA University College",
   },
   description:
     "Researcher in philosophy of technology, social epistemology, and theological anthropology.",
@@ -209,14 +210,10 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 const RESEARCH_MENU = [
-  { to: "/inquiry", label: "Research Programme" },
-  { to: "/research-premises", label: "Research Premises" },
-  { to: "/method", label: "Method" },
-  { to: "/current-research", label: "Current Research" },
-  { to: "/concepts", label: "Concepts" },
-  { to: "/concept-graph", label: "Research Map" },
-  { to: "/research-notes", label: "Research Notes" },
-  { to: "/projects", label: "Projects" },
+  { to: "/inquiry", label: "Overview" },
+  { to: "/research-premises", label: "Core ideas" },
+  { to: "/current-research", label: "Current work" },
+  { to: "/research-notes", label: "Working papers" },
 ] as const;
 
 const NAV = [
@@ -233,21 +230,21 @@ function ResearchMenu() {
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
       }}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className="text-foreground/70 transition-colors hover:text-foreground"
+        className="h-auto p-0 text-xs font-normal text-foreground/70 hover:bg-transparent md:text-sm"
       >
         Research <span aria-hidden>▾</span>
-      </button>
+      </Button>
       {open && (
         <div className="absolute right-0 top-full z-50 w-56 rounded-md border border-border bg-background p-2 shadow-md">
           {RESEARCH_MENU.map((n) => (
@@ -306,7 +303,7 @@ function Footer() {
             <div>
               <p className="font-display text-sm text-foreground">Dr. Åke Elden</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Research Advisor · NLA University College · Oslo, Norway
+                Researcher and Research Advisor · NLA University College · Oslo, Norway
               </p>
             </div>
             <p className="text-xs text-muted-foreground">

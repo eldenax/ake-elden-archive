@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "Projects — Dr. Åke Elden";
 const DESCRIPTION =
-  "Applied research projects that serve as diagnostic contexts for the philosophical programme: TrialTact and ClaimBuilder.ai.";
+  "Applied research with TrialTact and ClaimBuilder.ai: exploring how people and institutions use evidence, make decisions, and take responsibility.";
 const URL_SELF = "https://akeelden.com/projects";
 
 export const Route = createFileRoute("/projects")({
@@ -14,6 +14,7 @@ export const Route = createFileRoute("/projects")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -37,7 +38,7 @@ const PROJECTS = [
     name: "ClaimBuilder.ai",
     role: "Applied research context",
     summary:
-      "An applied setting in which the philosophy of judgment, answerability, and second-order provenance is tested against the practical construction of institutional claims.",
+      "A setting for examining how institutions build claims, justify decisions, and account for the rules and rankings behind them.",
     themes: [
       { slug: "judgment-answerability-institutional-reason", label: "Judgment & Answerability" },
       { slug: "institutions-infrastructure-technological-mediation", label: "Institutions & Infrastructure" },
@@ -47,7 +48,7 @@ const PROJECTS = [
     name: "TrialTact",
     role: "Applied research context",
     summary:
-      "An applied setting in which epistemic infrastructure, systemic friction, and administrative expertise become visible under load in a regulated domain.",
+      "A regulated setting for examining how information systems, practical barriers, and administrative expertise shape what people can know and do.",
     themes: [
       { slug: "institutions-infrastructure-technological-mediation", label: "Institutions & Infrastructure" },
     ],
@@ -63,14 +64,12 @@ function ProjectsPage() {
             Projects
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            Applied projects as diagnostic contexts
+            Research in practice
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            The projects below are not stand-alone products. They are the
-            settings in which the philosophical problems of the research
-            programme become visible under practical load — where inferential
-            license, second-order provenance, and institutional friction stop
-            being abstractions and start pushing back.
+            These projects bring the philosophical questions into practical
+            settings: what counts as evidence, who can defend a decision, and
+            what helps or prevents people from acting responsibly.
           </p>
         </div>
       </section>

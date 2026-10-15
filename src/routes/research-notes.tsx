@@ -3,7 +3,7 @@ import { RESEARCH_NOTES } from "../data/publications";
 import { THEMES } from "../data/themes";
 import { PublicationCard } from "../components/PublicationCard";
 
-const TITLE = "Research Notes — Dr. Åke Elden";
+const TITLE = "Working Papers — Dr. Åke Elden";
 const DESCRIPTION =
   "Working papers, drafts, and items in preparation by Dr. Åke Elden — exploratory material kept separate from the peer-reviewed publication record.";
 const URL_SELF = "https://akeelden.com/research-notes";
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/research-notes")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -42,15 +43,14 @@ function ResearchNotesPage() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Research notes
+            Working papers
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             Working papers and drafts
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            This page holds exploratory material: drafts, circulating working
-            papers, and lines of argument still in preparation. None of it is
-            peer-reviewed, and none of it belongs to the publication record.
+            These are drafts and ideas still being developed. They are not
+            peer-reviewed and are separate from the publication record.
             Items move to{" "}
             <Link
               to="/publications"

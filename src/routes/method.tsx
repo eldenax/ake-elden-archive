@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "Method: The Error Lies in the Transition — Dr. Åke Elden";
 const DESCRIPTION =
-  "A methodological statement: on unlicensed ascent in philosophical reasoning — bridge omission, property migration, constitutive-condition neglect, and the philosophy of prior conditions.";
+  "How Åke Elden examines philosophical arguments: ask what justifies moving from an observed fact to a claim about responsibility, knowledge, or authority.";
 const URL_SELF = "https://akeelden.com/method";
 
 export const Route = createFileRoute("/method")({
@@ -312,23 +312,31 @@ function MethodPage() {
       <header className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Method
+            Research approach
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             The Error Lies in the Transition
           </h1>
-          <p className="mt-4 font-display text-xl italic text-foreground/80">
-            On unlicensed ascent in philosophical reasoning
-          </p>
-          <p className="mt-8 font-display text-lg italic leading-relaxed text-foreground/80">
-            A methodological statement: what must be true for the transition
-            from one status to another to be licensed — and what goes wrong
-            when we never ask.
+          <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+            Causing an outcome is not the same as being responsible for it.
+            Getting a result is not the same as understanding it. I ask what
+            justifies the step from a fact to a conclusion.
           </p>
         </div>
       </header>
 
       <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+        <section className="mb-12">
+          <h2 className="font-display text-2xl text-foreground">Three questions guide the approach</h2>
+          <ol className="mt-6 list-decimal space-y-4 pl-5 text-base leading-relaxed text-muted-foreground">
+            <li>What do we observe, and what are we claiming on that basis?</li>
+            <li>What conditions would justify that conclusion?</li>
+            <li>Are those conditions actually present — and what changes them?</li>
+          </ol>
+        </section>
+        <details>
+          <summary className="cursor-pointer font-display text-xl text-foreground">Read the full methodological argument</summary>
+          <div className="mt-8">
         <nav
           aria-label="Method sections"
           className="mb-16 rounded-md border border-border bg-muted/30 p-6"
@@ -388,7 +396,9 @@ function MethodPage() {
           </section>
         ))}
 
-        <div className="border-t border-border pt-10">
+          </div>
+        </details>
+        <div className="mt-10 border-t border-border pt-10">
           <p className="font-display text-lg leading-relaxed text-foreground/85">
             This statement formalizes the method behind the{" "}
             <Link
