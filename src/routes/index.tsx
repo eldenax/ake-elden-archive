@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 sm:grid-cols-[1.3fr_1fr] sm:gap-12 lg:gap-20 lg:px-8 lg:py-16">
+      <section className="mx-auto grid max-w-6xl items-center gap-6 px-6 py-8 sm:grid-cols-[1.3fr_1fr] sm:gap-12 sm:py-12 lg:gap-20 lg:px-8 lg:py-16">
         <div className="max-w-xl">
           <p className="text-sm text-muted-foreground">Philosophy · Technology · Human life</p>
           <h1 className="mt-4 font-display text-4xl leading-tight tracking-normal text-foreground md:text-5xl">
@@ -62,7 +62,7 @@ function Index() {
             <Button asChild variant="link"><Link to="/academic-profile">About me</Link></Button>
           </div>
         </div>
-        <figure className="mx-auto w-full max-w-[320px] sm:max-w-[350px]">
+        <figure className="mx-auto w-full max-w-[240px] sm:max-w-[350px]">
           <img
             src={portrait.url}
             alt="Portrait of Åke Elden in black and white"
