@@ -24,7 +24,7 @@ export const THEMES: Theme[] = [
     name: "Judgment, Answerability and Institutional Reason",
     short: "Judgment & Answerability",
     tagline:
-      "The normative question: what makes an institutional decision answerable, and who can be held to it.",
+      "Who can explain and defend an institutional decision?",
     description: [
       "This theme asks a normative question about acts: under what conditions does an institutional decision count as a judgment that someone can be held to? It develops a vocabulary — provenance, inferential license, closure — for locating the point at which answerability is either preserved or lost.",
       "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability. Where Area 6 asks what infrastructure makes decisions possible, this area asks what makes them defensible.",
@@ -47,7 +47,7 @@ export const THEMES: Theme[] = [
     name: "Normativity, Moral Standing and Ethical Disclosure",
     short: "Normativity & Standing",
     tagline:
-      "The conditions under which moral claims arise, and the difference between admission to consideration and priority within it.",
+      "Who counts morally — and does that tell us whose claims take priority?",
     description: [
       "This theme investigates how moral standing is constituted and how it is distinguished from normative priority. It defends what I call the partition thesis: criteria of moral standing determine who is considerable, but they do not by themselves generate ordering among those admitted.",
       "Ontocentric information ethics is treated here as a maximal test case rather than as a target. The Floridi engagement is not a critique of a single author; it is a general study of the relation between standing and ordering, and of the ethical disclosure conditions under which either can arise.",
@@ -67,7 +67,7 @@ export const THEMES: Theme[] = [
     name: "Formation, Agency and the Human Subject",
     short: "Formation & Agency",
     tagline:
-      "Moral and subject formation under conditions of optimisation and technological mediation.",
+      "How does technology shape who we become and how we act?",
     description: [
       "This theme investigates how the human subject is formed — morally, practically, spiritually — under conditions in which technological systems mediate attention, desire, deliberation, and action. Theology functions here as one context in which questions of agency, creaturehood, and formation become philosophically pressing, not as a separate discipline.",
       "The unifying question is how the background conditions of moral formation persist, mutate, or dissolve when optimisation becomes an ambient environment.",
@@ -97,7 +97,7 @@ export const THEMES: Theme[] = [
     name: "Desire, Comparison and Social Relations",
     short: "Desire & Relations",
     tagline:
-      "Mimetic desire, comparative entitlement, and the platform mediation of grievance and social violence.",
+      "How does comparing ourselves with others shape desire, resentment, and social life?",
     description: [
       "This theme develops a philosophical account of desire and comparison under platform mediation. It draws on mimetic theory and social ontology to analyse how comparative entitlement is formed, how grievance and resentment are structured, and how relational configurations shift once desire is infrastructurally shaped.",
       "The theme is not reducible to 'social media studies' or 'platform studies': it is a study of the relational configuration of the human under conditions in which comparison itself has been engineered.",
@@ -115,7 +115,7 @@ export const THEMES: Theme[] = [
     name: "Explanation, Object Constitution and Philosophy of Science",
     short: "Explanation & Science",
     tagline:
-      "Explanatory entitlement, object constitution, and the inferential license of scientific and statistical models.",
+      "What can scientific evidence and models actually tell us?",
     description: [
       "This theme develops a general philosophy of science oriented around object constitution and design–inference alignment. It examines when an empirical or statistical design is entitled to the inferences it invites, and when explanations exceed the constitution of their objects.",
       "It shows that much of what circulates as 'AI ethics' is in fact philosophy of science: the crucial questions concern what has been constituted, what has been measured, and what may be inferred — long before any normative claim is made.",
@@ -145,7 +145,7 @@ export const THEMES: Theme[] = [
     name: "Institutions, Infrastructure and Technological Mediation",
     short: "Institutions & Infrastructure",
     tagline:
-      "The material question: which infrastructures make institutional knowing and deciding possible in the first place.",
+      "What do institutions need in order to know, decide, and act?",
     description: [
       "This theme treats infrastructure as a first-class philosophical object. Its question is material rather than normative: which systems, records, frictions, and forms of administrative expertise constitute what an institution is able to know and decide at all — and how that capacity changes when institutional functions are automated.",
       "Where Area 1 evaluates decisions once made, this area studies the conditions of their production. Applied projects such as TrialTact and ClaimBuilder.ai are treated here as diagnostic contexts: practical settings in which the philosophical problems of the programme become visible under load.",

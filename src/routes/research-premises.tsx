@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "The Philosophy of Exercisable Human Capacities — Dr. Åke Elden";
 const DESCRIPTION =
-  "Åke Elden's philosophical framework: how technology transforms the epistemic, relational, and institutional conditions for exercising knowledge, judgment, freedom, agency, and responsibility.";
+  "The Philosophy of Exercisable Human Capacities: what people need to know, judge, act freely, and take responsibility, and how technology changes those conditions.";
 const URL_SELF = "https://akeelden.com/research-premises";
 
 export const Route = createFileRoute("/research-premises")({
@@ -37,10 +37,10 @@ export const Route = createFileRoute("/research-premises")({
 });
 
 const STRUCTURE = [
-  { title: "Philosophical theories", question: "What do theories of knowledge, judgment, freedom, and responsibility presuppose?" },
-  { title: "Conditions of exercisability", question: "Which epistemic, relational, temporal, and institutional conditions must be available?" },
-  { title: "Transformed conditions", question: "How are these conditions reorganized by technology and social practices?" },
-  { title: "Philosophical consequences", question: "What must we revise in our theories of human capacities and their legitimate attribution?" },
+  { title: "Philosophical theories", question: "What do our theories assume people can do?" },
+  { title: "Conditions of exercisability", question: "What must be in place for people to actually do it?" },
+  { title: "Transformed conditions", question: "How does technology change those possibilities?" },
+  { title: "Philosophical consequences", question: "What does this mean for our ideas of knowledge, freedom, and responsibility?" },
 ];
 
 const FRAMEWORK = [
@@ -212,14 +212,15 @@ function ResearchPremisesPage() {
       <header className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Research Premises
+            Core ideas
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             The Philosophy of Exercisable Human Capacities
           </h1>
-          <p className="mt-8 font-display text-lg italic leading-relaxed text-foreground/80">
-            Technology can transform the very conditions under which human
-            knowledge, judgment, agency, freedom, and responsibility can be exercised.
+          <p className="mt-8 text-lg leading-relaxed text-foreground/80">
+            We may have the ability to judge or act, yet lack the information,
+            time, or freedom to do so. Technology can change these conditions —
+            not just help us perform a task.
           </p>
         </div>
       </header>
@@ -227,15 +228,13 @@ function ResearchPremisesPage() {
       <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
         <section aria-labelledby="conditions-thesis" className="mb-16">
           <h2 id="conditions-thesis" className="font-display text-2xl leading-snug text-foreground">
-            The Conditions of Exercisability Thesis
+            The central idea
           </h2>
           <blockquote className="mt-6 border-l-2 border-foreground/30 pl-6 font-display text-lg leading-relaxed text-foreground">
-            Technological systems may transform not merely the performance of
-            human capacities but the epistemic, relational, and institutional
-            conditions under which those capacities remain exercisable.
-            Consequently, the formal attribution of agency, autonomy, or
-            responsibility may persist even when the conditions required for
-            their meaningful exercise have been weakened or displaced.
+            Technology can change the very conditions that let us know, judge,
+            act freely, and take responsibility. A person may still be named as
+            responsible even when they can no longer understand, question, or
+            influence the decision.
           </blockquote>
         </section>
 
@@ -254,6 +253,9 @@ function ResearchPremisesPage() {
           </ol>
         </section>
 
+        <details className="mb-14 border-t border-border pt-6">
+          <summary className="cursor-pointer font-display text-xl text-foreground">The full philosophical framework</summary>
+          <div className="mt-8">
         {FRAMEWORK.map((section) => (
           <section key={section.id} id={section.id} className="mb-14 scroll-mt-24">
             <h2 className="font-display text-2xl leading-snug text-foreground">{section.label}</h2>
@@ -263,9 +265,15 @@ function ResearchPremisesPage() {
           </section>
         ))}
 
+          </div>
+        </details>
         <h2 className="mb-8 border-t border-border pt-10 font-display text-3xl leading-snug text-foreground">
           A philosophy of licensed transitions
         </h2>
+        <p className="mb-8 text-base leading-relaxed text-muted-foreground">An action does not automatically prove responsibility. A result does not automatically prove competence. The question is what justifies the step from what we observe to what we conclude.</p>
+        <details>
+          <summary className="cursor-pointer font-display text-xl text-foreground">Read the licensed-transitions argument</summary>
+          <div className="mt-8">
         <nav
           aria-label="Premises sections"
           className="mb-16 border-b border-border pb-8"
@@ -321,7 +329,9 @@ function ResearchPremisesPage() {
           </section>
         ))}
 
-        <div className="border-t border-border pt-10">
+          </div>
+        </details>
+        <div className="mt-10 border-t border-border pt-10">
           <p className="font-display text-lg leading-relaxed text-foreground/85">
             The earlier licensed-transitions statement also appears as a{" "}
             <Link

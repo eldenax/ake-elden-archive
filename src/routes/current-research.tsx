@@ -14,6 +14,7 @@ export const Route = createFileRoute("/current-research")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: URL_SELF },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL_SELF }],
     scripts: [
@@ -108,14 +109,13 @@ function CurrentResearchPage() {
             Current research
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            Work in progress
+            Current work
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            These are the projects currently under active work — the draft manuscript first, then manuscripts under review, then working papers. Each one names
-            a working title, the philosophical question it is trying to
-            answer, and the expected output. Together they show where the
-            programme is being extended right now, rather than what it has
-            already produced. Published articles are listed under Publications; other drafts under Research Notes.
+            My current projects explore responsibility in institutions, moral
+            standing, social comparison, and the origins of institutional
+            decisions. Published articles are under Publications; drafts are
+            under Working papers.
           </p>
         </div>
       </section>
@@ -141,7 +141,7 @@ function CurrentResearchPage() {
               <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    Central philosophical question
+                    Main question
                   </p>
                   <p className="mt-2 font-display text-base italic leading-snug text-foreground md:text-lg">
                     {p.question}
@@ -149,7 +149,7 @@ function CurrentResearchPage() {
                 </div>
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                    Expected output
+                    Status and planned work
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-foreground/85">
                     {p.output}
