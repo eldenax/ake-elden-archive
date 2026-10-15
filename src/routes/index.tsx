@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button";
 import { SELECTED } from "../data/publications";
 
 const TITLE =
-  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
+  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological-Anthropology";
 const DESCRIPTION =
   "Åke Elden is a researcher and research advisor at NLA University College. He explores how technology changes our ability to judge, act freely, and take responsibility.";
 const URL_SELF = "https://akeelden.com/";

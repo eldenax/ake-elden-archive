@@ -105,7 +105,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 const SITE_URL = "https://akeelden.com";
 const SITE_TITLE =
-  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological Anthropology";
+  "Åke Elden, PhD — Philosophy of Technology, Social Epistemology, Theological-Anthropology";
 const SITE_DESCRIPTION =
   "Åke Elden studies the conditions under which judgment, responsibility, agency, and explanation become possible, and how technological and institutional systems reorganize them.";
 
@@ -120,7 +120,7 @@ const PERSON_JSONLD = {
     name: "Researcher and Research Advisor, NLA University College",
   },
   description:
-    "Researcher in philosophy of technology, social epistemology, and theological anthropology.",
+    "Researcher in philosophy of technology, social epistemology, and theological-anthropology.",
   url: SITE_URL,
   identifier: "https://orcid.org/0009-0003-0965-7666",
   sameAs: [
@@ -142,7 +142,7 @@ const PERSON_JSONLD = {
   knowsAbout: [
     "Philosophy of Artificial Intelligence",
     "Philosophy of Technology",
-    "Theological Anthropology",
+    "Theological-Anthropology",
     "Ethics",
     "Epistemology",
   ],
