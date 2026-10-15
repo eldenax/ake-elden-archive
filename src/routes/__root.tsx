@@ -230,7 +230,6 @@ function ResearchMenu() {
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
