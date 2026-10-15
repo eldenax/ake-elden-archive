@@ -49,15 +49,14 @@ export const Route = createFileRoute("/papers/$slug")({
             abstract: p.abstract,
             keywords: p.keywords.join(", "),
             creativeWorkStatus: p.status,
-            author: (p.authors ?? ["Åke Elden"]).map((name) =>
-              name === "Åke Elden"
-                ? {
-                    "@type": "Person",
-                    name,
-                    affiliation: { "@type": "Organization", name: "NLA University College" },
-                  }
-                : { "@type": "Person", name },
-            ),
+            author: (p.authors ?? [{ name: "Åke Elden" }]).map((a) => ({
+              "@type": "Person",
+              name: a.name,
+              affiliation: {
+                "@type": "Organization",
+                name: a.affiliation ?? "NLA University College",
+              },
+            })),
           }),
         },
       ],
@@ -108,7 +107,12 @@ function PaperPage() {
             </p>
           )}
           <p className="mt-6 text-sm text-muted-foreground">
-            {paper.authors ? paper.authors.join(", ") : "Åke Elden"} · {paper.affiliation}
+            {paper.authors
+              ? paper.authors
+                  .map((a) => (a.affiliation ? `${a.name} (${a.affiliation})` : a.name))
+                  .join(", ")
+              : "Åke Elden"}{" "}
+            · {paper.affiliation}
           </p>
           {paper.href && (
             <p className="mt-3 text-sm">

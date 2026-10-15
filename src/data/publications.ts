@@ -323,7 +323,7 @@ export const RESEARCH_NOTES: Publication[] = [
   {
     title:
       "When Institutions Undermine the Judgment They Require: Formation and the Limits of Formal Accountability",
-    venue: "Working paper (with Ursula S. Goth, Markel and Luca Ardigo)",
+    venue: "Working paper (with Ursula S. Goth, Markel Rico-González and Luca Ardigo)",
     status: "Working paper",
     year: "2026",
     themeSlug: "formation-agency-human-subject",

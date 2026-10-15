@@ -13,8 +13,11 @@ export type Paper = {
   slug: string;
   title: string;
   subtitle?: string;
-  /** Co-authored work lists every author in order; omitted means sole-authored. */
-  authors?: string[];
+  /**
+   * Co-authored work lists every author in order; omitted means sole-authored.
+   * An author's affiliation is given only where it differs from `affiliation`.
+   */
+  authors?: { name: string; affiliation?: string }[];
   affiliation: string;
   status: string;
   draftNote?: string;
@@ -272,7 +275,12 @@ export const PAPERS: Paper[] = [
     slug: "when-institutions-undermine-judgment",
     title: "When Institutions Undermine the Judgment They Require",
     subtitle: "Formation and the Limits of Formal Accountability",
-    authors: ["Åke Elden", "Ursula S. Goth", "Markel", "Luca Ardigo"],
+    authors: [
+      { name: "Åke Elden" },
+      { name: "Ursula S. Goth" },
+      { name: "Markel Rico-González", affiliation: "University of the Basque Country, Leioa, Spain" },
+      { name: "Luca Ardigo" },
+    ],
     affiliation: "NLA University College, Oslo, Norway",
     status: "Working paper",
     draftNote:
