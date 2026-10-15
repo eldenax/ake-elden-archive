@@ -47,7 +47,7 @@ function Index() {
     <>
       <section className="mx-auto grid max-w-6xl items-center gap-6 px-6 py-8 sm:grid-cols-[1.3fr_1fr] sm:gap-12 sm:py-12 lg:gap-20 lg:px-8 lg:py-16">
         <div className="max-w-xl">
-          <p className="text-sm text-muted-foreground">Philosophy · Technology · Human life</p>
+          <p className="text-sm text-muted-foreground">Philosophy · Technology · Theology · Anthropology</p>
           <h1 className="mt-4 font-display text-4xl leading-tight tracking-normal text-foreground md:text-5xl">
             Åke Elden<span className="mt-2 block font-sans text-base text-muted-foreground">PhD · Researcher and Research Advisor, NLA University College</span>
           </h1>
