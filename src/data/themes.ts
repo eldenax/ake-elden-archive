@@ -85,6 +85,7 @@ export const THEMES: Theme[] = [
       { title: "Algorithmic Formation and the Mimetic Self", status: "Working paper" },
       { title: "Epistemic Automation and the Deformation of the Human", status: "Working paper" },
       { title: "Automated Certainty: Algorithmic Perplexity Reduction and Theological Metacognitive Miscalibration", status: "Published" },
+      { title: "When Institutions Undermine the Judgment They Require", status: "Working paper" },
     ],
     conceptSlugs: [],
     conceptNotes: [

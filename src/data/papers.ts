@@ -13,6 +13,8 @@ export type Paper = {
   slug: string;
   title: string;
   subtitle?: string;
+  /** Co-authored work lists every author in order; omitted means sole-authored. */
+  authors?: string[];
   affiliation: string;
   status: string;
   draftNote?: string;
@@ -265,6 +267,121 @@ export const PAPERS: Paper[] = [
     ],
     positioning:
       "The prescriptive-maintenance literature has named the gap: predictive capability translates poorly into prescriptive capability, because associative models cannot support interventional claims. What it has not established is what the conditions on legitimate action are, how they relate to predictive accuracy, and what sustaining them costs.",
+  },
+  {
+    slug: "when-institutions-undermine-judgment",
+    title: "When Institutions Undermine the Judgment They Require",
+    subtitle: "Formation and the Limits of Formal Accountability",
+    authors: ["Åke Elden", "Ursula S. Goth", "Markel", "Luca Ardigo"],
+    affiliation: "NLA University College, Oslo, Norway",
+    status: "Working paper",
+    draftNote:
+      "Co-authored manuscript. Items marked for bibliographic verification remain to be checked before submission.",
+    themeSlug: "formation-agency-human-subject",
+    themeLabel: "Formation, Agency and the Human Subject",
+    conceptSlugs: ["exercisable-answerability", "judgment-gap"],
+    abstract:
+      "Educational and professional institutions can satisfy ordinary requirements of transparency, appeal and formal accountability while progressively cultivating habits that diminish the independent judgment they profess to develop or rely upon. This paper distinguishes synchronic restrictions on the present exercise of judgment from diachronic formative impairment: a patterned change in participants\u2019 dispositions to notice, interrogate and respond to reasons across time and contexts. Drawing on Bildung, relational accounts of responsibility, responsibility cultivation, epistemic injustice, structural responsibility, and republican contestability, we examine whether this phenomenon is already fully accounted for by established educational and institutional ethics. We defend a restricted Formative Non-Undermining Principle: where institutions undertake to cultivate, certify or depend on independent practical judgment, they have a defeasible duty not to arrange foreseeable, material and avoidable practices that erode the future exercise of that judgment without sufficient justification. This is initially a negative duty; positive provision and repair require additional premises. Paired cases test the principle against compliant professional education, justified protocol training and algorithmically mediated decisions. The paper situates the Norwegian common-school mandate in this analysis and clarifies how Christian theological anthropology can contribute a critical interpretation of dependence without serving as a premise of public obligation. Its claim to originality is diagnostic and conditional, not the discovery of a previously unknown moral duty.",
+    keywords: [
+      "formation",
+      "Bildung",
+      "practical judgment",
+      "institutional responsibility",
+      "answerability",
+      "professional education",
+      "habituation",
+      "epistemic agency",
+      "theological anthropology",
+      "Norway",
+    ],
+    claim:
+      "Where an institution undertakes to cultivate, certify, or rely upon participants\u2019 independent practical judgment, and foreseeably and materially shapes their capacity to respond to reasons over time, it has a defeasible obligation not to impose avoidable formative erosion without sufficiently weighty justification.",
+    sections: [
+      {
+        number: "1",
+        heading: "Accountability without durable judgment",
+        summary:
+          "Two professional programmes with equal resources, criteria, appeals and results can differ in whether students learn to reconsider a default or to reproduce authorised frameworks. The difference cannot be found by counting appeal procedures — a hypothesis about formative processes, not a reported empirical outcome.",
+      },
+      {
+        number: "2",
+        heading: "Synchronic exercisability and diachronic formation",
+        summary:
+          "Synchronic impairment concerns what a person can do under present conditions; diachronic formative impairment is a patterned change in the dispositions to seek counterevidence, recognise when a default fails, and revise. The target is not maximal scepticism but a context-appropriate capacity to tell warranted reliance from situations requiring scrutiny.",
+      },
+      {
+        number: "3",
+        heading: "The strongest rival explanations",
+        summary:
+          "Bildung, educational justice (Anderson, Biesta), agency cultivation (Vargas), trust (Baier, O\u2019Neill), structural responsibility (Young), epistemic injustice (Fricker) and contestability (Pettit, Bovens) are resources, not straw opponents. If they yield the same duties with equal precision, the principle is an integrative specification, not a novel foundation.",
+      },
+      {
+        number: "4",
+        heading: "The Formative Non-Undermining Principle",
+        summary:
+          "A four-step argument yields a presumptive negative duty, not an unlimited duty to furnish all conditions of good agency. Positive provision and remedial repair require further premises. Six trigger conditions — consequential practice, sustained authority, credible pathway, foreseeability, uncorrectable dependence, and a less erosive alternative — govern application.",
+      },
+      {
+        number: "5",
+        heading: "Adversarial cases",
+        summary:
+          "High-performing compliant professional education, justified protocol training in emergency medicine, learned deference to machine recommendation, the archive at the boundary of institutional authority, and a skilful training regime serving unjust ends each test where the principle should and should not make a difference.",
+      },
+      {
+        number: "6",
+        heading: "Norwegian policy and theological anthropology",
+        summary:
+          "The common-school mandate (NOU 2026:10) serves as a pressure test for institutions that explicitly undertake to cultivate judgment over time. Christian theological anthropology contests the ideal of self-sufficiency and interprets dependence critically, without serving as a premise of public obligation.",
+      },
+      {
+        number: "7–8",
+        heading: "Objections, limits and conclusion",
+        summary:
+          "Reducibility to established theories, measuring formation without moralising dissent, remedies matched to effective control, and four classes of counterexample under which the principle fails. The result asks not only whether participants may answer today, but whether institutional practice is changing how they will judge tomorrow.",
+      },
+    ],
+    results: [
+      {
+        label: "Diagnostic distinction",
+        statement:
+          "Synchronic access and diachronic formation are not interchangeable. An institution can satisfy formal accountability — transparency, appeal, contestation — while foreseeably cultivating diminished future responsiveness to reasons.",
+      },
+      {
+        label: "Negative duty",
+        statement:
+          "Where an institution invokes participants\u2019 judgment to legitimise its activities while authoritatively shaping the practice in which that judgment is trained, it owes a non-arbitrary justification for foreseeable, material and avoidable erosion of that judgment.",
+      },
+      {
+        label: "Bounded scope",
+        statement:
+          "Formative influence alone creates no duty, and deference is not erosion: justified protocol training and warranted reliance on expertise can support rather than undermine responsibility. Positive and remedial duties require additional premises.",
+      },
+      {
+        label: "Conditional originality",
+        statement:
+          "If educational justice, agency cultivation, structural responsibility and contestability yield the same duties with equal precision, the principle is a useful articulation of their convergence rather than a distinct obligation.",
+      },
+    ],
+    conditions: [
+      {
+        label: "Consequential reliance",
+        body: "A consequential practice claims or depends upon independent judgment, and the institution exercises sustained authority over a specific formative mechanism within it.",
+      },
+      {
+        label: "Credible pathway",
+        body: "There is a credible route from repeated institutional incentives or routines to a material change in relevant judgment dispositions — evidenced by task-specific indicators, not general claims about critical thinking.",
+      },
+      {
+        label: "Foreseeability and dependence",
+        body: "The erosion was reasonably foreseeable at the time rather than in hindsight, and participants cannot readily undo the dependence themselves.",
+      },
+      {
+        label: "Proportionate alternative",
+        body: "A less erosive arrangement was available, or the institution can give a sufficient reason why the chosen arrangement is nevertheless justified given safety, cost and competing rights.",
+      },
+    ],
+    positioning:
+      "The paper does not claim to have discovered that institutions shape judgment. Its claim is diagnostic and conditional: that a temporal distinction between present access and durable formation can identify an impairment invisible to one-time measures of rights and performance, and can sharpen who must justify it and when.",
   },
   {
     slug: "automated-certainty",

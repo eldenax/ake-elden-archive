@@ -321,6 +321,21 @@ export const RESEARCH_NOTES: Publication[] = [
     capacities: ["presupposed", "concealed"],
   },
   {
+    title:
+      "When Institutions Undermine the Judgment They Require: Formation and the Limits of Formal Accountability",
+    venue: "Working paper (with Ursula S. Goth, Markel and Luca Ardigo)",
+    status: "Working paper",
+    year: "2026",
+    themeSlug: "formation-agency-human-subject",
+    conceptSlug: "exercisable-answerability",
+    paperSlug: "when-institutions-undermine-judgment",
+    contribution:
+      "Distinguishes synchronic restrictions on the present exercise of judgment from diachronic formative impairment, and defends a restricted Formative Non-Undermining Principle: institutions that cultivate, certify or rely on independent judgment have a defeasible duty not to erode it through foreseeable, material and avoidable practices.",
+    caseNote:
+      "Compliant professional education, emergency-medicine protocol training, algorithmically mediated review, and the Norwegian common-school mandate (NOU 2026:10) serve as test cases.",
+    capacities: ["presupposed", "transformed"],
+  },
+  {
     title: "Algorithmic Formation and the Mimetic Self",
     venue: "Working paper",
     status: "Working paper",
