@@ -57,7 +57,7 @@ export const Route = createFileRoute("/cv")({
 const RESEARCH_AREAS = [
   "Philosophy of Artificial Intelligence",
   "Philosophy of Technology",
-  "Theological Anthropology",
+  "Theological-Anthropology",
   "Ethics",
   "Epistemology",
   "Philosophy of Science",

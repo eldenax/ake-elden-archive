@@ -3,7 +3,7 @@ import { PUBLICATIONS } from "../data/publications";
 
 const TITLE = "Academic Profile — Dr. Åke Elden";
 const DESCRIPTION =
-  "Academic profile of Dr. Åke Elden: Researcher and Research Advisor at NLA University College, Oslo. Philosophy of technology, social epistemology, and theological anthropology — role, fields, indicators, and verified scholarly records.";
+  "Academic profile of Dr. Åke Elden: Researcher and Research Advisor at NLA University College, Oslo. Philosophy of technology, social epistemology, and theological-anthropology — role, fields, indicators, and verified scholarly records.";
 const URL_SELF = "https://akeelden.com/academic-profile";
 
 const PROFILES: { name: string; href: string; note?: string }[] = [
@@ -32,7 +32,7 @@ const FIELDS = [
     note: "Inferential license, explanatory entitlement, and the provenance of institutional knowledge claims.",
   },
   {
-    name: "Theological anthropology",
+    name: "Theological-Anthropology",
     note: "Creaturehood, formation, and moral agency under conditions of optimisation and automation.",
   },
 ];
@@ -60,7 +60,7 @@ const EXPERIENCE = [
     period: "Present",
     role: "Researcher and Research Advisor",
     org: "NLA University College, Oslo",
-    note: "Research development and advisory work alongside an independent research programme in philosophy of technology and theological anthropology.",
+    note: "Research development and advisory work alongside an independent research programme in philosophy of technology and theological-anthropology.",
   },
   {
     period: "Present",
@@ -180,8 +180,9 @@ function AcademicProfilePage() {
             Åke Elden, PhD
           </h1>
           <p className="mt-4 font-display text-lg italic leading-snug text-foreground/85">
-            Philosopher of technology, social epistemology, and theological
-            anthropology · Researcher and Research Advisor at NLA University College, Oslo
+            Philosopher of technology, social epistemology, and{" "}
+            <span className="whitespace-nowrap">theological-anthropology</span>{" "}
+            · Researcher and Research Advisor at NLA University College, Oslo
           </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground/85">
             I work on the conditions under which judgment, responsibility, and
