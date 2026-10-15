@@ -48,9 +48,9 @@ const ACTIVE: ActiveProject[] = [
   {
     workingTitle: "When Institutions Stop Answering Back",
     paragraph:
-      "The principal manuscript currently in draft. When institutional reasoning is delegated to automated procedures, answerability is not eliminated but silently relocated — and often to a site that cannot in fact bear it. The manuscript identifies that site, gives it a name, and shows why nominal oversight arrangements frequently leave the underlying gap intact.",
+      "This draft examines who can explain and defend institutional decisions when automated procedures take over parts of the reasoning. A named supervisor may remain in place without being able to question or change what the system decides.",
     question:
-      "Where in an institution must answerability be borne once parts of its reasoning have been absorbed into automated procedures — and what does it take for that site to remain occupied?",
+      "Who can answer for an automated institutional decision, and what do they need to do so meaningfully?",
     output:
       "Draft manuscript, 2026; companion paper on typologies of answerability failure.",
     themeSlug: "judgment-answerability-institutional-reason",
@@ -61,9 +61,9 @@ const ACTIVE: ActiveProject[] = [
   {
     workingTitle: "Standing Is Not an Ordering",
     paragraph:
-      "The partition thesis distinguishes the question of who counts morally from the question of how those admitted are to be ordered against one another. Ontocentric information ethics is used as the maximal test case: even the most inclusive standing criterion cannot, by itself, supply an internal principle of priority. The manuscript is under review and is being sharpened against objections from moral-status theorists.",
+      "The partition thesis separates two questions: who counts morally, and whose claims take priority? Using information ethics as a test case, this paper argues that an inclusive account of moral standing does not by itself tell us how to rank competing claims. The manuscript is under review.",
     question:
-      "Under what conditions can criteria of moral standing generate an internal ordering — and when do they leave the ordering problem structurally unresolved?",
+      "Does knowing who counts morally tell us whose claims should come first?",
     output:
       "Journal article (under review, 2026); follow-up paper on standing and ordering in AI moral-status debates.",
     themeSlug: "normativity-moral-standing-ethical-disclosure",
@@ -74,9 +74,9 @@ const ACTIVE: ActiveProject[] = [
   {
     workingTitle: "Comparative Desire and Social Violence",
     paragraph:
-      "Platform environments do not merely display inequality — they format it as entitlement whose frustration takes a recognisable, and monetisable, affective shape. The paper develops a philosophical account of how comparative entitlements are formed, and of the pathway from platform-mediated comparison, through grievance, to social violence at scale. Now published in Philosophy & Social Criticism.",
+      "Digital platforms do more than display inequality. They can shape what people feel entitled to, and turn frustrated expectations into grievance. This paper examines how comparison can contribute to social violence. It is published in Philosophy & Social Criticism.",
     question:
-      "How does infrastructural comparison generate entitlements whose frustration is structurally converted into grievance — and under what conditions does that conversion scale into social violence?",
+      "When does comparison with others turn into a sense of injustice, and how can that lead to social violence?",
     output:
       "Journal article (Philosophy & Social Criticism, 2026); book-length treatment of post-mimetic relationality as a general social configuration.",
     themeSlug: "desire-comparison-social-relations",
@@ -87,9 +87,9 @@ const ACTIVE: ActiveProject[] = [
   {
     workingTitle: "Second-Order Provenance",
     paragraph:
-      "First-order provenance tracks where data came from. Second-order provenance tracks where the normative orderings that make those data matter came from — how a threshold, ranking, or category was authored, licensed, and sustained. The project is developing a framework under which institutions can be audited at that second level rather than only at the level of inputs.",
+      "Knowing where data came from is not enough. We also need to know who chose the thresholds, rankings, and categories used to interpret it, and why those choices are justified. This project calls that second-order provenance and develops a way to examine it in institutions.",
     question:
-      "What would it take for an institution to own not only the data it uses, but the normative orderings under which those data are taken to matter?",
+      "Can an institution account for both its data and the rules that make that data matter?",
     output:
       "Working paper; operational audit framework co-developed with ClaimBuilder.ai; workshop paper on institutional recordkeeping as moral infrastructure.",
     themeSlug: "judgment-answerability-institutional-reason",

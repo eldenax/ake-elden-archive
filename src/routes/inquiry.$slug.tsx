@@ -88,7 +88,7 @@ export const Route = createFileRoute("/inquiry/$slug")({
     const url = `${BASE}/inquiry/${t.slug}`;
 
     // Compose a concrete, per-page description from the theme's own content.
-    const firstPara = t.description[0] ?? t.tagline;
+    const firstPara = t.summary;
     const rawDesc = `${t.tagline} ${firstPara}`.replace(/\s+/g, " ").trim();
     const description =
       rawDesc.length > 158 ? rawDesc.slice(0, 155).replace(/[,;:.\s]+$/, "") + "…" : rawDesc;
@@ -219,24 +219,28 @@ function InquiryDetailPage() {
             to="/inquiry"
             className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
           >
-            ← Research Programme
+            ← Research overview
           </Link>
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Area {theme.number.toString().padStart(2, "0")}
           </p>
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
-            {theme.name}
+            {theme.short}
           </h1>
           <p className="mt-6 font-display text-lg italic leading-relaxed text-foreground/85 md:text-xl">
             {theme.tagline}
           </p>
-          <div className="mt-8 space-y-5">
+          <p className="mt-6 text-base leading-relaxed text-foreground/85">{theme.summary}</p>
+          <details className="mt-8 border-t border-border pt-5">
+            <summary className="cursor-pointer text-sm font-medium text-foreground">The philosophical argument</summary>
+          <div className="mt-5 space-y-5">
             {theme.description.map((p) => (
               <p key={p} className="text-base leading-relaxed text-foreground/85">
                 {p}
               </p>
             ))}
           </div>
+          </details>
         </div>
       </section>
 
