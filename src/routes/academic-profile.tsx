@@ -67,7 +67,7 @@ const TRAJECTORY: { domain: string; qualifier?: string; note: string }[] = [
   },
   {
     domain: "Philosophical & Theological Synthesis",
-    note: "My work in philosophy of technology, social epistemology, and theological anthropology integrates these empirical and institutional insights. It examines how contemporary algorithmic systems, generative AI, and predictive models do not merely support human decisions, but act as second-order mediations that subtly alter the very preconditions of moral imputability, responsive agency, and human formation.",
+    note: "My work in philosophy of technology, social epistemology, and theological anthropology integrates these empirical and institutional insights. It examines how contemporary algorithmic systems, generative AI, and predictive models do not merely support human decisions, but act as second-order mediations that subtly alter the very preconditions of moral imputability, responsive agency, and human formation. This work proceeds in dialogue with contemporary scholarship in philosophy of technology and social epistemology.",
   },
 ];
 
@@ -327,10 +327,11 @@ function AcademicProfilePage() {
             From Cognitive Mechanisms to Algorithmic Governance
           </p>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            My research is guided by a singular, underlying concern: the
-            antecedent and constitutive conditions under which human judgment,
-            agency, and responsibility become possible — and how technological
-            and institutional architectures reorganize those conditions.
+            Across different projects and disciplines, my work returns to a
+            central question: the antecedent and constitutive conditions under
+            which human judgment, agency, and responsibility become possible —
+            and how technological and institutional architectures reorganize
+            those conditions.
           </p>
           <p className="mt-4 text-base leading-relaxed text-foreground/85">
             This trajectory spans three complementary domains:
