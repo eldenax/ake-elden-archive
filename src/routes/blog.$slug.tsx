@@ -114,7 +114,7 @@ function BlogPostPage() {
           ))}
         <ShareRow slug={post.slug} title={post.title} />
 
-        <div className="border-t border-border pt-10">
+        <div className="mt-8 flex flex-wrap gap-4 text-sm">
             <Link
               to="/concepts"
               className="underline decoration-dotted underline-offset-4 hover:text-foreground"
