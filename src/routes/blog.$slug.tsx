@@ -213,8 +213,6 @@ function ShareRow({ slug, title }: { slug: string; title: string }) {
           {copied ? "Link copied" : "Copy link"}
         </button>
       </div>
-      {/* eslint-disable-next-line no-constant-binary-expression */}
-      {false ? sharedUrl : null}
     </div>
   );
 }
