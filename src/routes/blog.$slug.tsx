@@ -171,8 +171,6 @@ const SHARE_TARGETS = [
 function ShareRow({ slug, title }: { slug: string; title: string }) {
   const [copied, setCopied] = useState(false);
 
-  const sharedUrl = `${BASE}/blog/${slug}?utm_source=${"source"}&utm_medium=social&utm_campaign=blog-share`;
-
   const copyLink = async () => {
     const tagged = `${BASE}/blog/${slug}?utm_source=copy&utm_medium=manual&utm_campaign=blog-share`;
     try {
