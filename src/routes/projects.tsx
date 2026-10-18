@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 const TITLE = "Projects — Dr. Åke Elden";
 const DESCRIPTION =
-  "Applied research with TrialTact and ClaimBuilder.ai: exploring how people and institutions use evidence, make decisions, and take responsibility.";
+  "Social values and human formation, TrialTact, and ClaimBuilder.ai: research on how values are formed, how people and institutions use evidence, make decisions, and take responsibility.";
 const URL_SELF = "https://akeelden.com/projects";
 
 export const Route = createFileRoute("/projects")({
@@ -34,6 +34,17 @@ export const Route = createFileRoute("/projects")({
 });
 
 const PROJECTS = [
+  {
+    name: "Social values and human formation",
+    role: "Project leader · 2025–2028 · Basic research",
+    summary:
+      "A basic research project at NLA University College, running 2025–2028, on how social values take shape in human formation — the slow work through which persons come to judge, stand, and act in relation to one another.",
+    themes: [
+      { slug: "formation-agency-human-subject", label: "Formation & Agency" },
+      { slug: "desire-comparison-social-relations", label: "Desire, Comparison & Social Relations" },
+      { slug: "judgment-answerability-institutional-reason", label: "Judgment & Answerability" },
+    ],
+  },
   {
     name: "ClaimBuilder.ai",
     role: "Applied research context",
