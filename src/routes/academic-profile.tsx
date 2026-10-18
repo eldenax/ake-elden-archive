@@ -55,6 +55,22 @@ const EARLIER_WORK = [
   },
 ];
 
+const TRAJECTORY: { domain: string; qualifier?: string; note: string }[] = [
+  {
+    domain: "Cognitive & Empirical Foundations",
+    qualifier: "Dr.psychol.",
+    note: "My early background in psychophysiology and cognitive psychology focused on automatic versus controlled information processing, sensorimotor gating, and metacognition. This provided an empirical baseline for understanding the biological and psychological architecture of human attention, habituation, and judgment.",
+  },
+  {
+    domain: "Regulated Infrastructures & Institutional Reality",
+    note: "Over two decades of experience within highly regulated pharmaceutical environments, clinical governance, and national innovation ecosystems provided direct, first-hand insight into how decision-making is structured, constrained, and automated within complex institutional infrastructures.",
+  },
+  {
+    domain: "Philosophical & Theological Synthesis",
+    note: "My work in philosophy of technology, social epistemology, and theological anthropology integrates these empirical and institutional insights. It examines how contemporary algorithmic systems, generative AI, and predictive models do not merely support human decisions, but act as second-order mediations that subtly alter the very preconditions of moral imputability, responsive agency, and human formation.",
+  },
+];
+
 const EXPERIENCE = [
   {
     period: "Present",
@@ -294,6 +310,54 @@ function AcademicProfilePage() {
               research programme
             </Link>{" "}
             page.
+          </p>
+        </div>
+      </section>
+
+      {/* Interdisciplinary trajectory */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            Interdisciplinary trajectory
+          </p>
+          <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+            An Interdisciplinary Trajectory
+          </h2>
+          <p className="mt-2 font-display text-lg italic leading-snug text-foreground/85">
+            From Cognitive Mechanisms to Algorithmic Governance
+          </p>
+          <p className="mt-6 text-base leading-relaxed text-foreground/85">
+            My research is guided by a singular, underlying concern: the
+            antecedent and constitutive conditions under which human judgment,
+            agency, and responsibility become possible — and how technological
+            and institutional architectures reorganize those conditions.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-foreground/85">
+            This trajectory spans three complementary domains:
+          </p>
+          <ul className="mt-10 space-y-8">
+            {TRAJECTORY.map((t) => (
+              <li key={t.domain} className="border-t border-border pt-6">
+                <p className="font-display text-lg text-foreground">
+                  {t.domain}
+                  {t.qualifier && (
+                    <span className="ml-2 text-sm font-normal text-muted-foreground">
+                      ({t.qualifier})
+                    </span>
+                  )}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                  {t.note}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-base leading-relaxed text-foreground/85">
+            Rather than a series of disparate fields, these stages represent a
+            unified inquiry: moving from the micro-mechanisms of cognition,
+            through the macro-structures of institutional governance, to the
+            normative and philosophical conditions of human life under
+            automated mediation.
           </p>
         </div>
       </section>
