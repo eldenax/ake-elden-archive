@@ -9,3 +9,5 @@
 - [x] Add "An Interdisciplinary Trajectory: From Cognitive Mechanisms to Algorithmic Governance" with its three domains to the Academic Profile (about) page; verify the page renders it.
 - [x] Add the English project abstract for "Social values and human formation" to the Projects page; verify it opens and reads cleanly.
 - [x] Soften the trajectory opening to "Across different projects and disciplines, my work returns to a central question" and add the dialogue-with-the-field sentence to the philosophical synthesis; verify on the page.
+- [x] Set up Google Search Console: verify https://akeelden.com/ via meta tag, add the property, submit the sitemap.
+- [x] Add share buttons with UTM-tagged links to blog posts and a UTM link overview in Project Files; verify in browser and publish.
