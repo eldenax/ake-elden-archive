@@ -102,6 +102,16 @@ function ProjectsPage() {
               <p className="mt-5 text-base leading-relaxed text-foreground/85">
                 {p.summary}
               </p>
+              {"abstract" in p && p.abstract ? (
+                <details className="mt-6 border-t border-border pt-5">
+                  <summary className="cursor-pointer text-sm font-medium text-foreground">
+                    Read the project abstract
+                  </summary>
+                  <p className="mt-4 text-base leading-relaxed text-foreground/85">
+                    {p.abstract}
+                  </p>
+                </details>
+              ) : null}
               <div className="mt-6 flex flex-wrap gap-3">
                 {p.themes.map((t) => (
                   <Link
