@@ -139,3 +139,83 @@ function BlogPostPage() {
     </article>
   );
 }
+
+const SHARE_TARGETS = [
+  {
+    label: "Share on LinkedIn",
+    source: "linkedin",
+    build: (url: string) =>
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+  },
+  {
+    label: "Share on X",
+    source: "x",
+    build: (url: string, text: string) =>
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+  },
+  {
+    label: "Share on Facebook",
+    source: "facebook",
+    build: (url: string) =>
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+  },
+  {
+    label: "Share by email",
+    source: "email",
+    build: (url: string, text: string) =>
+      `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(url)}`,
+  },
+] as const;
+
+function ShareRow({ slug, title }: { slug: string; title: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const sharedUrl = `${BASE}/blog/${slug}?utm_source=${"source"}&utm_medium=social&utm_campaign=blog-share`;
+
+  const copyLink = async () => {
+    const tagged = `${BASE}/blog/${slug}?utm_source=copy&utm_medium=manual&utm_campaign=blog-share`;
+    try {
+      await navigator.clipboard.writeText(tagged);
+    } catch {
+      const area = document.createElement("textarea");
+      area.value = tagged;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      document.body.removeChild(area);
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="mt-10 border-t border-border pt-6">
+      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Share this note</p>
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        {SHARE_TARGETS.map((target) => {
+          const url = `${BASE}/blog/${slug}?utm_source=${target.source}&utm_medium=social&utm_campaign=blog-share`;
+          return (
+            <a
+              key={target.source}
+              href={target.build(url, title)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+            >
+              {target.label}
+            </a>
+          );
+        })}
+        <button
+          type="button"
+          onClick={copyLink}
+          className="cursor-pointer text-left underline decoration-dotted underline-offset-4 hover:text-foreground"
+        >
+          {copied ? "Link copied" : "Copy link"}
+        </button>
+      </div>
+      {/* eslint-disable-next-line no-constant-binary-expression */}
+      {false ? sharedUrl : null}
+    </div>
+  );
+}
