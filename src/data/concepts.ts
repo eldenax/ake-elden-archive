@@ -209,6 +209,7 @@ export const CONCEPTS: Concept[] = [
       "The Locus of Answerability (working paper).",
       "Answerability on the Record (in preparation).",
       "When Responsibility Fails to Arise (working paper).",
+      "Derivative Epistemic Agency (accepted in JMIR Metascience and Research Integrity).",
     ],
     currentWork: [
       "A typology of cases in which responsibility is formally retained but practically unexercisable.",

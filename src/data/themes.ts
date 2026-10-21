@@ -136,6 +136,11 @@ export const THEMES: Theme[] = [
         status: "Working paper",
       },
       { title: "LLM experiments and inferential license", status: "Working paper" },
+      {
+        title:
+          "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
+        status: "Accepted",
+      },
     ],
     conceptSlugs: ["inferential-license"],
     conceptNotes: [
