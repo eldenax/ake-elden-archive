@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PUBLICATIONS } from "../data/publications";
+import { RecordFigures } from "../components/RecordFigures";
+import { PreprintNotice } from "../components/PreprintNotice";
 
 const TITLE = "Academic Profile — Dr. Åke Elden";
 const DESCRIPTION =
