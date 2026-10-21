@@ -232,6 +232,12 @@ function AcademicProfilePage() {
         </div>
       </section>
 
+      <section className="border-b border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-14 lg:px-8">
+          <PreprintNotice />
+        </div>
+      </section>
+
       {/* Role, discipline, fields */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
