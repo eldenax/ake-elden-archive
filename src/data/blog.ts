@@ -18,49 +18,49 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "derivative-epistemic-agency",
-    title: "Derivative Epistemic Agency: When AI Does the Thinking, Who Answers for the Science?",
+    title: "Derivative Epistemic Agency: When AI Helps Write the Science, Who Can Still Answer for It?",
     date: "2026-10-21",
     readingTime: "5 min read",
     description:
-      "A new article accepted in JMIR asks what happens to scientific responsibility when AI systems take over parts of research reasoning — and why a human signature may no longer be enough.",
-    lede: "AI systems now help researchers search the literature, generate hypotheses, analyse data and draft text. This saves time. But it also raises a question that is easy to overlook: when much of the reasoning behind a scientific claim was produced by a system, in what sense can the human researcher still answer for it? My article \"Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability\", accepted in JMIR, takes up this question.",
+      "A new article accepted in JMIR Metascience and Research Integrity argues that the real risk of AI in research is not plagiarism or hallucination, but authors who remain formally responsible for claims they can no longer fully answer for.",
+    lede: "Most discussion of AI in research is about plagiarism, made-up references, disclosure statements and who counts as an author. These are real problems. But my article \"Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability\", accepted in JMIR Metascience and Research Integrity, argues that they are symptoms of a deeper shift in how scientific claims are produced.",
     sections: [
       {
-        heading: "The problem in plain terms",
+        heading: "The problem beneath the familiar worries",
         paragraphs: [
-          "Science depends on a simple expectation: whoever puts their name to a claim can explain why it is justified. They can say where the evidence came from, why the method fits, and what would count against the conclusion. That is what makes a researcher answerable.",
-          "When AI systems carry out significant steps of the reasoning, this expectation comes under pressure. The researcher still signs the paper, but may not be able to reconstruct how a given result, summary or suggestion was reached. Responsibility remains formally in place while its practical basis becomes thinner.",
+          "Generative AI can help with scientific work while leaving authors responsible for claims they may not adequately understand. Authorship rules and disclosure statements make sure a human name stands behind every paper. But stating that one supervised the work does not show that one has the understanding needed to answer for it.",
+          "The article draws on social epistemology, theories of distributed and extended cognition, automation research, work on responsibility gaps, and metascience to describe this shift more precisely.",
         ],
-        concepts: ["exercisable-answerability", "judgment-gap"],
+        concepts: ["exercisable-answerability"],
       },
       {
-        heading: "What \"derivative\" agency means",
+        heading: "Not a yes-or-no question",
         paragraphs: [
-          "The article introduces the idea of derivative epistemic agency. The researcher is still an agent — they choose tools, accept or reject outputs, and decide what to publish. But part of their knowing is borrowed from processes they did not perform and cannot fully inspect.",
-          "This is not entirely new. Scientists have always relied on instruments, colleagues and earlier studies. The difference is one of kind as well as degree: AI systems can produce reasoning-like outputs whose grounds are not available for the same kind of checking that a measurement or a cited study allows.",
+          "Using AI is not simply either acceptable or unacceptable. The article offers a graded account of how researchers relate to the systems they rely on.",
+          "At one end is integrated epistemic extension: the researcher delegates work to a tool but keeps comprehension, the ability to evaluate the result, control over it, and the ability to answer for it. At the other end is derivative epistemic substitution: these capacities fall below what genuine answerability requires — even though the researcher is still listed as the author.",
         ],
-        concepts: ["inferential-license", "second-order-provenance"],
+        concepts: ["inferential-license", "judgment-gap"],
       },
       {
-        heading: "Why this matters, especially in health research",
+        heading: "Responsibility asymmetry",
         paragraphs: [
-          "In medicine and health research, scientific claims shape treatments, guidelines and public trust. If no one can properly answer for how a conclusion was reached, errors become harder to detect and harder to correct — and accountability risks becoming a formality.",
-          "That is why it is significant that the article appears in a journal read by clinicians, health researchers and digital-health developers, not only by philosophers. The question is practical: research institutions are already deciding how AI may be used in their work.",
+          "The gap between these two is what the article calls responsibility asymmetry: a mismatch between the responsibility formally assigned to an author and the actual competence that author retains over what their paper claims.",
+          "The article sets out when this asymmetry arises, how it differs from ordinary reliance on tools, and why publication pressure in today's research system makes it more likely.",
+        ],
+        concepts: ["exercisable-answerability", "second-order-provenance"],
+      },
+      {
+        heading: "From diagnosis to practical rules",
+        paragraphs: [
+          "The article tests existing guidance — the ICMJE authorship criteria, COPE guidance, and contributorship frameworks such as CRediT and MeRIT — against this account, and finds that they establish who is accountable without checking whether accountability can actually be exercised.",
+          "It then proposes a governance model scaled to risk: a profile of how each author took part in the reasoning, tiered reporting of where key thinking came from, an enforceable standard for whether the reasoning can be audited, and fair treatment of AI use, for instance for researchers writing in a second language. The aim is rules that journals and institutions can actually apply, not just aspirations.",
         ],
         concepts: ["epistemic-infrastructure"],
       },
-      {
-        heading: "Limits, not alarm",
-        paragraphs: [
-          "The argument is not that AI should be kept out of science. It is that human answerability has limits, and that those limits should be made visible rather than assumed away. Disclosing that a tool was used is not the same as being able to account for what it contributed.",
-          "The practical upshot is a set of questions for researchers, reviewers and institutions: Which steps can the researcher still justify on their own terms? Which depend on the system? And what would need to be in place for responsibility to remain something a person can actually exercise?",
-        ],
-        concepts: ["exercisable-answerability", "automated-certainty"],
-      },
     ],
     closing: [
-      "The article continues a wider line of my research: asking what must be in place before human judgment and responsibility can be exercised — here applied to the making of scientific knowledge itself.",
-      "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability. Accepted in JMIR (JMIR Preprints #105907).",
+      "Why it is interesting: the article moves the debate from \"Was AI used?\" to \"Can the author still answer for what the paper claims?\" That question matters to journals, research institutions and readers of science alike, especially in health research, where published claims shape practice.",
+      "Elden, Å. Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability. Accepted in JMIR Metascience and Research Integrity. Preprint: https://preprints.jmir.org/preprint/105907",
     ],
   },
   {
