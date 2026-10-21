@@ -4,6 +4,8 @@ import {
   JOURNAL_ARTICLES,
   PREPRINTS,
 } from "../data/publications";
+import { RecordFigures } from "../components/RecordFigures";
+import { PreprintNotice } from "../components/PreprintNotice";
 
 const TITLE = "News — Dr. Åke Elden";
 const DESCRIPTION =
@@ -65,6 +67,7 @@ function NewsPage() {
           <h1 className="mt-3 font-display text-4xl leading-[1.1] text-foreground md:text-5xl">
             Updates from the research programme
           </h1>
+          <RecordFigures />
         </div>
       </section>
 
@@ -87,6 +90,12 @@ function NewsPage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-muted/30">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+          <PreprintNotice />
         </div>
       </section>
     </div>

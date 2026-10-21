@@ -16,6 +16,8 @@ import {
   CAPACITY_LABEL,
   CAPACITY_DESCRIPTION,
 } from "../components/PublicationCard";
+import { RecordFigures } from "../components/RecordFigures";
+import { PreprintNotice } from "../components/PreprintNotice";
 
 const TITLE = "Publications — Åke Elden";
 const DESCRIPTION = `Publications of Åke Elden, verified against NVA: ${JOURNAL_ARTICLES.length} peer-reviewed journal articles published or accepted in 2026 plus ${PREPRINTS.length} preprint, across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
@@ -99,6 +101,8 @@ function PublicationsPage() {
             Metadata is verified against NVA (Nasjonalt vitenarkiv).
           </p>
 
+          <RecordFigures />
+
           <p className="mt-6 text-sm text-muted-foreground">
             Drafts, working papers, and items in preparation are kept separately
             on the{" "}
@@ -119,6 +123,14 @@ function PublicationsPage() {
           </p>
         </div>
       </section>
+
+      {!activeCapacity && (
+        <section className="border-b border-border bg-muted/30">
+          <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+            <PreprintNotice />
+          </div>
+        </section>
+      )}
 
       {activeCapacity ? (
         <section className="bg-muted/30">
@@ -220,26 +232,6 @@ function PublicationsPage() {
             </div>
           </section>
 
-          <section className="border-b border-border bg-muted/30">
-            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Preprint
-              </p>
-              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
-                Available before the journal version
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Counted separately from the {ARTICLES} peer-reviewed articles:
-                work that can be read now while the journal version is being
-                prepared.
-              </p>
-              <div className="mt-10 space-y-10">
-                {PREPRINTS.map((p) => (
-                  <PublicationCard key={p.title} p={p} />
-                ))}
-              </div>
-            </div>
-          </section>
 
           <section>
             <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">

@@ -225,6 +225,8 @@ function AcademicProfilePage() {
               ORCID 0009-0003-0965-7666
             </a>
           </div>
+
+          <RecordFigures />
         </div>
       </section>
 
@@ -418,6 +420,11 @@ function AcademicProfilePage() {
               </li>
             ))}
           </ol>
+
+          <div className="mt-12">
+            <PreprintNotice />
+          </div>
+
           <p className="mt-10 text-sm text-muted-foreground">
             The full peer-reviewed record is on the{" "}
             <Link
