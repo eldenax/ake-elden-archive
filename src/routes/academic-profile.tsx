@@ -428,11 +428,6 @@ function AcademicProfilePage() {
               </li>
             ))}
           </ol>
-
-          <div className="mt-12">
-            <PreprintNotice />
-          </div>
-
           <p className="mt-10 text-sm text-muted-foreground">
             The full peer-reviewed record is on the{" "}
             <Link
