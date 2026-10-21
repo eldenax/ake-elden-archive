@@ -137,6 +137,8 @@ export const Route = createFileRoute("/academic-profile")({
 
 const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
 const TOTAL = PUBLICATIONS.length;
+const ARTICLES = PUBLICATIONS.filter((p) => p.kind !== "preprint").length;
+const PREPRINT_COUNT = PUBLICATIONS.filter((p) => p.kind === "preprint").length;
 
 const SIGNATURE_CORPUS = [
   {
@@ -438,9 +440,14 @@ function AcademicProfilePage() {
           <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-3">
             <div className="bg-background p-6">
               <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                Peer-reviewed articles (2026)
+                Publications (2026)
               </dt>
-              <dd className="mt-2 font-display text-3xl text-foreground">{TOTAL}</dd>
+              <dd className="mt-2 font-display text-3xl text-foreground">
+                {TOTAL}
+                <span className="mt-1 block font-sans text-xs font-normal normal-case text-muted-foreground">
+                  {ARTICLES} peer-reviewed articles + {PREPRINT_COUNT} preprint
+                </span>
+              </dd>
             </div>
             <div className="bg-background p-6">
               <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
@@ -459,8 +466,10 @@ function AcademicProfilePage() {
             </div>
           </dl>
           <p className="mt-4 text-xs text-muted-foreground">
-            Source: NVA (Nasjonalt vitenarkiv), verified August 2026. Channel
-            levels follow the Norwegian register (HK-dir).
+            Source: NVA (Nasjonalt vitenarkiv), verified October 2026. The{" "}
+            {TOTAL} items are {ARTICLES} peer-reviewed journal articles and{" "}
+            {PREPRINT_COUNT} preprint. Channel levels follow the Norwegian
+            register (HK-dir).
           </p>
         </div>
       </section>
