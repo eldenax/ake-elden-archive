@@ -12,3 +12,4 @@
 - [x] Set up Google Search Console: verify https://akeelden.com/ via meta tag, add the property, submit the sitemap.
 - [x] Add share buttons with UTM-tagged links to blog posts and a UTM link overview in Project Files; verify in browser and publish.
 - [x] Record the accepted JMIR Metascience and Research Integrity article in the published record so every page reports 16 scientific journal articles; verify the count on each page.
+- [x] Add the missing Heritage journal article and list the JMIR item as a preprint so the record reads 17 in all (16 articles + 1 preprint); verify on every page that states a count.
