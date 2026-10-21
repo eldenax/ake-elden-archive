@@ -11,3 +11,4 @@
 - [x] Soften the trajectory opening to "Across different projects and disciplines, my work returns to a central question" and add the dialogue-with-the-field sentence to the philosophical synthesis; verify on the page.
 - [x] Set up Google Search Console: verify https://akeelden.com/ via meta tag, add the property, submit the sitemap.
 - [x] Add share buttons with UTM-tagged links to blog posts and a UTM link overview in Project Files; verify in browser and publish.
+- [x] Record the accepted JMIR Metascience and Research Integrity article in the published record so every page reports 16 scientific journal articles; verify the count on each page.
