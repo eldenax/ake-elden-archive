@@ -173,6 +173,11 @@ export const THEMES: Theme[] = [
         status: "Working paper",
       },
       { title: "Media as infrastructure", status: "Working paper" },
+      {
+        title:
+          "Heritage Exercisability: A Diagnostic Framework for Living Technical Heritage",
+        status: "Published",
+      },
       { title: "TrialTact", note: "Applied research context" },
       { title: "ClaimBuilder.ai", note: "Applied research context" },
     ],
