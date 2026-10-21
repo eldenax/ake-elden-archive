@@ -257,6 +257,19 @@ export const PUBLICATIONS: Publication[] = [
       "Models how commercially structured amplification sustains belief beyond the evidence that would ordinarily revise it.",
     capacities: ["concealed"],
   },
+  {
+    title:
+      "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
+    venue: "JMIR Metascience and Research Integrity",
+    status: "Accepted",
+    year: "2026",
+    href: "https://preprints.jmir.org/preprint/105907",
+    themeSlug: "explanation-object-constitution-philosophy-of-science",
+    conceptSlug: "exercisable-answerability",
+    contribution:
+      "Asks who can answer for a scientific paper once AI systems take part in producing its reasoning. Plagiarism, invented references, and authorship disputes are treated as symptoms of a deeper shift: a researcher can stay formally responsible for claims they can no longer fully explain or defend. The article separates tools that extend a researcher's thinking from arrangements that quietly replace it, and argues that research integrity should test whether authors can still answer for what a paper claims — not only whether AI was used.",
+    capacities: ["concealed"],
+  },
 ];
 
 /**
