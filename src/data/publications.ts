@@ -14,6 +14,8 @@ export type Publication = {
   doi?: string;
   /** Norwegian publication channel level (NSD/HK-dir): "2", "1", "0". */
   level?: string;
+  /** Register kind: a peer-reviewed journal article (default) or a preprint. */
+  kind?: "article" | "preprint";
   selected?: boolean;
   /** Reading order within the selected set (1 = read first). */
   selectedRank?: number;
@@ -259,9 +261,23 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     title:
+      "Heritage Exercisability: A Diagnostic Framework for Living Technical Heritage, Developed Through Norwegian Vessel Preservation",
+    venue: "Heritage",
+    status: "Published online",
+    year: "2026",
+    doi: "10.3390/heritage9100414",
+    href: "https://doi.org/10.3390/heritage9100414",
+    themeSlug: "institutions-infrastructure-technological-mediation",
+    contribution:
+      "Asks what has to line up for a craft to keep being practised. Safeguarding usually counts designation, documentation, training, funding, and the condition of protected objects one at a time. This article argues that continuity depends on whether those conditions coincide for the same people, and develops 'heritage exercisability' as a diagnostic framework tested on Norwegian vessel preservation.",
+    capacities: ["presupposed"],
+  },
+  {
+    title:
       "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
     venue: "JMIR Metascience and Research Integrity",
-    status: "Accepted",
+    status: "Accepted (preprint available)",
+    kind: "preprint",
     year: "2026",
     href: "https://preprints.jmir.org/preprint/105907",
     themeSlug: "explanation-object-constitution-philosophy-of-science",
@@ -271,6 +287,14 @@ export const PUBLICATIONS: Publication[] = [
     capacities: ["concealed"],
   },
 ];
+
+/** Peer-reviewed journal articles — the count the national register reports. */
+export const JOURNAL_ARTICLES = PUBLICATIONS.filter(
+  (p) => p.kind !== "preprint",
+);
+
+/** Items available as preprints, counted separately from the journal record. */
+export const PREPRINTS = PUBLICATIONS.filter((p) => p.kind === "preprint");
 
 /**
  * Manuscripts under review or under revision. Formally distinct from the
