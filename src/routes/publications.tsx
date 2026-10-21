@@ -3,6 +3,8 @@ import { zodValidator } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import {
   PUBLICATIONS,
+  JOURNAL_ARTICLES,
+  PREPRINTS,
   UNDER_REVIEW,
   ALL_ENTRIES,
   SELECTED,
@@ -16,7 +18,7 @@ import {
 } from "../components/PublicationCard";
 
 const TITLE = "Publications — Åke Elden";
-const DESCRIPTION = `Peer-reviewed publications of Åke Elden, verified against NVA: ${PUBLICATIONS.length} articles published online or formally accepted in 2026 across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
+const DESCRIPTION = `Publications of Åke Elden, verified against NVA: ${JOURNAL_ARTICLES.length} peer-reviewed journal articles published or accepted in 2026 plus ${PREPRINTS.length} preprint, across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
 const URL_SELF = "https://akeelden.com/publications";
 
 const publicationsSearchSchema = z.object({
@@ -61,8 +63,10 @@ export const Route = createFileRoute("/publications")({
   component: PublicationsPage,
 });
 
-const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
-const YEAR_2026 = PUBLICATIONS.filter((p) => p.year === "2026").length;
+const LEVEL_2 = JOURNAL_ARTICLES.filter((p) => p.level === "2").length;
+const ARTICLES = JOURNAL_ARTICLES.length;
+const PREPRINT_COUNT = PREPRINTS.length;
+const TOTAL = PUBLICATIONS.length;
 
 function PublicationsPage() {
   const { capacity } = Route.useSearch();
@@ -87,11 +91,12 @@ function PublicationsPage() {
             Peer-reviewed publications
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            {YEAR_2026} peer-reviewed articles published online or formally
-            accepted in 2026, including {LEVEL_2} in Level 2 channels. Each
-            entry names its journal, its contribution to the programme, and —
-            where relevant — the concept it develops. Metadata is verified
-            against NVA (Nasjonalt vitenarkiv).
+            {TOTAL} publications in 2026: {ARTICLES} peer-reviewed journal
+            articles published online or formally accepted, plus{" "}
+            {PREPRINT_COUNT} preprint — {LEVEL_2} of the articles in Level 2
+            channels. Each entry names its journal, its contribution to the
+            programme, and — where relevant — the concept it develops.
+            Metadata is verified against NVA (Nasjonalt vitenarkiv).
           </p>
 
           <p className="mt-6 text-sm text-muted-foreground">
@@ -185,7 +190,7 @@ function PublicationsPage() {
               </p>
               <div className="mt-12 space-y-16">
                 {THEMES.map((t) => {
-                  const pubs = PUBLICATIONS.filter(
+                  const pubs = JOURNAL_ARTICLES.filter(
                     (p) => p.themeSlug === t.slug,
                   );
                   if (pubs.length === 0) return null;
@@ -211,6 +216,27 @@ function PublicationsPage() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </section>
+
+          <section className="border-b border-border bg-muted/30">
+            <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Preprint
+              </p>
+              <h2 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                Available before the journal version
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Counted separately from the {ARTICLES} peer-reviewed articles:
+                work that can be read now while the journal version is being
+                prepared.
+              </p>
+              <div className="mt-10 space-y-10">
+                {PREPRINTS.map((p) => (
+                  <PublicationCard key={p.title} p={p} />
+                ))}
               </div>
             </div>
           </section>

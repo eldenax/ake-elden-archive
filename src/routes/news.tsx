@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PUBLICATIONS } from "../data/publications";
+import {
+  PUBLICATIONS,
+  JOURNAL_ARTICLES,
+  PREPRINTS,
+} from "../data/publications";
 
 const TITLE = "News — Dr. Åke Elden";
 const DESCRIPTION =
@@ -7,15 +11,17 @@ const DESCRIPTION =
 const URL_SELF = "https://akeelden.com/news";
 
 const TOTAL = PUBLICATIONS.length;
-const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
+const ARTICLES = JOURNAL_ARTICLES.length;
+const PREPRINT_COUNT = PREPRINTS.length;
+const LEVEL_2 = JOURNAL_ARTICLES.filter((p) => p.level === "2").length;
 
 const ITEMS = [
   {
     date: "2026",
     heading: "Research output (2026)",
     body: [
-      `In 2026, ${TOTAL} peer-reviewed journal articles were published online or formally accepted.`,
-      `The publications span philosophy of science, theology, AI ethics, behavioural science, and health communication, with ${LEVEL_2} appearing in Norwegian Register Level 2 journals.`,
+      `In 2026, ${TOTAL} items entered the publication record: ${ARTICLES} peer-reviewed journal articles published online or formally accepted, and ${PREPRINT_COUNT} preprint.`,
+      `The publications span philosophy of science, theology, AI ethics, behavioural science, health communication, and heritage studies, with ${LEVEL_2} appearing in Norwegian Register Level 2 journals.`,
       "Together, they develop a research programme on agency, judgment, responsibility, scientific inference, and human formation under conditions of artificial intelligence.",
     ],
   },
