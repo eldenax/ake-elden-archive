@@ -1,12 +1,8 @@
-import {
-  PUBLICATIONS,
-  JOURNAL_ARTICLES,
-  PREPRINTS,
-} from "../data/publications";
+import { PUBLICATIONS, JOURNAL_ARTICLES } from "../data/publications";
 
 const TOTAL = PUBLICATIONS.length;
 const ARTICLES = JOURNAL_ARTICLES.length;
-const PREPRINT_COUNT = PREPRINTS.length;
+const VENUES = new Set(JOURNAL_ARTICLES.map((p) => p.venue)).size;
 const LEVEL_2 = JOURNAL_ARTICLES.filter((p) => p.level === "2").length;
 
 const FIGURES = [
@@ -21,9 +17,9 @@ const FIGURES = [
     note: "published or accepted",
   },
   {
-    label: "Preprints",
-    value: PREPRINT_COUNT,
-    note: "readable now",
+    label: "Journals",
+    value: VENUES,
+    note: "distinct venues",
   },
   {
     label: "Level 2 channels",
