@@ -67,7 +67,6 @@ export const Route = createFileRoute("/publications")({
 
 const LEVEL_2 = JOURNAL_ARTICLES.filter((p) => p.level === "2").length;
 const ARTICLES = JOURNAL_ARTICLES.length;
-const TOTAL = PUBLICATIONS.length;
 
 function PublicationsPage() {
   const { capacity } = Route.useSearch();
