@@ -14,8 +14,6 @@ export type Publication = {
   doi?: string;
   /** Norwegian publication channel level (NSD/HK-dir): "2", "1", "0". */
   level?: string;
-  /** Register kind: a peer-reviewed journal article (default) or a preprint. */
-  kind?: "article" | "preprint";
   selected?: boolean;
   /** Reading order within the selected set (1 = read first). */
   selectedRank?: number;
@@ -276,10 +274,9 @@ export const PUBLICATIONS: Publication[] = [
     title:
       "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
     venue: "JMIR Metascience and Research Integrity",
-    status: "Accepted (preprint available)",
-    kind: "preprint",
+    status: "Published online",
     year: "2026",
-    href: "https://preprints.jmir.org/preprint/105907",
+    href: "https://metascience.jmir.org/2026/1/e105907",
     themeSlug: "explanation-object-constitution-philosophy-of-science",
     conceptSlug: "exercisable-answerability",
     contribution:
@@ -289,12 +286,7 @@ export const PUBLICATIONS: Publication[] = [
 ];
 
 /** Peer-reviewed journal articles — the count the national register reports. */
-export const JOURNAL_ARTICLES = PUBLICATIONS.filter(
-  (p) => p.kind !== "preprint",
-);
-
-/** Items available as preprints, counted separately from the journal record. */
-export const PREPRINTS = PUBLICATIONS.filter((p) => p.kind === "preprint");
+export const JOURNAL_ARTICLES = PUBLICATIONS;
 
 /**
  * Manuscripts under review or under revision. Formally distinct from the

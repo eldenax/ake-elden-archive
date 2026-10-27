@@ -16,3 +16,4 @@
 - [x] Improve the Publications, News, and About page layouts so the 2026 count and the accepted JMIR article are easy for visitors to find.
 
 - [x] Add the uploaded “When AI Helps Us Think” blog post with its JMIR article link; omit the unfinished final sentence and verify reading and navigation.
+- [x] Record the JMIR Metascience and Research Integrity article as published at metascience.jmir.org/2026/1/e105907, so every page reports 17 peer-reviewed journal articles and no preprint; verify on every page that states a count.

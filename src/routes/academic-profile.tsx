@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PUBLICATIONS } from "../data/publications";
 import { RecordFigures } from "../components/RecordFigures";
-import { PreprintNotice } from "../components/PreprintNotice";
+import { LatestArticle } from "../components/LatestArticle";
 
 const TITLE = "Academic Profile — Dr. Åke Elden";
 const DESCRIPTION =
@@ -139,8 +139,7 @@ export const Route = createFileRoute("/academic-profile")({
 
 const LEVEL_2 = PUBLICATIONS.filter((p) => p.level === "2").length;
 const TOTAL = PUBLICATIONS.length;
-const ARTICLES = PUBLICATIONS.filter((p) => p.kind !== "preprint").length;
-const PREPRINT_COUNT = PUBLICATIONS.filter((p) => p.kind === "preprint").length;
+const ARTICLES = PUBLICATIONS.length;
 
 const SIGNATURE_CORPUS = [
   {
@@ -234,7 +233,7 @@ function AcademicProfilePage() {
 
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-3xl px-6 py-14 lg:px-8">
-          <PreprintNotice />
+          <LatestArticle />
         </div>
       </section>
 
@@ -455,7 +454,7 @@ function AcademicProfilePage() {
               <dd className="mt-2 font-display text-3xl text-foreground">
                 {TOTAL}
                 <span className="mt-1 block font-sans text-xs font-normal normal-case text-muted-foreground">
-                  {ARTICLES} peer-reviewed articles + {PREPRINT_COUNT} preprint
+                  {ARTICLES} peer-reviewed articles
                 </span>
               </dd>
             </div>
@@ -476,10 +475,9 @@ function AcademicProfilePage() {
             </div>
           </dl>
           <p className="mt-4 text-xs text-muted-foreground">
-            Source: NVA (Nasjonalt vitenarkiv), verified October 2026. The{" "}
-            {TOTAL} items are {ARTICLES} peer-reviewed journal articles and{" "}
-            {PREPRINT_COUNT} preprint. Channel levels follow the Norwegian
-            register (HK-dir).
+            Source: NVA (Nasjonalt vitenarkiv), verified October 2026. All{" "}
+            {TOTAL} items are peer-reviewed journal articles. Channel
+            levels follow the Norwegian register (HK-dir).
           </p>
         </div>
       </section>

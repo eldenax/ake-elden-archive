@@ -92,7 +92,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "closing": [],
   "relatedArticle": {
     "title": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
-    "href": "https://preprints.jmir.org/preprint/105907",
+    "href": "https://metascience.jmir.org/2026/1/e105907",
     "venue": "JMIR Metascience and Research Integrity"
   }
 },
@@ -102,8 +102,8 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-10-21",
     readingTime: "5 min read",
     description:
-      "A new article accepted in JMIR Metascience and Research Integrity argues that the real risk of AI in research is not plagiarism or hallucination, but authors who remain formally responsible for claims they can no longer fully answer for.",
-    lede: "Most discussion of AI in research is about plagiarism, made-up references, disclosure statements and who counts as an author. These are real problems. But my article \"Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability\", accepted in JMIR Metascience and Research Integrity, argues that they are symptoms of a deeper shift in how scientific claims are produced.",
+      "A new article published in JMIR Metascience and Research Integrity argues that the real risk of AI in research is not plagiarism or hallucination, but authors who remain formally responsible for claims they can no longer fully answer for.",
+    lede: "Most discussion of AI in research is about plagiarism, made-up references, disclosure statements and who counts as an author. These are real problems. But my article \"Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability\", published in JMIR Metascience and Research Integrity, argues that they are symptoms of a deeper shift in how scientific claims are produced.",
     sections: [
       {
         heading: "The problem beneath the familiar worries",
@@ -140,7 +140,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     closing: [
       "Why it is interesting: the article moves the debate from \"Was AI used?\" to \"Can the author still answer for what the paper claims?\" That question matters to journals, research institutions and readers of science alike, especially in health research, where published claims shape practice.",
-      "Elden, Å. Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability. Accepted in JMIR Metascience and Research Integrity. Preprint: https://preprints.jmir.org/preprint/105907",
+      "Elden, Å. Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability. JMIR Metascience and Research Integrity (2026). https://metascience.jmir.org/2026/1/e105907",
     ],
   },
   {
