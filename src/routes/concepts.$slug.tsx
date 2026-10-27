@@ -26,6 +26,7 @@ export const Route = createFileRoute("/concepts/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
         { property: "og:url", content: url },
       ],
       links: [{ rel: "canonical", href: url }],
