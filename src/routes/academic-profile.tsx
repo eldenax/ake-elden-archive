@@ -475,7 +475,7 @@ function AcademicProfilePage() {
             </div>
           </dl>
           <p className="mt-4 text-xs text-muted-foreground">
-            Source: NVA (Nasjonalt vitenarkiv), verified October 2026. All
+            Source: NVA (Nasjonalt vitenarkiv), verified October 2026. All{" "}
             {TOTAL} items are peer-reviewed journal articles. Channel
             levels follow the Norwegian register (HK-dir).
           </p>
