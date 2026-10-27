@@ -13,9 +13,89 @@ export type BlogPost = {
   lede: string;
   sections: BlogSection[];
   closing: string[];
+  relatedArticle?: { title: string; href: string; venue: string };
 };
 
 export const BLOG_POSTS: BlogPost[] = [
+{
+  "slug": "when-ai-helps-us-think",
+  "title": "When AI Helps Us Think, Who Is Responsible for What We Know?",
+  "date": "2026-10-27",
+  "readingTime": "6 min read",
+  "description": "Scientific knowledge has always depended on tools, collaboration, and trust. Artificial intelligence brings a new question into focus: what happens when we remain responsible for conclusions we can no longer adequately explain?",
+  "lede": "Scientific knowledge has always depended on tools, collaboration, and trust. Artificial intelligence brings a new question into focus: what happens when we remain responsible for conclusions we can no longer adequately explain?",
+  "sections": [
+    {
+      "heading": "AI and the responsibility to understand",
+      "paragraphs": [
+        "Scientific research has never been a purely individual intellectual achievement. We depend on instruments, statistical methods, colleagues, inherited theories, and institutions that make knowledge possible. No scientist independently reconstructs every calculation, verifies every underlying assumption, or personally possesses all the expertise on which a research project depends.",
+        "This dependence is not a weakness. It is one of the conditions that makes modern science possible.",
+        "Artificial intelligence, however, introduces a new dimension to this familiar arrangement. Generative AI can now suggest hypotheses, interpret findings, construct arguments, summarize research, and produce scientific explanations. It can perform tasks that previously required substantial intellectual engagement from researchers.",
+        "The immediate question is often whether using AI is acceptable.",
+        "I believe a more important question lies beneath it: When we use AI to produce scientific knowledge, do we retain the understanding required to take responsibility for what we claim?",
+        "This question is at the centre of my recently published article, Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability, in JMIR Metascience and Research Integrity."
+      ]
+    },
+    {
+      "heading": "The Difference Between Producing an Answer and Understanding It",
+      "paragraphs": [
+        "Consider two researchers using an AI system to interpret statistical results.",
+        "The first researcher receives a suggested interpretation, examines the underlying analysis, checks its assumptions, considers alternatives, and ultimately accepts a conclusion that she can explain and defend.",
+        "The second receives an equally convincing interpretation but lacks the competence to assess whether it is justified. The explanation sounds plausible, the references appear appropriate, and the conclusion fits the expected narrative. The researcher incorporates it into the manuscript.",
+        "Both researchers have used AI. Both may produce scientifically credible prose. Yet their relationships to the resulting knowledge are fundamentally different.",
+        "The distinction is not about whether AI contributed to the work. It is about whether the researcher can justify adopting that contribution.",
+        "In my article, I describe a continuum between integrated epistemic extension and derivative epistemic substitution.",
+        "In the first case, technology extends our intellectual capabilities while leaving us able to evaluate and defend our conclusions. In the second, technology begins to substitute for the very capacities through which we ordinarily exercise scientific judgment.",
+        "The distinction matters because generating a plausible conclusion is not equivalent to possessing adequate reasons for accepting it."
+      ]
+    },
+    {
+      "heading": "Responsibility Requires More Than a Declaration",
+      "paragraphs": [
+        "Scientific journals increasingly require authors to disclose their use of generative AI. Such transparency is important, but disclosure alone cannot answer the central epistemic question.",
+        "A researcher can truthfully declare that AI was used, confirm that the manuscript has been reviewed, and accept full responsibility for its contents.",
+        "But what does that responsibility mean if nobody involved can adequately explain why a consequential conclusion should be accepted?",
+        "I call this problem responsibility asymmetry.",
+        "It arises when formal responsibility remains with human authors while their capacity to justify particular claims is insufficient.",
+        "This does not mean that researchers must independently reproduce every scientific operation. A clinician can legitimately rely on a statistician, just as a research team may rely on a properly validated instrument whose internal workings are not fully transparent.",
+        "The requirement is more modest, but also more demanding: someone within the responsible research team must be able to explain why the relevant evidence, expertise, or validated procedure provides adequate grounds for accepting the conclusion.",
+        "Scientific responsibility is therefore not simply a matter of authorship, disclosure, or approval. It requires what I describe as sufficient justificatory competence: the ability to respond to reasonable questions about evidence, assumptions, alternatives, limitations, and circumstances that would require revision.",
+        "A conclusion may be correct without having been responsibly justified. Conversely, a carefully justified conclusion may later turn out to be mistaken.",
+        "Understanding this difference is essential to scientific integrity."
+      ]
+    },
+    {
+      "heading": "From Philosophical Questions to Practical Safeguards",
+      "paragraphs": [
+        "One challenge in studying artificial intelligence is moving beyond general warnings about its consequences.",
+        "It is relatively easy to argue that excessive reliance on AI might weaken critical thinking. It is more difficult to establish when reliance becomes problematic, how we might recognize it, and what institutions should reasonably do in response.",
+        "My article therefore attempts to connect philosophical analysis with practical proposals for scientific publishing.",
+        "One proposal is an epistemic participation profile, which would identify where AI has contributed substantive reasoning, which researchers are responsible for evaluating it, and what evidence supports their acceptance of the resulting claims.",
+        "Another is a risk-sensitive approach to reporting. Correcting the grammar of a manuscript does not create the same responsibilities as allowing an AI system to formulate an interpretation of a primary clinical outcome.",
+        "A third proposal concerns reasoning audits: targeted opportunities for researchers to demonstrate how they justify a particular scientific conclusion when a specific concern arises.",
+        "These are not established standards or validated assessment methods. They are conceptual proposals that require empirical investigation before wider adoption.",
+        "The purpose is not to punish researchers for using AI, nor to create unrealistic expectations of intellectual self-sufficiency. It is to preserve the relationship between scientific claims and the human capacity to answer for them."
+      ]
+    },
+    {
+      "heading": "A Broader Question About Human Agency",
+      "paragraphs": [
+        "Although the article focuses on scientific research, the underlying question reaches considerably further.",
+        "As AI becomes integrated into education, healthcare, administration, and professional decision-making, we increasingly encounter situations in which people remain formally responsible for judgments that are partly constructed elsewhere.",
+        "A physician may endorse a recommendation generated by a clinical decision-support system. A teacher may adopt an automated assessment. A public administrator may rely on a technological classification that affects another person's opportunities.",
+        "In each case, the presence of a human decision-maker does not automatically establish that meaningful human judgment has occurred.",
+        "The important question concerns the relationship between the decision, the reasons supporting it, and the person's capacity to evaluate and revise those reasons.",
+        "This connects to a broader research interest that has increasingly shaped my work: the conditions under which human agency, judgment, and responsibility remain possible within technologically mediated institutions."
+      ]
+    }
+  ],
+  "closing": [],
+  "relatedArticle": {
+    "title": "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
+    "href": "https://preprints.jmir.org/preprint/105907",
+    "venue": "JMIR Metascience and Research Integrity"
+  }
+},
   {
     slug: "derivative-epistemic-agency",
     title: "Derivative Epistemic Agency: When AI Helps Write the Science, Who Can Still Answer for It?",

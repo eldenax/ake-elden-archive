@@ -14,3 +14,5 @@
 - [x] Record the accepted JMIR Metascience and Research Integrity article in the published record so every page reports 16 scientific journal articles; verify the count on each page.
 - [x] Add the missing Heritage journal article and list the JMIR item as a preprint so the record reads 17 in all (16 articles + 1 preprint); verify on every page that states a count.
 - [x] Improve the Publications, News, and About page layouts so the 2026 count and the accepted JMIR article are easy for visitors to find.
+
+- [ ] Add the uploaded “When AI Helps Us Think” blog post with its JMIR article link; omit the unfinished final sentence and verify reading and navigation.
