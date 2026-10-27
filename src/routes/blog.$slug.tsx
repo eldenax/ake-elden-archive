@@ -108,6 +108,21 @@ function BlogPostPage() {
         ))}
 
         <div className="border-t border-border pt-10">
+          {post.relatedArticle && (
+            <aside className="mb-8" aria-label="Related journal article">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {post.relatedArticle.venue}
+              </p>
+              <a
+                href={post.relatedArticle.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 block font-display text-lg leading-relaxed text-foreground underline decoration-dotted underline-offset-4"
+              >
+                {post.relatedArticle.title}
+              </a>
+            </aside>
+          )}
           {post.closing.map((p, i) => (
             <p key={i} className="mt-4 font-display text-lg leading-relaxed text-foreground/85">
               {p}
