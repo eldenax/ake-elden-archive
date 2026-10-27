@@ -139,7 +139,7 @@ export const THEMES: Theme[] = [
       {
         title:
           "Derivative Epistemic Agency: AI-Mediated Scientific Cognition and the Limits of Human Answerability",
-        status: "Accepted",
+        status: "Published",
       },
     ],
     conceptSlugs: ["inferential-license"],

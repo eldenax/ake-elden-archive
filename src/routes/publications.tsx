@@ -4,7 +4,6 @@ import { z } from "zod";
 import {
   PUBLICATIONS,
   JOURNAL_ARTICLES,
-  PREPRINTS,
   UNDER_REVIEW,
   ALL_ENTRIES,
   SELECTED,
@@ -17,10 +16,10 @@ import {
   CAPACITY_DESCRIPTION,
 } from "../components/PublicationCard";
 import { RecordFigures } from "../components/RecordFigures";
-import { PreprintNotice } from "../components/PreprintNotice";
+import { LatestArticle } from "../components/LatestArticle";
 
 const TITLE = "Publications — Åke Elden";
-const DESCRIPTION = `Publications of Åke Elden, verified against NVA: ${JOURNAL_ARTICLES.length} peer-reviewed journal articles published or accepted in 2026 plus ${PREPRINTS.length} preprint, across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
+const DESCRIPTION = `Publications of Åke Elden, verified against NVA: ${JOURNAL_ARTICLES.length} peer-reviewed journal articles published or accepted in 2026, across social philosophy, philosophy of science, theology, and the ethics of automated institutions.`;
 const URL_SELF = "https://akeelden.com/publications";
 
 const publicationsSearchSchema = z.object({
@@ -68,7 +67,6 @@ export const Route = createFileRoute("/publications")({
 
 const LEVEL_2 = JOURNAL_ARTICLES.filter((p) => p.level === "2").length;
 const ARTICLES = JOURNAL_ARTICLES.length;
-const PREPRINT_COUNT = PREPRINTS.length;
 const TOTAL = PUBLICATIONS.length;
 
 function PublicationsPage() {
@@ -94,10 +92,9 @@ function PublicationsPage() {
             Peer-reviewed publications
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
-            {TOTAL} publications in 2026: {ARTICLES} peer-reviewed journal
-            articles published online or formally accepted, plus{" "}
-            {PREPRINT_COUNT} preprint — {LEVEL_2} of the articles in Level 2
-            channels. Each entry names its journal, its contribution to the
+            {ARTICLES} peer-reviewed journal articles published online or
+            formally accepted in 2026 — {LEVEL_2} of them in Level 2 channels.
+            Each entry names its journal, its contribution to the
             programme, and — where relevant — the concept it develops.
             Metadata is verified against NVA (Nasjonalt vitenarkiv).
           </p>
@@ -128,7 +125,7 @@ function PublicationsPage() {
       {!activeCapacity && (
         <section className="border-b border-border bg-muted/30">
           <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-            <PreprintNotice />
+            <LatestArticle />
           </div>
         </section>
       )}
