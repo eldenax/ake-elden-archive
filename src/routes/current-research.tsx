@@ -100,9 +100,8 @@ function CurrentResearchPage() {
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
             My current projects explore responsibility in institutions, moral
-            standing, social comparison, and the origins of institutional
-            decisions. Published articles are under Publications; drafts are
-            under Working papers.
+            standing, and social comparison. Published articles are under
+            Publications; drafts are under Working papers.
           </p>
         </div>
       </section>
