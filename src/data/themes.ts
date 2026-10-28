@@ -35,8 +35,8 @@ export const THEMES: Theme[] = [
     works: [
       { title: "Standing Is Not an Ordering", status: "Under review" },
       { title: "The Locus of Answerability", status: "Working paper" },
-      { title: "Answerability on the Record", status: "In preparation" },
-      { title: "Second-Order Provenance", status: "Working paper" },
+      { title: "Paper on institutional records as moral infrastructure (title withheld during anonymous review)", status: "In preparation" },
+      { title: "Paper on provenance and institutional closure (title withheld during anonymous review)", status: "Working paper" },
       { title: "ClaimBuilder.ai", note: "Applied research context" },
     ],
     conceptSlugs: ["inferential-license", "judgment-gap", "second-order-provenance"],

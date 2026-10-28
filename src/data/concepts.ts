@@ -41,7 +41,7 @@ export const CONCEPTS: Concept[] = [
     ],
     publications: [
       "The Locus of Answerability (working paper).",
-      "Answerability on the Record (in preparation).",
+      "Paper on institutional records as moral infrastructure (title withheld during anonymous review).",
       "When Responsibility Fails to Arise (working paper).",
     ],
     currentWork: [
@@ -60,7 +60,7 @@ export const CONCEPTS: Concept[] = [
       "The concept links technical audit to institutional answerability: an institution that cannot answer at the second order cannot own the decisions its systems produce.",
     ],
     publications: [
-      "Second-Order Provenance (working paper).",
+      "Paper on provenance and institutional closure (title withheld during anonymous review).",
       "Standing Is Not an Ordering (under review).",
     ],
     currentWork: [
@@ -207,7 +207,7 @@ export const CONCEPTS: Concept[] = [
     ],
     publications: [
       "The Locus of Answerability (working paper).",
-      "Answerability on the Record (in preparation).",
+      "Paper on institutional records as moral infrastructure (title withheld during anonymous review).",
       "When Responsibility Fails to Arise (working paper).",
       "Derivative Epistemic Agency (published in JMIR Metascience and Research Integrity).",
     ],

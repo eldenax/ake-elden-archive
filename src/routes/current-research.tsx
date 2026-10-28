@@ -85,7 +85,7 @@ const ACTIVE: ActiveProject[] = [
     conceptLabel: "Comparative Entitlement Formation",
   },
   {
-    workingTitle: "Second-Order Provenance",
+    workingTitle: "Provenance of normative orderings",
     paragraph:
       "Knowing where data came from is not enough. We also need to know who chose the thresholds, rankings, and categories used to interpret it, and why those choices are justified. This project calls that second-order provenance and develops a way to examine it in institutions.",
     question:

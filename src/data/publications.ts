@@ -324,7 +324,7 @@ export const RESEARCH_NOTES: Publication[] = [
     capacities: ["presupposed"],
   },
   {
-    title: "Second-Order Provenance",
+    title: "Paper on provenance and institutional closure (title withheld during anonymous review)",
     venue: "Working paper",
     status: "Working paper",
     year: "2026",
@@ -377,7 +377,7 @@ export const RESEARCH_NOTES: Publication[] = [
     capacities: ["concealed"],
   },
   {
-    title: "Answerability on the Record",
+    title: "Paper on institutional records as moral infrastructure (title withheld during anonymous review)",
     venue: "In preparation",
     status: "In preparation",
     themeSlug: "judgment-answerability-institutional-reason",

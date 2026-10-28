@@ -16,7 +16,7 @@ Reorganize the site so it reads as one philosopher working on a bounded set of p
 
 ## The six research themes (replace current groupings everywhere)
 
-1. **Judgment, Answerability and Institutional Reason** — Standing Is Not an Ordering, The Locus of Answerability, Answerability on the Record, Second-Order Provenance, ClaimBuilder.ai; concepts: inferential license, judgment gap, institutional closure, provenance of normative orderings.
+1. **Judgment, Answerability and Institutional Reason** — Standing Is Not an Ordering, The Locus of Answerability, two papers under anonymous review (titles withheld), ClaimBuilder.ai; concepts: inferential license, judgment gap, institutional closure, provenance of normative orderings.
 2. **Normativity, Moral Standing and Ethical Disclosure** — Standing Is Not an Ordering, When Responsibility Fails to Arise, The Diffuse Void, The Ontological Organization of Normativity, Predictive AI and Second-Personal Exclusion. (Floridi paper reframed as a general study of standing vs. ordering, with information ethics as maximal test case — not a "Floridi critique".)
 3. **Formation, Agency and the Human Subject** — Creaturehood Under Conditions of Optimization, From Phronesis to Pronoia, The Gifted Subject, Action Without Acts, Algorithmic Habitus and the Invisible Mission, Algorithmic Formation and the Mimetic Self, Epistemic Automation and the Deformation of the Human. (Replaces "AI and theology".)
 4. **Desire, Comparison and Social Relations** — Comparative Desire and Social Violence, The Platforming of Desire; concepts: comparative entitlement formation, post-mimetic relationality, infrastructural valuation, salience.
