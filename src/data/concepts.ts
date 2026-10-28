@@ -41,7 +41,6 @@ export const CONCEPTS: Concept[] = [
     ],
     publications: [
       "The Locus of Answerability (working paper).",
-      "Answerability on the Record (in preparation).",
       "When Responsibility Fails to Arise (working paper).",
     ],
     currentWork: [
@@ -59,10 +58,7 @@ export const CONCEPTS: Concept[] = [
       "Systems that satisfy first-order provenance can nevertheless be answerable to no one at the second order — the ordering under which their outputs count as decisive was itself never authored by an addressable party.",
       "The concept links technical audit to institutional answerability: an institution that cannot answer at the second order cannot own the decisions its systems produce.",
     ],
-    publications: [
-      "Second-Order Provenance (working paper).",
-      "Standing Is Not an Ordering (under review).",
-    ],
+    publications: ["Standing Is Not an Ordering (under review)."],
     currentWork: [
       "A framework for second-order provenance audits of institutional AI deployments.",
       "Cross-work with ClaimBuilder.ai on how second-order provenance can be operationalised.",
@@ -207,7 +203,6 @@ export const CONCEPTS: Concept[] = [
     ],
     publications: [
       "The Locus of Answerability (working paper).",
-      "Answerability on the Record (in preparation).",
       "When Responsibility Fails to Arise (working paper).",
       "Derivative Epistemic Agency (published in JMIR Metascience and Research Integrity).",
     ],

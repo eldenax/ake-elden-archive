@@ -20,17 +20,13 @@ export const CONCEPT_EDGES: ConceptEdge[] = [
     a: "judgment-gap",
     b: "second-order-provenance",
     note: "Closing the gap requires provenance not of data but of the orderings that make outputs decisive.",
-    publications: [
-      "The Locus of Answerability",
-      "Second-Order Provenance",
-      "Answerability on the Record",
-    ],
+    publications: ["The Locus of Answerability"],
   },
   {
     a: "second-order-provenance",
     b: "epistemic-infrastructure",
     note: "Normative orderings are sustained by — and inherited from — epistemic infrastructure.",
-    publications: ["Second-Order Provenance", "AI as epistemic infrastructure"],
+    publications: ["AI as epistemic infrastructure"],
   },
   {
     a: "inferential-license",
@@ -61,7 +57,7 @@ export const CONCEPT_EDGES: ConceptEdge[] = [
     a: "partition-thesis",
     b: "second-order-provenance",
     note: "Ordering disputes are second-order disputes; standing does not settle them.",
-    publications: ["Standing Is Not an Ordering", "Second-Order Provenance"],
+    publications: ["Standing Is Not an Ordering"],
   },
   {
     a: "comparative-entitlement-formation",

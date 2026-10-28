@@ -324,17 +324,6 @@ export const RESEARCH_NOTES: Publication[] = [
     capacities: ["presupposed"],
   },
   {
-    title: "Second-Order Provenance",
-    venue: "Working paper",
-    status: "Working paper",
-    year: "2026",
-    themeSlug: "judgment-answerability-institutional-reason",
-    conceptSlug: "second-order-provenance",
-    contribution:
-      "Introduces second-order provenance: the traceability not of data but of the normative orderings under which data are taken to matter.",
-    capacities: ["transformed"],
-  },
-  {
     title:
       "The Licensing Problem in Predictive Maintenance: When Does a Prediction Become a Reason to Act?",
     venue: "Working paper (draft v5)",
@@ -375,15 +364,6 @@ export const RESEARCH_NOTES: Publication[] = [
     contribution:
       "Argues that predictive systems can enact a second-personal exclusion: those about whom claims are made are structurally not among those to whom answer is owed.",
     capacities: ["concealed"],
-  },
-  {
-    title: "Answerability on the Record",
-    venue: "In preparation",
-    status: "In preparation",
-    themeSlug: "judgment-answerability-institutional-reason",
-    contribution:
-      "Argues that answerability requires an addressable record — not merely an explainable output — and reconstructs institutional recordkeeping as a moral infrastructure.",
-    capacities: ["presupposed", "transformed"],
   },
   {
     title: "The Platforming of Desire",

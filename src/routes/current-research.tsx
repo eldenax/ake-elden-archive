@@ -84,19 +84,6 @@ const ACTIVE: ActiveProject[] = [
     conceptSlug: "comparative-entitlement-formation",
     conceptLabel: "Comparative Entitlement Formation",
   },
-  {
-    workingTitle: "Second-Order Provenance",
-    paragraph:
-      "Knowing where data came from is not enough. We also need to know who chose the thresholds, rankings, and categories used to interpret it, and why those choices are justified. This project calls that second-order provenance and develops a way to examine it in institutions.",
-    question:
-      "Can an institution account for both its data and the rules that make that data matter?",
-    output:
-      "Working paper; operational audit framework co-developed with ClaimBuilder.ai; workshop paper on institutional recordkeeping as moral infrastructure.",
-    themeSlug: "judgment-answerability-institutional-reason",
-    themeLabel: "Judgment & Answerability",
-    conceptSlug: "second-order-provenance",
-    conceptLabel: "Second-Order Provenance",
-  },
 ];
 
 
@@ -113,9 +100,8 @@ function CurrentResearchPage() {
           </h1>
           <p className="mt-6 text-base leading-relaxed text-foreground/85">
             My current projects explore responsibility in institutions, moral
-            standing, social comparison, and the origins of institutional
-            decisions. Published articles are under Publications; drafts are
-            under Working papers.
+            standing, and social comparison. Published articles are under
+            Publications; drafts are under Working papers.
           </p>
         </div>
       </section>

@@ -35,8 +35,6 @@ export const THEMES: Theme[] = [
     works: [
       { title: "Standing Is Not an Ordering", status: "Under review" },
       { title: "The Locus of Answerability", status: "Working paper" },
-      { title: "Answerability on the Record", status: "In preparation" },
-      { title: "Second-Order Provenance", status: "Working paper" },
       { title: "ClaimBuilder.ai", note: "Applied research context" },
     ],
     conceptSlugs: ["inferential-license", "judgment-gap", "second-order-provenance"],
