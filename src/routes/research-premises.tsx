@@ -118,12 +118,12 @@ const SECTIONS = [
     ],
   },
   {
-    id: "second-order",
-    label: "From first-order questions to second-order philosophy",
+    id: "prior-question",
+    label: "From first questions to prior questions",
     paragraphs: [
       "A first-order philosophical question asks something like: Is this person responsible? Does this person have moral standing? Is this achievement valuable? Is this exercise of power legitimate?",
       "These are important questions. But they are not usually where my own interest begins.",
-      "I am increasingly interested in the second-order question: What would have to be true for us to be entitled to move from the relevant facts to that conclusion?",
+      "I am increasingly interested in the prior question: What would have to be true for us to be entitled to move from the relevant facts to that conclusion?",
       "Suppose, for example, that an entity has moral standing. Does it follow that it should receive greater priority when claims conflict?",
       "No.",
       "Standing and priority answer different questions. Standing concerns admission into a normative domain. Priority concerns comparative ordering within that domain. A property that is sufficient to establish standing does not automatically acquire priority-conferring force.",

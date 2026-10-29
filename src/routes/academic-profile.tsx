@@ -69,7 +69,7 @@ const TRAJECTORY: { domain: string; qualifier?: string; note: string }[] = [
   },
   {
     domain: "Philosophical & Theological Synthesis",
-    note: "My work in philosophy of technology, social epistemology, and theological anthropology integrates these empirical and institutional insights. It examines how contemporary algorithmic systems, generative AI, and predictive models do not merely support human decisions, but act as second-order mediations that subtly alter the very preconditions of moral imputability, responsive agency, and human formation. This work proceeds in dialogue with contemporary scholarship in philosophy of technology and social epistemology.",
+    note: "My work in philosophy of technology, social epistemology, and theological anthropology integrates these empirical and institutional insights. It examines how contemporary algorithmic systems, generative AI, and predictive models do not merely support human decisions, but act as mediations that subtly alter the very preconditions of moral imputability, responsive agency, and human formation. This work proceeds in dialogue with contemporary scholarship in philosophy of technology and social epistemology.",
   },
 ];
 
@@ -301,7 +301,7 @@ function AcademicProfilePage() {
               that look like judgments, while the conditions that would make
               them answerable judgments are quietly removed. The present
               programme formalises this as a set of philosophical problems —
-              inferential license, the judgment gap, second-order provenance,
+              inferential license, the judgment gap,
               epistemic infrastructure — rather than as a critique of any
               particular technology.
             </p>
