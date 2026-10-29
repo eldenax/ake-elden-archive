@@ -260,7 +260,7 @@ export const PAPERS: Paper[] = [
       },
       {
         label: "C4 — Answerability",
-        body: "There must exist an agent with authority to enact and to withhold the action, access at decision time to the grounds for C1–C3 as documented, and exposure to the consequences. C4 is second-order: it governs whether an entitlement grounded by C1–C3 can be held over time.",
+        body: "There must exist an agent with authority to enact and to withhold the action, access at decision time to the grounds for C1–C3 as documented, and exposure to the consequences. C4 operates at a higher level: it governs whether an entitlement grounded by C1–C3 can be held over time.",
       },
     ],
     positioning:
