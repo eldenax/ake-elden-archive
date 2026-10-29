@@ -28,7 +28,7 @@ export const THEMES: Theme[] = [
       "Who can explain and defend an institutional decision?",
     summary: "An institution should be able to explain its decisions and respond to challenges. I examine what makes that possible when automated systems take over parts of the reasoning.",
     description: [
-      "This theme asks a normative question about acts: under what conditions does an institutional decision count as a judgment that someone can be held to? It develops a vocabulary — provenance, inferential license, closure — for locating the point at which answerability is either preserved or lost.",
+      "This theme asks a normative question about acts: under what conditions does an institutional decision count as a judgment that someone can be held to? It develops a vocabulary — inferential license, closure, and authored orderings — for locating the point at which answerability is either preserved or lost.",
       "The problem is not whether machines can reason, but what happens to the standing of an institution's speech when its decisions can no longer be traced to a locus of answerability. Where Area 6 asks what infrastructure makes decisions possible, this area asks what makes them defensible.",
     ],
 
@@ -38,7 +38,7 @@ export const THEMES: Theme[] = [
       { title: "ClaimBuilder.ai", note: "Applied research context" },
     ],
     conceptSlugs: ["inferential-license", "judgment-gap"],
-    conceptNotes: ["institutional closure", "provenance of normative orderings"],
+    conceptNotes: ["institutional closure", "authorship of normative orderings"],
     projects: ["ClaimBuilder.ai"],
   },
   {

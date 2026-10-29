@@ -31,7 +31,7 @@ const FIELDS = [
   },
   {
     name: "Social epistemology",
-    note: "Inferential license, explanatory entitlement, and the provenance of institutional knowledge claims.",
+    note: "Inferential license, explanatory entitlement, and the origins of institutional knowledge claims.",
   },
   {
     name: "Theological-Anthropology",
@@ -90,7 +90,7 @@ const EXPERIENCE = [
     period: "Applied research",
     role: "Research contexts",
     org: "TrialTact · ClaimBuilder.ai",
-    note: "Applied settings in which the programme's philosophical problems — institutional judgment, provenance, and answerability — become observable under load.",
+    note: "Applied settings in which the programme's philosophical problems — institutional judgment, traceability, and answerability — become observable under load.",
   },
 ];
 

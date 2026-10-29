@@ -567,7 +567,7 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["inferential-license", "judgment-gap"],
       },
       {
-        heading: "What answerability requires: traceable orderings",
+        heading: "What answerability requires: an author for the ordering",
         paragraphs: [
           "If judgment is to be owned, its normative footing must be traceable. Knowing where data came from is not enough. The harder question is: where did the orderings come from that make those data matter — the threshold, the ranking, the category that turned an output into something decisive?",
           "Systems routinely satisfy the first requirement while failing the second. Every input is documented; no addressable party ever authored the ordering under which the output counts. An institution in that position cannot answer for the decisions its systems produce, however complete its audit trail.",
