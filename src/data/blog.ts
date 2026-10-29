@@ -127,7 +127,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "The gap between these two is what the article calls responsibility asymmetry: a mismatch between the responsibility formally assigned to an author and the actual competence that author retains over what their paper claims.",
           "The article sets out when this asymmetry arises, how it differs from ordinary reliance on tools, and why publication pressure in today's research system makes it more likely.",
         ],
-        concepts: ["exercisable-answerability", "second-order-provenance"],
+        concepts: ["exercisable-answerability"],
       },
       {
         heading: "From diagnosis to practical rules",
@@ -341,10 +341,10 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["inferential-license", "judgment-gap"],
       },
       {
-        heading: "From first-order questions to second-order philosophy",
+        heading: "From first questions to prior questions",
         paragraphs: [
           "A first-order philosophical question asks something like: Is this person responsible? Does this person have moral standing? Is this achievement valuable? Is this exercise of power legitimate? These are important questions. But they are not usually where my own interest begins.",
-          "I am increasingly interested in the second-order question: What would have to be true for us to be entitled to move from the relevant facts to that conclusion? Suppose, for example, that an entity has moral standing. Does it follow that it should receive greater priority when claims conflict? No. Standing and priority answer different questions. Standing concerns admission into a normative domain. Priority concerns comparative ordering within that domain. A property that is sufficient to establish standing does not automatically acquire priority-conferring force. Something additional is required. There must be a bridge principle that licenses the transition.",
+          "I am increasingly interested in the prior question: What would have to be true for us to be entitled to move from the relevant facts to that conclusion? Suppose, for example, that an entity has moral standing. Does it follow that it should receive greater priority when claims conflict? No. Standing and priority answer different questions. Standing concerns admission into a normative domain. Priority concerns comparative ordering within that domain. A property that is sufficient to establish standing does not automatically acquire priority-conferring force. Something additional is required. There must be a bridge principle that licenses the transition.",
           "Much philosophical reasoning depends upon such bridges. Yet the bridges themselves are often left implicit.",
         ],
         concepts: ["partition-thesis", "ethical-disclosure"],
@@ -374,7 +374,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "Abstractly, philosophical reasoning often takes the form A → B: a fact, property, relation, or event is identified, and a further normative or epistemic status is inferred. But the real structure may be closer to A + C → B, where C represents the conditions that license the transition. Once this is recognized, another question immediately appears: What makes C available? That introduces a further level: D → C → [A → B]. Here D may represent institutional, social, temporal, technological, or agential structures.",
           "This, I think, captures the deeper architecture of my research. The project is not simply a philosophy of action. Nor is it simply a theory of responsibility, technology, institutions, or social epistemology. It is a philosophy of the conditions under which transitions between statuses become warranted.",
         ],
-        concepts: ["second-order-provenance"],
+        concepts: [],
       },
       {
         heading: "Conditions, transitions, attribution",
@@ -383,7 +383,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "The philosophical task is therefore not merely to ask: What is true of this person, act, institution, or outcome? It is also to ask: What licenses us to move from what we know to what we attribute? And then, one level deeper: What must already be true for that licensing relation itself to exist?",
           "I currently think of this research programme as a philosophy of licensed transitions, closely connected to what might also be called a philosophy of prior conditions. Its governing question is simple to state: What must already be true before a transition in normative, epistemic, evaluative, or agential status is warranted? That question is deliberately general. It can be asked about moral responsibility and social standing, about institutions and technologies, about evaluation and comparison, about authorship and agency. The domains differ. The underlying philosophical structure may be the same. And that is increasingly what I think my philosophical project is about.",
         ],
-        concepts: ["inferential-license", "exercisable-answerability", "second-order-provenance"],
+        concepts: ["inferential-license", "exercisable-answerability"],
       },
     ],
     closing: [
@@ -414,7 +414,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "The analysis builds on conditional responsibility requirements: the conditions that must hold for an outcome to count as something an agent did, rather than something that happened through them. Control, awareness, and the capacity to have done otherwise are not optional extras; they are what make imputation possible.",
           "When a system's outputs arrive pre-ordered, pre-weighted, and pre-interpreted, these conditions can fail quietly. The human in the loop still clicks, approves, or signs — but the act no longer bears the structure that would make it theirs.",
         ],
-        concepts: ["exercisable-answerability", "second-order-provenance"],
+        concepts: ["exercisable-answerability"],
       },
       {
         heading: "Misfired imputation",
@@ -480,9 +480,9 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["post-mimetic-relationality"],
       },
       {
-        heading: "Second-order costs",
+        heading: "Downstream costs",
         paragraphs: [
-          "The harms produced when comparative entitlements are frustrated are second-order costs of institutional arrangements. They are generated by distributive structures, borne by parties outside the initial justification, and cannot be externalised from the basic structure.",
+          "The harms produced when comparative entitlements are frustrated are downstream costs of institutional arrangements. They are generated by distributive structures, borne by parties outside the initial justification, and cannot be externalised from the basic structure.",
           "This reframes the moral economy of unfairness. The question is no longer only who gets what, but whose comparative position is produced by the arrangement and who pays the costs when the resulting entitlements cannot be satisfied. The article offers evidential criteria for identifying these products and marks the limits beyond which the mechanism does not extend.",
         ],
         concepts: ["comparative-entitlement-formation"],
@@ -529,10 +529,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "The deeper failure than opacity",
         paragraphs: [
-          "Second-order provenance asks where the ordering behind a decision came from — the threshold, ranking, or category that turned data into a decisive reason. A system may be fully transparent at the first order and yet unanswerable at the second.",
+          "Transparency asks where the ordering behind a decision came from — the threshold, ranking, or category that turned data into a decisive reason. A system may be fully transparent about its data and yet unanswerable for its orderings.",
           "Exercisable answerability goes a step further. Even if the ordering is traceable, there must still be someone positioned to defend it. An institution can know which system produced a decision and still lack anyone capable of answering for why that decision deserved to count. The failure is not ignorance; it is the absence of a competent respondent.",
         ],
-        concepts: ["second-order-provenance"],
+        concepts: [],
       },
       {
         heading: "Institutional migration",
@@ -544,7 +544,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     closing: [
-      "Exercisable answerability therefore belongs to the same movement as the other concepts in this programme. Inferential license is relocated; the judgment gap opens; second-order provenance fails; the friction that would have sustained answerability is removed; and the person who remains nominally responsible no longer occupies the position from which the decision can be defended.",
+      "Exercisable answerability therefore belongs to the same movement as the other concepts in this programme. Inferential license is relocated; the judgment gap opens; the friction that would have sustained answerability is removed; and the person who remains nominally responsible no longer occupies the position from which the decision can be defended.",
       "The practical question is not how to keep a human in the loop, but how to keep the loop answerable — how to design institutions in which the standing to answer remains exercisable, not merely assigned.",
     ],
   },
@@ -554,7 +554,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-08-11",
     readingTime: "9 min read",
     description:
-      "A single walk through the working vocabulary of the programme — inferential license, judgment gap, second-order provenance, the partition thesis, ethical disclosure, comparative entitlement formation, post-mimetic relationality, epistemic infrastructure, systemic friction, and automated certainty — and how each concept depends on the others.",
+      "A single walk through the working vocabulary of the programme — inferential license, judgment gap, the partition thesis, ethical disclosure, comparative entitlement formation, post-mimetic relationality, epistemic infrastructure, systemic friction, and automated certainty — and how each concept depends on the others.",
     lede: "The concepts developed in this programme are not a glossary. They are the joints of one argument about what has to be in place before a decision can count as a judgment for which someone is answerable — and what happens to those conditions when the work of deciding is redistributed into infrastructure.",
     sections: [
       {
@@ -567,12 +567,12 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["inferential-license", "judgment-gap"],
       },
       {
-        heading: "What answerability requires: provenance at the second order",
+        heading: "What answerability requires: traceable orderings",
         paragraphs: [
-          "If judgment is to be owned, its normative footing must be traceable. First-order provenance tells us where data came from. Second-order provenance asks the harder question: where did the orderings come from that make those data matter — the threshold, the ranking, the category that turned an output into something decisive?",
+          "If judgment is to be owned, its normative footing must be traceable. Knowing where data came from is not enough. The harder question is: where did the orderings come from that make those data matter — the threshold, the ranking, the category that turned an output into something decisive?",
           "Systems routinely satisfy the first requirement while failing the second. Every input is documented; no addressable party ever authored the ordering under which the output counts. An institution in that position cannot answer for the decisions its systems produce, however complete its audit trail.",
         ],
-        concepts: ["second-order-provenance"],
+        concepts: [],
       },
       {
         heading: "Two questions kept apart: standing and ordering",

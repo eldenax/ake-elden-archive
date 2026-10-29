@@ -37,7 +37,7 @@ export const THEMES: Theme[] = [
       { title: "The Locus of Answerability", status: "Working paper" },
       { title: "ClaimBuilder.ai", note: "Applied research context" },
     ],
-    conceptSlugs: ["inferential-license", "judgment-gap", "second-order-provenance"],
+    conceptSlugs: ["inferential-license", "judgment-gap"],
     conceptNotes: ["institutional closure", "provenance of normative orderings"],
     projects: ["ClaimBuilder.ai"],
   },

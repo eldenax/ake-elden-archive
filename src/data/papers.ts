@@ -164,9 +164,9 @@ export const PAPERS: Paper[] = [
       "Draft v5 — §2.1 and reference list verified against the publication record, July 2026; items marked [†] remain to be checked.",
     themeSlug: "judgment-answerability-institutional-reason",
     themeLabel: "Judgment & Answerability",
-    conceptSlugs: ["inferential-license", "judgment-gap", "second-order-provenance"],
+    conceptSlugs: ["inferential-license", "judgment-gap"],
     abstract:
-      "Predictive maintenance research is organised around improving prediction. This paper argues that the binding constraint lies in the transition from prediction to intervention. I specify four conditions on a maintenance license — the entitlement to treat a predictive output as a ground for a given intervention — and argue their necessity by isolation. Three are grounding conditions: constitutive adequacy, entitlement transfer, and interventional discrimination. The fourth, answerability, is second-order, governing whether the first three can be held over time. The interventional condition binds asymmetrically: engineering knowledge supports replace versus do not replace, whereas predictive maintenance proposes replace now versus replace later. Four formal results follow, including that accuracy improvement resolves only the component of the intervention contrast the labelling scheme individuates, and that evidence accumulated by a control population buys a post-withdrawal extension depending on reserve intensity rather than duration. Reserve is a subscription, not an investment.",
+      "Predictive maintenance research is organised around improving prediction. This paper argues that the binding constraint lies in the transition from prediction to intervention. I specify four conditions on a maintenance license — the entitlement to treat a predictive output as a ground for a given intervention — and argue their necessity by isolation. Three are grounding conditions: constitutive adequacy, entitlement transfer, and interventional discrimination. The fourth, answerability, operates at a higher level, governing whether the first three can be held over time. The interventional condition binds asymmetrically: engineering knowledge supports replace versus do not replace, whereas predictive maintenance proposes replace now versus replace later. Four formal results follow, including that accuracy improvement resolves only the component of the intervention contrast the labelling scheme individuates, and that evidence accumulated by a control population buys a post-withdrawal extension depending on reserve intensity rather than duration. Reserve is a subscription, not an investment.",
     keywords: [
       "predictive maintenance",
       "prescriptive maintenance",
@@ -260,7 +260,7 @@ export const PAPERS: Paper[] = [
       },
       {
         label: "C4 — Answerability",
-        body: "There must exist an agent with authority to enact and to withhold the action, access at decision time to the grounds for C1–C3 as documented, and exposure to the consequences. C4 is second-order: it governs whether an entitlement grounded by C1–C3 can be held over time.",
+        body: "There must exist an agent with authority to enact and to withhold the action, access at decision time to the grounds for C1–C3 as documented, and exposure to the consequences. C4 operates at a higher level: it governs whether an entitlement grounded by C1–C3 can be held over time.",
       },
     ],
     positioning:

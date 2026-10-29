@@ -26,7 +26,7 @@ export const CONCEPTS: Concept[] = [
     currentWork: [
       "A comparative study of inferential license across medicine, law, and public administration.",
       "Work on delegated inference — the conditions under which license can and cannot be transferred to automated systems.",
-      "Integration with the partition thesis and second-order provenance in the wider programme.",
+      "Integration with the partition thesis in the wider programme.",
     ],
   },
   {
@@ -46,22 +46,6 @@ export const CONCEPTS: Concept[] = [
     currentWork: [
       "Case work on judgment gaps in predictive administration.",
       "A typology of failure modes by which nominal oversight leaves the gap intact.",
-    ],
-  },
-  {
-    slug: "second-order-provenance",
-    name: "Second-Order Provenance",
-    tagline:
-      "Traceability not of data, but of the normative orderings under which data are taken to matter.",
-    theory: [
-      "First-order provenance tracks where data came from. Second-order provenance tracks where the normative orderings that make those data matter came from: how a ranking, threshold, or category was selected, licensed, and sustained.",
-      "Systems that satisfy first-order provenance can nevertheless be answerable to no one at the second order — the ordering under which their outputs count as decisive was itself never authored by an addressable party.",
-      "The concept links technical audit to institutional answerability: an institution that cannot answer at the second order cannot own the decisions its systems produce.",
-    ],
-    publications: ["Standing Is Not an Ordering (under review)."],
-    currentWork: [
-      "A framework for second-order provenance audits of institutional AI deployments.",
-      "Cross-work with ClaimBuilder.ai on how second-order provenance can be operationalised.",
     ],
   },
   {
@@ -208,7 +192,7 @@ export const CONCEPTS: Concept[] = [
     ],
     currentWork: [
       "A typology of cases in which responsibility is formally retained but practically unexercisable.",
-      "Integration with second-order provenance and the judgment gap in the wider programme.",
+      "Integration with the judgment gap in the wider programme.",
       "Applied work on institutional redesign for answerability-preserving workflows.",
     ],
   },
