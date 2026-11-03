@@ -19,3 +19,5 @@
 
 - [x] Add the uploaded “When AI Helps Us Think” blog post with its JMIR article link; omit the unfinished final sentence and verify reading and navigation.
 - [x] Record the JMIR Metascience and Research Integrity article as published at metascience.jmir.org/2026/1/e105907, so every page reports 17 peer-reviewed journal articles and no preprint; verify on every page that states a count.
+
+- [x] Add the uploaded “Beyond Hermeneutical Housekeeping” essay under Notes as a readable post about the diagnostic method; verify its reading and navigation.
