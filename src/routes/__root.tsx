@@ -221,7 +221,7 @@ const NAV = [
   { to: "/publications", label: "Publications" },
   { to: "/academic-profile", label: "About" },
   { to: "/blog", label: "Notes" },
-  { to: "/ki-oversikt", label: "KI i Norge" },
+  { to: "/ki-oversikt", label: "AI in Norway" },
   { to: "/cv", label: "CV" },
   { to: "/contact", label: "Contact" },
 ] as const;
