@@ -38,12 +38,6 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "source": "UiB"
   },
   {
-    "id": 6,
-    "name": "Pekka Parviainen",
-    "url": "https://w4.uib.no/en/persons/Pekka.Juhani.Parviainen",
-    "source": "UiB"
-  },
-  {
     "id": 7,
     "name": "Hans Julius Skaug",
     "url": "https://www4.uib.no/en/find-employees/Hans.Julius.Skaug",
