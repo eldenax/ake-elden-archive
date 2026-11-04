@@ -1,5 +1,7 @@
 # Tasks
 
+- [x] Translate the entire AI in Norway directory into English, preserve all caveats and profile links, add a clear disclaimer, and verify search and reading.
+
 - [x] Give the Norwegian AI directory its own main-menu tab, keep the editorial caveats, and make the 100-person scope clear in its title.
 
 - [x] Create a searchable Norwegian AI-person directory from the upload, retain every caveat, add 85 public profile links and clearly labelled person-specific searches for the remaining 15, and verify search and mobile reading.

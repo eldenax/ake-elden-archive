@@ -13,9 +13,9 @@ test("the upload contains 100 distinct people in 15 categories, without a rankin
 
 test("name, institution and expertise search can be combined with category filters", () => {
   assert.deepEqual(filterExperts("ake elden", "", "").map((p) => p.id), [62]);
-  assert.deepEqual(filterExperts("samisk", "", "UiT").map((p) => p.id), [17]);
-  assert.equal(filterExperts("", "KI i helse og medisin", "").length, 8);
-  assert.equal(filterExperts("samisk", "KI i helse og medisin", "").length, 0);
+  assert.deepEqual(filterExperts("sami", "", "UiT").map((p) => p.id), [17]);
+  assert.equal(filterExperts("", "AI in health and medicine", "").length, 8);
+  assert.equal(filterExperts("sami", "AI in health and medicine", "").length, 0);
   assert.equal(filterExperts("", "", "").length, 100);
 });
 

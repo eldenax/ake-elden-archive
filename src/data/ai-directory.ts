@@ -7,21 +7,21 @@ export interface ExpertPerson {
 }
 
 export const EXPERT_CATEGORIES: string[] = [
-  "Maskinlæring og grunnleggende KI",
-  "Computer vision og bildeanalyse",
-  "Språkmodeller, NLP og kunnskapsrepresentasjon",
-  "Robotikk og autonome systemer",
-  "KI-etikk, forklarbarhet og ansvarlig KI",
-  "KI i helse og medisin",
-  "Life science, bioinformatikk og forskningsdata",
-  "KI i utdanning, læring og dannelse",
-  "KI-jus, regulering og personvern",
-  "KI, filosofi, samfunn og menneskelig autonomi",
-  "KI i medier, kommunikasjon og kreative uttrykk",
-  "KI-strategi, ledelse og kommersialisering",
-  "Offentlig sektor, KI-styring og implementering",
-  "Industriell KI, energi og miljø",
-  "KI-sikkerhet, robusthet og cybersikkerhet"
+  "Machine learning and foundational AI",
+  "Computer vision and image analysis",
+  "Language models, NLP and knowledge representation",
+  "Robotics and autonomous systems",
+  "AI ethics, explainability and responsible AI",
+  "AI in health and medicine",
+  "Life sciences, bioinformatics and research data",
+  "AI in education, learning and human formation",
+  "AI law, regulation and privacy",
+  "AI, philosophy, society and human autonomy",
+  "AI in media, communication and creative expression",
+  "AI strategy, leadership and commercialisation",
+  "Public sector, AI governance and implementation",
+  "Industrial AI, energy and the environment",
+  "AI safety, robustness and cybersecurity"
 ];
 
 export const EXPERT_PEOPLE: ExpertPerson[] = [
@@ -29,705 +29,705 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "id": 1,
     "name": "Morten Goodwin",
     "institution": "UiA",
-    "expertise": "Dyp læring, anvendt KI",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Deep learning, applied AI",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 2,
     "name": "Helge Langseth",
     "institution": "NTNU",
-    "expertise": "Bayesianske nettverk, beslutningsstøtte",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Bayesian networks, decision support",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 3,
     "name": "Filippo Maria Bianchi",
     "institution": "UiT",
-    "expertise": "Maskinlæring, grafmodeller, tidsserier",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Machine learning, graph models, time series",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 4,
     "name": "Pål Grønås Drange",
     "institution": "UiB",
-    "expertise": "Algoritmer og maskinlæring",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Algorithms and machine learning",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 5,
     "name": "Pinar Heggernes",
     "institution": "UiB",
-    "expertise": "Algoritmer og KI-forskningsledelse",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Algorithms and AI research leadership",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 6,
     "name": "Pekka Parviainen",
     "institution": "UiB",
-    "expertise": "Maskinlæring og datavitenskap",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Machine learning and data science",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 7,
     "name": "Hans Julius Skaug",
     "institution": "UiB",
-    "expertise": "Statistikk og maskinlæring",
-    "category": "Maskinlæring og grunnleggende KI"
+    "expertise": "Statistics and machine learning",
+    "category": "Machine learning and foundational AI"
   },
   {
     "id": 8,
     "name": "Robert Jenssen",
     "institution": "UiT",
-    "expertise": "Dyp læring, visuell intelligens",
-    "category": "Computer vision og bildeanalyse"
+    "expertise": "Deep learning, visual intelligence",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 9,
     "name": "Michael Kampffmeyer",
     "institution": "UiT",
-    "expertise": "Forklarbar KI, medisinsk bildeanalyse",
-    "category": "Computer vision og bildeanalyse"
+    "expertise": "Explainable AI, medical image analysis",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 10,
     "name": "Anne Solberg",
     "institution": "UiO",
-    "expertise": "Maskinlæring og bildeanalyse",
-    "category": "Computer vision og bildeanalyse"
+    "expertise": "Machine learning and image analysis",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 11,
     "name": "Line Eikvil",
-    "institution": "Norsk Regnesentral",
-    "expertise": "Bildeanalyse, anvendt maskinlæring",
-    "category": "Computer vision og bildeanalyse"
+    "institution": "Norwegian Computing Center",
+    "expertise": "Image analysis, applied machine learning",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 12,
     "name": "Adín Ramírez Rivera",
     "institution": "UiO",
-    "expertise": "Computer vision, representasjonslæring",
-    "category": "Computer vision og bildeanalyse"
+    "expertise": "Computer vision, representation learning",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 13,
     "name": "Arnt-Børre Salberg",
-    "institution": "Norsk Regnesentral",
-    "expertise": "Fjernmåling og bildeanalyse",
-    "category": "Computer vision og bildeanalyse"
+    "institution": "Norwegian Computing Center",
+    "expertise": "Remote sensing and image analysis",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 14,
     "name": "Anders Ueland Waldeland",
-    "institution": "Norsk Regnesentral",
-    "expertise": "Bildeanalyse i energisektoren",
-    "category": "Computer vision og bildeanalyse"
+    "institution": "Norwegian Computing Center",
+    "expertise": "Image analysis in the energy sector",
+    "category": "Computer vision and image analysis"
   },
   {
     "id": 15,
     "name": "Erik Velldal",
     "institution": "UiO",
-    "expertise": "Språkteknologi og maskinlæring",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "Language technology and machine learning",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 16,
     "name": "Samia Touileb",
     "institution": "UiB",
-    "expertise": "NLP, automatisert tekstanalyse",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "NLP, automated text analysis",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 17,
     "name": "Trond Trosterud",
     "institution": "UiT",
-    "expertise": "Samisk språkteknologi",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "Sámi language technology",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 18,
     "name": "Thomas Ågotnes",
     "institution": "UiB",
-    "expertise": "Logikk, multiagentsystemer",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "Logic, multi-agent systems",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 19,
     "name": "Bjørnar Tessem",
     "institution": "UiB",
-    "expertise": "KI-algoritmer og kunnskapsbaserte systemer",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "AI algorithms and knowledge-based systems",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 20,
     "name": "Kerstin Bach",
     "institution": "NTNU",
-    "expertise": "Intelligente systemer, datadrevet KI",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "Intelligent systems, data-driven AI",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 21,
     "name": "Benjamin Ricaud",
     "institution": "UiT",
-    "expertise": "Grafbasert maskinlæring, generativ KI",
-    "category": "Språkmodeller, NLP og kunnskapsrepresentasjon"
+    "expertise": "Graph-based machine learning, generative AI",
+    "category": "Language models, NLP and knowledge representation"
   },
   {
     "id": 22,
     "name": "Jim Tørresen",
     "institution": "UiO",
-    "expertise": "Robotikk og intelligente systemer",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "Robotics and intelligent systems",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 23,
     "name": "Lei Jiao",
     "institution": "UiA",
-    "expertise": "Tsetlin-maskiner og læringsautomater",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "Tsetlin machines and learning automata",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 24,
     "name": "Linga Reddy Cenkeramaddi",
     "institution": "UiA",
-    "expertise": "Autonome systemer og sensorteknologi",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "Autonomous systems and sensor technology",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 25,
     "name": "Kai Olav Ellefsen",
     "institution": "UiO",
-    "expertise": "Robotikk og maskinlæring",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "Robotics and machine learning",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 26,
     "name": "Adil Rasheed",
     "institution": "NTNU",
-    "expertise": "KI, digitale tvillinger og droner",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "AI, digital twins and drones",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 27,
     "name": "Puneet Sharma",
     "institution": "UiT",
-    "expertise": "KI, automasjon og bildeanalyse",
-    "category": "Robotikk og autonome systemer"
+    "expertise": "AI, automation and image analysis",
+    "category": "Robotics and autonomous systems"
   },
   {
     "id": 28,
     "name": "Inga Strümke",
     "institution": "NTNU",
-    "expertise": "Forklarbar KI og KI-etikk",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Explainable AI and AI ethics",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 29,
     "name": "Marija Slavkovik",
     "institution": "UiB",
-    "expertise": "Maskinetikk, logikk og normative systemer",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Machine ethics, logic and normative systems",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 30,
     "name": "Miria Grisot",
     "institution": "UiO",
-    "expertise": "Ansvarlig KI og datapraksiser",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Responsible AI and data practices",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 31,
     "name": "Tone Bratteteig",
     "institution": "UiO",
-    "expertise": "Menneskesentrert KI og systemdesign",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Human-centred AI and system design",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 32,
     "name": "Maja van der Velden",
     "institution": "UiO",
-    "expertise": "Kritiske KI-studier, teknologietikk",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Critical AI studies, technology ethics",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 33,
     "name": "Kristoffer Wickstrøm",
     "institution": "UiT",
-    "expertise": "Forklarbar KI og modellusikkerhet",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Explainable AI and model uncertainty",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 34,
     "name": "Fred Godtliebsen",
     "institution": "UiT",
-    "expertise": "Statistiske metoder og usikkerhetsanalyse",
-    "category": "KI-etikk, forklarbarhet og ansvarlig KI"
+    "expertise": "Statistical methods and uncertainty analysis",
+    "category": "AI ethics, explainability and responsible AI"
   },
   {
     "id": 35,
     "name": "Helge Ræder",
     "institution": "UiB",
-    "expertise": "KI i medisin",
-    "category": "KI i helse og medisin"
+    "expertise": "AI in medicine",
+    "category": "AI in health and medicine"
   },
   {
     "id": 36,
     "name": "Bettina Husebø",
     "institution": "UiB",
-    "expertise": "KI i eldreomsorg og demens",
-    "category": "KI i helse og medisin"
+    "expertise": "AI in elder care and dementia",
+    "category": "AI in health and medicine"
   },
   {
     "id": 37,
     "name": "Michael Riegler",
     "institution": "Simula",
-    "expertise": "Medisinsk KI og analyse",
-    "category": "KI i helse og medisin"
+    "expertise": "Medical AI and analysis",
+    "category": "AI in health and medicine"
   },
   {
     "id": 38,
     "name": "Klas Pettersen",
     "institution": "Simula",
-    "expertise": "KI og beregningsbasert helseforskning",
-    "category": "KI i helse og medisin"
+    "expertise": "AI and computational health research",
+    "category": "AI in health and medicine"
   },
   {
     "id": 39,
     "name": "Ole Christian Lingjærde",
     "institution": "UiO",
-    "expertise": "Medisinsk informatikk og maskinlæring",
-    "category": "KI i helse og medisin"
+    "expertise": "Medical informatics and machine learning",
+    "category": "AI in health and medicine"
   },
   {
     "id": 40,
     "name": "Karl Øyvind Mikalsen",
     "institution": "UiT",
-    "expertise": "KI i klinisk medisin",
-    "category": "KI i helse og medisin"
+    "expertise": "AI in clinical medicine",
+    "category": "AI in health and medicine"
   },
   {
     "id": 41,
     "name": "Samuel Kuttner",
     "institution": "UiT/UNN",
-    "expertise": "Medisinsk avbildning, maskinlæring",
-    "category": "KI i helse og medisin"
+    "expertise": "Medical imaging, machine learning",
+    "category": "AI in health and medicine"
   },
   {
     "id": 42,
     "name": "Noeska Natasja Smit",
     "institution": "UiB",
-    "expertise": "Medisinsk visualisering",
-    "category": "KI i helse og medisin"
+    "expertise": "Medical visualisation",
+    "category": "AI in health and medicine"
   },
   {
     "id": 43,
     "name": "Geir Kjetil Sandve",
     "institution": "UiO",
-    "expertise": "Maskinlæring, biomedisinske data",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "Machine learning, biomedical data",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 44,
     "name": "Inge Jonassen",
     "institution": "UiB",
-    "expertise": "Bioinformatikk og algoritmer",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "Bioinformatics and algorithms",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 45,
     "name": "Lars Ailo Bongo",
     "institution": "UiT",
-    "expertise": "Helsedata og beregningsinfrastruktur",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "Health data and computing infrastructure",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 46,
     "name": "Marit Bakke",
     "institution": "UiB",
-    "expertise": "KI i biomedisinsk forskning",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "AI in biomedical research",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 47,
     "name": "Torbjørn Rognes",
     "institution": "UiO",
-    "expertise": "Bioinformatikk og sekvensanalyse",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "Bioinformatics and sequence analysis",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 48,
     "name": "Elisabeth Wetzer",
     "institution": "UiT",
-    "expertise": "Maskinlæring og medisinsk bildeanalyse",
-    "category": "Life science, bioinformatikk og forskningsdata"
+    "expertise": "Machine learning and medical image analysis",
+    "category": "Life sciences, bioinformatics and research data"
   },
   {
     "id": 49,
     "name": "Barbara Wasson",
     "institution": "UiB",
-    "expertise": "KI i utdanning, læringsanalyse",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "AI in education, learning analytics",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 50,
     "name": "Mohammad Khalil",
     "institution": "UiB",
-    "expertise": "AI in Education, syntetiske data",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "AI in education, synthetic data",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 51,
     "name": "Kine Maridatter Dørum Maxwell",
     "institution": "UiT",
-    "expertise": "Generativ KI i høyere utdanning",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "Generative AI in higher education",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 52,
     "name": "Marko Lukic",
     "institution": "UiT",
-    "expertise": "KI i undervisning og læring",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "AI in teaching and learning",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 53,
     "name": "Monika Nerland",
     "institution": "UiO",
-    "expertise": "Profesjonslæring og digital kunnskapspraksis",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "Professional learning and digital knowledge practices",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 54,
     "name": "Guri Verne",
     "institution": "UiO",
-    "expertise": "Menneske–KI-interaksjon",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "Human–AI interaction",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 55,
     "name": "Jo Herstad",
     "institution": "UiO",
-    "expertise": "KI, menneske–maskin-interaksjon",
-    "category": "KI i utdanning, læring og dannelse"
+    "expertise": "AI, human–computer interaction",
+    "category": "AI in education, learning and human formation"
   },
   {
     "id": 56,
     "name": "Tobias Mahler",
     "institution": "UiO",
-    "expertise": "Regulering av KI, robotrett",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "AI regulation, robotics law",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 57,
     "name": "Samson Yoseph Esayas",
     "institution": "UiO",
-    "expertise": "KI-regulering, personvern og konkurranserett",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "AI regulation, privacy and competition law",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 58,
     "name": "Malgorzata Cyndecka",
     "institution": "UiB",
-    "expertise": "EU/EØS-rett, personvern",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "EU/EEA law, privacy",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 59,
     "name": "Bjørn Aslak Juliussen",
     "institution": "UiT",
-    "expertise": "KI-regulering og datasikkerhetsrett",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "AI regulation and data security law",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 60,
     "name": "Mona Naomi Lintvedt",
     "institution": "UiO",
-    "expertise": "KI, personvern og robotrett",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "AI, privacy and robotics law",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 61,
     "name": "Vibeke Blaker Strand",
     "institution": "UiO",
-    "expertise": "Diskrimineringsrett og ny teknologi",
-    "category": "KI-jus, regulering og personvern"
+    "expertise": "Anti-discrimination law and emerging technology",
+    "category": "AI law, regulation and privacy"
   },
   {
     "id": 62,
     "name": "Åke Elden",
-    "institution": "NLA Høgskolen",
-    "expertise": "KI-etikk, autonomi og ansvar",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "institution": "NLA University College",
+    "expertise": "AI ethics, autonomy and responsibility",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 63,
     "name": "Jill Walker Rettberg",
     "institution": "UiB",
-    "expertise": "KI, digital kultur og fortellinger",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "AI, digital culture and narratives",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 64,
     "name": "Lars Nyre",
     "institution": "UiB",
-    "expertise": "Teknologifilosofi og menneske–maskin-forhold",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "Philosophy of technology and human–machine relations",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 65,
     "name": "Gabriele de Seta",
     "institution": "UiB",
-    "expertise": "Algoritmer og digital kultur",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "Algorithms and digital culture",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 66,
     "name": "Scott Rettberg",
     "institution": "UiB",
-    "expertise": "Digitale fortellinger og generativ KI",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "Digital narratives and generative AI",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 67,
     "name": "Erik Knudsen",
     "institution": "UiB",
-    "expertise": "KI, politisk kommunikasjon og medier",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "AI, political communication and media",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 68,
     "name": "Silvia Masiero",
     "institution": "UiO",
-    "expertise": "Digital identitet, inkludering og teknologisk rettferdighet",
-    "category": "KI, filosofi, samfunn og menneskelig autonomi"
+    "expertise": "Digital identity, inclusion and technological justice",
+    "category": "AI, philosophy, society and human autonomy"
   },
   {
     "id": 69,
     "name": "Christoph Trattner",
     "institution": "UiB/MediaFutures",
-    "expertise": "Ansvarlig KI og anbefalingssystemer",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "Responsible AI and recommender systems",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 70,
     "name": "Duc Tien Dang Nguyen",
     "institution": "UiB",
-    "expertise": "Multimedieverifikasjon og analyse",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "Multimedia verification and analysis",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 71,
     "name": "Jason Nelson",
     "institution": "UiB",
-    "expertise": "KI og digital kunst",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "AI and digital art",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 72,
     "name": "Alinta Kiri Krauth",
     "institution": "UiB",
-    "expertise": "KI og digital kunst",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "AI and digital art",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 73,
     "name": "David Jhave Johnston",
     "institution": "UiB",
-    "expertise": "KI-basert historiefortelling",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "AI-based storytelling",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 74,
     "name": "Viktoria Stray",
     "institution": "UiO",
-    "expertise": "Generativ KI i programvareutvikling og samarbeid",
-    "category": "KI i medier, kommunikasjon og kreative uttrykk"
+    "expertise": "Generative AI in software development and collaboration",
+    "category": "AI in media, communication and creative expression"
   },
   {
     "id": 75,
     "name": "Vegard Kolbjørnsrud",
     "institution": "BI",
-    "expertise": "KI og organisasjonsdesign",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "expertise": "AI and organisational design",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 76,
     "name": "Silvija Seres",
-    "institution": "Teknologirådgivning",
-    "expertise": "KI-strategi og digital transformasjon",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "institution": "Technology consulting",
+    "expertise": "AI strategy and digital transformation",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 77,
     "name": "Elin Hauge",
-    "institution": "Uavhengig rådgiver",
-    "expertise": "KI-strategi og næringsliv",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "institution": "Independent advisor",
+    "expertise": "AI strategy and business",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 78,
     "name": "Lars Rinnan",
-    "institution": "Teknologibransjen",
-    "expertise": "KI-forretningsutvikling",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "institution": "Technology industry",
+    "expertise": "AI business development",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 79,
     "name": "Anita Schjøll Brede",
-    "institution": "Iris.ai / teknologibransjen",
-    "expertise": "KI-entreprenørskap",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "institution": "Iris.ai / technology industry",
+    "expertise": "AI entrepreneurship",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 80,
     "name": "Peder Inge Furseth",
     "institution": "BI",
-    "expertise": "Teknologidrevet innovasjon",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "expertise": "Technology-driven innovation",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 81,
     "name": "Morten Irgens",
-    "institution": "Akademia og KI-nettverk",
-    "expertise": "KI-politikk og forskningsstrategi",
-    "category": "KI-strategi, ledelse og kommersialisering"
+    "institution": "Academia and AI networks",
+    "expertise": "AI policy and research strategy",
+    "category": "AI strategy, leadership and commercialisation"
   },
   {
     "id": 82,
     "name": "Cathrine Pihl Lyngstad",
-    "institution": "NAV / KI-samarbeid",
-    "expertise": "Data og offentlig KI-implementering",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "institution": "NAV / AI collaboration",
+    "expertise": "Data and public-sector AI implementation",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 83,
     "name": "Alex Moltzau",
-    "institution": "KI-politikk og forskningsnettverk",
-    "expertise": "Ansvarlig KI og offentlig politikk",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "institution": "AI policy and research networks",
+    "expertise": "Responsible AI and public policy",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 84,
     "name": "Alexander Moltubakk Kempton",
     "institution": "UiO",
-    "expertise": "KI og endring i offentlig forvaltning",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "expertise": "AI and change in public administration",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 85,
     "name": "Arild Waaler",
     "institution": "UiO",
-    "expertise": "Industriell digitalisering og interoperabilitet",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "expertise": "Industrial digitalisation and interoperability",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 86,
     "name": "Malcolm Langford",
     "institution": "UiO / TRUST",
-    "expertise": "Pålitelig KI i institusjoner og rettssystem",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "expertise": "Trustworthy AI in institutions and the legal system",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 87,
     "name": "Øystein Flø Baste",
     "institution": "UiO",
-    "expertise": "KI, utdanningsrett og digital forvaltning",
-    "category": "Offentlig sektor, KI-styring og implementering"
+    "expertise": "AI, education law and digital administration",
+    "category": "Public sector, AI governance and implementation"
   },
   {
     "id": 88,
     "name": "Signe Riemer-Sørensen",
     "institution": "SINTEF",
-    "expertise": "Industriell og anvendt KI",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "Industrial and applied AI",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 89,
     "name": "Michail Spitieris",
     "institution": "SINTEF",
-    "expertise": "Probabilistisk og fysikkinformert KI",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "Probabilistic and physics-informed AI",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 90,
     "name": "Felix Kohler",
     "institution": "SINTEF",
-    "expertise": "KI og industrielle analysesystemer",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "AI and industrial analysis systems",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 91,
     "name": "Katarzyna Michalowska",
     "institution": "SINTEF",
-    "expertise": "Analytikk og industriell KI",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "Analytics and industrial AI",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 92,
     "name": "Giulia Robbiani",
     "institution": "SINTEF",
-    "expertise": "Anvendt KI og analytikk",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "Applied AI and analytics",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 93,
     "name": "Alexander Johannes Stasik",
     "institution": "SINTEF",
-    "expertise": "Maskinlæring og industrielle systemer",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "Machine learning and industrial systems",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 94,
     "name": "Yngve Birkelund",
     "institution": "UiT",
-    "expertise": "KI og vindkraftprediksjon",
-    "category": "Industriell KI, energi og miljø"
+    "expertise": "AI and wind power forecasting",
+    "category": "Industrial AI, energy and the environment"
   },
   {
     "id": 95,
     "name": "Ali Ramezani-Kebrya",
     "institution": "UiO",
-    "expertise": "Robust og sikker dyp læring",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Robust and secure deep learning",
+    "category": "AI safety, robustness and cybersecurity"
   },
   {
     "id": 96,
     "name": "Olav Lysne",
     "institution": "Simula",
-    "expertise": "Sikkerhet i digitale systemer",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Digital systems security",
+    "category": "AI safety, robustness and cybersecurity"
   },
   {
     "id": 97,
     "name": "Lillian Røstad",
     "institution": "Simula",
-    "expertise": "Cybersikkerhet og digital tillit",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Cybersecurity and digital trust",
+    "category": "AI safety, robustness and cybersecurity"
   },
   {
     "id": 98,
     "name": "Jostein Jensen",
     "institution": "Simula",
-    "expertise": "Cybersikkerhet",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Cybersecurity",
+    "category": "AI safety, robustness and cybersecurity"
   },
   {
     "id": 99,
     "name": "Audun Jøsang",
     "institution": "UiO",
-    "expertise": "Informasjonssikkerhet og tillitsmodeller",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Information security and trust models",
+    "category": "AI safety, robustness and cybersecurity"
   },
   {
     "id": 100,
     "name": "Vasileios Mavroeidis",
     "institution": "UiO",
-    "expertise": "Cybertrusseletterretning og sikkerhetsanalyse",
-    "category": "KI-sikkerhet, robusthet og cybersikkerhet"
+    "expertise": "Cyber threat intelligence and security analysis",
+    "category": "AI safety, robustness and cybersecurity"
   }
 ];
 
-export const METHOD_CAVEAT = "Viktig metodeforbehold: Dette er et redaksjonelt bruttoutvalg, ikke en offisielt godkjent nasjonal ekspertliste. En rekke navn og fagområder er kontrollert mot institusjonenes egne oversikter, men ikke alle nåværende roller, publikasjoner og individuelle ekspertkvalifikasjoner er fullstendig validert. Rekkefølgen uttrykker ikke kvalitet eller rangering.";
+export const METHOD_CAVEAT = "This is an editorial preliminary selection, not an officially approved national expert register. A number of names and subject areas have been checked against institutional directories, but not all current roles, publications or individual expert qualifications have been fully validated. The order does not indicate quality or ranking.";
 
 /** Search tolerates Norwegian diacritics and requires every word to match. */
 export function normalizeSearch(value: string) {
@@ -743,5 +743,5 @@ export function filterExperts(query: string, category: string, institution: stri
 }
 
 export function profileSearchUrl(person: ExpertPerson) {
-  return `https://www.google.com/search?q=${encodeURIComponent(`${person.name} ${person.institution} profil`)}`;
+  return `https://www.google.com/search?q=${encodeURIComponent(`${person.name} ${person.institution} profile`)}`;
 }
