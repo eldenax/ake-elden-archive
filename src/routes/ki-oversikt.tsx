@@ -172,8 +172,9 @@ function AiDirectory() {
           </div>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Conclusion</h3>
-            <p className="mt-3">Yes — the list should be kept and further developed. It can become a valuable part of akeelden.com, and in time possibly a national reference resource.</p>
-            <p className="mt-3">Perhaps the most interesting thing is that the project in practice demonstrates one of the site’s own research themes: who is granted epistemic authority, on what grounds, and who decides who is counted as an expert?</p>
+            <p className="mt-3">The directory is a standing part of akeelden.com and will be kept and developed further. The aim is for it to grow, over time, into a national reference resource for Norwegian expertise in artificial intelligence.</p>
+            <p className="mt-3">That role is earned, not assumed: it depends on the individual quality assurance, openness to nominations and corrections, and regular updates described above. Until those steps are completed, this page should be read as an editorial preliminary selection.</p>
+            <p className="mt-3">The project also touches one of the site’s own research themes in practice: who is granted epistemic authority, on what grounds, and who decides who is counted as an expert?</p>
           </div>
           <p>An important next step is to establish individual profiles with links to ORCID, NVA, Google Scholar or institutional pages, together with a brief, verifiable basis for inclusion. This could allow a preliminary selection to develop into an actual national expert register.</p>
           <p className="text-muted-foreground">“Public profile” links to a located individual professional profile. “Search for profile” is a name-based web search, not a confirmed profile address. No private contact details have been added.</p>
