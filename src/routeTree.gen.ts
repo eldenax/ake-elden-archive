@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CurrentResearchRouteImport } from './routes/current-research'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as InquiryRouteImport } from './routes/inquiry'
+import { Route as KiOversiktRouteImport } from './routes/ki-oversikt'
 import { Route as MethodRouteImport } from './routes/method'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ProjectsRouteImport } from './routes/projects'
@@ -64,6 +65,11 @@ const CvRoute = CvRouteImport.update({
 const InquiryRoute = InquiryRouteImport.update({
   id: '/inquiry',
   path: '/inquiry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KiOversiktRoute = KiOversiktRouteImport.update({
+  id: '/ki-oversikt',
+  path: '/ki-oversikt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MethodRoute = MethodRouteImport.update({
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/ki-oversikt': typeof KiOversiktRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/ki-oversikt': typeof KiOversiktRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/current-research': typeof CurrentResearchRoute
   '/cv': typeof CvRoute
   '/inquiry': typeof InquiryRouteWithChildren
+  '/ki-oversikt': typeof KiOversiktRoute
   '/method': typeof MethodRoute
   '/news': typeof NewsRoute
   '/projects': typeof ProjectsRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/ki-oversikt'
     | '/method'
     | '/news'
     | '/projects'
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/ki-oversikt'
     | '/method'
     | '/news'
     | '/projects'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/current-research'
     | '/cv'
     | '/inquiry'
+    | '/ki-oversikt'
     | '/method'
     | '/news'
     | '/projects'
@@ -287,6 +299,7 @@ export interface RootRouteChildren {
   CurrentResearchRoute: typeof CurrentResearchRoute
   CvRoute: typeof CvRoute
   InquiryRoute: typeof InquiryRouteWithChildren
+  KiOversiktRoute: typeof KiOversiktRoute
   MethodRoute: typeof MethodRoute
   NewsRoute: typeof NewsRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -351,6 +364,13 @@ declare module '@tanstack/react-router' {
       path: '/inquiry'
       fullPath: '/inquiry'
       preLoaderRoute: typeof InquiryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ki-oversikt': {
+      id: '/ki-oversikt'
+      path: '/ki-oversikt'
+      fullPath: '/ki-oversikt'
+      preLoaderRoute: typeof KiOversiktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/method': {
@@ -473,6 +493,7 @@ const rootRouteChildren: RootRouteChildren = {
   CurrentResearchRoute: CurrentResearchRoute,
   CvRoute: CvRoute,
   InquiryRoute: InquiryRouteWithChildren,
+  KiOversiktRoute: KiOversiktRoute,
   MethodRoute: MethodRoute,
   NewsRoute: NewsRoute,
   ProjectsRoute: ProjectsRoute,

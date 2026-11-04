@@ -1,5 +1,7 @@
 # Tasks
 
+- [x] Create a searchable Norwegian AI-person directory from the upload, retain every caveat, add 85 public profile links and clearly labelled person-specific searches for the remaining 15, and verify search and mobile reading.
+
 - [x] Add “The Silent Automation of Professional Judgment” under Notes without the manuscript title or manuscript-reading section; verify the essay and its links.
 
 - [x] Show both researcher and research advisor roles, simplify the Research menu and pages, and verify navigation and reading on wide and narrow screens.
