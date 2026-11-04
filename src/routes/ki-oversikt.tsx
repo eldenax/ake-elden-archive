@@ -112,6 +112,12 @@ function AiDirectory() {
 
       <section id="metodeforbehold" className="scroll-mt-24 border-t border-border pt-10">
         <div className="max-w-3xl space-y-8 text-sm leading-relaxed text-foreground/85">
+          <div>
+            <h2 className="font-display text-2xl tracking-normal text-foreground">Om KI fag-ekspertoversikten</h2>
+            <p className="mt-3">Denne oversikten er et uavhengig, redaksjonelt initiativ utviklet av Åke Elden. Formålet er å synliggjøre bredden i norsk kompetanse innen kunstig intelligens, fra teknisk forskning og implementering til etikk, filosofi, jus, helse, utdanning og samfunnsvitenskap.</p>
+            <p className="mt-3">Utvalget bygger på offentlig tilgjengelig informasjon om faglig virksomhet, publikasjoner og dokumentert kompetanse. Listen er ikke en rangering, og oppføring innebærer ikke at vedkommende har godkjent eller sluttet seg til prosjektet.</p>
+            <p className="mt-3">Vi ønsker å sikre at informasjonen er korrekt og oppdatert. Henvendelser om faktiske feil, oppdateringer eller innsigelser kan sendes til redaktøren via <a href="/contact" className="underline underline-offset-4">nettsidens kontaktside</a>.</p>
+          </div>
           <h2 className="font-display text-2xl tracking-normal text-foreground">Kildegrunnlag og kvalitetssikring</h2>
           <p>Kategoriseringen er redaksjonell. I særlig sikkerhetskategorien inngår også forskere med ekspertise i tilgrensende cybersikkerhet, og i strategi- og offentlig-sektor-kategoriene inngår personer med implementerings- eller policykompetanse. Det innebærer ikke at alle 100 har samme dybde i teknisk KI-forskning.</p>
           <div>
