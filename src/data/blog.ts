@@ -18,6 +18,114 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
 {
+  "slug": "when-the-system-raises-an-alarm",
+  "title": "When the System Raises an Alarm but Cannot Explain Why",
+  "date": "2026-11-04",
+  "readingTime": "8 min read",
+  "description": "A Microsoft Power Platform notification as a case of automated certainty and institutional irresponsibility—and what it reveals about the duty to explain.",
+  "lede": "On 3 November 2026, I received an automated message from Microsoft Power Platform with an alarming subject line: “Immediate action required: Out of File capacity.”\n\nThe message was unequivocal. My organisation had allegedly exhausted its available storage capacity, and immediate action was necessary to avoid operational disruption. The figures were equally striking: 9.88 GB of storage had been consumed out of an available capacity of 0 MB. The system declared that 100 percent of the available capacity had been used.\n\nThere was only one problem. I did not use the applications that the warning appeared to concern, and the message offered no meaningful explanation of why the storage allocation was zero, what the stored data consisted of, or which operational functions were actually at risk. The notification appeared certain about the problem while remaining remarkably uninformative about its significance.\n\nThis small incident illustrates a much larger problem in contemporary digital governance: automated systems increasingly possess the authority to demand action without assuming a corresponding obligation to make their demands intelligible.",
+  "sections": [
+    {
+      "heading": "1. The case: an emergency without an explanation",
+      "paragraphs": [
+        "The notification originated from Microsoft Power Platform and concerned storage associated with Microsoft Dataverse, a data platform supporting various business applications. Its message was structured around three assertions: the organisation had reached its storage limit; immediate action was required; failure to act could result in operational disruption.",
+        "Yet the numerical information accompanying these assertions raised more questions than it answered. How could an organisation consume 9.88 GB of an allocation reported as 0 MB? Had a previously available storage entitlement expired? Had a subscription changed? Was the storage associated with an application that was no longer in use? Was there an actual operational problem, or merely an administrative inconsistency between recorded usage and current entitlement?",
+        "None of these questions was addressed. The 0 MB figure is not necessarily a computational error. It could reflect a genuine absence of allocated capacity while data remain stored. The issue is that the notification did not explain this distinction.",
+        "The message also contained a prominent instruction to manage capacity, effectively transferring responsibility for investigating the situation to the recipient. The system had enough information to issue an emergency warning, but apparently not enough—or had not been designed—to explain the emergency. That distinction matters."
+      ],
+      "concepts": ["automated-certainty"]
+    },
+    {
+      "heading": "2. Automated certainty is not the same as justified certainty",
+      "paragraphs": [
+        "Automated systems are exceptionally effective at identifying conditions that satisfy predefined rules. A storage-monitoring system may operate according to a relatively simple logic: if reported usage exceeds available capacity, issue a warning. From a computational perspective, such a rule may function exactly as intended.",
+        "But identifying a threshold violation is not equivalent to determining whether that violation constitutes a meaningful operational problem. The threshold provides a condition for classification. It does not, by itself, establish the significance of that classification for a particular user. In this case, the warning moved from a technical observation to an operational demand without adequately explaining the connection between the two.",
+        "The distinction is epistemologically important. An automated classification may be internally valid while the practical conclusion communicated to the user remains insufficiently justified. The system effectively presented a conditional assessment as an unconditional instruction.",
+        "This is an example of what I have elsewhere examined as automated certainty: the presentation of machine-generated classifications with a degree of authority that exceeds the explanatory resources made available to those expected to act upon them. The difficulty is not necessarily that the system is wrong. The difficulty is that the recipient cannot determine whether the system is right in the way that matters."
+      ],
+      "concepts": ["automated-certainty", "judgment-gap"]
+    },
+    {
+      "heading": "3. The inversion of responsibility",
+      "paragraphs": [
+        "The most revealing aspect of the notification was not the numerical discrepancy. It was the allocation of responsibility. Microsoft operates the technical infrastructure, defines the storage categories, establishes the licensing arrangements, controls the monitoring system and determines the thresholds that trigger alerts. The recipient, by contrast, has limited access to the reasoning that produces the warning.",
+        "Nevertheless, the burden of action is placed almost entirely on the recipient. The organisation is told to act immediately, even though the notification does not establish what action would be proportionate, necessary or effective.",
+        "This produces an asymmetry: the institution controls the classification, while the user must absorb the uncertainty. Such an arrangement reverses an important principle of institutional accountability. An organisation that issues an authoritative demand should be able to explain the grounds on which that demand rests, especially when it invokes the possibility of operational disruption.",
+        "The fact that a demand is generated automatically does not eliminate that obligation. Indeed, automation may make the obligation more important because the recipient cannot ordinarily question the system in the way one might question a human representative."
+      ],
+      "concepts": ["exercisable-answerability"]
+    },
+    {
+      "heading": "4. A warning without actionable knowledge",
+      "paragraphs": [
+        "A well-designed notification should enable its recipient to make an informed decision. At minimum, it should distinguish between four different kinds of information: Observation—what has the system detected? Interpretation—why does the detected condition matter? Consequence—what specifically may happen if no action is taken? Remedy—what action will resolve or meaningfully investigate the problem?",
+        "The Microsoft notification provided a numerical observation and a generic warning about possible disruption. It did not adequately connect those elements to a user-specific diagnosis.",
+        "The difference between information and actionable knowledge is fundamental here. A user does not become better informed simply because a system produces more precise numbers or more urgent language. Information becomes actionable when the recipient can understand the relationship between a condition, its significance and the available responses. Without that relationship, automation risks producing urgency rather than understanding.",
+        "This is especially problematic when messages are directed toward small organisations that may lack dedicated technical support or specialised knowledge of enterprise software licensing. The organisation receiving the warning is effectively required to reconstruct the system’s administrative logic. That is not an efficient distribution of expertise. It is an institutional transfer of diagnostic labour."
+      ],
+      "concepts": ["systemic-friction"]
+    },
+    {
+      "heading": "5. The missing possibility: the system may not be relevant to the user",
+      "paragraphs": [
+        "One particularly revealing feature of this case was that the recipient did not knowingly use the applications associated with the warning. This does not prove that the Dataverse environment was unused or unnecessary. Historical applications, dependencies or licensing arrangements could explain its existence. But that is precisely the point.",
+        "An effective monitoring system should distinguish between a technical condition and its relevance to the organisation receiving the notification. A capacity warning for a critical production database is not equivalent to a warning involving an inactive legacy environment. Both may satisfy the same numerical threshold. Their operational significance, however, differs substantially.",
+        "By failing to communicate that distinction, automated alerting systems can manufacture a false equivalence between technically similar but practically different situations. The result is an escalation of administrative noise. Every condition becomes potentially urgent because the system does not sufficiently discriminate between what is technically detectable and what is operationally consequential."
+      ]
+    },
+    {
+      "heading": "6. When automation becomes an institutional authority",
+      "paragraphs": [
+        "This incident illustrates a broader transformation in the relationship between organisations and their users. Historically, a service provider could be expected to explain a problem when requesting that a customer take action. Digital platforms increasingly replace that interaction with automated notifications, dashboards and self-service procedures.",
+        "This transformation is often presented as efficiency. And in many respects, it is efficient. Routine monitoring can identify technical problems faster than human operators. Automated notifications can reach large numbers of users almost immediately. Self-service interfaces can reduce the cost of ordinary administrative tasks.",
+        "But efficiency in generating demands must not be confused with adequacy in justifying them. The crucial question is not whether the notification was automated. It is whether the institution preserved the conditions under which its demands could be understood, evaluated and challenged.",
+        "In this case, the warning offered a route to capacity management, but not an explanation sufficient to determine why management was required. The system could command attention without providing the grounds necessary for informed judgment. This is the point at which automation risks becoming an institutional authority rather than merely an administrative instrument."
+      ],
+      "concepts": ["epistemic-infrastructure"]
+    },
+    {
+      "heading": "7. From technical accountability to institutional answerability",
+      "paragraphs": [
+        "The distinction between accountability and answerability helps clarify what is at stake. A system may be accountable in a limited technical sense: its thresholds can be documented, its outputs logged and its notifications traced to predefined rules. But institutional answerability requires something more. It requires that the organisation issuing a consequential demand be capable of providing reasons that the affected person can understand and contest.",
+        "In this case, answerability would not require Microsoft to disclose proprietary algorithms or every aspect of its infrastructure. It would require a much simpler explanation: What data are being counted? Why is the available capacity zero? Which service is affected? What happens if the recipient takes no action? How can the discrepancy be resolved without unnecessary expenditure or deletion of useful data?",
+        "These are not unreasonable expectations. They are elementary conditions of responsible service provision. A notification that cannot answer such questions may still be technically correct, but it is institutionally incomplete."
+      ],
+      "concepts": ["exercisable-answerability"]
+    },
+    {
+      "heading": "8. The real cost of automated ambiguity",
+      "paragraphs": [
+        "The consequences of cases like this are often dismissed as minor inconveniences. One user receives a confusing message. A few minutes are spent investigating. Perhaps the problem is resolved. But this interpretation overlooks the cumulative effects of automated ambiguity.",
+        "When organisations repeatedly receive poorly contextualised alerts, they must devote time and cognitive resources to distinguishing genuine risks from administrative artefacts. Some users may purchase unnecessary services. Others may delete data or modify configurations without understanding the implications. Still others may begin ignoring warnings because previous alerts proved irrelevant.",
+        "These are possible consequences, not demonstrated outcomes of this particular incident. Nevertheless, they illustrate why the quality of automated communication is not merely a matter of customer satisfaction. It affects the reliability of the relationship between institutions and those who depend on them. An alert system that systematically overproduces urgency can ultimately weaken the credibility of warnings that genuinely deserve attention."
+      ]
+    },
+    {
+      "heading": "9. What responsible automated communication would look like",
+      "paragraphs": [
+        "A more responsible notification could have communicated the same technical condition without creating unnecessary ambiguity. For example:",
+        "“Your organisation currently has 9.88 GB of files recorded in Microsoft Dataverse, while your present licence configuration provides no allocated Dataverse file capacity. This may reflect a change in licensing or an existing environment with stored data. The affected environment is [name]. The following operations may be restricted [specific functions]. Before purchasing additional capacity, review the environment and its licence assignment.”",
+        "Such wording would still communicate the need for investigation. But it would distinguish an observed condition from its possible explanations, identify the relevant uncertainty and offer a proportionate next step. Most importantly, it would treat the recipient as someone capable of exercising judgment rather than merely complying with an automated instruction.",
+        "That difference is not cosmetic. It concerns the relationship between knowledge, authority and responsibility."
+      ]
+    },
+    {
+      "heading": "10. The larger lesson: automation does not dissolve the duty to explain",
+      "paragraphs": [
+        "The Microsoft notification is a small case, but its implications extend far beyond enterprise software. Similar structures appear in automated insurance decisions, compliance systems, financial monitoring, university administration, healthcare platforms and algorithmically supported public services.",
+        "Across these domains, institutional systems increasingly classify conditions, assign risk and trigger action. The recurring danger is that the authority of the classification becomes detached from the obligation to explain its practical significance.",
+        "Automation can detect a condition without understanding its context. It can produce a warning without supplying a proportionate remedy. It can impose urgency without enabling informed action. None of these limitations necessarily makes automation undesirable. They do, however, establish limits on what organisations may reasonably delegate to it.",
+        "A responsible institution cannot regard the successful transmission of an automated warning as the completion of its obligation. The responsibility to explain does not disappear when the message is generated by a machine. And where automated systems are permitted to demand human action, the institutions behind them must remain answerable for the reasons those demands are made.",
+        "Otherwise, technological efficiency is achieved by transferring uncertainty, interpretative labour and practical risk to the very people the system is supposed to serve. That is not simply poor customer service. It is a failure of institutional design."
+      ],
+      "concepts": ["exercisable-answerability", "automated-certainty"]
+    }
+  ],
+  "closing": [
+    "Case note: This analysis is based on a Microsoft Power Platform notification received on 3 November 2026. It concerns the notification’s communicated content and its implications for institutional answerability. The underlying Microsoft licensing configuration, actual storage dependencies and operational consequences have not been independently verified."
+  ]
+},
+{
   "slug": "beyond-hermeneutical-housekeeping",
   "title": "Beyond Hermeneutical Housekeeping: A Diagnostic Method for AI, Governance, and Human Agency",
   "date": "2026-11-03",
