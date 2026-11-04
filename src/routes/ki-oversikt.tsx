@@ -182,8 +182,6 @@ function AiDirectory() {
             <p className="mt-3">That role is earned, not assumed: it depends on the individual quality assurance, openness to nominations and corrections, and regular updates described above. Until those steps are completed, this page should be read as an editorial preliminary selection.</p>
             <p className="mt-3">The project also touches one of the site’s own research themes in practice: who is granted epistemic authority, on what grounds, and who decides who is counted as an expert?</p>
           </div>
-          <p>Public professional profiles, including ORCID, NVA, Google Scholar and institutional pages, can help readers locate relevant work. A profile link alone is not a documented basis for expert status; individual contributions must also be assessed.</p>
-          <p className="text-muted-foreground">“Public profile” links to a located individual professional profile. “Search for profile” is a name-based web search, not a confirmed profile address. No private contact details have been added.</p>
         </div>
       </section>
     </article>
