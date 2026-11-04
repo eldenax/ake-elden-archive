@@ -6,7 +6,7 @@ import { Input } from "../components/ui/input";
 import { EXPERT_CATEGORIES, EXPERT_PEOPLE, METHOD_CAVEAT, filterExperts, profileSearchUrl } from "../data/ai-directory";
 import { PUBLIC_PROFILE_LINKS } from "../data/ai-profile-links";
 
-const TITLE = "KI-fagpersoner i Norge — redaksjonell oversikt | Åke Elden";
+const TITLE = "100 KI-fagpersoner i Norge — redaksjonell oversikt | Åke Elden";
 const DESCRIPTION = "Søk blant 100 fagpersoner i 15 KI-relaterte fagkategorier. Et redaksjonelt bruttoutvalg med metodeforbehold, ikke en rangering eller et godkjent ekspertregister.";
 const URL_SELF = "https://akeelden.com/ki-oversikt";
 const INSTITUTIONS = [...new Set(EXPERT_PEOPLE.map((p) => p.institution))].sort((a, b) => a.localeCompare(b, "nb"));
@@ -39,7 +39,7 @@ function AiDirectory() {
     <article lang="nb" className="mx-auto max-w-6xl px-6 py-12 lg:px-8 lg:py-16">
       <header className="max-w-3xl">
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Redaksjonelt bruttoutvalg · 4. november 2026</p>
-        <h1 className="mt-4 font-display text-3xl leading-tight tracking-normal text-foreground sm:text-4xl">KI-fagpersoner i Norge</h1>
+        <h1 className="mt-4 font-display text-3xl leading-tight tracking-normal text-foreground sm:text-4xl">100 KI-fagpersoner i Norge</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">100 fagpersoner, 15 fagkategorier. Forskning, teknologi, jus, samfunn og praktisk anvendelse.</p>
         <div className="mt-8 border-l-2 border-foreground/40 pl-5">
           <h2 className="font-sans text-sm font-semibold tracking-normal">Viktig metodeforbehold</h2>

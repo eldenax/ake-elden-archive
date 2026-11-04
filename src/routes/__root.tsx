@@ -221,6 +221,7 @@ const NAV = [
   { to: "/publications", label: "Publications" },
   { to: "/academic-profile", label: "About" },
   { to: "/blog", label: "Notes" },
+  { to: "/ki-oversikt", label: "KI i Norge" },
   { to: "/cv", label: "CV" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -268,11 +269,11 @@ function ResearchMenu() {
 function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
+      <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-3 px-6 py-2 sm:gap-6 lg:px-8">
         <Link to="/" className="shrink-0 font-display text-base tracking-tight text-foreground">
           Åke Elden
         </Link>
-        <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-xs md:text-sm">
+        <nav className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-xs sm:gap-x-5 md:text-sm">
           <ResearchMenu />
           {NAV.map((n) => (
             <Link
