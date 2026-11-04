@@ -150,6 +150,31 @@ function AiDirectory() {
             </ul>
             <p className="mt-4">This would make the list more precise and reduce the risk of confusing media visibility or organisational positions with documented professional expertise.</p>
           </div>
+          <div>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Next steps and the editor’s assessment</h3>
+            <p className="mt-3">The most important next step is to quality-assure the 100 profiles individually. The list includes some professionals from adjacent disciplines, and not all have an equally clearly documented AI specialisation. This is a real weakness if the site is to be perceived as an authoritative resource.</p>
+            <p className="mt-3">After that, the list should be opened for nominations and corrections. This would make it more inclusive and reduce the impression that one person alone decides who counts as an expert.</p>
+            <p className="mt-3">Finally, the list should be updated regularly, with the date of the last fact check stated. The individual profile links in this directory were last checked on 4 November 2026.</p>
+          </div>
+          <div>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Strategic assessment</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5">
+              <li>Societal benefit</li>
+              <li>Academic relevance</li>
+              <li>Visibility and network</li>
+              <li>Credibility in the current version</li>
+            </ul>
+            <p className="mt-3">This is the editor’s judgement, not a measured quality index.</p>
+          </div>
+          <div>
+            <h3 className="font-sans text-base font-semibold tracking-normal">On including yourself in the list</h3>
+            <p className="mt-3">The editor is included in the list himself. That is not necessarily problematic; the author of the Danish list, <a href="https://jonathanlow.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">AI-ekspertlisten by Jonathan Løw</a>, does the same and states it openly. The point is simply to make sure that the editor’s own profile is assessed by exactly the same documented criteria as all the other entries.</p>
+          </div>
+          <div>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Conclusion</h3>
+            <p className="mt-3">Yes — the list should be kept and further developed. It can become a valuable part of akeelden.com, and in time possibly a national reference resource.</p>
+            <p className="mt-3">Perhaps the most interesting thing is that the project in practice demonstrates one of the site’s own research themes: who is granted epistemic authority, on what grounds, and who decides who is counted as an expert?</p>
+          </div>
           <p>An important next step is to establish individual profiles with links to ORCID, NVA, Google Scholar or institutional pages, together with a brief, verifiable basis for inclusion. This could allow a preliminary selection to develop into an actual national expert register.</p>
           <p className="text-muted-foreground">“Public profile” links to a located individual professional profile. “Search for profile” is a name-based web search, not a confirmed profile address. No private contact details have been added.</p>
         </div>
