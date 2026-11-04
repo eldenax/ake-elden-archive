@@ -21,3 +21,4 @@
 - [x] Record the JMIR Metascience and Research Integrity article as published at metascience.jmir.org/2026/1/e105907, so every page reports 17 peer-reviewed journal articles and no preprint; verify on every page that states a count.
 
 - [x] Add the uploaded “Beyond Hermeneutical Housekeeping” essay under Notes as a readable post about the diagnostic method; verify its reading and navigation.
+- [x] Add the uploaded “When the System Raises an Alarm but Cannot Explain Why” essay under Notes, harmonized with the other posts; verify its reading and navigation.
