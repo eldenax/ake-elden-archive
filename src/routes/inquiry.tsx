@@ -83,6 +83,7 @@ function InquiryPage() {
               { to: "/concepts", label: "Key concepts", text: "The terms developed in this research." },
               { to: "/concept-graph", label: "Research map", text: "Connections between the concepts." },
               { to: "/projects", label: "Applied projects", text: "Where the questions meet practice." },
+              { to: "/ki-oversikt", label: "KI-fagpersoner i Norge", text: "Søkbar redaksjonell oversikt med metodeforbehold." },
             ] as const).map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="flex items-center justify-between gap-4 py-5 text-foreground hover:underline underline-offset-4">
