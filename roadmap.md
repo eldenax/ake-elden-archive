@@ -1,5 +1,8 @@
 # Tasks
 
+- [ ] Add the requested person to the AI directory — awaiting their name or public professional profile link.
+- [ ] Make all AI directory wording visitor-facing and explain transparent expert criteria without claiming existing entries are fully verified.
+
 - [x] Translate the entire AI in Norway directory into English, preserve all caveats and profile links, add a clear disclaimer, and verify search and reading.
 
 - [x] Give the Norwegian AI directory its own main-menu tab, keep the editorial caveats, and make the 100-person scope clear in its title.

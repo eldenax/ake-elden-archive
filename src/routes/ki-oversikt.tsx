@@ -46,9 +46,25 @@ function AiDirectory() {
           <p className="mt-2 text-sm leading-relaxed text-foreground/85">{METHOD_CAVEAT}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Names, affiliations and expertise descriptions are reproduced from the submitted selection and have not been fully rechecked. A profile link does not confirm a current role, expert qualifications or consent. Inclusion does not imply endorsement by the people listed.</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">This directory is provided for general information only, not as a certification, recommendation or guarantee of expertise or suitability for a particular task. It is not exhaustive, and information may be incomplete or outdated. Please verify current affiliations and relevant qualifications directly before relying on an entry.</p>
-          <a href="#metodeforbehold" className="mt-3 inline-block text-sm underline underline-offset-4">All caveats and sources ↓</a>
+          <a href="#expert-criteria" className="mt-3 inline-block text-sm underline underline-offset-4">Expert criteria ↓</a>
+          <a href="#metodeforbehold" className="ml-4 mt-3 inline-block text-sm underline underline-offset-4">All caveats and sources ↓</a>
         </div>
       </header>
+
+      <section id="expert-criteria" aria-labelledby="expert-criteria-title" className="mt-10 max-w-3xl scroll-mt-24 border-t border-border pt-6">
+        <h2 id="expert-criteria-title" className="font-display text-2xl tracking-normal text-foreground">What counts as AI expertise here?</h2>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">An expert has demonstrable, field-specific knowledge or practical competence relevant to artificial intelligence. Expertise may be technical, scientific, legal, ethical, educational or organisational; it is not a claim of competence in every area of AI.</p>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">The following editorial criteria guide review of existing entries and new nominations:</p>
+        <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-foreground/85">
+          <li><strong>Documented AI relevance.</strong> Public evidence must connect the person’s work directly to AI, its development, application, governance or societal consequences. A neighbouring discipline alone is not enough.</li>
+          <li><strong>Substantive contribution.</strong> Evidence should show relevant research publications, technical systems or implementations, professional practice, policy or standards work, or sustained legal, ethical or educational analysis of AI.</li>
+          <li><strong>Verifiable evidence.</strong> Sources should identify the individual and their contribution, such as institutional profiles, publications or documented projects. A job title, LinkedIn profile, media visibility or self-description alone does not establish expertise.</li>
+          <li><strong>Clear scope and current information.</strong> Each review should identify the specific area of expertise, check the reported affiliation and distinguish current activity from earlier contributions.</li>
+          <li><strong>Equal treatment.</strong> The same evidence standard applies to all entries, including the editor. Seniority, popularity and personal connections are not substitutes for documented competence.</li>
+        </ul>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">These are review criteria, not a certification already awarded to everyone listed. Individual evidence reviews are not yet complete. People working in adjacent fields should be understood as AI-related professionals unless their specific AI expertise is documented.</p>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">To nominate someone or suggest a correction, use <a href="/contact" className="underline underline-offset-4">the contact page</a>. Please include their name, relevant field and public sources documenting their work. Nominations are reviewed against the same criteria and do not guarantee inclusion.</p>
+      </section>
 
       <section aria-label="Search the directory" className="mt-10 border-y border-border py-6">
         <div className="grid items-end gap-4 md:grid-cols-[2fr_1.4fr_1fr]">
@@ -123,7 +139,7 @@ function AiDirectory() {
           <p>The categories are editorial. The safety category also includes researchers with expertise in related areas of cybersecurity, while the strategy and public-sector categories include people with implementation or policy expertise. This does not mean that all 100 have the same depth of expertise in technical AI research.</p>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Reported source basis</h3>
-            <p className="mt-3">The submitted text states that the selection is largely based on these organisations’ own published expert and researcher directories. The original source references do not include complete web addresses and do not provide documentation for each individual entry here.</p>
+            <p className="mt-3">The initial selection draws largely on the organisations listed below and their published expert and researcher directories. Complete source addresses and individual evidence records are not yet available for every entry.</p>
             <ul className="mt-4 list-disc space-y-2 pl-5">
               <li>University of Bergen — interdisciplinary AI expertise in computer science, health, ethics and society.</li>
               <li>Visual Intelligence — machine learning, image analysis and explainable AI.</li>
@@ -136,39 +152,29 @@ function AiDirectory() {
             </ul>
           </div>
           <div>
-            <h3 className="font-sans text-base font-semibold tracking-normal">Before this can become a national expert register</h3>
-            <p className="mt-3">Before this directory is presented as “Norway’s 100 AI experts”, it should undergo three checks: current institutional affiliation, specific documentation of each person’s AI expertise, and consent to publication of profiles and contact information. The submitted text refers to the Danish “AI expert list” by Jonathan Løw and states that it obtained approval from its listed experts. Equivalent approval has not been documented for this list.</p>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Verification status</h3>
+            <p className="mt-3">This is not a validated national expert register. Full validation requires checks of current institutional affiliation, specific evidence of each person’s AI expertise, and consent to publication of profiles and contact information. These checks have not been completed for every entry, and approval by the people listed has not been documented.</p>
           </div>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">A field is not the same as a type of expertise</h3>
-            <p className="mt-3">The submitted text recommends showing types of expertise separately. The following distinction is retained as a proposal, not as validated labels for individuals:</p>
+            <p className="mt-3">AI-related expertise takes several forms. These distinctions help readers understand its scope; they are not yet individually verified labels attached to each person:</p>
             <ul className="mt-4 list-disc space-y-2 pl-5">
               <li>F – Scientific research and publications</li>
               <li>T – Technical development and implementation</li>
               <li>S – Strategy, governance and organisational leadership</li>
               <li>J – Legal, ethical and social-scientific analysis</li>
             </ul>
-            <p className="mt-4">This would make the list more precise and reduce the risk of confusing media visibility or organisational positions with documented professional expertise.</p>
+            <p className="mt-4">Media visibility and organisational positions are not, on their own, evidence of expertise in any of these areas.</p>
           </div>
           <div>
-            <h3 className="font-sans text-base font-semibold tracking-normal">Next steps and the editor’s assessment</h3>
-            <p className="mt-3">The most important next step is to quality-assure the 100 profiles individually. The list includes some professionals from adjacent disciplines, and not all have an equally clearly documented AI specialisation. This is a real weakness if the site is to be perceived as an authoritative resource.</p>
-            <p className="mt-3">After that, the list should be opened for nominations and corrections. This would make it more inclusive and reduce the impression that one person alone decides who counts as an expert.</p>
-            <p className="mt-3">Finally, the list should be updated regularly, with the date of the last fact check stated. The individual profile links in this directory were last checked on 4 November 2026.</p>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Review, nominations and corrections</h3>
+            <p className="mt-3">Individual profile review is a priority. Some entries represent adjacent disciplines, and the available evidence does not establish an equally clear AI specialisation for everyone listed. Readers should take this limitation into account when using the directory.</p>
+            <p className="mt-3">Nominations, factual corrections, updated sources and objections are welcome via <a href="/contact" className="underline underline-offset-4">the contact page</a>. Evidence-based review helps broaden the selection and makes editorial decisions open to scrutiny.</p>
+            <p className="mt-3">The individual profile links were last checked on 4 November 2026. This is a link-check date, not confirmation that each person’s expertise or affiliation was verified on that date.</p>
           </div>
           <div>
-            <h3 className="font-sans text-base font-semibold tracking-normal">Strategic assessment</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5">
-              <li>Societal benefit</li>
-              <li>Academic relevance</li>
-              <li>Visibility and network</li>
-              <li>Credibility in the current version</li>
-            </ul>
-            <p className="mt-3">This is the editor’s judgement, not a measured quality index.</p>
-          </div>
-          <div>
-            <h3 className="font-sans text-base font-semibold tracking-normal">On including yourself in the list</h3>
-            <p className="mt-3">The editor is included in the list himself. That is not necessarily problematic; the author of the Danish list, <a href="https://jonathanlow.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">AI-ekspertlisten by Jonathan Løw</a>, does the same and states it openly. The point is simply to make sure that the editor’s own profile is assessed by exactly the same documented criteria as all the other entries.</p>
+            <h3 className="font-sans text-base font-semibold tracking-normal">Editorial transparency</h3>
+            <p className="mt-3">Åke Elden develops and edits this directory and is also included in it. His entry is subject to the same evidence and review criteria as every other entry. Inclusion is an editorial decision, not an independent accreditation or an endorsement by the people listed.</p>
           </div>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Conclusion</h3>
@@ -176,7 +182,7 @@ function AiDirectory() {
             <p className="mt-3">That role is earned, not assumed: it depends on the individual quality assurance, openness to nominations and corrections, and regular updates described above. Until those steps are completed, this page should be read as an editorial preliminary selection.</p>
             <p className="mt-3">The project also touches one of the site’s own research themes in practice: who is granted epistemic authority, on what grounds, and who decides who is counted as an expert?</p>
           </div>
-          <p>An important next step is to establish individual profiles with links to ORCID, NVA, Google Scholar or institutional pages, together with a brief, verifiable basis for inclusion. This could allow a preliminary selection to develop into an actual national expert register.</p>
+          <p>Public professional profiles, including ORCID, NVA, Google Scholar and institutional pages, can help readers locate relevant work. A profile link alone is not a documented basis for expert status; individual contributions must also be assessed.</p>
           <p className="text-muted-foreground">“Public profile” links to a located individual professional profile. “Search for profile” is a name-based web search, not a confirmed profile address. No private contact details have been added.</p>
         </div>
       </section>
