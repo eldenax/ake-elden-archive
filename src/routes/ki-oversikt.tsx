@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ExternalLink, Search, X } from "lucide-react";
 import { Button } from "../components/ui/button";
@@ -41,6 +41,7 @@ function AiDirectory() {
         <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Editorial directory · Updated 7 November 2026</p>
         <h1 className="mt-4 font-display text-3xl leading-tight tracking-normal text-foreground sm:text-4xl">AI Expertise in Norway</h1>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{EXPERT_PEOPLE.length} professionals across {EXPERT_CATEGORIES.length} fields. Research, practice and society — in Norway and with Norwegian connections.</p>
+        <Button asChild variant="link" className="mt-3 h-auto p-0 text-sm text-muted-foreground"><Link to="/editor-ai">Editorial research</Link></Button>
         <div className="mt-8 border-l-2 border-foreground/40 pl-5">
           <h2 className="font-sans text-sm font-semibold tracking-normal">Disclaimer and methodological caveat</h2>
           <p className="mt-2 text-sm leading-relaxed text-foreground/85">{METHOD_CAVEAT}</p>
