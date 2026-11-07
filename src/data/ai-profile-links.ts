@@ -516,5 +516,83 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "name": "Vasileios Mavroeidis",
     "url": "https://www.mn.uio.no/ifi/english/people/aca/vasileim/",
     "source": "https://www.mn.uio.no/ifi/english/people/aca/vasileim/"
+  },
+  {
+    "id": 101,
+    "name": "Herman Cappelen",
+    "url": "https://philosophy.hku.hk/people/herman-cappelen",
+    "source": "HKU profile and AI publications; Norwegian connection: https://www.hermancappelen.net/about"
+  },
+  {
+    "id": 102,
+    "name": "Kari Steen-Johnsen",
+    "url": "https://www.samfunnsforskning.no/english/people/res/karsteen/",
+    "source": "Institute profile; AI evidence: https://www.samfunnsforskning.no/english/research/elections-and-democracy/projects/knowai--betydningen-av-ki-for-politisk-kunnskap-eng.html"
+  },
+  {
+    "id": 103,
+    "name": "Alexander Refsum Jensenius",
+    "url": "https://www.uio.no/ritmo/english/people/management/alexanje/",
+    "source": "UiO profile; AI evidence: https://mishmash.no/news/new-centre-announced/"
+  },
+  {
+    "id": 104,
+    "name": "Fabian Andsem Harang",
+    "url": "https://www.bi.no/en/about-bi/employees/department-of-data-science-and-analytics/fabian-andsem-harang/",
+    "source": "BI profile: mathematics, machine learning and SURE-AI research"
+  },
+  {
+    "id": 105,
+    "name": "Astrid Marie Jorde Sandsør",
+    "url": "https://www.uv.uio.no/isp/english/people/aca/amsandso/index.html",
+    "source": "UiO profile: education and policy expertise, not evidence of direct AI specialisation"
+  },
+  {
+    "id": 106,
+    "name": "Ole-Christoffer Granmo",
+    "url": "https://www.uia.no/english/about-uia/employees/oleg/",
+    "source": "UiA profile: AI research and Tsetlin machines"
+  },
+  {
+    "id": 107,
+    "name": "Jon Atle Gulla",
+    "url": "https://www.ntnu.no/ansatte/jon.atle.gulla",
+    "source": "NTNU profile: AI research and NorwAI"
+  },
+  {
+    "id": 108,
+    "name": "Anders Kofod-Petersen",
+    "url": "https://www.ntnu.no/ansatte/anderpe",
+    "source": "NTNU profile: AI research and expertise"
+  },
+  {
+    "id": 109,
+    "name": "Pinar Øztürk",
+    "url": "https://www.ntnu.no/ansatte/pinar",
+    "source": "NTNU profile: AI research areas"
+  },
+  {
+    "id": 110,
+    "name": "Kiran Raja",
+    "url": "https://www.ntnu.no/ansatte/kiran.raja",
+    "source": "NTNU profile: research interests and AI applications"
+  },
+  {
+    "id": 111,
+    "name": "Heri Ramampiaro",
+    "url": "https://www.ntnu.no/ansatte/heri",
+    "source": "NTNU profile: research interests and AI expertise"
+  },
+  {
+    "id": 114,
+    "name": "Jianhua Zhang",
+    "url": "https://www.oslomet.no/en/about/employee/jianhuaz/",
+    "source": "OsloMet profile: AI research interests"
+  },
+  {
+    "id": 115,
+    "name": "Mehak Khan",
+    "url": "https://www.hvl.no/en/employee/?user=Mehak.Khan",
+    "source": "HVL profile: AI expertise and research"
   }
 ];

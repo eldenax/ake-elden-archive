@@ -21,7 +21,8 @@ export const EXPERT_CATEGORIES: string[] = [
   "AI strategy, leadership and commercialisation",
   "Public sector, AI governance and implementation",
   "Industrial AI, energy and the environment",
-  "AI safety, robustness and cybersecurity"
+  "AI safety, robustness and cybersecurity",
+  "Adjacent expertise in education and society"
 ];
 
 export const EXPERT_PEOPLE: ExpertPerson[] = [
@@ -724,6 +725,111 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "UiO",
     "expertise": "Cyber threat intelligence and security analysis",
     "category": "AI safety, robustness and cybersecurity"
+  },
+  {
+    "id": 101,
+    "name": "Herman Cappelen",
+    "institution": "The University of Hong Kong · formerly University of Oslo",
+    "expertise": "Philosophy of AI, AI interpretation and communication; Director of the AI & Humanity Lab",
+    "category": "AI, philosophy, society and human autonomy"
+  },
+  {
+    "id": 102,
+    "name": "Kari Steen-Johnsen",
+    "institution": "Norwegian Institute for Social Research",
+    "expertise": "Generative AI, political knowledge, democratic participation and public debate; KnowAI researcher",
+    "category": "AI, philosophy, society and human autonomy"
+  },
+  {
+    "id": 103,
+    "name": "Alexander Refsum Jensenius",
+    "institution": "UiO · RITMO / MishMash",
+    "expertise": "Music technology, human–machine interaction and AI in creative practice; Director of MishMash",
+    "category": "AI in media, communication and creative expression"
+  },
+  {
+    "id": 104,
+    "name": "Fabian Andsem Harang",
+    "institution": "BI · SURE-AI",
+    "expertise": "Mathematics for machine learning, signature methods and time-evolving data; research leadership in sustainable and ethical AI",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 105,
+    "name": "Astrid Marie Jorde Sandsør",
+    "institution": "UiO · CREATE",
+    "expertise": "Economics of education, educational inequality and causal policy evaluation. Adjacent expertise; direct AI specialisation has not been established by the sources reviewed.",
+    "category": "Adjacent expertise in education and society"
+  },
+  {
+    "id": 106,
+    "name": "Ole-Christoffer Granmo",
+    "institution": "UiA · CAIR",
+    "expertise": "Tsetlin machines, machine learning, reinforcement learning and interpretable AI",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 107,
+    "name": "Jon Atle Gulla",
+    "institution": "NTNU · NorwAI",
+    "expertise": "Large language models, semantics, language technology and AI innovation",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 108,
+    "name": "Anders Kofod-Petersen",
+    "institution": "NTNU",
+    "expertise": "Case-based reasoning, machine learning and intelligent systems",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 109,
+    "name": "Pinar Øztürk",
+    "institution": "NTNU",
+    "expertise": "Knowledge representation, case-based reasoning, multi-agent systems and AI fairness",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 110,
+    "name": "Kiran Raja",
+    "institution": "NTNU",
+    "expertise": "Biometrics, machine learning, generative AI and computer vision",
+    "category": "Computer vision and image analysis"
+  },
+  {
+    "id": 111,
+    "name": "Heri Ramampiaro",
+    "institution": "NTNU",
+    "expertise": "Text analysis, information retrieval and machine learning",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 112,
+    "name": "Hugo Hammer",
+    "institution": "OsloMet / SimulaMet",
+    "expertise": "Machine learning reliability, interpretability, uncertainty and reinforcement learning",
+    "category": "AI ethics, explainability and responsible AI"
+  },
+  {
+    "id": 113,
+    "name": "Anis Yazidi",
+    "institution": "OsloMet",
+    "expertise": "Applied artificial intelligence and trustworthy AI",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 114,
+    "name": "Jianhua Zhang",
+    "institution": "OsloMet",
+    "expertise": "Machine learning, computational intelligence and neurocomputing",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 115,
+    "name": "Mehak Khan",
+    "institution": "HVL",
+    "expertise": "Machine learning, deep learning, graph learning and explainable AI",
+    "category": "Machine learning and foundational AI"
   }
 ];
 
