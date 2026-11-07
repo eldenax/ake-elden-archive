@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Add the uploaded Norwegian essay “Hva bør vi utrustes med i møte med kunstig intelligens?” as a blog post, retaining its argument and verifying index-to-post reading.
+
 - [x] Expand the AI directory to 115 entries with the named people and further source-backed additions, remove the fixed 100-person title, and verify search without duplicates; distinguish Sandsør's adjacent expertise.
 - [x] Make all AI directory wording visitor-facing and explain transparent expert criteria without claiming existing entries are fully verified.
 

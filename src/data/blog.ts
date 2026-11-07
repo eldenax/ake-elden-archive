@@ -17,6 +17,54 @@ export type BlogPost = {
 };
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "hva-bor-vi-utrustes-med-i-mote-med-kunstig-intelligens",
+    title: "Hva bør vi utrustes med i møte med kunstig intelligens?",
+    date: "2026-11-07",
+    readingTime: "4 min read",
+    description: "Kritisk tenkning, dyp domenekunnskap, etisk forankring og teknologisk forståelse: hva vi trenger for å vurdere KI og ta ansvar for hvordan den brukes.",
+    lede: "Møtet med kunstig intelligens krever hverken at vi alle blir programmerere eller at vi passivt lar teknologien overta styringen. Når KI i økende grad overtar rutineoppgaver, saksbehandling og tekstgenerering, forskyves den mest kritiske kjerneoppgaven vår: fra ren produksjon til kvalifisert evaluering, skjønn og ansvarsinngang.\n\nFor å navigere dette skiftet trygt og formålstjenlig, må vi utrustes på tre overordnede nivåer: epistemologisk og kritisk, etisk og institusjonelt, og praktisk og funksjonelt.",
+    sections: [
+      {
+        heading: "1. Epistemologisk og kritisk utrustning: Evnen til å forstå og overprøve",
+        paragraphs: [
+          "Det er en utbredt misforståelse at KI gjør dyp domenekunnskap overflødig. Tvert imot krever teknologien at vi forsterker vår faglige ballast for ikke å bli passive tilskuere til algoritmisk oppførsel.",
+          "Epistemisk autonomi og kildekritikk: Språkmodeller leverer ofte syntaktisk feilfrie svar med betydelig skråsikkerhet, men uten forankring i sannhetsforpliktelse. Vi må trene opp evnen til å identifisere modelltenkningens grenser, oppdage hallusinasjoner og avdekke skjevheter (bias).",
+          "Dyp domenekunnskap: For å overprøve og korrigere et KI-system må brukeren besitte en dypere fagforståelse enn verktøyet selv. Uten solid domenekunnskap mangler vi grunnlaget for å oppdage når systemet gjør feilslutninger.",
+          "Metakognitiv bevissthet: Om vi setter ut kognitive delprosesser — som problemformulering, syntese og kategorisering — for tidlig i en tenkeprosess, risikerer vi å svekke vår egen evne til uavhengig og kritisk analyse.",
+        ],
+      },
+      {
+        heading: "2. Etisk og normativ utrustning: Navigering av ansvar og verdier",
+        paragraphs: [
+          "Automatisering av beslutningsstøtte utfordrer etablerte strukturer for ansvar og menneskelig verdighet.",
+          "Ansvarsplassering og tilregnelighet (Accountability): Algoritmer kan aldri bære juridisk eller etisk ansvar. Beslutninger som fattes på bakgrunn av KI-genererte underlag krever alltid en klar og entydig locus of answerability — et menneskelig ansvarspunkt som kan stilles til svars.",
+          "Etisk skjønn og verdivurdering: Algoritmer optimaliserer utelukkende mot definerte parametere. De kan ikke vekte verdier som rettferdighet, skjønn eller barmhjertighet. Det krever et tydelig etisk rammeverk for å avklare hva som ikke skal delegeres til automatisering.",
+          "Regulatorisk forståelse: Innsikt i rammeverk som EUs AI Act og GDPR er nødvendig for å sikre at implementeringen skjer innenfor rammene av personvern, rettssikkerhet og samfunnssikkerhet.",
+        ],
+      },
+      {
+        heading: "3. Praktisk og funksjonell utrustning: Verktøybeherskelse",
+        paragraphs: [
+          "Ren teori er utilstrekkelig dersom det praktiske håndverket mangler.",
+          "Interaksjons- og instruksjonskompetanse: Evnen til å utforme presise kontekster, avgrense premisser og tildele operasjonelle roller til modellene er avgjørende for å oppnå høy relevans uten å introdusere kognitiv støy.",
+          "System- og infrastrukturforståelse: Forståelse av forskjellene mellom ulike modellarkitekturer (f.eks. generelle språkmodeller kontra spesialiserte domenemodeller) og hvordan disse integreres i eksisterende og sikker datainfrastruktur.",
+        ],
+      },
+      {
+        heading: "Oppsummering: Utrustningens fire pilarer",
+        paragraphs: [
+          "Kritisk tenkning: Validere, overprøve og utfordre KI-generert materiale framfor passiv aksept.",
+          "Dyp domenekunnskap: Teoretisk og praktisk fagkunnskap som nødvendig vurderingsgrunnlag.",
+          "Etisk forankring: Fastholde at etisk og juridisk ansvar alltid påhviler mennesket.",
+          "Teknologisk forståelse: Innsikt i verktøyenes virkemåte, begrensninger og sikkerhetsrisikoer.",
+        ],
+      },
+    ],
+    closing: [
+      "Det viktigste grepet vi gjør i møte med kunstig intelligens er ikke å overlate tenkningen til maskinene, men å heve standarden for vår egen faglige og etiske evaluering.",
+    ],
+  },
 {
   "slug": "when-the-system-raises-an-alarm",
   "title": "When the System Raises an Alarm but Cannot Explain Why",
