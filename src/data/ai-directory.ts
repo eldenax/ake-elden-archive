@@ -1042,6 +1042,90 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "UiT · Department of Computer Science",
     "expertise": "Machine-learning systems for sports performance analysis, including cross-country skiing and AI applications in football",
     "category": "AI and sport"
+  },
+  {
+    "id": 145,
+    "name": "Alvaro Fernandez-Quilez",
+    "institution": "UiS",
+    "expertise": "Responsible AI and AI for decision support, especially healthcare and education; human–AI collaboration",
+    "category": "AI in health and medicine"
+  },
+  {
+    "id": 146,
+    "name": "Tom Ryen",
+    "institution": "UiS",
+    "expertise": "AI in education and applied AI across sectors, with signal processing and AI leadership experience",
+    "category": "AI in education, learning and human formation"
+  },
+  {
+    "id": 147,
+    "name": "Krisztian Balog",
+    "institution": "UiS",
+    "expertise": "Conversational information access, information retrieval, NLP, machine learning, and transparent/explainable AI",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 148,
+    "name": "Vinay Jayarama Setty",
+    "institution": "UiS",
+    "expertise": "Automated fact-checking, question answering, conversational search, NLP, and deep learning for language technologies",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 149,
+    "name": "Petra Galuscakova",
+    "institution": "UiS",
+    "expertise": "Information retrieval and NLP, including cross-language and speech retrieval",
+    "category": "Language models, NLP and knowledge representation"
+  },
+  {
+    "id": 150,
+    "name": "Antorweep Chakravorty",
+    "institution": "UiS",
+    "expertise": "Governance and regulation of generative AI; AI-based data pipelines",
+    "category": "AI ethics, explainability and responsible AI"
+  },
+  {
+    "id": 151,
+    "name": "Sabita Maharjan",
+    "institution": "UiO / SimulaMet",
+    "expertise": "Machine/deep learning for networks and edge intelligence",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 152,
+    "name": "Shen Yin",
+    "institution": "NTNU",
+    "expertise": "Machine-learning-based reliability modelling, AI assurance and digital twins for safety-critical systems",
+    "category": "Industrial AI, energy and the environment"
+  },
+  {
+    "id": 153,
+    "name": "Annie Karoline Elgen",
+    "institution": "UiO",
+    "expertise": "Doctoral research on Generative AI in secondary English and Norwegian teaching, AI literacy, and classroom research",
+    "category": "AI in education, learning and human formation"
+  },
+  {
+    "id": 154,
+    "name": "Katherina Dodou",
+    "institution": "Dalarna University, Sweden · formerly UiO / EDUCATE (2022–2025)",
+    "expertise": "Digital and AI practices in language classrooms, alongside English literature education",
+    "category": "AI in education, learning and human formation"
+  },
+  {
+    "id": 155,
+    "name": "Lisbeth M. Brevik",
+    "institution": "UiO",
+    "expertise": "AI and generative AI in secondary language education, classroom observation, and teacher assessment practice",
+    "category": "AI in education, learning and human formation"
+  },
+  {
+    "id": 156,
+    "name": "John Krogstie",
+    "institution": "NTNU",
+    "expertise": "Information-systems research on AI adoption, business value and sustainability of AI-based tools; not a claim of technical AI specialisation",
+    "category": "AI strategy, leadership and commercialisation"
   }
 ];
 
