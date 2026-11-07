@@ -15,7 +15,7 @@ test("the expanded directory retains the original entries without a ranking sort
 test("name, institution and expertise search can be combined with category filters", () => {
   assert.deepEqual(filterExperts("ake elden", "", "").map((p) => p.id), [62]);
   assert.deepEqual(filterExperts("sami", "", "UiT").map((p) => p.id), [17, 136]);
-  assert.equal(filterExperts("", "AI in health and medicine", "").length, 8);
+  assert.equal(filterExperts("", "AI in health and medicine", "").length, 9);
   assert.equal(filterExperts("sami", "AI in health and medicine", "").length, 0);
   assert.equal(filterExperts("", "", "").length, EXPERT_PEOPLE.length);
 });
@@ -114,4 +114,46 @@ test("sport contributors have separate AI evidence and professional profile link
     assert.equal(new URL(profile.evidenceUrl).protocol, "https:");
     assert.equal(profile.kind, undefined);
   }
+});
+
+const SOURCE_CHECKED_ADDITIONS = [
+  "Alvaro Fernandez-Quilez", "Tom Ryen", "Krisztian Balog", "Vinay Jayarama Setty",
+  "Petra Galuscakova", "Antorweep Chakravorty", "Sabita Maharjan", "Shen Yin",
+  "Annie Karoline Elgen", "Katherina Dodou", "Lisbeth M. Brevik", "John Krogstie",
+] as const;
+
+for (const name of SOURCE_CHECKED_ADDITIONS) {
+  test(`${name} is included once with an institutional profile and documented AI scope`, () => {
+    const matches = filterExperts(name, "", "");
+    assert.equal(matches.length, 1);
+    const person = matches[0];
+    const profile = PUBLIC_PROFILE_LINKS.find(p => p.id === person?.id);
+    assert.equal(profile?.name, name);
+    assert.ok(profile?.source);
+    assert.equal(profile?.kind, undefined);
+    assert.ok(EXPERT_CATEGORIES.includes(person?.category ?? ""));
+    const host = new URL(profile?.url ?? "https://invalid.example").hostname;
+    assert.ok(["www.uis.no", "www.mn.uio.no", "www.uv.uio.no", "www.ntnu.no", "www.ntnu.edu", "www.du.se"].includes(host));
+  });
+}
+
+test("education additions link to the co-authored GenAI classroom study", () => {
+  for (const name of ["Annie Karoline Elgen", "Katherina Dodou", "Lisbeth M. Brevik"]) {
+    assert.equal(filterExperts(name, "AI in education, learning and human formation", "").length, 1);
+    assert.equal(PUBLIC_PROFILE_LINKS.find(p => p.name === name)?.evidenceUrl, "https://doi.org/10.1016/j.tate.2026.105517");
+  }
+});
+
+test("Dodou's current Sweden affiliation is distinct from her former Norwegian connection", () => {
+  assert.equal(filterExperts("Katherina Dodou", "", "")[0]?.institution, "Dalarna University, Sweden · formerly UiO / EDUCATE (2022–2025)");
+});
+
+test("unsupported uploaded AI claims do not create entries for Nordhagen or Terje Johansen", () => {
+  assert.equal(filterExperts("Rolf Nordhagen", "", "").length, 0);
+  assert.equal(filterExperts("Terje Johansen", "", "").length, 0);
+});
+
+test("Krogstie's AI business-value contribution has separate publication evidence", () => {
+  assert.equal(filterExperts("John Krogstie", "AI strategy, leadership and commercialisation", "NTNU").length, 1);
+  assert.equal(PUBLIC_PROFILE_LINKS.find(p => p.name === "John Krogstie")?.evidenceUrl, "https://doi.org/10.1007/s10796-021-10186-w");
 });
