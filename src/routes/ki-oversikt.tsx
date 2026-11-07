@@ -53,7 +53,7 @@ function AiDirectory() {
 
       <section id="expert-criteria" aria-labelledby="expert-criteria-title" className="mt-10 max-w-3xl scroll-mt-24 border-t border-border pt-6">
         <h2 id="expert-criteria-title" className="font-display text-2xl tracking-normal text-foreground">What counts as AI expertise here?</h2>
-        <p className="mt-3 text-sm leading-relaxed text-foreground/85">An expert has demonstrable, field-specific knowledge or practical competence relevant to artificial intelligence. Expertise may be technical, scientific, legal, ethical, educational or organisational; it is not a claim of competence in every area of AI.</p>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">An expert has demonstrable, field-specific knowledge or practical competence relevant to artificial intelligence. Expertise may be technical, scientific, legal, ethical, educational, theological or organisational; it is not a claim of competence in every area of AI.</p>
         <p className="mt-3 text-sm leading-relaxed text-foreground/85">The following editorial criteria guide review of existing entries and new nominations:</p>
         <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-foreground/85">
           <li><strong>Documented AI relevance.</strong> Public evidence must connect the person’s work directly to AI, its development, application, governance or societal consequences. A neighbouring discipline alone is not enough.</li>
@@ -131,12 +131,13 @@ function AiDirectory() {
         <div className="max-w-3xl space-y-8 text-sm leading-relaxed text-foreground/85">
           <div>
             <h2 className="font-display text-2xl tracking-normal text-foreground">About the AI professionals directory</h2>
-            <p className="mt-3">This directory is an independent editorial initiative developed by Åke Elden. Its purpose is to highlight the breadth of Norwegian expertise in artificial intelligence, from technical research and implementation to ethics, philosophy, law, health, education and the social sciences.</p>
+            <p className="mt-3">This directory is an independent editorial initiative developed by Åke Elden. Its purpose is to highlight the breadth of Norwegian expertise in artificial intelligence, from technical research and implementation to ethics, philosophy, theology and religion, law, health, education and the social sciences.</p>
             <p className="mt-3">The selection draws on publicly available information about professional activities, publications and documented expertise. The list is not a ranking, and inclusion does not mean that the person has approved or endorsed the project.</p>
             <p className="mt-3">We aim to keep the information accurate and up to date. Reports of factual errors, updates or objections can be sent to the editor via <a href="/contact" className="underline underline-offset-4">the website’s contact page</a>.</p>
           </div>
           <h2 className="font-display text-2xl tracking-normal text-foreground">Sources and quality assurance</h2>
           <p>The categories are editorial. The safety category also includes researchers with expertise in related areas of cybersecurity, while the strategy and public-sector categories include people with implementation or policy expertise. The entries do not all represent the same depth of expertise in technical AI research. Norwegian connections may include nationality or research collaboration; inclusion does not necessarily mean a person is currently based in Norway.</p>
+          <p>The AI and theology/religion field covers documented work on AI in relation to theological anthropology, religious belief and practice, ethics, and religious education. It does not imply technical AI expertise. A background in theology or religious studies alone is not sufficient for inclusion in this field; related expertise without documented AI work is identified separately.</p>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Reported source basis</h3>
             <p className="mt-3">The initial selection draws largely on the organisations listed below and their published expert and researcher directories. Complete source addresses and individual evidence records are not yet available for every entry.</p>

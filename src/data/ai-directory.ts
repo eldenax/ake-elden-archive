@@ -17,6 +17,7 @@ export const EXPERT_CATEGORIES: string[] = [
   "AI in education, learning and human formation",
   "AI law, regulation and privacy",
   "AI, philosophy, society and human autonomy",
+  "AI and theology/religion",
   "AI in media, communication and creative expression",
   "AI strategy, leadership and commercialisation",
   "Public sector, AI governance and implementation",
@@ -457,8 +458,8 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "id": 62,
     "name": "Åke Elden",
     "institution": "NLA University College",
-    "expertise": "AI ethics, autonomy and responsibility",
-    "category": "AI, philosophy, society and human autonomy"
+    "expertise": "AI-mediated knowledge, human answerability and theological anthropology",
+    "category": "AI and theology/religion"
   },
   {
     "id": 63,
@@ -829,6 +830,55 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "name": "Mehak Khan",
     "institution": "HVL",
     "expertise": "Machine learning, deep learning, graph learning and explainable AI",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 116,
+    "name": "Atle Ottesen Søvik",
+    "institution": "MF Norwegian School of Theology, Religion and Society",
+    "expertise": "AI ethics, philosophy of religion and conceptions of human nature",
+    "category": "AI and theology/religion"
+  },
+  {
+    "id": 117,
+    "name": "Asle Eikrem",
+    "institution": "MF Norwegian School of Theology, Religion and Society",
+    "expertise": "Ethics of artificial intelligence, systematic theology and human nature",
+    "category": "AI and theology/religion"
+  },
+  {
+    "id": 118,
+    "name": "Clemens Cavallin",
+    "institution": "NLA University College",
+    "expertise": "AI and trust; generative AI, Christian imagination and Christian film production",
+    "category": "AI and theology/religion"
+  },
+  {
+    "id": 119,
+    "name": "Simon Simchai Hansen",
+    "institution": "OsloMet",
+    "expertise": "Doctoral research on AI as a pedagogical dialogue partner in religious education (KIDU/AIDE)",
+    "category": "AI and theology/religion"
+  },
+  {
+    "id": 120,
+    "name": "Einar Duenger Bøhn",
+    "institution": "UiA",
+    "expertise": "Philosophy of artificial consciousness and AI ethics, including the Moral Turing Test",
+    "category": "AI, philosophy, society and human autonomy"
+  },
+  {
+    "id": 121,
+    "name": "Anders Malthe-Sørenssen",
+    "institution": "UiO",
+    "expertise": "Brain-inspired machine learning and AI applications in materials science",
+    "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 122,
+    "name": "Stefano Nichele",
+    "institution": "OsloMet / Østfold University College",
+    "expertise": "Biologically inspired AI, artificial life, neural systems and adaptive computation",
     "category": "Machine learning and foundational AI"
   }
 ];

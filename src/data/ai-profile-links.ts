@@ -340,8 +340,8 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
   {
     "id": 62,
     "name": "Åke Elden",
-    "url": "https://orcid.org/0009-0003-0965-7666",
-    "source": "ORCID — site author profile"
+    "url": "https://www.nla.no/en/about-nla/find-employees/ake-elden",
+    "source": "NLA staff profile and publications; AI and theological anthropology: https://www.nla.no/en/research%20and%20development/find-publications/epistemic-automation-and-the-deformation-of-the-human-artificial-intelligence-and-the-reconfiguration-of-theological-anthropology"
   },
   {
     "id": 63,
@@ -594,5 +594,41 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "name": "Mehak Khan",
     "url": "https://www.hvl.no/en/employee/?user=Mehak.Khan",
     "source": "HVL profile: AI expertise and research"
+  },
+  {
+    "id": 116,
+    "name": "Atle Ottesen Søvik",
+    "url": "https://mf.no/en/staff/atle-ottesen-sovik",
+    "source": "MF staff profile: AI, ethics and philosophy; book: https://mf.no/forskning/vidunderlige-verden-ny-bok-om-etikk-og-filosofi-i-ki-tiden"
+  },
+  {
+    "id": 117,
+    "name": "Asle Eikrem",
+    "url": "https://mf.no/en/staff/asle-eikrem",
+    "source": "MF staff profile: ethics of AI; book: https://mf.no/forskning/vidunderlige-verden-ny-bok-om-etikk-og-filosofi-i-ki-tiden"
+  },
+  {
+    "id": 118,
+    "name": "Clemens Cavallin",
+    "url": "https://www.nla.no/en/about-nla/find-employees/clemens-cavallin",
+    "source": "NLA staff profile and publications on AI, trust and Christian imagination"
+  },
+  {
+    "id": 119,
+    "name": "Simon Simchai Hansen",
+    "url": "https://www.oslomet.no/en/about/employee/sihan3308/",
+    "source": "OsloMet profile; AI in religious education: https://www.oslomet.no/en/research/research-projects/ai-driven-exploration-interdisciplinary-projects-religious-education-kidu"
+  },
+  {
+    "id": 120,
+    "name": "Einar Duenger Bøhn",
+    "url": "https://www.uia.no/om-uia/ansatte/einardb/",
+    "source": "UiA staff profile lists The Moral Turing Test: a defense; artificial consciousness: https://www.uio.no/english/research/strategic-research-areas/life-science/norway-life-science-conference/oslo-life-science-2021/artificial-intelligence/"
+  },
+  {
+    "id": 121,
+    "name": "Anders Malthe-Sørenssen",
+    "url": "https://www.mn.uio.no/fysikk/english/people/aca/malthe/",
+    "source": "UiO profile: brain-inspired machine learning and AI in materials science"
   }
 ];
