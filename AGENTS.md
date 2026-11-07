@@ -18,5 +18,6 @@
 - Derive every stated publication count from the exports in `src/data/publications.ts` and keep the record guard in `scripts/check-record.mjs` passing, so no page can report a number that disagrees with the register.
 - Keep the editorial AI directory in a browser-safe data module with separately sourced profile URLs and pure filtering, so uploaded claims remain distinct from link verification and search can be tested.
 - Label person-specific evidence articles as public sources rather than profiles in the AI directory, so evidence links never imply a verified individual profile.
+- Store optional individual AI evidence URLs separately from professional profile URLs and render both with distinct labels, so readers can inspect the contribution without conflating evidence and identity.
 - Derive directory totals from its data exports and separate adjacent expertise from AI categories, so expansion cannot leave stale counts or imply undocumented specialisation.
 - Keep AI field research private behind verified editor roles and stream source-grounded Gateway Responses from a caller-authenticated server route; save unpublished reports separately from the static public directory to prevent automatic publication or inflated counts.

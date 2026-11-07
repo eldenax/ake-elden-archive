@@ -4,6 +4,7 @@ export interface PublicProfileLink {
   url: string;
   source: string;
   kind?: "source";
+  evidenceUrl?: string;
 }
 
 // Public profile addresses are checked separately from the supplied directory claims.
@@ -752,5 +753,19 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "name": "Çağrı Erdem",
     "url": "https://www.mn.uio.no/ifi/english/people/aca/cagrie/index.html",
     "source": "UiO individual profile: embodied interaction, human–AI co-creativity and AI in interactive music performance"
+  },
+  {
+    "id": 143,
+    "name": "Ingrid Eir Thorp Eythorsdottir",
+    "url": "https://www.nih.no/english/about/employees/ieeythorsd/index.html",
+    "source": "NIH individual profile: machine learning and physiological data in elite sport; NIH AI and sport symposium programme documents her contribution",
+    "evidenceUrl": "https://www.nih.no/english/about/news-events/events/2025/symposium-on-artificial-intelligence-and-sport-inj.html"
+  },
+  {
+    "id": 144,
+    "name": "Dag Johansen",
+    "url": "https://en.uit.no/ansatte/person?p_document_id=40982",
+    "source": "UiT individual profile and publication list: Arctic HARE machine-learning system for cross-country skiers; AI in the soccer domain",
+    "evidenceUrl": "https://hdl.handle.net/10037/33197"
   }
 ];

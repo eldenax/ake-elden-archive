@@ -30,6 +30,7 @@ export const EXPERT_CATEGORIES: string[] = [
   "AI and psychology/mental health",
   "AI and language technology for smaller languages",
   "AI and art/music",
+  "AI and sport",
   "Adjacent expertise in education and society"
 ];
 
@@ -1027,6 +1028,20 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "UiO · MishMash",
     "expertise": "Embodied interaction, human–AI co-creativity and shared control in interactive music performance",
     "category": "AI and art/music"
+  },
+  {
+    "id": 143,
+    "name": "Ingrid Eir Thorp Eythorsdottir",
+    "institution": "Norwegian School of Sport Sciences (NIH)",
+    "expertise": "Doctoral research using machine learning to interpret physiological data in elite sport; documented AI work in sport and sport education",
+    "category": "AI and sport"
+  },
+  {
+    "id": 144,
+    "name": "Dag Johansen",
+    "institution": "UiT · Department of Computer Science",
+    "expertise": "Machine-learning systems for sports performance analysis, including cross-country skiing and AI applications in football",
+    "category": "AI and sport"
   }
 ];
 
