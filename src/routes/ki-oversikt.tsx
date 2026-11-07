@@ -6,8 +6,8 @@ import { Input } from "../components/ui/input";
 import { EXPERT_CATEGORIES, EXPERT_PEOPLE, METHOD_CAVEAT, filterExperts, profileSearchUrl } from "../data/ai-directory";
 import { PUBLIC_PROFILE_LINKS } from "../data/ai-profile-links";
 
-const TITLE = "100 AI Professionals in Norway — Editorial Directory | Åke Elden";
-const DESCRIPTION = "Search 100 professionals across 15 AI-related fields. An editorial preliminary selection with methodological caveats, not a ranking or an approved expert register.";
+const TITLE = "AI Expertise in Norway — Research, Practice and Society | Åke Elden";
+const DESCRIPTION = `Search ${EXPERT_PEOPLE.length} professionals across ${EXPERT_CATEGORIES.length} AI-related fields, in Norway and with Norwegian connections. An editorial selection with caveats, not a ranking or an approved expert register.`;
 const URL_SELF = "https://akeelden.com/ki-oversikt";
 const INSTITUTIONS = [...new Set(EXPERT_PEOPLE.map((p) => p.institution))].sort((a, b) => a.localeCompare(b, "en"));
 const SELECT_CLASS = "h-11 w-full min-w-0 rounded-md border border-input bg-background px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring";
@@ -38,13 +38,13 @@ function AiDirectory() {
   return (
     <article lang="en" className="mx-auto max-w-6xl px-6 py-12 lg:px-8 lg:py-16">
       <header className="max-w-3xl">
-        <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Editorial preliminary selection · 4 November 2026</p>
-        <h1 className="mt-4 font-display text-3xl leading-tight tracking-normal text-foreground sm:text-4xl">100 AI Professionals in Norway</h1>
-        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">100 professionals, 15 fields. Research, technology, law, society and practical applications.</p>
+        <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Editorial directory · Updated 7 November 2026</p>
+        <h1 className="mt-4 font-display text-3xl leading-tight tracking-normal text-foreground sm:text-4xl">AI Expertise in Norway</h1>
+        <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{EXPERT_PEOPLE.length} professionals across {EXPERT_CATEGORIES.length} fields. Research, practice and society — in Norway and with Norwegian connections.</p>
         <div className="mt-8 border-l-2 border-foreground/40 pl-5">
           <h2 className="font-sans text-sm font-semibold tracking-normal">Disclaimer and methodological caveat</h2>
           <p className="mt-2 text-sm leading-relaxed text-foreground/85">{METHOD_CAVEAT}</p>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Names, affiliations and expertise descriptions are reproduced from the submitted selection and have not been fully rechecked. A profile link does not confirm a current role, expert qualifications or consent. Inclusion does not imply endorsement by the people listed.</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">The directory combines an initial submitted selection with additions drawn from public professional sources. Not all entries have been fully rechecked. A profile link does not confirm a current role, expert qualifications or consent. Inclusion does not imply endorsement by the people listed.</p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">This directory is provided for general information only, not as a certification, recommendation or guarantee of expertise or suitability for a particular task. It is not exhaustive, and information may be incomplete or outdated. Please verify current affiliations and relevant qualifications directly before relying on an entry.</p>
           <a href="#expert-criteria" className="mt-3 inline-block text-sm underline underline-offset-4">Expert criteria ↓</a>
           <a href="#metodeforbehold" className="ml-4 mt-3 inline-block text-sm underline underline-offset-4">All caveats and sources ↓</a>
@@ -78,7 +78,7 @@ function AiDirectory() {
           <div>
             <label htmlFor="expert-category" className="mb-2 block text-sm font-medium">Field</label>
             <select id="expert-category" value={category} onChange={(e) => setCategory(e.target.value)} className={SELECT_CLASS}>
-              <option value="">All 15 fields</option>
+              <option value="">All {EXPERT_CATEGORIES.length} fields</option>
               {EXPERT_CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
@@ -136,7 +136,7 @@ function AiDirectory() {
             <p className="mt-3">We aim to keep the information accurate and up to date. Reports of factual errors, updates or objections can be sent to the editor via <a href="/contact" className="underline underline-offset-4">the website’s contact page</a>.</p>
           </div>
           <h2 className="font-display text-2xl tracking-normal text-foreground">Sources and quality assurance</h2>
-          <p>The categories are editorial. The safety category also includes researchers with expertise in related areas of cybersecurity, while the strategy and public-sector categories include people with implementation or policy expertise. This does not mean that all 100 have the same depth of expertise in technical AI research.</p>
+          <p>The categories are editorial. The safety category also includes researchers with expertise in related areas of cybersecurity, while the strategy and public-sector categories include people with implementation or policy expertise. The entries do not all represent the same depth of expertise in technical AI research. Norwegian connections may include nationality or research collaboration; inclusion does not necessarily mean a person is currently based in Norway.</p>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Reported source basis</h3>
             <p className="mt-3">The initial selection draws largely on the organisations listed below and their published expert and researcher directories. Complete source addresses and individual evidence records are not yet available for every entry.</p>
@@ -170,7 +170,7 @@ function AiDirectory() {
             <h3 className="font-sans text-base font-semibold tracking-normal">Review, nominations and corrections</h3>
             <p className="mt-3">Individual profile review is a priority. Some entries represent adjacent disciplines, and the available evidence does not establish an equally clear AI specialisation for everyone listed. Readers should take this limitation into account when using the directory.</p>
             <p className="mt-3">Nominations, factual corrections, updated sources and objections are welcome via <a href="/contact" className="underline underline-offset-4">the contact page</a>. Evidence-based review helps broaden the selection and makes editorial decisions open to scrutiny.</p>
-            <p className="mt-3">The individual profile links were last checked on 4 November 2026. This is a link-check date, not confirmation that each person’s expertise or affiliation was verified on that date.</p>
+            <p className="mt-3">Profile links in the initial selection were checked on 4 November 2026; sources for the latest additions were reviewed on 7 November 2026. These are source-review dates, not confirmation that every person’s expertise or affiliation has been fully verified.</p>
           </div>
           <div>
             <h3 className="font-sans text-base font-semibold tracking-normal">Editorial transparency</h3>
