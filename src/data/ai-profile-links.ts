@@ -3,6 +3,7 @@ export interface PublicProfileLink {
   name: string;
   url: string;
   source: string;
+  kind?: "source";
 }
 
 // Public profile addresses are checked separately from the supplied directory claims.
@@ -718,7 +719,38 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
   {
     "id": 137,
     "name": "Kyrre Glette",
-    "url": "https://www.uio.no/ritmo/english/people/management/kyrreg/",
+    "url": "https://mishmash.no/people/kyrre-glette/",
     "source": "Individual institutional profile; AI evidence: https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2020.00006/full"
+  },
+  {
+    "id": 138,
+    "name": "Stefan Pieter Sobolowski",
+    "url": "https://bjerknes.uib.no/en/researchers/stefan-pieter-sobolowski",
+    "source": "Bjerknes Centre profile: generative AI for local climate information and explainable AI for prediction and attribution"
+  },
+  {
+    "id": 139,
+    "name": "Daniel Nordgård",
+    "url": "https://www.uia.no/english/about-uia/employees/danieln/",
+    "source": "UiA profile: publications on AI in music industries; centre role: https://mishmash.no/people/daniel-nordgard/"
+  },
+  {
+    "id": 140,
+    "name": "Stian Kjeksrud",
+    "url": "https://www.forsvaret.no/forskning/ansatte-FHS/kjeksrud-stian",
+    "source": "FHS profile: hybrid warfare, AI and military education research"
+  },
+  {
+    "id": 141,
+    "name": "Ingebjørg Kåsen",
+    "url": "https://www.ffi.no/aktuelt/podkaster/hvordan-kan-forsvaret-bruke-kunstig-intelligens",
+    "source": "FFI person-specific interview: AI research leadership, defence-sector AI strategy and responsible AI at NATO; not an individual profile",
+    "kind": "source"
+  },
+  {
+    "id": 142,
+    "name": "Çağrı Erdem",
+    "url": "https://www.mn.uio.no/ifi/english/people/aca/cagrie/index.html",
+    "source": "UiO individual profile: embodied interaction, human–AI co-creativity and AI in interactive music performance"
   }
 ];

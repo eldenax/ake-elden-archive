@@ -992,6 +992,41 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "UiO · RITMO",
     "expertise": "Machine learning for musical interaction and performance, including neural models for predicting performer actions",
     "category": "AI and art/music"
+  },
+  {
+    "id": 138,
+    "name": "Stefan Pieter Sobolowski",
+    "institution": "UiB · Bjerknes Centre for Climate Research",
+    "expertise": "Generative AI for local-scale climate information and explainable AI for climate prediction and attribution",
+    "category": "AI and climate/sustainability"
+  },
+  {
+    "id": 139,
+    "name": "Daniel Nordgård",
+    "institution": "UiA · MishMash",
+    "expertise": "AI in music industries, creative-sector policy and digitalisation; deputy director of the Centre for AI and Creativity",
+    "category": "AI and art/music"
+  },
+  {
+    "id": 140,
+    "name": "Stian Kjeksrud",
+    "institution": "Norwegian Defence University College",
+    "expertise": "International security, hybrid warfare and research on AI and virtual reality in military education",
+    "category": "AI and defence/security policy"
+  },
+  {
+    "id": 141,
+    "name": "Ingebjørg Kåsen",
+    "institution": "Norwegian Defence Research Establishment (FFI)",
+    "expertise": "AI research leadership, defence-sector AI strategy and responsible AI in NATO; documented in an FFI interview",
+    "category": "AI and defence/security policy"
+  },
+  {
+    "id": 142,
+    "name": "Çağrı Erdem",
+    "institution": "UiO · MishMash",
+    "expertise": "Embodied interaction, human–AI co-creativity and shared control in interactive music performance",
+    "category": "AI and art/music"
   }
 ];
 

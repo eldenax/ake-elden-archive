@@ -115,8 +115,8 @@ function AiDirectory() {
                     <li key={person.id} className="grid gap-3 py-5 sm:grid-cols-[1.2fr_1.2fr_auto] sm:items-center sm:gap-6">
                       <div><h3 className="font-sans text-base font-semibold tracking-normal text-foreground">{person.name}</h3><p className="mt-1 text-sm text-muted-foreground">{person.institution}</p></div>
                       <p className="text-sm leading-relaxed text-foreground/85">{person.expertise}</p>
-                      <a href={profile?.url ?? profileSearchUrl(person)} target="_blank" rel="noopener noreferrer" aria-label={`${profile ? "Open public profile for" : "Search for a public profile for"} ${person.name}`} className="inline-flex items-center gap-2 text-sm text-foreground underline decoration-dotted underline-offset-4 hover:text-muted-foreground">
-                        {profile ? "Public profile" : "Search for profile"}<ExternalLink aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                      <a href={profile?.url ?? profileSearchUrl(person)} target="_blank" rel="noopener noreferrer" aria-label={`${profile?.kind === "source" ? "Open public source for" : profile ? "Open public profile for" : "Search for a public profile for"} ${person.name}`} className="inline-flex items-center gap-2 text-sm text-foreground underline decoration-dotted underline-offset-4 hover:text-muted-foreground">
+                        {profile?.kind === "source" ? "Public source" : profile ? "Public profile" : "Search for profile"}<ExternalLink aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
                       </a>
                     </li>
                   );
