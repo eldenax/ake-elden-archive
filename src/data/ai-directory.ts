@@ -23,6 +23,13 @@ export const EXPERT_CATEGORIES: string[] = [
   "Public sector, AI governance and implementation",
   "Industrial AI, energy and the environment",
   "AI safety, robustness and cybersecurity",
+  "AI and working life",
+  "AI in finance and economics",
+  "AI and defence/security policy",
+  "AI and climate/sustainability",
+  "AI and psychology/mental health",
+  "AI and language technology for smaller languages",
+  "AI and art/music",
   "Adjacent expertise in education and society"
 ];
 
