@@ -7,7 +7,7 @@ test("the expanded directory retains the original entries without a ranking sort
   assert.ok(EXPERT_PEOPLE.length > 100);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.id)).size, EXPERT_PEOPLE.length);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.name)).size, EXPERT_PEOPLE.length);
-  assert.equal(EXPERT_CATEGORIES.length, 24);
+  assert.equal(EXPERT_CATEGORIES.length, 25);
   assert.equal(EXPERT_PEOPLE[0]?.name, "Morten Goodwin");
   assert.equal(EXPERT_PEOPLE[99]?.name, "Vasileios Mavroeidis");
 });
@@ -85,6 +85,7 @@ const NEW_FIELDS = [
   ["AI and psychology/mental health", ["Kerstin Bach", "E. F. Haghish", "Torhild Tønnesen Haugnes"]],
   ["AI and language technology for smaller languages", ["Erik Velldal", "Trond Trosterud", "Sjur Nørstebø Moshagen", "Ronny Paul"]],
   ["AI and art/music", ["Alexander Refsum Jensenius", "Kyrre Glette", "Daniel Nordgård", "Çağrı Erdem"]],
+  ["AI and sport", ["Ingrid Eir Thorp Eythorsdottir", "Dag Johansen"]],
 ] as const;
 
 for (const [field, names] of NEW_FIELDS) {
@@ -103,4 +104,14 @@ for (const [field, names] of NEW_FIELDS) {
 
 test("FFI interview is labelled as a source rather than a professional profile", () => {
   assert.equal(PUBLIC_PROFILE_LINKS.find((p) => p.name === "Ingebjørg Kåsen")?.kind, "source");
+});
+
+test("sport contributors have separate AI evidence and professional profile links", () => {
+  for (const person of filterExperts("", "AI and sport", "")) {
+    const profile = PUBLIC_PROFILE_LINKS.find(p => p.id === person.id);
+    assert.ok(profile?.evidenceUrl);
+    assert.notEqual(profile.evidenceUrl, profile.url);
+    assert.equal(new URL(profile.evidenceUrl).protocol, "https:");
+    assert.equal(profile.kind, undefined);
+  }
 });
