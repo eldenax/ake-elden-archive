@@ -30,6 +30,7 @@ export const EXPERT_CATEGORIES: string[] = [
   "AI and psychology/mental health",
   "AI and language technology for smaller languages",
   "AI and art/music",
+  "AI and sport",
   "Adjacent expertise in education and society"
 ];
 
