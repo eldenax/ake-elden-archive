@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Add a private editor research tool for new AI fields with AI Gateway web research, sourced suggestions, editor profiles and verified access; test permission boundaries and the real research flow.
+
 - [x] Add source-backed people across AI and working life, finance/economics, defence/security policy, climate/sustainability, psychology/mental health, smaller-language technology, and art/music; preserve caveats and verify filtering and profiles.
 
 - [x] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.
