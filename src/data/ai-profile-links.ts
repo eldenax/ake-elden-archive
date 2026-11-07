@@ -118,8 +118,8 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
   {
     "id": 20,
     "name": "Kerstin Bach",
-    "url": "https://www.ntnu.edu/employees/kerstin.bach",
-    "source": "https://www.ntnu.edu/employees/kerstin.bach"
+    "url": "https://www.ntnu.edu/employees/kerstinb",
+    "source": "https://www.ntnu.edu/employees/kerstinb"
   },
   {
     "id": 21,
@@ -636,5 +636,89 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "name": "Yan Zhang",
     "url": "https://www.computer.org/profiles/yan-zhang",
     "source": "IEEE Computer Society individual profile; AI and federated learning evidence: https://www.simula.no/mobile-edge-computing"
+  },
+  {
+    "id": 124,
+    "name": "Lene Pettersen",
+    "url": "https://www.uv.uio.no/iped/english/people/aca/lenejp/index.html",
+    "source": "Individual institutional profile; AI evidence: https://www.uv.uio.no/iped/english/people/aca/lenejp/index.html"
+  },
+  {
+    "id": 125,
+    "name": "Inger Marie Hagen",
+    "url": "https://www.oslomet.no/en/about/employee/imhagen/",
+    "source": "Individual institutional profile; AI evidence: https://www.oslomet.no/en/about/employee/imhagen/"
+  },
+  {
+    "id": 126,
+    "name": "Christin Thea Wathne",
+    "url": "https://www.oslomet.no/en/about/employee/wach/",
+    "source": "Individual institutional profile; AI evidence: https://www.oslomet.no/en/about/employee/wach/"
+  },
+  {
+    "id": 127,
+    "name": "Petter Eilif de Lange",
+    "url": "https://www.ntnu.edu/employees/petter.e.delange",
+    "source": "Individual institutional profile; AI evidence: https://www.ntnu.edu/employees/petter.e.delange"
+  },
+  {
+    "id": 128,
+    "name": "Ranik Raaen Wahlstrøm",
+    "url": "https://www.ntnu.edu/employees/ranik.raaen.wahlstrom",
+    "source": "Individual institutional profile; AI evidence: https://www.ntnu.edu/employees/ranik.raaen.wahlstrom"
+  },
+  {
+    "id": 129,
+    "name": "Morten Risstad",
+    "url": "https://www.ntnu.edu/employees/morten.risstad",
+    "source": "Individual institutional profile; AI evidence: https://www.ntnu.edu/employees/morten.risstad"
+  },
+  {
+    "id": 130,
+    "name": "Johanne Jensen Skeie",
+    "url": "https://www.forsvaret.no/en/research/staff/skeie-johanne-jensen",
+    "source": "Individual institutional profile; AI evidence: https://www.forsvaret.no/en/research/staff/skeie-johanne-jensen"
+  },
+  {
+    "id": 131,
+    "name": "Rituka Jaiswal",
+    "url": "https://www.ntnu.edu/employees/rituka.jaiswal",
+    "source": "Individual institutional profile; AI evidence: https://www.ntnu.edu/employees/rituka.jaiswal"
+  },
+  {
+    "id": 132,
+    "name": "Xiangping Hu",
+    "url": "https://www.ntnu.edu/employees/xiangph",
+    "source": "Individual institutional profile; AI evidence: https://www.ntnu.edu/employees/xiangph"
+  },
+  {
+    "id": 133,
+    "name": "E. F. Haghish",
+    "url": "https://www4.uib.no/en/find-employees/e-f.haghish",
+    "source": "Individual institutional profile; AI evidence: https://www4.uib.no/en/find-employees/e-f.haghish"
+  },
+  {
+    "id": 134,
+    "name": "Torhild Tønnesen Haugnes",
+    "url": "https://www.modum-bad.no/staff/torhild-tonnesen-haugnes/",
+    "source": "Individual institutional profile; AI evidence: https://www.modum-bad.no/staff/torhild-tonnesen-haugnes/"
+  },
+  {
+    "id": 135,
+    "name": "Sjur Nørstebø Moshagen",
+    "url": "https://uit.no/ansatte/person?p_document_id=248638",
+    "source": "Individual institutional profile; AI evidence: https://www.tandfonline.com/doi/full/10.1080/08003831.2024.2410124"
+  },
+  {
+    "id": 136,
+    "name": "Ronny Paul",
+    "url": "https://uit.no/ansatte/person?p_dimension_id=88131&p_document_id=738630",
+    "source": "Individual institutional profile; AI evidence: https://doi.org/10.48550/arxiv.2405.05777"
+  },
+  {
+    "id": 137,
+    "name": "Kyrre Glette",
+    "url": "https://www.uio.no/ritmo/english/people/management/kyrreg/",
+    "source": "Individual institutional profile; AI evidence: https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2020.00006/full"
   }
 ];
