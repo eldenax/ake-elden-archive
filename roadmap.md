@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] Add AI and sport with documented Norway-connected contributors, professional profiles and evidence links; verify filters and preserve caveats.
+- [x] Add AI and sport with Ingrid Eir Thorp Eythorsdottir and Dag Johansen, separate professional profiles and AI evidence links; verify filters at desktop and mobile widths and preserve caveats.
 
 - [x] Add private editor field research with streamed AI Gateway web search, documented sources, private saved reports, editor profiles, verified-email roles and no automatic public-directory changes; verify real Gateway research, signed-out access, mobile display and site checks.
 - [ ] Verify editor sign-in → field research → saved result reopen through the UI; blocked until ake@eccelude.com creates and confirms an account (no auth users exist yet).
