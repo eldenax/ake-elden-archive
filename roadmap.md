@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Verify the 14 missing names from the two uploaded lists against public sources, add those with documented AI work and Norwegian connections, and test directory search and evidence links.
+
 - [x] Add AI and sport with Ingrid Eir Thorp Eythorsdottir and Dag Johansen, separate professional profiles and AI evidence links; verify filters at desktop and mobile widths and preserve caveats.
 
 - [x] Add private editor field research with streamed AI Gateway web search, documented sources, private saved reports, editor profiles, verified-email roles and no automatic public-directory changes; verify real Gateway research, signed-out access, mobile display and site checks.
