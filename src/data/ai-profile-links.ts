@@ -630,5 +630,11 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "name": "Anders Malthe-Sørenssen",
     "url": "https://www.mn.uio.no/fysikk/english/people/aca/malthe/",
     "source": "UiO profile: brain-inspired machine learning and AI in materials science"
+  },
+  {
+    "id": 123,
+    "name": "Yan Zhang",
+    "url": "https://www.computer.org/profiles/yan-zhang",
+    "source": "IEEE Computer Society individual profile; AI and federated learning evidence: https://www.simula.no/mobile-edge-computing"
   }
 ];

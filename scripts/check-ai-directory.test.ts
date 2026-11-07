@@ -37,11 +37,20 @@ test("the requested theology/religion field contains the five documented contrib
   assert.deepEqual(filterExperts("sovik", "AI and theology/religion", "").map((p) => p.id), [116]);
 });
 
-test("the expansion adds seven people without duplicating existing suggestions", () => {
-  assert.equal(EXPERT_PEOPLE.length, 122);
+test("the expanded directory retains the seven recent additions without duplicates", () => {
+  assert.ok(EXPERT_PEOPLE.length >= 122);
   for (const query of ["Atle Ottesen Søvik", "Asle Eikrem", "Clemens Cavallin", "Simon Simchai Hansen", "Einar Duenger Bøhn", "Anders Malthe-Sørenssen", "Stefano Nichele", "Barbara Wasson", "Monika Nerland", "Morten Goodwin", "Åke Elden"]) {
     assert.equal(filterExperts(query, "", "").length, 1, query);
   }
+});
+
+test("all six latest suggested names appear exactly once, with Yan Zhang added separately", () => {
+  assert.equal(EXPERT_PEOPLE.length, 123);
+  for (const name of ["Anis Yazidi", "Yan Zhang", "Morten Goodwin", "Einar Duenger Bøhn", "Inga Strümke", "Åke Elden"]) {
+    assert.equal(filterExperts(name, "", "").length, 1, name);
+  }
+  assert.deepEqual(filterExperts("Yan Zhang", "", "UiO").map((p) => p.id), [123]);
+  assert.equal(PUBLIC_PROFILE_LINKS.find((p) => p.id === 123)?.url, "https://www.computer.org/profiles/yan-zhang");
 });
 
 test("adjacent education expertise is not categorised as AI specialisation", () => {
