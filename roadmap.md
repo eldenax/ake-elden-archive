@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Add source-backed people across AI and working life, finance/economics, defence/security policy, climate/sustainability, psychology/mental health, smaller-language technology, and art/music; preserve caveats and verify filtering and profiles.
+
 - [x] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.
 
 - [x] Expand AI Expertise in Norway using the uploaded suggestions, add a dedicated AI and theology/religion field, preserve evidence caveats, and verify filtering and links without duplicates.
