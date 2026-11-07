@@ -1,5 +1,8 @@
 # Tasks
 
+- [x] Add private editor field research with streamed AI Gateway web search, documented sources, private saved reports, editor profiles, verified-email roles and no automatic public-directory changes; verify real Gateway research, signed-out access, mobile display and site checks.
+- [ ] Verify editor sign-in → field research → saved result reopen through the UI; blocked until ake@eccelude.com creates and confirms an account (no auth users exist yet).
+
 - [x] Add source-backed people across AI and working life, finance/economics, defence/security policy, climate/sustainability, psychology/mental health, smaller-language technology, and art/music; preserve caveats and verify filtering and profiles.
 
 - [x] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.

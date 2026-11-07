@@ -16,6 +16,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { BLOG_POSTS } from "../data/blog";
+import { supabase } from '@/integrations/supabase/client';
 
 /** Freshness signal derived from the most recent dated content item. */
 const LAST_UPDATED = (() => {
@@ -296,6 +297,9 @@ function Header() {
 
 
 function Footer() {
+  const router = useRouter();
+  const [signedIn, setSignedIn] = useState(false);
+  useEffect(() => { supabase.auth.getUser().then(({ data }) => setSignedIn(Boolean(data.user))); }, [router.state.location.pathname]);
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8">
@@ -425,6 +429,7 @@ function Footer() {
             <p className="mt-1 text-xs text-muted-foreground">
               Last updated: {LAST_UPDATED}
             </p>
+            <Button asChild variant="link" className="mt-3 h-auto p-0 text-xs text-muted-foreground"><Link to={signedIn ? '/editor-ai' : '/auth'}>{signedIn ? 'Editorial workspace' : 'Editor sign-in'}</Link></Button>
 
           </div>
         </div>
@@ -435,6 +440,15 @@ function Footer() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange(event => {
+      if (!['SIGNED_IN', 'SIGNED_OUT', 'USER_UPDATED'].includes(event)) return;
+      void router.invalidate();
+      if (event !== 'SIGNED_OUT') void queryClient.invalidateQueries();
+    });
+    return () => data.subscription.unsubscribe();
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>

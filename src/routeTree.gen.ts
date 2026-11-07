@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AcademicProfileRouteImport } from './routes/academic-profile'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ConceptGraphRouteImport } from './routes/concept-graph'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CurrentResearchRouteImport } from './routes/current-research'
@@ -23,23 +25,35 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PublicationsRouteImport } from './routes/publications'
 import { Route as ResearchNotesRouteImport } from './routes/research-notes'
 import { Route as ResearchPremisesRouteImport } from './routes/research-premises'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SurveyRouteImport } from './routes/survey'
+import { Route as AuthenticatedEditorAiRouteImport } from './routes/_authenticated/editor-ai'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ConceptsIndexRouteImport } from './routes/concepts.index'
 import { Route as ConceptsSlugRouteImport } from './routes/concepts.$slug'
 import { Route as InquirySlugRouteImport } from './routes/inquiry.$slug'
 import { Route as PapersSlugRouteImport } from './routes/papers.$slug'
+import { Route as ApiPublicEditorResearchRouteImport } from './routes/api/public/editor-research'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademicProfileRoute = AcademicProfileRouteImport.update({
   id: '/academic-profile',
   path: '/academic-profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConceptGraphRoute = ConceptGraphRouteImport.update({
@@ -102,6 +116,11 @@ const ResearchPremisesRoute = ResearchPremisesRouteImport.update({
   path: '/research-premises',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -111,6 +130,11 @@ const SurveyRoute = SurveyRouteImport.update({
   id: '/survey',
   path: '/survey',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedEditorAiRoute = AuthenticatedEditorAiRouteImport.update({
+  id: '/editor-ai',
+  path: '/editor-ai',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
@@ -142,10 +166,16 @@ const PapersSlugRoute = PapersSlugRouteImport.update({
   path: '/papers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicEditorResearchRoute = ApiPublicEditorResearchRouteImport.update({
+  id: '/api/public/editor-research',
+  path: '/api/public/editor-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academic-profile': typeof AcademicProfileRoute
+  '/auth': typeof AuthRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
@@ -158,18 +188,22 @@ export interface FileRoutesByFullPath {
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
+  '/editor-ai': typeof AuthenticatedEditorAiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
+  '/api/public/editor-research': typeof ApiPublicEditorResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academic-profile': typeof AcademicProfileRoute
+  '/auth': typeof AuthRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
@@ -182,19 +216,24 @@ export interface FileRoutesByTo {
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
+  '/editor-ai': typeof AuthenticatedEditorAiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/blog': typeof BlogIndexRoute
   '/concepts': typeof ConceptsIndexRoute
+  '/api/public/editor-research': typeof ApiPublicEditorResearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/academic-profile': typeof AcademicProfileRoute
+  '/auth': typeof AuthRoute
   '/concept-graph': typeof ConceptGraphRoute
   '/contact': typeof ContactRoute
   '/current-research': typeof CurrentResearchRoute
@@ -207,20 +246,24 @@ export interface FileRoutesById {
   '/publications': typeof PublicationsRoute
   '/research-notes': typeof ResearchNotesRoute
   '/research-premises': typeof ResearchPremisesRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/survey': typeof SurveyRoute
+  '/_authenticated/editor-ai': typeof AuthenticatedEditorAiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/concepts/$slug': typeof ConceptsSlugRoute
   '/inquiry/$slug': typeof InquirySlugRoute
   '/papers/$slug': typeof PapersSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/concepts/': typeof ConceptsIndexRoute
+  '/api/public/editor-research': typeof ApiPublicEditorResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/academic-profile'
+    | '/auth'
     | '/concept-graph'
     | '/contact'
     | '/current-research'
@@ -233,18 +276,22 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/survey'
+    | '/editor-ai'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
     | '/blog/'
     | '/concepts/'
+    | '/api/public/editor-research'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/academic-profile'
+    | '/auth'
     | '/concept-graph'
     | '/contact'
     | '/current-research'
@@ -257,18 +304,23 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/survey'
+    | '/editor-ai'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
     | '/blog'
     | '/concepts'
+    | '/api/public/editor-research'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/academic-profile'
+    | '/auth'
     | '/concept-graph'
     | '/contact'
     | '/current-research'
@@ -281,19 +333,24 @@ export interface FileRouteTypes {
     | '/publications'
     | '/research-notes'
     | '/research-premises'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/survey'
+    | '/_authenticated/editor-ai'
     | '/blog/$slug'
     | '/concepts/$slug'
     | '/inquiry/$slug'
     | '/papers/$slug'
     | '/blog/'
     | '/concepts/'
+    | '/api/public/editor-research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AcademicProfileRoute: typeof AcademicProfileRoute
+  AuthRoute: typeof AuthRoute
   ConceptGraphRoute: typeof ConceptGraphRoute
   ContactRoute: typeof ContactRoute
   CurrentResearchRoute: typeof CurrentResearchRoute
@@ -306,6 +363,7 @@ export interface RootRouteChildren {
   PublicationsRoute: typeof PublicationsRoute
   ResearchNotesRoute: typeof ResearchNotesRoute
   ResearchPremisesRoute: typeof ResearchPremisesRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SurveyRoute: typeof SurveyRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -313,6 +371,7 @@ export interface RootRouteChildren {
   PapersSlugRoute: typeof PapersSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ConceptsIndexRoute: typeof ConceptsIndexRoute
+  ApiPublicEditorResearchRoute: typeof ApiPublicEditorResearchRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -324,11 +383,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academic-profile': {
       id: '/academic-profile'
       path: '/academic-profile'
       fullPath: '/academic-profile'
       preLoaderRoute: typeof AcademicProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/concept-graph': {
@@ -415,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchPremisesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -428,6 +508,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/survey'
       preLoaderRoute: typeof SurveyRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/editor-ai': {
+      id: '/_authenticated/editor-ai'
+      path: '/editor-ai'
+      fullPath: '/editor-ai'
+      preLoaderRoute: typeof AuthenticatedEditorAiRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/blog/': {
       id: '/blog/'
@@ -471,8 +558,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PapersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/editor-research': {
+      id: '/api/public/editor-research'
+      path: '/api/public/editor-research'
+      fullPath: '/api/public/editor-research'
+      preLoaderRoute: typeof ApiPublicEditorResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedEditorAiRoute: typeof AuthenticatedEditorAiRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedEditorAiRoute: AuthenticatedEditorAiRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface InquiryRouteChildren {
   InquirySlugRoute: typeof InquirySlugRoute
@@ -487,7 +592,9 @@ const InquiryRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AcademicProfileRoute: AcademicProfileRoute,
+  AuthRoute: AuthRoute,
   ConceptGraphRoute: ConceptGraphRoute,
   ContactRoute: ContactRoute,
   CurrentResearchRoute: CurrentResearchRoute,
@@ -500,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   PublicationsRoute: PublicationsRoute,
   ResearchNotesRoute: ResearchNotesRoute,
   ResearchPremisesRoute: ResearchPremisesRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SurveyRoute: SurveyRoute,
   BlogSlugRoute: BlogSlugRoute,
@@ -507,6 +615,7 @@ const rootRouteChildren: RootRouteChildren = {
   PapersSlugRoute: PapersSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   ConceptsIndexRoute: ConceptsIndexRoute,
+  ApiPublicEditorResearchRoute: ApiPublicEditorResearchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

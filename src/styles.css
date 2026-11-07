@@ -4,6 +4,15 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.google-auth-button { background: var(--google-auth-background); color: var(--google-auth-foreground); border-color: var(--google-auth-border); }
+.google-auth-button:hover { background: var(--google-auth-background); }
+.research-markdown h2, .research-markdown h3 { font-family: var(--font-display); margin-top: 1.8rem; margin-bottom: 0.8rem; font-size: 1.2rem; }
+.research-markdown p { margin: 1rem 0; line-height: 1.8; }
+.research-markdown ul, .research-markdown ol { padding-left: 1.5rem; margin: 1rem 0; }
+.research-markdown ul { list-style: disc; }
+.research-markdown ol { list-style: decimal; }
+.research-markdown li { margin: 0.65rem 0; }
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -39,6 +48,9 @@
 }
 
 :root {
+  --google-auth-background: #ffffff;
+  --google-auth-foreground: #1f1f1f;
+  --google-auth-border: #747775;
   --radius: 0.25rem;
 
   /* Paper & Ink palette */

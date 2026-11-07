@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794044607516,
+      "tag": "0000_editor_ai_research",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794044794451,
+      "tag": "0001_editor_verified_access",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794044830678,
+      "tag": "0002_restrict_editor_function_grants",
+      "breakpoints": true
+    }
+  ]
 }
