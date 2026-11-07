@@ -17,3 +17,4 @@
 - Keep optional related journal-article links in blog post records and render them on the shared post page, so essays can link to their source without duplicating page layouts.
 - Derive every stated publication count from the exports in `src/data/publications.ts` and keep the record guard in `scripts/check-record.mjs` passing, so no page can report a number that disagrees with the register.
 - Keep the editorial AI directory in a browser-safe data module with separately sourced profile URLs and pure filtering, so uploaded claims remain distinct from link verification and search can be tested.
+- Derive directory totals from its data exports and separate adjacent expertise from AI categories, so expansion cannot leave stale counts or imply undocumented specialisation.
