@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Expand AI Expertise in Norway using the uploaded suggestions, add a dedicated AI and theology/religion field, preserve evidence caveats, and verify filtering and links without duplicates.
+
 - [x] Add the uploaded Norwegian essay “Hva bør vi utrustes med i møte med kunstig intelligens?” as a blog post, retaining its argument and verifying index-to-post reading.
 
 - [x] Expand the AI directory to 115 entries with the named people and further source-backed additions, remove the fixed 100-person title, and verify search without duplicates; distinguish Sandsør's adjacent expertise.
