@@ -1,6 +1,7 @@
 # Tasks
 
-- [ ] Add a private editor research tool for new AI fields with AI Gateway web research, sourced suggestions, editor profiles and verified access; test permission boundaries and the real research flow.
+- [x] Add private editor field research with streamed AI Gateway web search, documented sources, private saved reports, editor profiles, verified-email roles and no automatic public-directory changes; verify real Gateway research, signed-out access, mobile display and site checks.
+- [ ] Verify editor sign-in → field research → saved result reopen through the UI; blocked until ake@eccelude.com creates and confirms an account (no auth users exist yet).
 
 - [x] Add source-backed people across AI and working life, finance/economics, defence/security policy, climate/sustainability, psychology/mental health, smaller-language technology, and art/music; preserve caveats and verify filtering and profiles.
 

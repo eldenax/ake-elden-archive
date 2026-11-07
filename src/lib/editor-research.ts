@@ -16,9 +16,16 @@ export function publicSourceUrl(value: string): string | undefined {
 }
 export function editorAllowed(roles: string[]) { return roles.includes('editor'); }
 export type ResearchSource = { url: string; title: string };
+function sourceIdentity(value: string) {
+  const safe = publicSourceUrl(value);
+  if (!safe) return;
+  const url = new URL(safe);
+  for (const key of [...url.searchParams.keys()]) if (key.startsWith('utm_')) url.searchParams.delete(key);
+  return url.href;
+}
 export function groundedUrl(url: string, sources: ResearchSource[]) {
   const safe = publicSourceUrl(url);
-  return safe && sources.some(s => publicSourceUrl(s.url) === safe) ? safe : undefined;
+  return safe && sources.some(s => sourceIdentity(s.url) === sourceIdentity(safe)) ? safe : undefined;
 }
 export function parseSources(value: unknown): ResearchSource[] {
   return z.array(z.object({ url: z.string(), title: z.string() })).safeParse(value).data?.filter(s => publicSourceUrl(s.url)) ?? [];

@@ -15,6 +15,13 @@
       "when": 1794044794451,
       "tag": "0001_editor_verified_access",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794044830678,
+      "tag": "0002_restrict_editor_function_grants",
+      "breakpoints": true
     }
   ]
 }
