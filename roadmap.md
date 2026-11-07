@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.
+- [x] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.
 
 - [x] Expand AI Expertise in Norway using the uploaded suggestions, add a dedicated AI and theology/religion field, preserve evidence caveats, and verify filtering and links without duplicates.
 
