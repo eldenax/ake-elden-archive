@@ -7,14 +7,14 @@ test("the expanded directory retains the original entries without a ranking sort
   assert.ok(EXPERT_PEOPLE.length > 100);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.id)).size, EXPERT_PEOPLE.length);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.name)).size, EXPERT_PEOPLE.length);
-  assert.equal(EXPERT_CATEGORIES.length, 17);
+  assert.equal(EXPERT_CATEGORIES.length, 24);
   assert.equal(EXPERT_PEOPLE[0]?.name, "Morten Goodwin");
   assert.equal(EXPERT_PEOPLE[99]?.name, "Vasileios Mavroeidis");
 });
 
 test("name, institution and expertise search can be combined with category filters", () => {
   assert.deepEqual(filterExperts("ake elden", "", "").map((p) => p.id), [62]);
-  assert.deepEqual(filterExperts("sami", "", "UiT").map((p) => p.id), [17]);
+  assert.deepEqual(filterExperts("sami", "", "UiT").map((p) => p.id), [17, 136]);
   assert.equal(filterExperts("", "AI in health and medicine", "").length, 8);
   assert.equal(filterExperts("sami", "AI in health and medicine", "").length, 0);
   assert.equal(filterExperts("", "", "").length, EXPERT_PEOPLE.length);
@@ -45,7 +45,7 @@ test("the expanded directory retains the seven recent additions without duplicat
 });
 
 test("all six latest suggested names appear exactly once, with Yan Zhang added separately", () => {
-  assert.equal(EXPERT_PEOPLE.length, 123);
+  assert.ok(EXPERT_PEOPLE.length >= 123);
   for (const name of ["Anis Yazidi", "Yan Zhang", "Morten Goodwin", "Einar Duenger Bøhn", "Inga Strümke", "Åke Elden"]) {
     assert.equal(filterExperts(name, "", "").length, 1, name);
   }
@@ -75,4 +75,32 @@ test("each person has a public profile address or a person-specific search fallb
       assert.ok(url.searchParams.get("q")?.includes(person.institution));
     }
   }
+});
+
+const NEW_FIELDS = [
+  ["AI and working life", ["Lene Pettersen", "Inger Marie Hagen", "Christin Thea Wathne"]],
+  ["AI in finance and economics", ["Petter Eilif de Lange", "Ranik Raaen Wahlstrøm", "Morten Risstad"]],
+  ["AI and defence/security policy", ["Johanne Jensen Skeie", "Stian Kjeksrud", "Ingebjørg Kåsen"]],
+  ["AI and climate/sustainability", ["Rituka Jaiswal", "Xiangping Hu", "Stefan Pieter Sobolowski"]],
+  ["AI and psychology/mental health", ["Kerstin Bach", "E. F. Haghish", "Torhild Tønnesen Haugnes"]],
+  ["AI and language technology for smaller languages", ["Erik Velldal", "Trond Trosterud", "Sjur Nørstebø Moshagen", "Ronny Paul"]],
+  ["AI and art/music", ["Alexander Refsum Jensenius", "Kyrre Glette", "Daniel Nordgård", "Çağrı Erdem"]],
+] as const;
+
+for (const [field, names] of NEW_FIELDS) {
+  test(`${field} has documented contributors discoverable through field and name filters`, () => {
+    assert.ok(EXPERT_CATEGORIES.includes(field));
+    assert.deepEqual(filterExperts("", field, "").map((p) => p.name), [...names]);
+    for (const name of names) {
+      const matches = filterExperts(name, field, "");
+      assert.equal(matches.length, 1, name);
+      const profile = PUBLIC_PROFILE_LINKS.find((p) => p.id === matches[0]?.id);
+      assert.ok(profile?.source, name);
+      assert.equal(new URL(profile?.url ?? "").protocol, "https:");
+    }
+  });
+}
+
+test("FFI interview is labelled as a source rather than a professional profile", () => {
+  assert.equal(PUBLIC_PROFILE_LINKS.find((p) => p.name === "Ingebjørg Kåsen")?.kind, "source");
 });

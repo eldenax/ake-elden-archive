@@ -23,6 +23,13 @@ export const EXPERT_CATEGORIES: string[] = [
   "Public sector, AI governance and implementation",
   "Industrial AI, energy and the environment",
   "AI safety, robustness and cybersecurity",
+  "AI and working life",
+  "AI in finance and economics",
+  "AI and defence/security policy",
+  "AI and climate/sustainability",
+  "AI and psychology/mental health",
+  "AI and language technology for smaller languages",
+  "AI and art/music",
   "Adjacent expertise in education and society"
 ];
 
@@ -129,8 +136,8 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "id": 15,
     "name": "Erik Velldal",
     "institution": "UiO",
-    "expertise": "Language technology and machine learning",
-    "category": "Language models, NLP and knowledge representation"
+    "expertise": "Norwegian language technology, NLP and machine learning",
+    "category": "AI and language technology for smaller languages"
   },
   {
     "id": 16,
@@ -144,7 +151,7 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "name": "Trond Trosterud",
     "institution": "UiT",
     "expertise": "Sámi language technology",
-    "category": "Language models, NLP and knowledge representation"
+    "category": "AI and language technology for smaller languages"
   },
   {
     "id": 18,
@@ -164,8 +171,8 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "id": 20,
     "name": "Kerstin Bach",
     "institution": "NTNU",
-    "expertise": "Intelligent systems, data-driven AI",
-    "category": "Language models, NLP and knowledge representation"
+    "expertise": "Machine learning and data-driven decision support; AI research in e-health projects including mental health",
+    "category": "AI and psychology/mental health"
   },
   {
     "id": 21,
@@ -746,7 +753,7 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "name": "Alexander Refsum Jensenius",
     "institution": "UiO · RITMO / MishMash",
     "expertise": "Music technology, human–machine interaction and AI in creative practice; Director of MishMash",
-    "category": "AI in media, communication and creative expression"
+    "category": "AI and art/music"
   },
   {
     "id": 104,
@@ -887,6 +894,139 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "UiO",
     "expertise": "Edge intelligence, federated learning and AI-enabled wireless networks and Internet of Things",
     "category": "Industrial AI, energy and the environment"
+  },
+  {
+    "id": 124,
+    "name": "Lene Pettersen",
+    "institution": "UiO",
+    "expertise": "AI in knowledge work, digital workplaces, organisational collaboration and professional learning",
+    "category": "AI and working life"
+  },
+  {
+    "id": 125,
+    "name": "Inger Marie Hagen",
+    "institution": "OsloMet · Work Research Institute",
+    "expertise": "AI, digital management, hiring and workplace democracy; research on the Norwegian model of working life",
+    "category": "AI and working life"
+  },
+  {
+    "id": 126,
+    "name": "Christin Thea Wathne",
+    "institution": "OsloMet · Work Research Institute",
+    "expertise": "AI in policing, professional work and organisational change; AGOPOL research on algorithmic governance",
+    "category": "AI and working life"
+  },
+  {
+    "id": 127,
+    "name": "Petter Eilif de Lange",
+    "institution": "NTNU",
+    "expertise": "Machine learning and explainable AI for credit-default modelling, credit ratings and financial risk",
+    "category": "AI in finance and economics"
+  },
+  {
+    "id": 128,
+    "name": "Ranik Raaen Wahlstrøm",
+    "institution": "NTNU",
+    "expertise": "Business analytics, deep learning in finance and explainable machine-learning models",
+    "category": "AI in finance and economics"
+  },
+  {
+    "id": 129,
+    "name": "Morten Risstad",
+    "institution": "NTNU",
+    "expertise": "Machine learning for credit-default prediction and financial forecasting",
+    "category": "AI in finance and economics"
+  },
+  {
+    "id": 130,
+    "name": "Johanne Jensen Skeie",
+    "institution": "Norwegian Defence University College · IFS",
+    "expertise": "Doctoral research on military AI, state–technology-company relations and international security policy",
+    "category": "AI and defence/security policy"
+  },
+  {
+    "id": 131,
+    "name": "Rituka Jaiswal",
+    "institution": "NTNU",
+    "expertise": "AI for smart grids, energy optimisation, fault detection and wind-farm integration",
+    "category": "AI and climate/sustainability"
+  },
+  {
+    "id": 132,
+    "name": "Xiangping Hu",
+    "institution": "NTNU · Industrial Ecology Programme",
+    "expertise": "Machine learning and AI methods in environmental analysis and climate-change mitigation research",
+    "category": "AI and climate/sustainability"
+  },
+  {
+    "id": 133,
+    "name": "E. F. Haghish",
+    "institution": "UiB · Faculty of Psychology",
+    "expertise": "AI and psychometrics in youth mental-health research, including risk and protective factors for suicidality",
+    "category": "AI and psychology/mental health"
+  },
+  {
+    "id": 134,
+    "name": "Torhild Tønnesen Haugnes",
+    "institution": "Modum Bad · doctoral research affiliated with UiO",
+    "expertise": "Doctoral research on AI-based patient matching and machine-learning prediction of psychotherapy outcomes",
+    "category": "AI and psychology/mental health"
+  },
+  {
+    "id": 135,
+    "name": "Sjur Nørstebø Moshagen",
+    "institution": "UiT · Divvun",
+    "expertise": "Sámi and indigenous-language technology, language tools and research on low-resource language technology in the age of machine learning",
+    "category": "AI and language technology for smaller languages"
+  },
+  {
+    "id": 136,
+    "name": "Ronny Paul",
+    "institution": "UiT",
+    "expertise": "Co-authored research on large language models for Sámi and ultra-low-resource languages; documented contribution, not a claim of broad AI specialisation",
+    "category": "AI and language technology for smaller languages"
+  },
+  {
+    "id": 137,
+    "name": "Kyrre Glette",
+    "institution": "UiO · RITMO",
+    "expertise": "Machine learning for musical interaction and performance, including neural models for predicting performer actions",
+    "category": "AI and art/music"
+  },
+  {
+    "id": 138,
+    "name": "Stefan Pieter Sobolowski",
+    "institution": "UiB · Bjerknes Centre for Climate Research",
+    "expertise": "Generative AI for local-scale climate information and explainable AI for climate prediction and attribution",
+    "category": "AI and climate/sustainability"
+  },
+  {
+    "id": 139,
+    "name": "Daniel Nordgård",
+    "institution": "UiA · MishMash",
+    "expertise": "AI in music industries, creative-sector policy and digitalisation; deputy director of the Centre for AI and Creativity",
+    "category": "AI and art/music"
+  },
+  {
+    "id": 140,
+    "name": "Stian Kjeksrud",
+    "institution": "Norwegian Defence University College",
+    "expertise": "International security, hybrid warfare and research on AI and virtual reality in military education",
+    "category": "AI and defence/security policy"
+  },
+  {
+    "id": 141,
+    "name": "Ingebjørg Kåsen",
+    "institution": "Norwegian Defence Research Establishment (FFI)",
+    "expertise": "AI research leadership, defence-sector AI strategy and responsible AI in NATO; documented in an FFI interview",
+    "category": "AI and defence/security policy"
+  },
+  {
+    "id": 142,
+    "name": "Çağrı Erdem",
+    "institution": "UiO · MishMash",
+    "expertise": "Embodied interaction, human–AI co-creativity and shared control in interactive music performance",
+    "category": "AI and art/music"
   }
 ];
 
