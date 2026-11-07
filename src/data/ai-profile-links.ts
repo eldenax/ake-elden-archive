@@ -767,5 +767,85 @@ export const PUBLIC_PROFILE_LINKS: PublicProfileLink[] = [
     "url": "https://en.uit.no/ansatte/person?p_document_id=40982",
     "source": "UiT individual profile and publication list: Arctic HARE machine-learning system for cross-country skiers; AI in the soccer domain",
     "evidenceUrl": "https://hdl.handle.net/10037/33197"
+  },
+  {
+    "id": 145,
+    "name": "Alvaro Fernandez-Quilez",
+    "url": "https://www.uis.no/en/profile/451",
+    "source": "UiS institutional profile and documented AI research",
+    "evidenceUrl": "https://www.uis.no/nb/om-uis/stavanger-ai-lab/ekspertliste-kunstig-intelligens"
+  },
+  {
+    "id": 146,
+    "name": "Tom Ryen",
+    "url": "https://www.uis.no/en/profile/tom-ryen",
+    "source": "UiS institutional profile and documented AI research",
+    "evidenceUrl": "https://www.uis.no/nb/om-uis/stavanger-ai-lab/ekspertliste-kunstig-intelligens"
+  },
+  {
+    "id": 147,
+    "name": "Krisztian Balog",
+    "url": "https://www.uis.no/nb/profile/krisztian-balog",
+    "source": "UiS institutional profile and documented AI research",
+    "evidenceUrl": "https://www.uis.no/en/research/stavanger-ai-lab/information-technology/information-access-and-artificial-intelligence-iai"
+  },
+  {
+    "id": 148,
+    "name": "Vinay Jayarama Setty",
+    "url": "https://www.uis.no/en/profile/vinay-jayarama-setty",
+    "source": "UiS institutional profile and documented AI research",
+    "evidenceUrl": "https://ux.uis.no/~vsetty/"
+  },
+  {
+    "id": 149,
+    "name": "Petra Galuscakova",
+    "url": "https://www.uis.no/en/profile/4650",
+    "source": "UiS institutional profile and documented AI research"
+  },
+  {
+    "id": 150,
+    "name": "Antorweep Chakravorty",
+    "url": "https://www.uis.no/nb/profile/antorweep-chakravorty",
+    "source": "UiS institutional profile and documented AI research"
+  },
+  {
+    "id": 151,
+    "name": "Sabita Maharjan",
+    "url": "https://www.mn.uio.no/ifi/english/people/aca/sabita/",
+    "source": "Institutional profile: Machine (Deep) Learning for networks"
+  },
+  {
+    "id": 152,
+    "name": "Shen Yin",
+    "url": "https://www.ntnu.no/ansatte/shen.yin",
+    "source": "Institutional profile: data- and machine-learning-based modelling for reliability analysis and decision-making under uncertainty ... frameworks for quality assurance of artificial intelligence and digital twins in safety-critical systems."
+  },
+  {
+    "id": 153,
+    "name": "Annie Karoline Elgen",
+    "url": "https://www.uv.uio.no/ils/english/people/aca/annieko/",
+    "source": "Institutional profile and co-authored study: Teaching with and about GenAI (2026)",
+    "evidenceUrl": "https://doi.org/10.1016/j.tate.2026.105517"
+  },
+  {
+    "id": 154,
+    "name": "Katherina Dodou",
+    "url": "https://www.du.se/en/profile-page/?userId=1998841089",
+    "source": "Institutional profile and co-authored study: Teaching with and about GenAI (2026)",
+    "evidenceUrl": "https://doi.org/10.1016/j.tate.2026.105517"
+  },
+  {
+    "id": 155,
+    "name": "Lisbeth M. Brevik",
+    "url": "https://www.uv.uio.no/ils/english/people/aca/lisbbr/",
+    "source": "Institutional profile and co-authored study: Teaching with and about GenAI (2026)",
+    "evidenceUrl": "https://doi.org/10.1016/j.tate.2026.105517"
+  },
+  {
+    "id": 156,
+    "name": "John Krogstie",
+    "url": "https://www.ntnu.edu/employees/john.krogstie",
+    "source": "NTNU professional profile; co-author of Artificial Intelligence and Business Value: a Literature Review",
+    "evidenceUrl": "https://doi.org/10.1007/s10796-021-10186-w"
   }
 ];
