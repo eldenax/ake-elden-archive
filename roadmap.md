@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] Add the requested person to the AI directory — awaiting their name or public professional profile link.
+- [x] Expand the AI directory to 115 entries with the named people and further source-backed additions, remove the fixed 100-person title, and verify search without duplicates; distinguish Sandsør's adjacent expertise.
 - [x] Make all AI directory wording visitor-facing and explain transparent expert criteria without claiming existing entries are fully verified.
 
 - [x] Translate the entire AI in Norway directory into English, preserve all caveats and profile links, add a clear disclaimer, and verify search and reading.

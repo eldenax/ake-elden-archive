@@ -3,10 +3,11 @@ import assert from "node:assert/strict";
 import { EXPERT_PEOPLE, EXPERT_CATEGORIES, filterExperts, profileSearchUrl } from "../src/data/ai-directory";
 import { PUBLIC_PROFILE_LINKS } from "../src/data/ai-profile-links";
 
-test("the upload contains 100 distinct people in 15 categories, without a ranking sort", () => {
-  assert.equal(EXPERT_PEOPLE.length, 100);
-  assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.id)).size, 100);
-  assert.equal(EXPERT_CATEGORIES.length, 15);
+test("the expanded directory retains the original entries without a ranking sort or duplicates", () => {
+  assert.ok(EXPERT_PEOPLE.length > 100);
+  assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.id)).size, EXPERT_PEOPLE.length);
+  assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.name)).size, EXPERT_PEOPLE.length);
+  assert.equal(EXPERT_CATEGORIES.length, 16);
   assert.equal(EXPERT_PEOPLE[0]?.name, "Morten Goodwin");
   assert.equal(EXPERT_PEOPLE[99]?.name, "Vasileios Mavroeidis");
 });
@@ -16,7 +17,27 @@ test("name, institution and expertise search can be combined with category filte
   assert.deepEqual(filterExperts("sami", "", "UiT").map((p) => p.id), [17]);
   assert.equal(filterExperts("", "AI in health and medicine", "").length, 8);
   assert.equal(filterExperts("sami", "AI in health and medicine", "").length, 0);
-  assert.equal(filterExperts("", "", "").length, 100);
+  assert.equal(filterExperts("", "", "").length, EXPERT_PEOPLE.length);
+});
+
+test("requested additions are searchable by the supplied shorter names", () => {
+  for (const query of ["Herman Cappelen", "Kari Steen-Johnsen", "Alexander Refsum Jensenius", "Fabian Harang", "Astrid Jorde Sandsør"]) {
+    assert.equal(filterExperts(query, "", "").length, 1, query);
+  }
+});
+
+test("Geir Kjetil Sandve is retained exactly once", () => {
+  assert.deepEqual(filterExperts("Geir Kjetil Sandve", "", "").map((p) => p.id), [43]);
+});
+
+test("adjacent education expertise is not categorised as AI specialisation", () => {
+  const person = filterExperts("Astrid Jorde Sandsør", "", "")[0];
+  assert.equal(person?.category, "Adjacent expertise in education and society");
+});
+
+test("Cappelen's affiliation does not imply a current Norway-based role", () => {
+  const person = filterExperts("Herman Cappelen", "", "")[0];
+  assert.equal(person?.institution, "The University of Hong Kong · formerly University of Oslo");
 });
 
 test("each person has a public profile address or a person-specific search fallback", () => {
