@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] Verify the 14 missing names from the two uploaded lists against public sources, add those with documented AI work and Norwegian connections, and test directory search and evidence links.
+- [x] Verify the 14 missing names from the two uploaded lists against public sources: add 12 documented AI contributors, omit unsupported Nordhagen/Johansen claims, qualify Dodou's current Swedish affiliation, and verify tests plus desktop/mobile search and evidence links.
 
 - [x] Add AI and sport with Ingrid Eir Thorp Eythorsdottir and Dag Johansen, separate professional profiles and AI evidence links; verify filters at desktop and mobile widths and preserve caveats.
 
