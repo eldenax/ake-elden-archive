@@ -880,6 +880,13 @@ export const EXPERT_PEOPLE: ExpertPerson[] = [
     "institution": "OsloMet / Østfold University College",
     "expertise": "Biologically inspired AI, artificial life, neural systems and adaptive computation",
     "category": "Machine learning and foundational AI"
+  },
+  {
+    "id": 123,
+    "name": "Yan Zhang",
+    "institution": "UiO",
+    "expertise": "Edge intelligence, federated learning and AI-enabled wireless networks and Internet of Things",
+    "category": "Industrial AI, energy and the environment"
   }
 ];
 

@@ -1,5 +1,7 @@
 # Tasks
 
+- [x] Check the six latest suggested names, add any missing entry with a public profile and documented AI scope, and verify search without duplicates.
+
 - [x] Expand AI Expertise in Norway using the uploaded suggestions, add a dedicated AI and theology/religion field, preserve evidence caveats, and verify filtering and links without duplicates.
 
 - [x] Add the uploaded Norwegian essay “Hva bør vi utrustes med i møte med kunstig intelligens?” as a blog post, retaining its argument and verifying index-to-post reading.
