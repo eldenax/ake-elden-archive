@@ -7,7 +7,7 @@ test("the expanded directory retains the original entries without a ranking sort
   assert.ok(EXPERT_PEOPLE.length > 100);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.id)).size, EXPERT_PEOPLE.length);
   assert.equal(new Set(EXPERT_PEOPLE.map((p) => p.name)).size, EXPERT_PEOPLE.length);
-  assert.equal(EXPERT_CATEGORIES.length, 16);
+  assert.equal(EXPERT_CATEGORIES.length, 17);
   assert.equal(EXPERT_PEOPLE[0]?.name, "Morten Goodwin");
   assert.equal(EXPERT_PEOPLE[99]?.name, "Vasileios Mavroeidis");
 });
@@ -28,6 +28,20 @@ test("requested additions are searchable by the supplied shorter names", () => {
 
 test("Geir Kjetil Sandve is retained exactly once", () => {
   assert.deepEqual(filterExperts("Geir Kjetil Sandve", "", "").map((p) => p.id), [43]);
+});
+
+test("the requested theology/religion field contains the five documented contributors", () => {
+  assert.deepEqual(filterExperts("", "AI and theology/religion", "").map((p) => p.name), [
+    "Åke Elden", "Atle Ottesen Søvik", "Asle Eikrem", "Clemens Cavallin", "Simon Simchai Hansen",
+  ]);
+  assert.deepEqual(filterExperts("sovik", "AI and theology/religion", "").map((p) => p.id), [116]);
+});
+
+test("the expansion adds seven people without duplicating existing suggestions", () => {
+  assert.equal(EXPERT_PEOPLE.length, 122);
+  for (const query of ["Atle Ottesen Søvik", "Asle Eikrem", "Clemens Cavallin", "Simon Simchai Hansen", "Einar Duenger Bøhn", "Anders Malthe-Sørenssen", "Stefano Nichele", "Barbara Wasson", "Monika Nerland", "Morten Goodwin", "Åke Elden"]) {
+    assert.equal(filterExperts(query, "", "").length, 1, query);
+  }
 });
 
 test("adjacent education expertise is not categorised as AI specialisation", () => {
