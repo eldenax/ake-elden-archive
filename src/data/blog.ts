@@ -634,7 +634,7 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["partition-thesis", "ethical-disclosure"],
       },
       {
-        heading: "Third-order questions: when can the bridge itself operate?",
+        heading: "When can the bridge itself operate?",
         paragraphs: [
           "The problem becomes more interesting when we move one order higher. Even if we specify a bridge principle, we can ask: What conditions must already obtain before that principle can legitimately be applied?",
           "Consider responsibility. A conventional philosophical discussion might ask whether responsibility requires knowledge, control, intention, or responsiveness to reasons. But there is a prior question: Were the conditions under which control, judgment, and answerability could arise actually available to the agent? This changes the structure of the problem. Instead of asking whether responsibility has been weakened, mitigated, or transferred, we may need to ask whether the conditions necessary for responsibility ever came into existence.",
@@ -643,7 +643,7 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["exercisable-answerability", "judgment-gap"],
       },
       {
-        heading: "Fourth-order philosophy: the architecture of the conditions",
+        heading: "The architecture of the conditions",
         paragraphs: [
           "The next step is to ask what produces these conditions. Here the philosophical focus moves from individual agents to institutions, technologies, temporal structures, and social environments. The question becomes: What kinds of social and institutional architecture determine whether the conditions for judgment, agency, responsibility, or evaluation are present?",
           "This is why technological mediation interests me philosophically. My project is not fundamentally about artificial intelligence. AI is one particularly revealing case because it makes visible something that has always been philosophically important: the extent to which agency and judgment depend upon structures that precede the immediate act.",
@@ -652,7 +652,7 @@ export const BLOG_POSTS: BlogPost[] = [
         concepts: ["epistemic-infrastructure", "systemic-friction"],
       },
       {
-        heading: "A fifth-order problem: philosophy's unnoticed transitions",
+        heading: "Philosophy's unnoticed transitions",
         paragraphs: [
           "This eventually leads to a more general methodological claim. Many philosophical errors may arise not because the premises are obviously false and not because the conclusions are inherently incoherent. They arise because the transition between the two has not been adequately examined.",
           "Abstractly, philosophical reasoning often takes the form A → B: a fact, property, relation, or event is identified, and a further normative or epistemic status is inferred. But the real structure may be closer to A + C → B, where C represents the conditions that license the transition. Once this is recognized, another question immediately appears: What makes C available? That introduces a further level: D → C → [A → B]. Here D may represent institutional, social, temporal, technological, or agential structures.",

@@ -134,7 +134,7 @@ const SECTIONS = [
   },
   {
     id: "third-order",
-    label: "Third-order questions: when can the bridge itself operate?",
+    label: "When can the bridge itself operate?",
     paragraphs: [
       "The problem becomes more interesting when we move one order higher.",
       "Even if we specify a bridge principle, we can ask: What conditions must already obtain before that principle can legitimately be applied?",
@@ -153,7 +153,7 @@ const SECTIONS = [
   },
   {
     id: "fourth-order",
-    label: "Fourth-order philosophy: the architecture of the conditions",
+    label: "The architecture of the conditions",
     paragraphs: [
       "The next step is to ask what produces these conditions.",
       "Here the philosophical focus moves from individual agents to institutions, technologies, temporal structures, and social environments.",
@@ -168,7 +168,7 @@ const SECTIONS = [
   },
   {
     id: "fifth-order",
-    label: "A fifth-order problem: philosophy's unnoticed transitions",
+    label: "Philosophy's unnoticed transitions",
     paragraphs: [
       "This eventually leads to a more general methodological claim.",
       "Many philosophical errors may arise not because the premises are obviously false and not because the conclusions are inherently incoherent.",
@@ -281,7 +281,7 @@ function ResearchPremisesPage() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Sections
           </p>
-          <ol className="mt-4 list-decimal space-y-2 pl-4 text-sm text-foreground/80">
+          <ul className="mt-4 space-y-2 text-sm text-foreground/80">
             {SECTIONS.map((s) => (
               <li key={s.id}>
                 <a
@@ -292,7 +292,7 @@ function ResearchPremisesPage() {
                 </a>
               </li>
             ))}
-          </ol>
+          </ul>
         </nav>
 
         {SECTIONS.map((s) => (

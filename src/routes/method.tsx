@@ -69,7 +69,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "status-ascent",
-    label: "1. Status ascent",
+    label: "Status ascent",
     paragraphs: [
       "Consider a simple schema:",
       "A → B",
@@ -96,7 +96,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "unlicensed-ascent",
-    label: "2. The error of unlicensed ascent",
+    label: "The error of unlicensed ascent",
     paragraphs: [
       "I shall call this the error of unlicensed ascent.",
       "An unlicensed ascent occurs when a philosopher, institution, or ordinary reasoner moves from one status to another without establishing that the conditions under which the first status bears upon the second are satisfied.",
@@ -112,7 +112,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "bridge-omission",
-    label: "3. Bridge omission",
+    label: "Bridge omission",
     paragraphs: [
       "The simplest form of unlicensed ascent is bridge omission.",
       "Suppose we know that X has status A and wish to conclude that X has status B.",
@@ -129,7 +129,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "property-migration",
-    label: "4. Property migration",
+    label: "Property migration",
     paragraphs: [
       "A particularly important error occurs when a property that performs one normative function is assumed to perform another merely because the second question arises nearby.",
       "Call this property migration.",
@@ -143,7 +143,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "constitutive-condition-neglect",
-    label: "5. Constitutive-condition neglect",
+    label: "Constitutive-condition neglect",
     paragraphs: [
       "There is, however, a deeper problem.",
       "Sometimes the missing condition is not merely an additional premise connecting A with B. It is a condition required for B to be possible at all.",
@@ -161,7 +161,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "normative-unoccupiability",
-    label: "6. The error of normative unoccupiability",
+    label: "The error of normative unoccupiability",
     paragraphs: [
       "This suggests another form of philosophical error: attributing obligations, powers, responsibilities, or forms of agency to positions that no actual subject could occupy under the relevant conditions.",
       "We routinely say that an agent ought to have acted differently. But “could have done otherwise” is only one dimension of the problem.",
@@ -174,7 +174,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "evidential-over-attribution",
-    label: "7. Evidential over-attribution",
+    label: "Evidential over-attribution",
     paragraphs: [
       "A parallel mistake occurs in epistemic reasoning.",
       "Suppose two researchers have different publication records, two students obtain different marks, or two employees produce different outcomes. We observe: A performs better than B. The difference may be real. But a further inference often follows: A is more competent than B.",
@@ -189,7 +189,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "composition",
-    label: "8. Composition and institutional legitimacy",
+    label: "Composition and institutional legitimacy",
     paragraphs: [
       "A similar transition error appears in political and institutional philosophy.",
       "Suppose an administrative body possesses powers P1, P2, and P3, each acquired through legitimate procedures. It may be tempting to infer: each power is legitimate; therefore the integrated capacity P1 + P2 + P3 is legitimate.",
@@ -202,7 +202,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "temporal",
-    label: "9. Temporal transition error",
+    label: "Temporal transition error",
     paragraphs: [
       "Status ascent may also occur across time.",
       "Suppose an achievement satisfied demanding standards at t1. At t2, practices, technologies, knowledge, or expectations have changed. How should the achievement now be evaluated?",
@@ -216,7 +216,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "proxy-attribution",
-    label: "10. Proxy and attribution error",
+    label: "Proxy and attribution error",
     paragraphs: [
       "The same structure becomes acute in technologically mediated agency.",
       "Suppose a system produces an output under a person's name. The person selected the system, initiated the process, perhaps supplied the task and ultimately accepted the result.",
@@ -229,7 +229,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "why-philosophy",
-    label: "11. Why philosophy repeatedly makes these mistakes",
+    label: "Why philosophy repeatedly makes these mistakes",
     paragraphs: [
       "Why are unlicensed transitions so persistent?",
       "One reason is that ordinary language compresses levels of analysis. We say: “He did it.” “She decided.” “The institution knew.” “The algorithm discriminated.” “The author argues.” “The evidence shows.” Each sentence may conceal several distinct relations.",
@@ -242,7 +242,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "prior-conditions",
-    label: "12. From bridge principles to prior conditions",
+    label: "From bridge principles to prior conditions",
     paragraphs: [
       "The analysis so far produces a deeper hierarchy.",
       "At the first level we have the attribution: B. At the second level we ask what licenses the transition: A + C → B. At the third level we ask what makes C obtain. Call those background conditions D.",
@@ -257,7 +257,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "licensed-transition-principle",
-    label: "13. A general principle of licensed transition",
+    label: "A general principle of licensed transition",
     paragraphs: [
       "We can now formulate a general methodological principle.",
       "Licensed Transition Principle: an attribution of a higher-order normative, epistemic, evaluative, or agential status B on the basis of status A is warranted only where the conditions that give A B-conferring significance are independently satisfied.",
@@ -268,7 +268,7 @@ const SECTIONS: { id: string; label: string; paragraphs: string[] }[] = [
   },
   {
     id: "significance",
-    label: "14. The philosophical significance of the transition",
+    label: "The philosophical significance of the transition",
     paragraphs: [
       "There is a broader methodological implication.",
       "Philosophy often concentrates its scrutiny at the ends of arguments. Are the premises plausible? Is the conclusion acceptable? Are the concepts clearly defined? But an argument can contain plausible premises and an intelligible conclusion while still failing at the point connecting them.",
@@ -328,11 +328,11 @@ function MethodPage() {
       <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
         <section className="mb-12">
           <h2 className="font-display text-2xl text-foreground">Three questions guide the approach</h2>
-          <ol className="mt-6 list-decimal space-y-4 pl-5 text-base leading-relaxed text-muted-foreground">
-            <li>What do we observe, and what are we claiming on that basis?</li>
-            <li>What conditions would justify that conclusion?</li>
-            <li>Are those conditions actually present — and what changes them?</li>
-          </ol>
+          <ul className="mt-6 divide-y divide-border border-y border-border">
+            <li className="py-4 text-base leading-relaxed text-muted-foreground">What do we observe, and what are we claiming on that basis?</li>
+            <li className="py-4 text-base leading-relaxed text-muted-foreground">What conditions would justify that conclusion?</li>
+            <li className="py-4 text-base leading-relaxed text-muted-foreground">Are those conditions actually present — and what changes them?</li>
+          </ul>
         </section>
         <details>
           <summary className="cursor-pointer font-display text-xl text-foreground">Read the full methodological argument</summary>
@@ -344,7 +344,7 @@ function MethodPage() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Sections
           </p>
-          <ol className="mt-4 list-decimal space-y-2 pl-4 text-sm text-foreground/80">
+          <ul className="mt-4 space-y-2 text-sm text-foreground/80">
             {SECTIONS.map((s) => (
               <li key={s.id}>
                 <a
@@ -355,7 +355,7 @@ function MethodPage() {
                 </a>
               </li>
             ))}
-          </ol>
+          </ul>
         </nav>
 
         {SECTIONS.map((s) => (
