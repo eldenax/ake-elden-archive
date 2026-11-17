@@ -26,7 +26,7 @@ export const BLOG_POSTS: BlogPost[] = [
     lede: "Møtet med kunstig intelligens krever hverken at vi alle blir programmerere eller at vi passivt lar teknologien overta styringen. Når KI i økende grad overtar rutineoppgaver, saksbehandling og tekstgenerering, forskyves den mest kritiske kjerneoppgaven vår: fra ren produksjon til kvalifisert evaluering, skjønn og ansvarsinngang.\n\nFor å navigere dette skiftet trygt og formålstjenlig, må vi utrustes på tre overordnede nivåer: epistemologisk og kritisk, etisk og institusjonelt, og praktisk og funksjonelt.",
     sections: [
       {
-        heading: "1. Epistemologisk og kritisk utrustning: Evnen til å forstå og overprøve",
+        heading: "Epistemologisk og kritisk utrustning: Evnen til å forstå og overprøve",
         paragraphs: [
           "Det er en utbredt misforståelse at KI gjør dyp domenekunnskap overflødig. Tvert imot krever teknologien at vi forsterker vår faglige ballast for ikke å bli passive tilskuere til algoritmisk oppførsel.",
           "Epistemisk autonomi og kildekritikk: Språkmodeller leverer ofte syntaktisk feilfrie svar med betydelig skråsikkerhet, men uten forankring i sannhetsforpliktelse. Vi må trene opp evnen til å identifisere modelltenkningens grenser, oppdage hallusinasjoner og avdekke skjevheter (bias).",
@@ -35,7 +35,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "2. Etisk og normativ utrustning: Navigering av ansvar og verdier",
+        heading: "Etisk og normativ utrustning: Navigering av ansvar og verdier",
         paragraphs: [
           "Automatisering av beslutningsstøtte utfordrer etablerte strukturer for ansvar og menneskelig verdighet.",
           "Ansvarsplassering og tilregnelighet (Accountability): Algoritmer kan aldri bære juridisk eller etisk ansvar. Beslutninger som fattes på bakgrunn av KI-genererte underlag krever alltid en klar og entydig locus of answerability — et menneskelig ansvarspunkt som kan stilles til svars.",
@@ -44,7 +44,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "3. Praktisk og funksjonell utrustning: Verktøybeherskelse",
+        heading: "Praktisk og funksjonell utrustning: Verktøybeherskelse",
         paragraphs: [
           "Ren teori er utilstrekkelig dersom det praktiske håndverket mangler.",
           "Interaksjons- og instruksjonskompetanse: Evnen til å utforme presise kontekster, avgrense premisser og tildele operasjonelle roller til modellene er avgjørende for å oppnå høy relevans uten å introdusere kognitiv støy.",
@@ -74,7 +74,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "lede": "On 3 November 2026, I received an automated message from Microsoft Power Platform with an alarming subject line: “Immediate action required: Out of File capacity.”\n\nThe message was unequivocal. My organisation had allegedly exhausted its available storage capacity, and immediate action was necessary to avoid operational disruption. The figures were equally striking: 9.88 GB of storage had been consumed out of an available capacity of 0 MB. The system declared that 100 percent of the available capacity had been used.\n\nThere was only one problem. I did not use the applications that the warning appeared to concern, and the message offered no meaningful explanation of why the storage allocation was zero, what the stored data consisted of, or which operational functions were actually at risk. The notification appeared certain about the problem while remaining remarkably uninformative about its significance.\n\nThis small incident illustrates a much larger problem in contemporary digital governance: automated systems increasingly possess the authority to demand action without assuming a corresponding obligation to make their demands intelligible.",
   "sections": [
     {
-      "heading": "1. The case: an emergency without an explanation",
+      "heading": "The case: an emergency without an explanation",
       "paragraphs": [
         "The notification originated from Microsoft Power Platform and concerned storage associated with Microsoft Dataverse, a data platform supporting various business applications. Its message was structured around three assertions: the organisation had reached its storage limit; immediate action was required; failure to act could result in operational disruption.",
         "Yet the numerical information accompanying these assertions raised more questions than it answered. How could an organisation consume 9.88 GB of an allocation reported as 0 MB? Had a previously available storage entitlement expired? Had a subscription changed? Was the storage associated with an application that was no longer in use? Was there an actual operational problem, or merely an administrative inconsistency between recorded usage and current entitlement?",
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["automated-certainty"]
     },
     {
-      "heading": "2. Automated certainty is not the same as justified certainty",
+      "heading": "Automated certainty is not the same as justified certainty",
       "paragraphs": [
         "Automated systems are exceptionally effective at identifying conditions that satisfy predefined rules. A storage-monitoring system may operate according to a relatively simple logic: if reported usage exceeds available capacity, issue a warning. From a computational perspective, such a rule may function exactly as intended.",
         "But identifying a threshold violation is not equivalent to determining whether that violation constitutes a meaningful operational problem. The threshold provides a condition for classification. It does not, by itself, establish the significance of that classification for a particular user. In this case, the warning moved from a technical observation to an operational demand without adequately explaining the connection between the two.",
@@ -94,7 +94,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["automated-certainty", "judgment-gap"]
     },
     {
-      "heading": "3. The inversion of responsibility",
+      "heading": "The inversion of responsibility",
       "paragraphs": [
         "The most revealing aspect of the notification was not the numerical discrepancy. It was the allocation of responsibility. Microsoft operates the technical infrastructure, defines the storage categories, establishes the licensing arrangements, controls the monitoring system and determines the thresholds that trigger alerts. The recipient, by contrast, has limited access to the reasoning that produces the warning.",
         "Nevertheless, the burden of action is placed almost entirely on the recipient. The organisation is told to act immediately, even though the notification does not establish what action would be proportionate, necessary or effective.",
@@ -104,7 +104,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["exercisable-answerability"]
     },
     {
-      "heading": "4. A warning without actionable knowledge",
+      "heading": "A warning without actionable knowledge",
       "paragraphs": [
         "A well-designed notification should enable its recipient to make an informed decision. At minimum, it should distinguish between four different kinds of information: Observation—what has the system detected? Interpretation—why does the detected condition matter? Consequence—what specifically may happen if no action is taken? Remedy—what action will resolve or meaningfully investigate the problem?",
         "The Microsoft notification provided a numerical observation and a generic warning about possible disruption. It did not adequately connect those elements to a user-specific diagnosis.",
@@ -114,7 +114,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["systemic-friction"]
     },
     {
-      "heading": "5. The missing possibility: the system may not be relevant to the user",
+      "heading": "The missing possibility: the system may not be relevant to the user",
       "paragraphs": [
         "One particularly revealing feature of this case was that the recipient did not knowingly use the applications associated with the warning. This does not prove that the Dataverse environment was unused or unnecessary. Historical applications, dependencies or licensing arrangements could explain its existence. But that is precisely the point.",
         "An effective monitoring system should distinguish between a technical condition and its relevance to the organisation receiving the notification. A capacity warning for a critical production database is not equivalent to a warning involving an inactive legacy environment. Both may satisfy the same numerical threshold. Their operational significance, however, differs substantially.",
@@ -122,7 +122,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ]
     },
     {
-      "heading": "6. When automation becomes an institutional authority",
+      "heading": "When automation becomes an institutional authority",
       "paragraphs": [
         "This incident illustrates a broader transformation in the relationship between organisations and their users. Historically, a service provider could be expected to explain a problem when requesting that a customer take action. Digital platforms increasingly replace that interaction with automated notifications, dashboards and self-service procedures.",
         "This transformation is often presented as efficiency. And in many respects, it is efficient. Routine monitoring can identify technical problems faster than human operators. Automated notifications can reach large numbers of users almost immediately. Self-service interfaces can reduce the cost of ordinary administrative tasks.",
@@ -132,7 +132,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["epistemic-infrastructure"]
     },
     {
-      "heading": "7. From technical accountability to institutional answerability",
+      "heading": "From technical accountability to institutional answerability",
       "paragraphs": [
         "The distinction between accountability and answerability helps clarify what is at stake. A system may be accountable in a limited technical sense: its thresholds can be documented, its outputs logged and its notifications traced to predefined rules. But institutional answerability requires something more. It requires that the organisation issuing a consequential demand be capable of providing reasons that the affected person can understand and contest.",
         "In this case, answerability would not require Microsoft to disclose proprietary algorithms or every aspect of its infrastructure. It would require a much simpler explanation: What data are being counted? Why is the available capacity zero? Which service is affected? What happens if the recipient takes no action? How can the discrepancy be resolved without unnecessary expenditure or deletion of useful data?",
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "concepts": ["exercisable-answerability"]
     },
     {
-      "heading": "8. The real cost of automated ambiguity",
+      "heading": "The real cost of automated ambiguity",
       "paragraphs": [
         "The consequences of cases like this are often dismissed as minor inconveniences. One user receives a confusing message. A few minutes are spent investigating. Perhaps the problem is resolved. But this interpretation overlooks the cumulative effects of automated ambiguity.",
         "When organisations repeatedly receive poorly contextualised alerts, they must devote time and cognitive resources to distinguishing genuine risks from administrative artefacts. Some users may purchase unnecessary services. Others may delete data or modify configurations without understanding the implications. Still others may begin ignoring warnings because previous alerts proved irrelevant.",
@@ -149,7 +149,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ]
     },
     {
-      "heading": "9. What responsible automated communication would look like",
+      "heading": "What responsible automated communication would look like",
       "paragraphs": [
         "A more responsible notification could have communicated the same technical condition without creating unnecessary ambiguity. For example:",
         "“Your organisation currently has 9.88 GB of files recorded in Microsoft Dataverse, while your present licence configuration provides no allocated Dataverse file capacity. This may reflect a change in licensing or an existing environment with stored data. The affected environment is [name]. The following operations may be restricted [specific functions]. Before purchasing additional capacity, review the environment and its licence assignment.”",
@@ -158,7 +158,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ]
     },
     {
-      "heading": "10. The larger lesson: automation does not dissolve the duty to explain",
+      "heading": "The larger lesson: automation does not dissolve the duty to explain",
       "paragraphs": [
         "The Microsoft notification is a small case, but its implications extend far beyond enterprise software. Similar structures appear in automated insurance decisions, compliance systems, financial monitoring, university administration, healthcare platforms and algorithmically supported public services.",
         "Across these domains, institutional systems increasingly classify conditions, assign risk and trigger action. The recurring danger is that the authority of the classification becomes detached from the obligation to explain its practical significance.",
@@ -264,25 +264,25 @@ export const BLOG_POSTS: BlogPost[] = [
       ]
     },
     {
-      "heading": "1. Epistemic Automation (The Technological Premise)",
+      "heading": "Epistemic Automation (The Technological Premise)",
       "paragraphs": [
         "Drawing on Immanuel Kant’s distinction in the Critique of the Power of Judgment, authentic professional discernment relies on reflective judgment—the capacity to confront an ambiguous, unclassified situation and discover a context-sensitive meaning. Algorithmic platforms, by contrast, execute determining judgment: they force complex human particulars into predefined statistical categories. This generates automated certainty, collapsing the necessary hermeneutic hesitation that historically signals unresolved moral or diagnostic tension."
       ]
     },
     {
-      "heading": "2. The Outsourcing of Complexity (The Organizational Mechanism)",
+      "heading": "The Outsourcing of Complexity (The Organizational Mechanism)",
       "paragraphs": [
         "Systems rarely eliminate systemic friction; they simply externalize it. Under what I call infrastructural burden transfer, institutions report local cost savings while pushing the invisible work of verification, error-correction, and interface navigation onto individual practitioners. As researchers like Madeleine Elish have shown, human professionals become \"moral crumple zones\"—bearing full legal and ethical liability when a system fails, despite having little operational freedom to influence the output."
       ]
     },
     {
-      "heading": "3. The Moving Standard of Justification (The Normative Shift)",
+      "heading": "The Moving Standard of Justification (The Normative Shift)",
       "paragraphs": [
         "Once algorithmic outputs become institutional defaults, the burden of proof shifts dramatically. Under the Asymmetric Evaluation Principle (AEP), accepting a machine’s recommendation requires minimal procedural defense. Overriding it, however, demands an exhausting, documented case to counter a synthetic default. Over time, this dynamic endogenously ratchets up the standard of proof required for human dissent, turning professional discretion into a prohibitive career risk."
       ]
     },
     {
-      "heading": "4. The Crisis of Professional Formation (The Pedagogical Casualty)",
+      "heading": "The Crisis of Professional Formation (The Pedagogical Casualty)",
       "paragraphs": [
         "What happens to professional education (Bildung or danning) under these conditions? Gert Biesta identifies three essential purposes of education: qualification, socialization, and subjectification (becoming an independent, answerable subject). Algorithmic governance hyper-optimizes qualification and enforces rigid socialization, but systematically starves subjectification. Novice practitioners are trained to seek immediate shelter under machine predictions rather than developing the courage to stand accountable for their own situated choices."
       ]
@@ -504,25 +504,25 @@ export const BLOG_POSTS: BlogPost[] = [
     lede: "Klassisk filosofi har gitt oss dypsindige teorier om hva det vil si å tenke, handle, være fri og bære ansvar. Tradisjonelt har disse teoriene tatt utgangspunkt i gitte forutsetninger om den menneskelige natur og våre omgivelser: at kunnskap krever en bevisst observatør, at en handling er et resultat av et fritt valg, og at etisk ansvar forutsetter en viss grad av kontroll.\n\nMen hva skjer når selve betingelsene for disse begrepene endres i takt med omverdenen?\n\nNår teknologi, sosiale relasjoner og institusjonelle praksiser endrer seg, utfordres det teoretiske fundamentet som filosofien har hvilt på.",
     sections: [
       {
-        heading: "1. Kunnskap i en digital og nettverksbasert tidsalder",
+        heading: "Kunnskap i en digital og nettverksbasert tidsalder",
         paragraphs: [
           "Hva vil det si å «vite» noe når algoritmer, søkemotorer og kunstig intelligens overtar deler av vår kognitive prosess? Tidligere var kunnskap noe som i hovedsak ble tilegnet, bearbeidet og lagret i det enkelte menneskes sinn. I dag er kunnskap i økende grad distribuert og mediert gjennom teknologiske verktøy og institusjonelle nettverk. Forutsetningen om det uavhengige, erkjennende subjektet må derfor revideres.",
         ],
       },
       {
-        heading: "2. Handling og agens: Hvem handlet egentlig?",
+        heading: "Handling og agens: Hvem handlet egentlig?",
         paragraphs: [
           "Tradisjonelle handlingsteorier forutsetter en klar årsakssammenheng mellom menneskelig intensjon og den utførte handlingen. Men når beslutninger fattes i komplekse sosiotekniske systemer – der algoritmisk styring, institusjonelt regelverk og sosiale normer veves sammen – blir grensene for menneskelig agens uklare. Er det personen, verktøyet eller systemet som utfører handlingen?",
         ],
       },
       {
-        heading: "3. Frihetens nye rammebetingelser",
+        heading: "Frihetens nye rammebetingelser",
         paragraphs: [
           "Frihet defineres ofte som fravær av tvang eller som evnen til å forme eget liv. Samtidig endrer nye teknologier og sosiale mønstre måten vi påvirkes på. Gjennom atferdsdesign, sosiale medier og institusjonelle føringer formes våre preferanser og valg lenge før vi i det hele tatt er klar over det. Frihet handler i dag ikke bare om å kunne velge fritt blant alternativer, men om å forstå hvordan selve handlingsrommet oppstår og begrenses.",
         ],
       },
       {
-        heading: "4. Ansvar i komplekse strukturer",
+        heading: "Ansvar i komplekse strukturer",
         paragraphs: [
           "Etisk og juridisk ansvar forutsetter vanligvis kontroll, forutsigbarhet og en klar aktør. Når handlinger skjer gjennom sammensatte institusjoner eller automatiserte prosesser, oppstår ofte et «ansvarsvakuum». Hvem bærer ansvaret når et system feiler, eller når institusjonelle praksiser fører til utilsiktede konsekvenser?",
         ],
@@ -545,7 +545,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "lede": "Filosofien har i århundrer stilt de samme grunnleggende spørsmålene: Hva kan vi vite? Hva vil det si å handle fritt? Og hvem bærer ansvaret når ting går galt?\n\nKlassiske svar har forutsatt en nokså ryddig verden: Det finnes et uavhengig tenkende subjekt, en klar sammenheng mellom intensjon og handling, og verktøy som ganske enkelt forsterker våre egne evner. Men når beslutninger og kunnskapsproduksjon i dag skjer i tette samspill mellom autonome algoritmer, generative modeller og ugjennomsiktige institusjonelle infrastrukturer, oppstår en fundamental utfordring: Våre etablerte filosofiske kategorier passer ikke lenger på praksisen de skal forklare.\n\nNedenfor undersøkes denne problemstillingen systematisk gjennom fire avgjørende metodiske spørsmål.",
     "sections": [
       {
-        "heading": "1. Problemet: Er dette et reelt filosofisk problem – eller bare begrepsmessig inflasjon?",
+        "heading": "Problemet: Er dette et reelt filosofisk problem – eller bare begrepsmessig inflasjon?",
         "paragraphs": [
           "Et berettiget kontrollspørsmål til enhver samtidsfilosofisk tese er om vi egentlig har oppdaget noe nytt, eller om vi bare har oppfunnet fasjonable nyord som «algoritmisk agens» og «distribuert ansvar».",
           "Svaret er at problemet er genuint, ontologisk og praksisorientert:",
@@ -555,7 +555,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
-        "heading": "2. Tradisjonen: Hva er den sterkeste eksisterende forklaringen, og hvorfor strekker den ikke til?",
+        "heading": "Tradisjonen: Hva er den sterkeste eksisterende forklaringen, og hvorfor strekker den ikke til?",
         "paragraphs": [
           "Det sterkeste forsvaret for det eksisterende rammeverket finnes i klassisk handlingsfilosofi (som hos Donald Davidson og Harry Frankfurt), Kantianisme og tradisjonell institusjonell etikk.",
           "Denne tradisjonen hviler på tre søyler:",
@@ -574,7 +574,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
-        "heading": "3. Bidraget: Hva kan vi forstå nå som vi ikke forsto like godt tidligere?",
+        "heading": "Bidraget: Hva kan vi forstå nå som vi ikke forsto like godt tidligere?",
         "paragraphs": [
           "Ved å analysere de endrede betingelsene direkte, i stedet for å tvinge nye fenomener inn i klassiske former, oppnår vi tre avgjørende teoretiske og praktiske innsikter:",
           "Mekanismen bak «ansvarsvakuumer» (The Institutionalization Gap): Vi ser nå at manglende ansvar ved bruk av ny teknologi (som generativ KI) i organisasjoner sjeldent skyldes uærlighet eller uvilje hos enkeltpersoner. Det skyldes et strukturelt avvik der individuell adopsjon av teknologiske verktøy går mye raskere enn utviklingen av institusjonelle styringsstrukturer og vurderingskriterier.",
@@ -583,7 +583,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
-        "heading": "4. Motargumentet: Kan ikke en tradisjonell filosof forklare alt dette uten å endre premissene?",
+        "heading": "Motargumentet: Kan ikke en tradisjonell filosof forklare alt dette uten å endre premissene?",
         "paragraphs": [
           "En tradisjonelt orientert eller reduksjonistisk filosof vil typisk reise følgende motargument:",
           "«Vi trenger ingen revisjon av filosofiske forutsetninger. Alt dette kan forklares ved hjelp av klassiske begreper om uvitenhet (epistemisk feil) eller manglende kontroll (kausal svikt). Når en kirurg feiler med en robot, eller en saksbehandler gjør feil med en algoritme, gjelder de samme reglene som før: Enten var personen uforsiktig (aktsomhetsansvar), eller så var det en teknisk svikt (produktansvar). Å snakke om 'endrede betingelser for frihet og ansvar' er bare en overkomplisert måte å si at verktøyene våre har blitt mer avanserte på.»"
