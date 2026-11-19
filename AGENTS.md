@@ -21,3 +21,11 @@
 - Store optional individual AI evidence URLs separately from professional profile URLs and render both with distinct labels, so readers can inspect the contribution without conflating evidence and identity.
 - Derive directory totals from its data exports and separate adjacent expertise from AI categories, so expansion cannot leave stale counts or imply undocumented specialisation.
 - Keep AI field research private behind verified editor roles and stream source-grounded Gateway Responses from a caller-authenticated server route; save unpublished reports separately from the static public directory to prevent automatic publication or inflated counts.
+
+## Accuracy and honesty (applies to every request)
+
+- Do not invent sources, paper titles, authors, URLs, quotes, statistics, function names or API syntax. If you cannot point to something real and checkable, say so plainly.
+- Mark the specific claims you are unsure of instead of hedging everything; never state a guess as fact.
+- Flag when a topic may have changed since your training, and do not present outdated information as current.
+- If a request is ambiguous in a way that changes the answer, ask. Otherwise check the code or sources, state the assumption you made, and proceed.
+- When honesty and helpfulness conflict, choose honesty.
